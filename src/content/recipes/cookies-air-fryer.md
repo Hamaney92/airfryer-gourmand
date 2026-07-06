@@ -9,6 +9,7 @@ reviews: 231
 prepTime: 10
 cookTime: 9
 servings: 8
+image: "/img/cookies-air-fryer.jpg"
 temp: "160 °C"
 quickAnswer: "Cuis les cookies 8 à 10 min à 160 °C au air fryer, en laissant de l'espace entre eux. Ils continuent de durcir en refroidissant : sors-les encore un peu mous."
 ingredients:

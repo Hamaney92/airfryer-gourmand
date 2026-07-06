@@ -9,6 +9,7 @@ reviews: 298
 prepTime: 15
 cookTime: 20
 servings: 3
+image: "/img/frites-maison-air-fryer.jpg"
 temp: "200 °C"
 quickAnswer: "Cuis les frites maison 15 à 20 min à 200 °C, avec une cuillère d'huile, en secouant le panier 2 fois. Pour un maximum de croustillant, trempe-les puis sèche-les avant."
 ingredients:
