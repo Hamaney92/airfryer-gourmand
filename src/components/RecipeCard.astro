@@ -1,10 +1,12 @@
 ---
-export interface Props { title:string; category:string; rating:number; cookTime:number; slug:string; }
-const { title, category, rating, cookTime, slug } = Astro.props;
+export interface Props { title:string; category:string; rating:number; cookTime:number; slug:string; image?:string; }
+const { title, category, rating, cookTime, slug, image } = Astro.props;
 ---
 <a class="rcard" href={`/recettes/${slug}/`}>
   <div class="pin" aria-hidden="true">📌</div>
-  <div class="ph"><span>📷 Photo</span></div>
+  {image
+    ? <img src={image} alt={title} loading="lazy" style="height:150px;width:100%;object-fit:cover;display:block" />
+    : <div class="ph"><span>📷 Photo</span></div>}
   <div class="rbody">
     <div class="rtag">{category}</div>
     <h3>{title}</h3>
