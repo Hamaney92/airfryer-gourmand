@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { getCollection } from 'astro:content';
+const recipes = (await getCollection('recipes')).sort((a,b)=>b.data.reviews-a.data.reviews);
+---
+<Base title="Toutes les recettes Air Fryer — Airfryer Gourmand" description="Toutes nos recettes air fryer testées : viandes, poissons, légumes, surgelés et desserts. Temps de cuisson exacts pour chaque plat.">
+  <div class="wrap">
+    <section style="padding-top:34px">
+      <div class="row"><div class="h2">Toutes les recettes<small>{recipes.length} recettes testées au air fryer</small></div></div>
+      <div class="cards">
+        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} />)}
+      </div>
+    </section>
+  </div>
+</Base>

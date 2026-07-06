@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import CookingTool from '../components/CookingTool.astro';
+const faqSchema = {
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Quelle température pour cuire au air fryer ?","acceptedAnswer":{"@type":"Answer","text":"La plupart des aliments se cuisent entre 160 °C et 200 °C. Frites et viandes croustillantes à 200 °C, poissons et gâteaux plutôt à 160-180 °C. En général, baisse de 20 °C par rapport au four."}},
+    {"@type":"Question","name":"Comment convertir un temps de four en air fryer ?","acceptedAnswer":{"@type":"Answer","text":"Réduis la température d'environ 20 °C et le temps d'environ 20 %. Par exemple 200 °C / 30 min au four devient environ 180 °C / 24 min au air fryer."}},
+    {"@type":"Question","name":"Faut-il préchauffer un air fryer ?","acceptedAnswer":{"@type":"Answer","text":"Ce n'est pas obligatoire, mais 2 à 3 minutes de préchauffage améliorent le croustillant, surtout pour les frites et les viandes."}}
+  ]
+};
+---
+<Base title="Temps de cuisson Air Fryer : le tableau complet + convertisseur" description="Le tableau des temps de cuisson air fryer pour tous les aliments, plus un convertisseur four → air fryer. Température et durée exactes.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb"><a href="/">Accueil</a> › Outils › Temps de cuisson</div>
+      <h1>Temps de cuisson Air Fryer : le tableau complet</h1>
+      <div class="quick"><b>La règle d'or :</b> depuis une recette au four, baisse la température de <b>20 °C</b> et le temps de <b>20 %</b>. Exemple : 200 °C / 30 min → environ 180 °C / 24 min au air fryer.</div>
+      <CookingTool />
+      <h2>Les 5 erreurs qui gâchent la cuisson</h2>
+      <p><b>1. Trop remplir le panier.</b> L'air doit circuler : cuis en une seule couche.<br/>
+      <b>2. Oublier de secouer.</b> À mi-cuisson, secoue ou retourne pour un croustillant uniforme.<br/>
+      <b>3. Zéro matière grasse sur les légumes.</b> Un filet d'huile évite qu'ils sèchent.<br/>
+      <b>4. Ne pas surveiller la fin.</b> Les modèles varient : garde un œil sur les 2 dernières minutes.<br/>
+      <b>5. Ne pas préchauffer pour le croustillant.</b> 2-3 minutes suffisent.</p>
+    </article>
+  </div>
+</Base>

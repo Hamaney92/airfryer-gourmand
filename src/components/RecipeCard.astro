@@ -1,0 +1,16 @@
+---
+export interface Props { title:string; category:string; rating:number; cookTime:number; slug:string; }
+const { title, category, rating, cookTime, slug } = Astro.props;
+---
+<a class="rcard" href={`/recettes/${slug}/`}>
+  <div class="pin" aria-hidden="true">📌</div>
+  <div class="ph"><span>📷 Photo</span></div>
+  <div class="rbody">
+    <div class="rtag">{category}</div>
+    <h3>{title}</h3>
+    <div class="rmeta">
+      <span class="stars">★ {rating.toFixed(1)}</span>
+      <span class="time">⏱️ {cookTime} min</span>
+    </div>
+  </div>
+</a>

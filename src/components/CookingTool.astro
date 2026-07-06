@@ -1,0 +1,84 @@
+---
+---
+<div class="tool-wrap card-box" id="outil">
+  <div style="display:flex;gap:0;border-bottom:1px solid var(--line);margin:-24px -24px 20px">
+    <button class="tabbtn on" id="tab-table" data-tab="table" style="flex:1;padding:14px;font-weight:700;border:none;background:#fff;color:var(--brand-d);cursor:pointer;border-bottom:3px solid var(--brand)">📋 Tableau des cuissons</button>
+    <button class="tabbtn" id="tab-conv" data-tab="conv" style="flex:1;padding:14px;font-weight:700;border:none;background:#fff8f2;color:var(--muted);cursor:pointer">🔄 Convertir une recette four</button>
+  </div>
+  <div id="panel-table">
+    <input id="tool-search" placeholder="🔎 Cherche un aliment (poulet, frites, saumon...)" style="width:100%;border:1px solid var(--line);padding:12px 15px;border-radius:12px;font-size:1rem;margin-bottom:14px" />
+    <div style="overflow-x:auto"><table class="rectable"><thead><tr><th>Aliment</th><th>Température</th><th>Temps</th><th>Astuce</th></tr></thead><tbody id="tool-body"></tbody></table></div>
+    <p class="note">Valeurs indicatives pour un air fryer classique. Elles varient selon le modèle et la quantité — vérifie toujours la cuisson avant de servir.</p>
+  </div>
+  <div id="panel-conv" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center">
+      <div style="background:var(--cream);border:1px solid #ffe0c7;border-radius:16px;padding:18px">
+        <div style="margin-bottom:12px"><label style="font-size:.85rem;color:var(--muted)">Température du four (°C)</label><input type="number" id="ovenTemp" value="200" style="width:100%;border:1px solid var(--line);padding:10px 12px;border-radius:10px;margin-top:6px" /></div>
+        <div><label style="font-size:.85rem;color:var(--muted)">Temps au four (min)</label><input type="number" id="ovenTime" value="30" style="width:100%;border:1px solid var(--line);padding:10px 12px;border-radius:10px;margin-top:6px" /></div>
+      </div>
+      <div style="font-size:1.6rem;color:var(--brand)">➡️</div>
+      <div style="background:#eefaf0;border:1px solid #c7ecd3;border-radius:16px;padding:18px;text-align:center">
+        <div style="font-size:2rem;font-weight:800;color:var(--green)"><span id="afTemp">180</span> °C</div>
+        <div style="font-size:.85rem;color:var(--muted)">≈ 20 °C de moins</div>
+        <div style="height:10px"></div>
+        <div style="font-size:2rem;font-weight:800;color:var(--green)"><span id="afTime">24</span> min</div>
+        <div style="font-size:.85rem;color:var(--muted)">≈ 20 % de temps en moins</div>
+      </div>
+    </div>
+    <p class="note">Règle générale : <b>−20 °C</b> sur la température et <b>−20 %</b> sur le temps. Secoue le panier à mi-cuisson.</p>
+  </div>
+</div>
+
+<script is:inline>
+  const AF_FOODS=[
+    ["Frites maison","200 °C","15–20 min","Sèche-les bien, secoue à mi-cuisson"],
+    ["Frites surgelées","200 °C","12–15 min","Sans huile, secoue une fois"],
+    ["Nuggets","200 °C","10–12 min","Retourne à mi-cuisson"],
+    ["Blanc de poulet","190 °C","12–15 min","Un filet d'huile, laisse reposer 3 min"],
+    ["Cuisses de poulet","200 °C","20–25 min","Peau vers le haut"],
+    ["Poulet entier","180 °C","35–45 min","Vérifie 75 °C à cœur"],
+    ["Steak haché","200 °C","6–9 min","Retourne à mi-cuisson"],
+    ["Steak haché surgelé","200 °C","10–13 min","Sans décongeler"],
+    ["Saucisse de Toulouse","180 °C","12–15 min","Pique-la, retourne à mi-cuisson"],
+    ["Pavé de saumon","180 °C","8–10 min","Peau vers le bas"],
+    ["Crevettes","190 °C","6–8 min","Surveille, ça va vite"],
+    ["Bacon","190 °C","8–10 min","Sur une couche"],
+    ["Œuf dur","130 °C","15 min","Puis bain d'eau froide"],
+    ["Courgette","190 °C","12–15 min","En rondelles, un peu d'huile"],
+    ["Pommes de terre sautées","200 °C","20–25 min","Secoue 2 fois"],
+    ["Patate douce (frites)","200 °C","15–18 min","Un peu de maïzena"],
+    ["Brocoli","190 °C","8–10 min","Un filet d'huile"],
+    ["Chou-fleur","190 °C","12–15 min","En petits bouquets"],
+    ["Pizza surgelée","180 °C","8–10 min","Selon la taille"],
+    ["Camembert rôti","180 °C","8–10 min","Incise le dessus"],
+    ["Cookies","160 °C","8–10 min","Laisse de l'espace"],
+    ["Gâteau (petit moule)","160 °C","20–25 min","Teste à la lame"],
+    ["Lapin","180 °C","25–30 min","Badigeonne de moutarde"],
+    ["Poisson pané surgelé","200 °C","10–12 min","Retourne délicatement"]
+  ];
+  function afRender(list){
+    document.getElementById('tool-body').innerHTML=list.map(f=>
+      `<tr><td>${f[0]}</td><td class="t">${f[1]}</td><td style="font-weight:700;white-space:nowrap">${f[2]}</td><td style="color:var(--muted);font-size:.86rem">${f[3]}</td></tr>`).join('');
+  }
+  afRender(AF_FOODS);
+  const afSearch=document.getElementById('tool-search');
+  if(afSearch) afSearch.addEventListener('input',e=>{
+    const q=e.target.value.toLowerCase().trim();
+    afRender(AF_FOODS.filter(f=>f[0].toLowerCase().includes(q)));
+  });
+  document.querySelectorAll('.tabbtn').forEach(b=>b.addEventListener('click',()=>{
+    const isTable=b.dataset.tab==='table';
+    document.getElementById('panel-table').style.display=isTable?'block':'none';
+    document.getElementById('panel-conv').style.display=isTable?'none':'block';
+    const t=document.getElementById('tab-table'),c=document.getElementById('tab-conv');
+    t.style.borderBottom=isTable?'3px solid var(--brand)':'none';t.style.color=isTable?'var(--brand-d)':'var(--muted)';t.style.background=isTable?'#fff':'#fff8f2';
+    c.style.borderBottom=!isTable?'3px solid var(--brand)':'none';c.style.color=!isTable?'var(--brand-d)':'var(--muted)';c.style.background=!isTable?'#fff':'#fff8f2';
+  }));
+  function afConv(){
+    const t=+document.getElementById('ovenTemp').value||0,m=+document.getElementById('ovenTime').value||0;
+    document.getElementById('afTemp').textContent=Math.max(0,Math.round((t-20)/5)*5);
+    document.getElementById('afTime').textContent=Math.max(0,Math.round(m*0.8));
+  }
+  ['ovenTemp','ovenTime'].forEach(id=>document.getElementById(id).addEventListener('input',afConv));
+  afConv();
+</script>

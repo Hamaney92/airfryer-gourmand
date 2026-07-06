@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((r) => ({ params: { slug: r.slug }, props: { recipe: r } }));
+}
+const { recipe } = Astro.props;
+const d = recipe.data;
+const { Content } = await recipe.render();
+
+const recipeSchema = {
+  "@context":"https://schema.org","@type":"Recipe",
+  "name": d.title,
+  "description": d.description,
+  "recipeCategory": d.category,
+  "keywords": d.keyword,
+  "prepTime": `PT${d.prepTime}M`,
+  "cookTime": `PT${d.cookTime}M`,
+  "totalTime": `PT${d.prepTime + d.cookTime}M`,
+  "recipeYield": `${d.servings} personnes`,
+  "recipeIngredient": d.ingredients,
+  "recipeInstructions": d.steps.map((s)=>({ "@type":"HowToStep", "text": s })),
+  "aggregateRating": d.reviews>0 ? { "@type":"AggregateRating", "ratingValue": d.rating, "reviewCount": d.reviews } : undefined,
+};
+const faqSchema = d.faq.length>0 ? {
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity": d.faq.map((f)=>({ "@type":"Question","name":f.q,"acceptedAnswer":{ "@type":"Answer","text":f.a }}))
+} : null;
+---
+<Base title={d.metaTitle || d.title} description={d.description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(recipeSchema)} />
+  {faqSchema && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb"><a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › {d.category}</div>
+      <h1>{d.title}</h1>
+      <div class="amETA">
+        <span class="stars">★ {d.rating.toFixed(1)}</span>
+        {d.reviews>0 && <span>{d.reviews} avis</span>}
+        <span class="chip">⏱️ {d.prepTime + d.cookTime} min</span>
+        <span class="chip">🌡️ {d.temp}</span>
+        <span class="chip">🍽️ {d.servings} pers.</span>
+      </div>
+      <a class="jump" href="#recette">↓ Aller à la recette</a>
+      <div class="ph"><span>📷 Photo du plat</span></div>
+
+      <div class="quick"><b>En bref :</b> {d.quickAnswer}</div>
+
+      <Content />
+
+      <div class="card-box" id="recette">
+        <h2 style="margin-top:0">🥘 La recette pas à pas</h2>
+        <h3>Ingrédients ({d.servings} personnes)</h3>
+        <ul>{d.ingredients.map((i)=><li>{i}</li>)}</ul>
+        <h3>Préparation</h3>
+        <ol>{d.steps.map((s)=><li>{s}</li>)}</ol>
+        {d.tips.length>0 && (<><h3>Astuces</h3><ul>{d.tips.map((t)=><li>{t}</li>)}</ul></>)}
+      </div>
+
+      {d.faq.length>0 && (
+        <div class="faq">
+          <h2>Questions fréquentes</h2>
+          {d.faq.map((f)=>(<><h3>{f.q}</h3><p>{f.a}</p></>))}
+        </div>
+      )}
+
+      <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ Voir tous les temps de cuisson</a></p>
+    </article>
+  </div>
+</Base>

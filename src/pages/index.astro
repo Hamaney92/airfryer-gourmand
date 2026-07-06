@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import { getCollection } from 'astro:content';
+const recipes = (await getCollection('recipes')).sort((a,b)=>b.data.reviews-a.data.reviews).slice(0,4);
+const cats = [
+  ['🍗','Viandes','/categorie/viandes/'],['🐟','Poissons','/categorie/poissons/'],
+  ['🥦','Légumes','/categorie/legumes/'],['❄️','Surgelés','/categorie/surgeles/'],
+  ['🍰','Desserts','/categorie/desserts/'],['🧀','Apéro','/categorie/apero/']
+];
+---
+<Base title="Airfryer Gourmand — Recettes, temps de cuisson & guides air fryer" description="Recettes air fryer testées, temps de cuisson exacts, convertisseur four → air fryer et guides d'achat. Tout pour réussir avec ta friteuse sans huile.">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="badge">🔥 Recette de la semaine</span>
+        <h1>Réussis <span>tout</span> avec ton air fryer</h1>
+        <p>Des recettes testées, les temps de cuisson exacts et un convertisseur four → air fryer. Fini le poulet sec et les frites molles.</p>
+        <a class="cta" href="/recettes/">Voir les recettes →</a>
+        <a class="cta ghost" href="/temps-de-cuisson/">Temps de cuisson</a>
+        <div class="rating"><span class="stars">★★★★★</span> 4,9 · noté par la communauté</div>
+      </div>
+      <div class="ph"><span>📷 Photo plat — hero</span></div>
+    </section>
+
+    <div class="trust">
+      <span>✅ Recettes <b>testées</b></span>
+      <span>⏱️ <b>Temps de cuisson</b> exacts</span>
+      <span>🥇 des recettes <b>par centaines</b></span>
+      <span>🇫🇷 100% en français</span>
+    </div>
+
+    <section>
+      <div class="row"><div class="h2">Parcourir par catégorie</div></div>
+      <div class="cattiles">
+        {cats.map(([e,l,h]) => <a class="tile" href={h}><div class="ph"><span>{e}</span></div><p>{e} {l}</p></a>)}
+      </div>
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="h2">Recettes populaires<small>Les plus testées et approuvées</small></div>
+        <a class="seeall" href="/recettes/">Tout voir →</a>
+      </div>
+      <div class="cards">
+        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} />)}
+      </div>
+    </section>
+
+    <section>
+      <div class="tool">
+        <div class="txt">
+          <span class="badge">🛠️ Outil gratuit</span>
+          <h3>Le bon temps de cuisson, à chaque fois</h3>
+          <p>Notre tableau interactif + le convertisseur four → air fryer. Cherche ton aliment, on te donne la température et la durée exactes.</p>
+          <a class="cta" href="/temps-de-cuisson/">Ouvrir l'outil →</a>
+        </div>
+        <div class="ph"><span>📷 Aperçu de l'outil</span></div>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="lead">
+        <div class="ebook">📕 20 recettes + temps de cuisson</div>
+        <div>
+          <h3>Reçois ton ebook gratuit 🎁</h3>
+          <p>Nos 20 meilleures recettes air fryer + le tableau complet des temps de cuisson, directement dans ta boîte mail.</p>
+          <form class="eform" onsubmit="return false;">
+            <input type="email" placeholder="ton@email.com" />
+            <button type="submit">Je le veux</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="guide">
+        <div class="ph"><span>📷 Air fryers</span></div>
+        <div class="g">
+          <span class="rtag">Guide d'achat</span>
+          <h3>Quel air fryer choisir en 2026 ?</h3>
+          <p>Simple, double panier, XXL… On compare les modèles qui valent vraiment leur prix, pour chaque budget et chaque famille.</p>
+          <a class="cta" href="/guides/">Voir le comparatif →</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="author">
+        <div class="avatar">AG</div>
+        <p><b>La cuisine Airfryer Gourmand.</b> On teste chaque recette dans notre air fryer avant de la publier — temps, températures, astuces. Pas de théorie, que du concret qui marche.</p>
+      </div>
+    </section>
+  </div>
+</Base>
