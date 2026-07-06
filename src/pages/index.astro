@@ -43,7 +43,7 @@ const cats = [
         <a class="seeall" href="/recettes/">Tout voir →</a>
       </div>
       <div class="cards">
-        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} />)}
+        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} image={r.data.image} />)}
       </div>
     </section>
 
