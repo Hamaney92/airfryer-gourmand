@@ -9,7 +9,7 @@ const recipes = (await getCollection('recipes')).sort((a,b)=>b.data.reviews-a.da
     <section style="padding-top:34px">
       <div class="row"><div class="h2">Toutes les recettes<small>{recipes.length} recettes testées au air fryer</small></div></div>
       <div class="cards">
-        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} />)}
+        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} image={r.data.image} />)}
       </div>
     </section>
   </div>
