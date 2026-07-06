@@ -10,6 +10,7 @@ prepTime: 2
 cookTime: 8
 servings: 2
 temp: "200 °C"
+image: "/img/steak-hache-air-fryer.jpg"
 quickAnswer: "Cuis un steak haché frais 6 à 9 min à 200 °C (6 saignant, 8 à point, 9-10 bien cuit), en le retournant à mi-cuisson. Surgelé : 10 à 13 min à 200 °C, sans décongeler."
 ingredients:
   - "2 steaks hachés (frais ou surgelés)"
