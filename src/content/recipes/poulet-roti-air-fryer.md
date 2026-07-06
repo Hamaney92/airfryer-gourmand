@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 40
 servings: 4
 temp: "180 °C"
+image: "/img/poulet-roti-air-fryer.jpg"
 quickAnswer: "Cuis un poulet entier 35 à 45 min à 180 °C au air fryer, en le retournant à mi-cuisson. Il est prêt quand la cuisse atteint 75 °C à cœur."
 ingredients:
   - "1 poulet entier (environ 1,2 à 1,5 kg)"
