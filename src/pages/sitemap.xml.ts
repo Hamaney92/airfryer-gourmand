@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 const SITE = 'https://airfryergourmand.fr';
 
 export const GET: APIRoute = async () => {
-  const recipes = await getCollection('recipes');
+  const recipes = (await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now());
 
   const staticPaths = ['/', '/recettes/', '/temps-de-cuisson/'];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);

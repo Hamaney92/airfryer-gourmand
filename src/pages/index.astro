@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import RecipeCard from '../components/RecipeCard.astro';
 import { getCollection } from 'astro:content';
-const recipes = (await getCollection('recipes')).sort((a,b)=>b.data.reviews-a.data.reviews).slice(0,4);
+const recipes = (await getCollection('recipes')).filter(r=>r.data.pubDate.getTime()<=Date.now()).sort((a,b)=>b.data.reviews-a.data.reviews).slice(0,4);
 const cats = [
   ['🍗','Viandes','/categorie/viandes/'],['🐟','Poissons','/categorie/poissons/'],
   ['🥦','Légumes','/categorie/legumes/'],['❄️','Surgelés','/categorie/surgeles/'],
