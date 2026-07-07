@@ -31,7 +31,7 @@ const cats = [
     </div>
 
     <section>
-      <div class="row"><div class="h2">Parcourir par catégorie</div></div>
+      <div class="row"><h2 class="h2">Parcourir par catégorie</h2></div>
       <div class="cattiles">
         {cats.map(([e,l,h]) => <a class="tile" href={h}><div class="ph"><span>{e}</span></div><p>{e} {l}</p></a>)}
       </div>
@@ -39,7 +39,7 @@ const cats = [
 
     <section>
       <div class="row">
-        <div class="h2">Recettes populaires<small>Les plus testées et approuvées</small></div>
+        <h2 class="h2">Recettes populaires<small>Les plus testées et approuvées</small></h2>
         <a class="seeall" href="/recettes/">Tout voir →</a>
       </div>
       <div class="cards">
