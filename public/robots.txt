@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://airfryergourmand.fr/sitemap-index.xml
+
+Sitemap: https://airfryergourmand.fr/sitemap.xml
