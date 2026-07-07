@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const recipes = await getCollection('recipes');
+  const recipes = (await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now());
   return recipes.map((r) => ({ params: { slug: r.slug }, props: { recipe: r } }));
 }
 const { recipe } = Astro.props;
@@ -11,7 +11,7 @@ const d = recipe.data;
 const { Content } = await recipe.render();
 
 // Maillage interne : recettes liées (même catégorie en priorité)
-const allRecipes = await getCollection('recipes');
+const allRecipes = (await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now());
 const sameCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.category === d.category);
 const otherCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.category !== d.category);
 const related = [...sameCat, ...otherCat].slice(0, 4);
