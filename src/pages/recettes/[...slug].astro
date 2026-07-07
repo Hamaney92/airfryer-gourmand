@@ -10,6 +10,12 @@ const { recipe } = Astro.props;
 const d = recipe.data;
 const { Content } = await recipe.render();
 
+// Maillage interne : recettes liées (même catégorie en priorité)
+const allRecipes = await getCollection('recipes');
+const sameCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.category === d.category);
+const otherCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.category !== d.category);
+const related = [...sameCat, ...otherCat].slice(0, 4);
+
 const recipeSchema = {
   "@context":"https://schema.org","@type":"Recipe",
   "name": d.title,
@@ -68,6 +74,18 @@ const faqSchema = d.faq.length>0 ? {
       )}
 
       <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ Voir tous les temps de cuisson</a></p>
+
+      {related.length>0 && (
+        <div class="related" style="margin-top:34px;border-top:1px solid #f0e6dc;padding-top:22px">
+          <h2 style="margin-top:0">🍽️ Recettes similaires</h2>
+          <ul class="related-list" style="list-style:none;padding:0;margin:0;display:grid;gap:10px">
+            {related.map((r)=>(
+              <li><a href={`/recettes/${r.slug}/`} style="color:#e8590c;font-weight:600;text-decoration:none">{r.data.title}</a> <span style="color:#9a8c7d;font-size:.9em">· {r.data.category}</span></li>
+            ))}
+          </ul>
+          <p style="margin-top:16px"><a href="/recettes/" style="color:#e8590c;font-weight:600">→ Toutes les recettes air fryer</a></p>
+        </div>
+      )}
     </article>
   </div>
 </Base>
