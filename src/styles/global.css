@@ -1,6 +1,6 @@
 :root{
-  --bg:#fffaf5;--ink:#2b2320;--muted:#8a7d75;--card:#fff;--line:#efe4d8;
-  --brand:#e8591f;--brand-d:#c2440f;--accent:#ffb648;--cream:#fff3e7;--gold:#f4a127;--green:#3fae6a;
+  --bg:#fffaf5;--ink:#2b2320;--muted:#6a5d54;--card:#fff;--line:#efe4d8;
+  --brand:#c2440f;--brand-d:#a5390c;--accent:#ffb648;--cream:#fff3e7;--gold:#985a00;--green:#3fae6a;
   --shadow:0 8px 24px rgba(194,68,15,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
