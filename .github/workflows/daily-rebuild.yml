@@ -1,0 +1,26 @@
+name: Publication programmee
+
+# Reconstruit le site chaque jour pour reveler les articles dont la pubDate
+# est arrivee. Tourne sur les serveurs GitHub : aucune machine a allumer.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # tous les jours a 06:00 UTC
+  workflow_dispatch:        # bouton "Run workflow" pour declencher a la main
+
+permissions:
+  contents: write
+
+jobs:
+  reveal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Commit vide pour declencher le build Cloudflare
+        run: |
+          git config user.name "airfryer-gourmand-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git commit --allow-empty -m "Revele les articles programmes du jour"
+          git push
