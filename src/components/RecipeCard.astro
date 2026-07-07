@@ -9,7 +9,7 @@ const { title, category, rating, cookTime, slug, image } = Astro.props;
     : <div class="ph"><span>📷 Photo</span></div>}
   <div class="rbody">
     <div class="rtag">{category}</div>
-    <h3>{title}</h3>
+    <h2 class="rtitle">{title}</h2>
     <div class="rmeta">
       <span class="stars">★ {rating.toFixed(1)}</span>
       <span class="time">⏱️ {cookTime} min</span>
