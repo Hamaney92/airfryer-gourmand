@@ -7,7 +7,7 @@ const recipes = (await getCollection('recipes')).filter(r=>r.data.pubDate.getTim
 <Base title="Toutes les recettes Air Fryer — Airfryer Gourmand" description="Toutes nos recettes air fryer testées : viandes, poissons, légumes, surgelés et desserts. Temps de cuisson exacts pour chaque plat.">
   <div class="wrap">
     <section style="padding-top:34px">
-      <div class="row"><div class="h2">Toutes les recettes<small>{recipes.length} recettes testées au air fryer</small></div></div>
+      <div class="row"><h1 class="h2">Toutes les recettes<small>{recipes.length} recettes testées au air fryer</small></h1></div>
       <div class="cards">
         {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} image={r.data.image} />)}
       </div>
