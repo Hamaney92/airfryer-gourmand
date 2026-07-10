@@ -4,6 +4,7 @@ metaTitle: "Aiguillettes de poulet air fryer : temps et température"
 description: "Le temps de cuisson exact des aiguillettes de poulet au air fryer : fraîches, marinées, panées ou surgelées. Tendres, jamais sèches, en 8 à 12 min."
 category: "Volaille"
 keyword: "aiguillettes de poulet air fryer"
+image: "/img/aiguillettes-de-poulet-air-fryer.jpg"
 rating: 4.9
 reviews: 189
 prepTime: 5

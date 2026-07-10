@@ -4,6 +4,7 @@ metaTitle: "Blanc de poulet air fryer : temps et température"
 description: "Le temps de cuisson exact du blanc de poulet au air fryer, par taille : 200 °C, 13 à 18 min, cœur à 74 °C. L'astuce anti-poulet sec et le repos."
 category: "Volaille"
 keyword: "blanc de poulet air fryer"
+image: "/img/blanc-de-poulet-air-fryer.jpg"
 rating: 4.9
 reviews: 274
 prepTime: 5

@@ -4,6 +4,7 @@ metaTitle: "Camembert rôti air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du camembert rôti au air fryer : 180 °C, 8 à 10 min, cœur coulant. La recette au miel et herbes pour un apéro fondant express."
 category: "Apéro"
 keyword: "camembert rôti air fryer"
+image: "/img/camembert-roti-air-fryer.jpg"
 rating: 4.9
 reviews: 246
 prepTime: 3

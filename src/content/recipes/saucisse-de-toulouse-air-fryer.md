@@ -4,6 +4,7 @@ metaTitle: "Saucisse de Toulouse air fryer : temps et température"
 description: "Le temps de cuisson exact de la saucisse de Toulouse au air fryer, par format et pour la surgelée. Peau dorée, chair juteuse, en moins de 15 min."
 category: "Charcuterie"
 keyword: "saucisse de toulouse air fryer"
+image: "/img/saucisse-de-toulouse-air-fryer.jpg"
 rating: 4.8
 reviews: 168
 prepTime: 2

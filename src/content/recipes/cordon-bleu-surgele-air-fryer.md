@@ -4,6 +4,7 @@ metaTitle: "Cordon bleu surgelé air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du cordon bleu surgelé au air fryer : 200 °C, 12 à 14 min, sans huile ni décongélation. Panure croustillante, cœur fondant."
 category: "Surgelé"
 keyword: "cordon bleu surgelé air fryer"
+image: "/img/cordon-bleu-surgele-air-fryer.jpg"
 rating: 4.8
 reviews: 233
 prepTime: 1

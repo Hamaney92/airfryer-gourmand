@@ -4,6 +4,7 @@ metaTitle: "Frites surgelées air fryer : temps de cuisson par type"
 description: "Le temps de cuisson exact des frites surgelées au air fryer, par type de frite, sans huile. L'astuce croustillant et le tableau complet."
 category: "Surgelé"
 keyword: "frites surgelées air fryer"
+image: "/img/frites-surgelees-air-fryer.jpg"
 rating: 4.8
 reviews: 264
 prepTime: 1

@@ -4,6 +4,7 @@ metaTitle: "Cuisse de poulet air fryer : temps et température"
 description: "Le temps de cuisson exact de la cuisse de poulet au air fryer : entière avec os ou haut de cuisse désossé. Peau croustillante, chair juteuse, 74 °C à cœur."
 category: "Volaille"
 keyword: "cuisse de poulet air fryer"
+image: "/img/cuisse-de-poulet-air-fryer.jpg"
 rating: 4.9
 reviews: 287
 prepTime: 5

@@ -4,6 +4,7 @@ metaTitle: "Pommes de terre sautées air fryer : croustillantes en 20 min"
 description: "Des pommes de terre sautées au air fryer dorées et croustillantes dehors, fondantes dedans, avec très peu d'huile. Temps et astuces."
 category: "Accompagnement"
 keyword: "pommes de terre sautées air fryer"
+image: "/img/pommes-de-terre-sautees-air-fryer.jpg"
 rating: 4.9
 reviews: 187
 prepTime: 10

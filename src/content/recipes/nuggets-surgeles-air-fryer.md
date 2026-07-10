@@ -4,6 +4,7 @@ metaTitle: "Nuggets surgelés air fryer : temps et température"
 description: "Le temps de cuisson exact des nuggets surgelés au air fryer : 200 °C, 9 à 12 min, sans huile. Tableau par taille et par marque, et l'astuce croustillant."
 category: "Surgelé"
 keyword: "nuggets surgelés air fryer"
+image: "/img/nuggets-surgeles-air-fryer.jpg"
 rating: 4.9
 reviews: 312
 prepTime: 1

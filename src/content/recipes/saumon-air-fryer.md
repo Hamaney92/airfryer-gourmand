@@ -4,6 +4,7 @@ metaTitle: "Saumon air fryer : temps et température de cuisson"
 description: "Le temps de cuisson exact du pavé de saumon au air fryer : 180-200 °C, 8 à 12 min, sans le retourner. Chair fondante, peau croustillante, et la version surgelée."
 category: "Poisson"
 keyword: "saumon air fryer"
+image: "/img/saumon-air-fryer.jpg"
 rating: 4.9
 reviews: 241
 prepTime: 3
