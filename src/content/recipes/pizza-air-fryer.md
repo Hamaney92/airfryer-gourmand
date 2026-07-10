@@ -36,6 +36,8 @@ faq:
     a: "Oui, directement congelée : 8 à 10 minutes à 180 °C. Inutile de la décongeler. Vérifiez qu'elle rentre dans le panier, quitte à la couper."
   - q: "Comment éviter que la pâte reste molle ?"
     a: "Piquez la pâte, ne surchargez pas la garniture, et vérifiez la cuisson par le dessous. Pour une pâte maison épaisse, une précuisson de 3 minutes avant de garnir garantit un fond croustillant."
+  - q: "Peut-on réchauffer une pizza au air fryer ?"
+    a: "Oui, et c'est bien meilleur qu'au micro-ondes : 3 à 4 minutes à 160 °C redonnent à une part de pizza son croustillant, sans la ramollir. C'est la façon idéale de réchauffer un reste de pizza."
   - q: "Quelle taille de pizza pour un air fryer ?"
     a: "Une pizza individuelle d'environ 18-20 cm, ou une pâte découpée à la taille du panier. Pour une grande pâte, faites deux petites pizzas plutôt qu'une trop grande mal cuite."
 pubDate: 2026-08-05
@@ -54,7 +56,9 @@ Le secret d'une pizza réussie au air fryer : ne pas surcharger la garniture et 
 | Pâte fine | 180 °C | 8–9 min |
 | Pâte épaisse | 180 °C | 10–12 min |
 | Pâte épaisse (précuisson) | 200 °C | 3 min + garniture |
-| Surgelée | 180 °C | 8–10 min |
+| Pizza surgelée | 180 °C | 8–10 min |
+| Mini-pizzas / pizzette | 180 °C | 6–8 min |
+| Réchauffer une part | 160 °C | 3–4 min |
 
 Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
 
@@ -65,6 +69,10 @@ L'erreur classique, c'est de charger la pizza comme au four. Dans l'air fryer, u
 ## Le fond croustillant, tout se joue là
 
 Contrairement au four, c'est le **dessous** de la pâte qu'il faut surveiller, pas le dessus. Soulève un bord à mi-cuisson : s'il est doré et rigide, c'est prêt. Pour une pâte maison épaisse, une **précuisson de 3 minutes à 200 °C** avant de garnir évite le fond mou. Un papier cuisson perforé empêche la pâte de coller sans bloquer la circulation d'air.
+
+## Réchauffer une pizza au air fryer
+
+C'est le meilleur usage secret de l'air fryer : **réchauffer une part de pizza de la veille**. Là où le micro-ondes la rend molle et caoutchouteuse, l'air fryer lui **redonne son croustillant du premier jour**. Pose la part directement dans le panier et compte **3 à 4 minutes à 160 °C** : la pâte redevient croquante, le fromage refond, et personne ne devine que c'est un reste. Pour une pizza surgelée ou une grande part, ajoute 1 à 2 minutes.
 
 ## Pour aller plus loin
 

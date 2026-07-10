@@ -62,8 +62,12 @@ Le seul défaut possible, c'est la fumée : elle vient de la **graisse qui goutt
 
 Le bacon continue de durcir en **refroidissant** : sors-le quand il est doré mais encore un peu souple, pas quand il est déjà cassant dans le panier — sinon il finira trop sec. Et garde la graisse récupérée : elle est parfaite pour faire revenir des [pommes de terre sautées](/recettes/pommes-de-terre-sautees-air-fryer/).
 
+## Bacon enrobé et chips de bacon
+
+L'air fryer est imbattable pour le **bacon enrobé** : entoure des asperges, des saucisses, des dattes ou des blancs de poulet d'une tranche de bacon, et cuis à 200 °C — la tranche croustille et parfume l'aliment. Compte 10 à 14 min selon la garniture. Envie de **chips de bacon** ? Coupe le bacon en petits morceaux et cuis-les 6 à 8 min à 200 °C jusqu'à ce qu'ils soient cassants : parfaits à émietter sur une salade ou une soupe.
+
 ## Pour aller plus loin
 
 - émietté sur une salade, une soupe ou des pâtes ;
-- avec des [œufs au air fryer](/recettes/oeuf-air-fryer/) pour un petit-déjeuner complet ;
-- en topping d'un [blanc de poulet](/recettes/blanc-de-poulet-air-fryer/) ou d'un croque.
+- avec des [œufs au air fryer](/recettes/oeuf-air-fryer/) et un toast pour un petit-déjeuner complet ;
+- en topping d'un [blanc de poulet](/recettes/blanc-de-poulet-air-fryer/) ou d'un [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/).

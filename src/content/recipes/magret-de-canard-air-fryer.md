@@ -34,6 +34,10 @@ faq:
     a: "Pour faire fondre la couche de graisse sous la peau et la rendre croustillante. Si vous commencez côté chair, la graisse ne rend pas et la peau reste molle et grasse."
   - q: "Faut-il quadriller la peau du magret ?"
     a: "Oui : entaillez la peau en croisillons sans atteindre la chair. Cela aide la graisse à s'écouler et la peau à croustiller uniformément."
+  - q: "Quel mode utiliser pour le magret sur un air fryer Ninja ?"
+    a: "Utilisez le mode « Air Fry » (ou « Grill » pour la finition). La méthode et les temps sont identiques sur tous les modèles (Ninja, Moulinex, Cosori, Philips) : peau vers le bas d'abord, puis côté chair, en visant la température à cœur."
+  - q: "Peut-on faire un magret de canard au miel au air fryer ?"
+    a: "Oui : cuisez le magret normalement, puis badigeonnez-le de miel (ou de miel-balsamique) les 3 dernières minutes seulement. Ajouté trop tôt, le miel brûlerait. Le résultat est un magret laqué et brillant."
   - q: "Faut-il laisser reposer le magret ?"
     a: "Oui, 5 minutes sous une feuille d'aluminium. Le repos permet aux jus de se répartir : la viande reste rosée et juteuse au moment de trancher."
 pubDate: 2026-08-08
@@ -64,8 +68,12 @@ Le réflexe qui rate un magret, c'est de le poser côté chair d'abord. La **cou
 
 Le magret est une viande à muscle entier : il se déguste **rosé**, comme un bon steak. Vise 58 °C à cœur pour ce classique. Ceux qui préfèrent une viande à point iront à 65-68 °C. Le thermomètre évite de couper la viande pour vérifier — et donc de lui faire perdre son jus. **Repos de 5 minutes** obligatoire avant de trancher en biais.
 
+## Magret au miel, à l'orange ou laqué
+
+Le magret adore les glaçages sucrés-acidulés. Badigeonne-le les **3 dernières minutes** de cuisson (pas avant, le sucre brûlerait) : **miel** et thym pour un magret laqué, **miel-balsamique** pour une note acidulée, ou **sauce à l'orange** pour le grand classique. La chaleur de l'air fryer caramélise le glaçage sans dessécher la chair.
+
 ## Pour aller plus loin
 
-- un filet de miel et du thym en fin de cuisson pour un magret laqué ;
 - servi avec des [pommes de terre sautées](/recettes/pommes-de-terre-sautees-air-fryer/) ou un [gratin dauphinois au air fryer](/recettes/gratin-dauphinois-air-fryer/) ;
-- pour une autre viande rapide, vois la [côte de porc au air fryer](/recettes/cote-de-porc-air-fryer/).
+- pour une autre viande rapide, vois la [côte de porc au air fryer](/recettes/cote-de-porc-air-fryer/) ;
+- les restes, tranchés froids, sont parfaits sur une salade.

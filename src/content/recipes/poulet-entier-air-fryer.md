@@ -37,7 +37,9 @@ faq:
   - q: "Comment savoir si le poulet est cuit ?"
     a: "La seule méthode fiable est le thermomètre : 75 °C dans la partie la plus épaisse de la cuisse. Le jus qui s'écoule doit être clair, jamais rosé."
   - q: "Quelle taille de poulet rentre dans un air fryer ?"
-    a: "Un poulet de 1,2 à 1,6 kg convient à la plupart des air fryers de 5-6 L. Au-delà, vérifiez qu'il n'touche pas la résistance ; sinon, préférez des morceaux (cuisses, blancs)."
+    a: "Un poulet de 1,2 à 1,6 kg convient à la plupart des air fryers de 5-6 L. Au-delà, vérifiez qu'il ne touche pas la résistance ; sinon, préférez des morceaux (cuisses, blancs)."
+  - q: "Peut-on cuire un poulet entier dans un Ninja ou un air fryer double panier ?"
+    a: "Oui, la méthode et les temps sont identiques sur tous les modèles (Ninja, Moulinex, Cosori, Seb, Silvercrest). Sur un double panier comme le Ninja Dual Zone, utilisez une seule zone assez grande ; si le poulet ne rentre pas, coupez-le en deux ou cuisez des morceaux."
 pubDate: 2026-08-06
 ---
 

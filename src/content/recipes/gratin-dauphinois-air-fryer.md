@@ -37,6 +37,10 @@ faq:
     a: "Les tranches sont trop épaisses. Coupez-les fin (3-4 mm), idéalement à la mandoline, et assurez-vous qu'elles sont bien recouvertes de crème. Trop épaisses ou à sec, elles restent crues au centre."
   - q: "Quel plat utiliser pour un gratin au air fryer ?"
     a: "Un petit plat à gratin ou un moule en métal/céramique qui rentre dans le panier avec de l'espace autour pour que l'air circule. Vérifiez les dimensions avant de commencer."
+  - q: "Peut-on faire un gratin dauphinois sans plat au air fryer ?"
+    a: "Il faut un contenant pour retenir la crème, mais pas forcément un plat à gratin : un moule en silicone, une barquette aluminium ou une double épaisseur de papier aluminium façonnée en récipient font l'affaire. L'important est que le liquide ne s'écoule pas dans le panier."
+  - q: "Comment cuire un gratin dauphinois surgelé au air fryer ?"
+    a: "Directement congelé : 15 à 20 minutes à 180-200 °C, jusqu'à ce qu'il soit chaud à cœur et doré. Pour des mini-gratins surgelés, comptez 12 à 15 minutes. Inutile de décongeler."
   - q: "Faut-il du fromage dans un gratin dauphinois ?"
     a: "Le gratin dauphinois traditionnel n'en contient pas, juste de la crème et des pommes de terre. Mais une poignée de gruyère sur le dessus donne un gratinage doré très gourmand : à vous de choisir."
 pubDate: 2026-08-11
@@ -65,6 +69,14 @@ C'est LA cause d'un gratin raté : des pommes de terre coupées trop épaisses r
 ## Le bon plat, le bon nappage
 
 Choisis un **plat qui rentre dans le panier** avec de l'espace autour pour que l'air chaud circule. Et veille à ce que les pommes de terre soient **recouvertes de crème** : celles qui dépassent sèchent et durcissent. Un dernier contrôle à la pointe du couteau — elle doit s'enfoncer sans résistance — et le gratin est prêt.
+
+## Surgelé, mini-portions ou à réchauffer
+
+- **Gratin dauphinois surgelé** (du commerce) : cuis-le directement congelé, 15 à 20 min à 180-200 °C, jusqu'à ce qu'il soit chaud à cœur et doré. Les mini-gratins surgelés : 12 à 15 min.
+- **Mini-gratins / portions individuelles** : dans des ramequins, 20 à 25 min à 180 °C — pratiques et jolis à servir.
+- **Réchauffer un gratin** de la veille : 8 à 10 min à 160 °C lui rendent son croustillant sans le dessécher, bien mieux qu'au micro-ondes.
+
+Sur un air fryer Ninja, Moulinex ou Cosori, utilise le mode « Air Fry » à 180 °C : les temps sont identiques d'un modèle à l'autre.
 
 ## Pour aller plus loin
 

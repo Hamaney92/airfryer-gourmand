@@ -64,6 +64,10 @@ C'est l'erreur numéro un : le laisser trop longtemps. Le halloumi doit sortir *
 
 Deux gestes font la différence : **éponger** le halloumi (la saumure humide empêche le croustillant) et le **couper en bâtonnets** plutôt qu'en grosses tranches — plus de surface au contact de l'air chaud, donc plus de bords dorés. Un léger badigeon d'huile suffit, ce fromage étant déjà gras.
 
+## Frites de halloumi, panées ou au miel
+
+Le halloumi se décline en mille formats au air fryer : en **frites** ou **sticks** (bâtonnets), **panés au panko** pour un croustillant maximal, dans un **burger végétarien**, ou nappés de **miel** (honey halloumi) pour le contraste salé-sucré irrésistible. Bon à savoir : le halloumi étant naturellement pauvre en glucides, ses **frites sont une excellente alternative keto** aux frites de pomme de terre.
+
 ## Pour aller plus loin
 
 - un filet de miel et un peu de citron à la sortie, le combo salé-sucré parfait ;
