@@ -6,7 +6,11 @@ const SITE = 'https://airfryergourmand.fr';
 export const GET: APIRoute = async () => {
   const recipes = (await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now());
 
-  const staticPaths = ['/', '/recettes/', '/temps-de-cuisson/'];
+  const staticPaths = [
+    '/', '/recettes/', '/temps-de-cuisson/', '/guides/', '/a-propos/', '/contact/',
+    '/categorie/viandes/', '/categorie/poissons/', '/categorie/legumes/',
+    '/categorie/surgeles/', '/categorie/desserts/', '/categorie/apero/', '/categorie/plats/',
+  ];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);
   const paths = [...staticPaths, ...recipePaths];
 
