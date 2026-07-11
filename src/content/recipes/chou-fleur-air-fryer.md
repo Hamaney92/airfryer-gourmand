@@ -2,7 +2,7 @@
 title: "Chou-fleur au air fryer : rôti et croustillant"
 metaTitle: "Chou-fleur air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact du chou-fleur au air fryer : 190-200 °C, 12 à 18 min, rôti et croustillant. L'astuce anti-chou-fleur mou et les épices qui changent tout."
-category: "Légume"
+category: "Legume"
 keyword: "chou-fleur air fryer"
 rating: 4.8
 reviews: 194

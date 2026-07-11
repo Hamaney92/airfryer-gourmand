@@ -2,7 +2,7 @@
 title: "Haricots verts au air fryer : croquants en 10 min"
 metaTitle: "Haricots verts air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des haricots verts au air fryer : 180-200 °C, 8 à 12 min, croquants et dorés. Frais ou surgelés, sans eau de cuisson."
-category: "Légume"
+category: "Legume"
 keyword: "haricots verts air fryer"
 rating: 4.8
 reviews: 168

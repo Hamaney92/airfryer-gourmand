@@ -2,7 +2,7 @@
 title: "Patate douce au air fryer : fondante ou en frites"
 metaTitle: "Patate douce air fryer : temps de cuisson par découpe"
 description: "Le temps de cuisson exact de la patate douce au air fryer : entière, en cubes ou en frites. 200 °C, 15 à 35 min selon la découpe. Fondante dedans, dorée dehors."
-category: "Légume"
+category: "Legume"
 keyword: "patate douce air fryer"
 rating: 4.9
 reviews: 231

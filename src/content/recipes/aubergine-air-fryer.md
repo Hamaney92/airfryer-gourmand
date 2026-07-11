@@ -2,7 +2,7 @@
 title: "Aubergine au air fryer : fondante et dorée"
 metaTitle: "Aubergine air fryer : temps de cuisson par découpe"
 description: "Le temps de cuisson exact de l'aubergine au air fryer : rondelles, cubes ou demi-aubergines. 180-200 °C, 10 à 20 min. Dorée dehors, fondante dedans."
-category: "Légume"
+category: "Legume"
 keyword: "aubergine air fryer"
 rating: 4.8
 reviews: 187
