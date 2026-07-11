@@ -66,4 +66,4 @@ Les knacki étant **déjà cuites**, on les réchauffe et on les dore. Nature av
 
 - en hot-dog avec du [pain toasté](/recettes/hot-dog-air-fryer/) et des oignons ;
 - pour d'autres saucisses, vois la [saucisse de Toulouse](/recettes/saucisse-de-toulouse-air-fryer/) au air fryer ;
-- avec des [frites maison](/recettes/frites-air-fryer/) pour un repas rapide qui plaît aux enfants.
+- avec des [frites maison](/recettes/frites-maison-air-fryer/) pour un repas rapide qui plaît aux enfants.

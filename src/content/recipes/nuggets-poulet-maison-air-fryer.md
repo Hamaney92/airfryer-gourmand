@@ -65,6 +65,6 @@ Coupe le poulet en **morceaux réguliers** pour une cuisson homogène. Le triple
 
 ## Pour aller plus loin
 
-- avec une sauce barbecue, une mayo ou un ketchup, et des [frites maison au air fryer](/recettes/frites-air-fryer/) ;
+- avec une sauce barbecue, une mayo ou un ketchup, et des [frites maison au air fryer](/recettes/frites-maison-air-fryer/) ;
 - pour la version express, vois les [nuggets surgelés au air fryer](/recettes/nuggets-surgeles-air-fryer/) ;
 - d'autres recettes de poulet : [tenders de poulet](/recettes/tenders-de-poulet-air-fryer/) et [poulet frit](/recettes/poulet-frit-air-fryer/).

@@ -65,6 +65,6 @@ Sors la viande du frigo **30 minutes avant** et sèche-la : elle saisit mieux. *
 
 ## Pour aller plus loin
 
-- avec une sauce à l'échalote et des [frites maison au air fryer](/recettes/frites-air-fryer/) ;
+- avec une sauce à l'échalote et des [frites maison au air fryer](/recettes/frites-maison-air-fryer/) ;
 - pour d'autres pièces de bœuf, vois l'[entrecôte](/recettes/entrecote-air-fryer/) et le [rôti de bœuf au air fryer](/recettes/roti-de-boeuf-air-fryer/) ;
 - émincée sur une salade tiède ou dans un wrap.

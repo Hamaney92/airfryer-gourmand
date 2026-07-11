@@ -64,5 +64,5 @@ Le grand avantage de l'air fryer ici : **fini les éclaboussures** de graisse su
 ## Pour aller plus loin
 
 - avec une sauce moutarde au vin blanc et à l'échalote ;
-- accompagnée de [frites maison](/recettes/frites-air-fryer/) ou d'une purée ;
+- accompagnée de [frites maison](/recettes/frites-maison-air-fryer/) ou d'une purée ;
 - pour d'autres charcuteries, vois le [boudin noir](/recettes/boudin-noir-air-fryer/) et la [saucisse de Toulouse au air fryer](/recettes/saucisse-de-toulouse-air-fryer/).

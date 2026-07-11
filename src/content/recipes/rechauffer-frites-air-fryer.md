@@ -63,6 +63,6 @@ Pas besoin d'huile, mais une légère **pulvérisation** les rend encore plus cr
 
 ## Pour aller plus loin
 
-- pour des frites fraîches, vois les [frites maison](/recettes/frites-air-fryer/) et les [frites surgelées au air fryer](/recettes/frites-surgelees-air-fryer/) ;
+- pour des frites fraîches, vois les [frites maison](/recettes/frites-maison-air-fryer/) et les [frites surgelées au air fryer](/recettes/frites-surgelees-air-fryer/) ;
 - même principe pour réchauffer des [nuggets](/recettes/rechauffer-nuggets-air-fryer/) ou du [poulet au air fryer](/recettes/rechauffer-poulet-kfc-air-fryer/) ;
 - avec une sauce maison pour accompagner.
