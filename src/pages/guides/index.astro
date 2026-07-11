@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const guides = [
+  ['🥇', 'Meilleur air fryer 2026', 'Notre comparatif des modèles qui valent vraiment leur prix, pour chaque budget.'],
+  ['🍽️', 'Meilleur air fryer double panier', 'Deux tiroirs pour cuire deux plats à la fois : les meilleurs modèles familiaux.'],
+  ['📦', 'Air fryer XXL & familial', 'Les grandes capacités (7 L et +) pour les familles nombreuses et les grandes tablées.'],
+  ['🔧', 'Accessoires air fryer indispensables', 'Moules, papiers cuisson perforés, grilles… ce qui change vraiment la donne.'],
+  ['⚖️', 'Ninja, Moulinex ou Philips ?', 'On compare les grandes marques pour t\'aider à choisir selon tes besoins.'],
+];
+---
+<Base title="Guides d'achat air fryer 2026 — Quel modèle choisir ?" description="Nos guides d'achat air fryer : comment choisir, comparatifs des meilleurs modèles (simple, double panier, XXL) et accessoires indispensables. Pour chaque budget.">
+  <div class="wrap">
+    <section style="padding-top:26px">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Guides d'achat
+      </div>
+      <div class="row"><h1 class="h2">Guides d'achat air fryer<small>Choisir le bon modèle, sans se tromper</small></h1></div>
+      <p style="max-width:760px;color:#6a5d54;margin:0 0 22px">
+        Simple, double panier, XXL… tous les air fryers ne se valent pas. Avant d'acheter, regarde surtout
+        la <b>capacité</b> (3–4 L pour 1–2 personnes, 5–6 L pour une famille, 7 L et + pour les grandes tablées),
+        la <b>puissance</b> (idéalement 1500 W et plus pour bien croustiller), la <b>facilité de nettoyage</b>
+        (panier compatible lave-vaisselle et revêtement anti-adhésif) et les <b>programmes</b> utiles. Nos guides
+        détaillés arrivent — voici ce qu'on prépare.
+      </p>
+
+      <div class="cards">
+        {guides.map(([e, t, d]) => (
+          <div class="rcard" style="cursor:default">
+            <div class="ph" style="height:120px"><span style="font-size:2rem">{e}</span></div>
+            <div style="padding:14px 16px 18px">
+              <span class="rtag">Guide d'achat · à venir</span>
+              <h2 class="rtitle" style="margin-top:8px">{t}</h2>
+              <p style="color:#6a5d54;font-size:.92rem;margin:6px 0 0">{d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="tool" style="margin-top:34px">
+        <div class="txt">
+          <span class="badge">🛠️ En attendant</span>
+          <h3>Trouve le bon temps de cuisson</h3>
+          <p>Quel que soit ton modèle, notre convertisseur four → air fryer et le tableau des temps de cuisson te donnent les bons réglages pour chaque aliment.</p>
+          <a class="cta" href="/temps-de-cuisson/">Ouvrir l'outil →</a>
+        </div>
+        <div class="ph"><span>📷 Aperçu de l'outil</span></div>
+      </div>
+    </section>
+  </div>
+</Base>
