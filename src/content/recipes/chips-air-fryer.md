@@ -3,6 +3,7 @@ title: "Chips au air fryer : maison, fines et croustillantes"
 metaTitle: "Chips air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des chips maison au air fryer : 160-180 °C, 12 à 18 min. Fines et croustillantes, avec l'astuce du trempage et une seule couche."
 category: "Apéro"
+image: "/img/chips-air-fryer.jpg"
 keyword: "chips air fryer"
 rating: 4.7
 reviews: 156

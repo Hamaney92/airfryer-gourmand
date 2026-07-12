@@ -3,6 +3,7 @@ title: "Burger au air fryer : steak juteux et pain doré"
 metaTitle: "Burger air fryer : temps de cuisson et montage"
 description: "Le temps de cuisson exact du burger au air fryer : steak 8 à 10 min à 200 °C, pain toasté 2 min. Un cheeseburger maison juteux, sans poêle ni barbecue."
 category: "Plat"
+image: "/img/burger-air-fryer.jpg"
 keyword: "burger air fryer"
 rating: 4.9
 reviews: 204

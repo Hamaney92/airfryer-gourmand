@@ -3,6 +3,7 @@ title: "Hachis parmentier au air fryer : gratiné et doré"
 metaTitle: "Hachis parmentier air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du hachis parmentier au air fryer : 180 °C, 12 à 18 min, purée gratinée et dorée. En portions individuelles, maison ou pour réchauffer."
 category: "Plat"
+image: "/img/hachis-parmentier-air-fryer.jpg"
 keyword: "hachis parmentier air fryer"
 rating: 4.7
 reviews: 98

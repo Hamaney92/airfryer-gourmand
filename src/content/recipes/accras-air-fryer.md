@@ -3,6 +3,7 @@ title: "Accras au air fryer : croustillants et moelleux"
 metaTitle: "Accras air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des accras (de morue) au air fryer : 180-200 °C, 8 à 12 min, dorés dehors et moelleux dedans, sans bain d'huile. Maison ou surgelés."
 category: "Apéro"
+image: "/img/accras-air-fryer.jpg"
 keyword: "accras air fryer"
 rating: 4.7
 reviews: 102

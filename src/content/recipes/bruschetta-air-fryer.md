@@ -3,6 +3,7 @@ title: "Bruschetta au air fryer : pain grillé et croustillant"
 metaTitle: "Bruschetta air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact de la bruschetta au air fryer : 180-200 °C, 4 à 7 min, pain grillé et croustillant, garniture chaude. L'astuce anti-pain détrempé."
 category: "Apéro"
+image: "/img/bruschetta-air-fryer.jpg"
 keyword: "bruschetta air fryer"
 rating: 4.7
 reviews: 94

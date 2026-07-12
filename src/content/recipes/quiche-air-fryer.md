@@ -3,6 +3,7 @@ title: "Quiche au air fryer : dorée et crémeuse"
 metaTitle: "Quiche air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de la quiche au air fryer : 160-170 °C, 20 à 30 min, pâte croustillante et appareil crémeux. Lorraine, sans pâte ou surgelée."
 category: "Plat"
+image: "/img/quiche-air-fryer.jpg"
 keyword: "quiche air fryer"
 rating: 4.8
 reviews: 171

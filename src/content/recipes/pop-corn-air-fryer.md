@@ -3,6 +3,7 @@ title: "Pop-corn au air fryer : maison, léger et croustillant"
 metaTitle: "Pop-corn air fryer : ça marche ? Temps & astuce"
 description: "Peut-on faire du pop-corn au air fryer ? Oui : 200 °C, 8 à 12 min, avec des grains de maïs à éclater. L'astuce du papier cuisson pour éviter que les grains s'envolent."
 category: "Apéro"
+image: "/img/pop-corn-air-fryer.jpg"
 keyword: "pop corn air fryer"
 rating: 4.5
 reviews: 108

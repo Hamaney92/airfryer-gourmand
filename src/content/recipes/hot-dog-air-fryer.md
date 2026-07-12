@@ -3,6 +3,7 @@ title: "Hot dog au air fryer : saucisse dorée et pain moelleux"
 metaTitle: "Hot dog air fryer : temps de cuisson et montage"
 description: "Le temps de cuisson exact du hot dog au air fryer : saucisse 5 à 7 min à 200 °C, pain chauffé 2 min. Saucisse dorée, pain moelleux, sans casserole ni poêle."
 category: "Plat"
+image: "/img/hot-dog-air-fryer.jpg"
 keyword: "hot dog air fryer"
 rating: 4.8
 reviews: 157

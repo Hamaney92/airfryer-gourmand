@@ -3,6 +3,7 @@ title: "Croque-madame au air fryer : gratiné et œuf coulant"
 metaTitle: "Croque-madame air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du croque-madame au air fryer : 180 °C, 8 à 12 min, pain doré, fromage gratiné et œuf au plat coulant sur le dessus. L'astuce pour l'œuf."
 category: "Plat"
+image: "/img/croque-madame-air-fryer.jpg"
 keyword: "croque madame air fryer"
 rating: 4.8
 reviews: 116

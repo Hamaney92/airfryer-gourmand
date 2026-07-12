@@ -3,6 +3,7 @@ title: "Avocat frit au air fryer : croustillant et crémeux"
 metaTitle: "Avocat frit air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de l'avocat frit pané au air fryer : 200 °C, 7 à 10 min, panure croustillante et cœur crémeux. Les fameuses avocado fries, sans friture."
 category: "Apéro"
+image: "/img/avocat-frit-air-fryer.jpg"
 keyword: "avocat frit air fryer"
 rating: 4.7
 reviews: 91

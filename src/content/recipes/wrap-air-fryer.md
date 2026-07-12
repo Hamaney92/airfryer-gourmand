@@ -3,6 +3,7 @@ title: "Wrap au air fryer : chaud et croustillant en 5 minutes"
 metaTitle: "Wrap air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du wrap au air fryer : 180-200 °C, 4 à 8 min, tortilla croustillante et garniture fondante. Wrap poulet, fromage ou veggie, sans poêle."
 category: "Plat"
+image: "/img/wrap-air-fryer.jpg"
 keyword: "wrap air fryer"
 rating: 4.7
 reviews: 112

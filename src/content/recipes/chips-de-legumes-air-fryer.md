@@ -3,6 +3,7 @@ title: "Chips de légumes au air fryer : croustillantes et colorées"
 metaTitle: "Chips de légumes air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des chips de légumes au air fryer : 160-170 °C, 8 à 15 min. Betterave, patate douce, panais, carotte : croustillantes, sans friture."
 category: "Legume"
+image: "/img/chips-de-legumes-air-fryer.jpg"
 keyword: "chips de légumes air fryer"
 rating: 4.7
 reviews: 113

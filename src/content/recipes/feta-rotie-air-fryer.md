@@ -3,6 +3,7 @@ title: "Feta rôtie au air fryer : fondante, façon feta pasta"
 metaTitle: "Feta rôtie air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la feta rôtie au air fryer : 180-200 °C, 10 à 12 min avec des tomates cerises. La base fondante de la fameuse feta pasta."
 category: "Apéro"
+image: "/img/feta-rotie-air-fryer.jpg"
 keyword: "feta rotie air fryer"
 rating: 4.8
 reviews: 134

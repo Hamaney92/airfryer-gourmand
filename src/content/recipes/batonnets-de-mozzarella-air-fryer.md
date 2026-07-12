@@ -3,6 +3,7 @@ title: "Bâtonnets de mozzarella au air fryer : coulants et dorés"
 metaTitle: "Bâtonnets de mozzarella air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des bâtonnets de mozzarella au air fryer : 200 °C, 6 à 8 min, panure dorée et cœur filant. Surgelés ou maison, l'astuce anti-fuite."
 category: "Apéro"
+image: "/img/batonnets-de-mozzarella-air-fryer.jpg"
 keyword: "batonnets de mozzarella air fryer"
 rating: 4.9
 reviews: 189

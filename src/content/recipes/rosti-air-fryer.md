@@ -3,6 +3,7 @@ title: "Rösti au air fryer : galette de pomme de terre croustillante"
 metaTitle: "Rösti air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du rösti au air fryer : 190-200 °C, 15 à 20 min, galette de pomme de terre dorée et croustillante. L'astuce pour bien essorer les pommes de terre."
 category: "Accompagnement"
+image: "/img/rosti-air-fryer.jpg"
 keyword: "rosti air fryer"
 rating: 4.8
 reviews: 121
