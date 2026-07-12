@@ -4,9 +4,12 @@ import RecipeCard from '../components/RecipeCard.astro';
 import { getCollection } from 'astro:content';
 const recipes = (await getCollection('recipes')).filter(r=>r.data.pubDate.getTime()<=Date.now()).sort((a,b)=>b.data.reviews-a.data.reviews).slice(0,4);
 const cats = [
-  ['🍗','Viandes','/categorie/viandes/'],['🐟','Poissons','/categorie/poissons/'],
-  ['🥦','Légumes','/categorie/legumes/'],['❄️','Surgelés','/categorie/surgeles/'],
-  ['🍰','Desserts','/categorie/desserts/'],['🧀','Apéro','/categorie/apero/']
+  ['🍗','Viandes','/categorie/viandes/','/img/ailes-de-poulet-air-fryer.jpg'],
+  ['🐟','Poissons','/categorie/poissons/','/img/saumon-air-fryer.jpg'],
+  ['🥦','Légumes','/categorie/legumes/','/img/patate-douce-air-fryer.jpg'],
+  ['❄️','Surgelés','/categorie/surgeles/','/img/nuggets-surgeles-air-fryer.jpg'],
+  ['🍰','Desserts','/categorie/desserts/','/img/gateau-au-yaourt-air-fryer.jpg'],
+  ['🧀','Apéro','/categorie/apero/','/img/beignet-air-fryer.jpg']
 ];
 ---
 <Base title="Airfryer Gourmand — Recettes, temps de cuisson & guides air fryer" description="Recettes air fryer testées, temps de cuisson exacts, convertisseur four → air fryer et guides d'achat. Tout pour réussir avec ta friteuse sans huile.">
@@ -20,7 +23,7 @@ const cats = [
         <a class="cta ghost" href="/temps-de-cuisson/">Temps de cuisson</a>
         <div class="rating"><span class="stars">★★★★★</span> 4,9 · noté par la communauté</div>
       </div>
-      <div class="ph"><span>📷 Photo plat — hero</span></div>
+      <div class="ph" style="background-image:url('/img/poulet-roti-air-fryer.jpg');background-size:cover;background-position:center"></div>
     </section>
 
     <div class="trust">
@@ -33,7 +36,7 @@ const cats = [
     <section>
       <div class="row"><h2 class="h2">Parcourir par catégorie</h2></div>
       <div class="cattiles">
-        {cats.map(([e,l,h]) => <a class="tile" href={h}><div class="ph"><span>{e}</span></div><p>{e} {l}</p></a>)}
+        {cats.map(([e,l,h,img]) => <a class="tile" href={h}><div class="ph" style={`background-image:url('${img}');background-size:cover;background-position:center`}></div><p>{e} {l}</p></a>)}
       </div>
     </section>
 
@@ -55,7 +58,7 @@ const cats = [
           <p>Notre tableau interactif + le convertisseur four → air fryer. Cherche ton aliment, on te donne la température et la durée exactes.</p>
           <a class="cta" href="/temps-de-cuisson/">Ouvrir l'outil →</a>
         </div>
-        <div class="ph"><span>📷 Aperçu de l'outil</span></div>
+        <div class="ph" style="background-image:url('/img/nuggets-surgeles-air-fryer.jpg');background-size:cover;background-position:center"></div>
       </div>
     </section>
 
@@ -75,7 +78,7 @@ const cats = [
 
     <section>
       <div class="guide">
-        <div class="ph"><span>📷 Air fryers</span></div>
+        <div class="ph" style="background-image:url('/img/saumon-air-fryer.jpg');background-size:cover;background-position:center"></div>
         <div class="g">
           <span class="rtag">Guide d'achat</span>
           <h3>Quel air fryer choisir en 2026 ?</h3>
