@@ -16,12 +16,23 @@ const sameCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.catego
 const otherCat = allRecipes.filter((r) => r.slug !== recipe.slug && r.data.category !== d.category);
 const related = [...sameCat, ...otherCat].slice(0, 4);
 
+const fmtDate = (dt) => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(dt);
+const published = d.pubDate;
+const updated = d.updatedDate && d.updatedDate.getTime() > d.pubDate.getTime() ? d.updatedDate : null;
+
+const authorEntity = { "@type": "Organization", "name": d.author, "url": "https://airfryergourmand.fr/a-propos/" };
+
 const recipeSchema = {
   "@context":"https://schema.org","@type":"Recipe",
   "name": d.title,
   "description": d.description,
   "recipeCategory": d.category,
   "keywords": d.keyword,
+  "author": authorEntity,
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": published.toISOString().slice(0,10),
+  "dateModified": (updated || published).toISOString().slice(0,10),
+  "image": d.image ? [new URL(d.image, "https://airfryergourmand.fr/").href] : undefined,
   "prepTime": `PT${d.prepTime}M`,
   "cookTime": `PT${d.cookTime}M`,
   "totalTime": `PT${d.prepTime + d.cookTime}M`,
@@ -43,6 +54,10 @@ const faqSchema = d.faq.length>0 ? {
     <article class="article">
       <div class="crumb"><a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › {d.category}</div>
       <h1>{d.title}</h1>
+      <div class="byline">
+        <span class="by-av" aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/">{d.author}</a> · Publié le {fmtDate(published)}{updated && <> · Mis à jour le {fmtDate(updated)}</>}</span>
+      </div>
       <div class="amETA">
         <span class="stars">★ {d.rating.toFixed(1)}</span>
         {d.reviews>0 && <span>{d.reviews} avis</span>}
@@ -56,6 +71,13 @@ const faqSchema = d.faq.length>0 ? {
       <div class="quick"><b>En bref :</b> {d.quickAnswer}</div>
 
       <Content />
+
+      {d.note && (
+        <aside class="edito-note">
+          <div class="edito-head"><span aria-hidden="true">💬</span> Le mot de la rédaction</div>
+          <p>{d.note}</p>
+        </aside>
+      )}
 
       <div class="card-box" id="recette">
         <h2 style="margin-top:0">🥘 La recette pas à pas</h2>
@@ -74,6 +96,14 @@ const faqSchema = d.faq.length>0 ? {
       )}
 
       <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ Voir tous les temps de cuisson</a></p>
+
+      <div class="author-box">
+        <div class="author-av" aria-hidden="true">🍟</div>
+        <div class="author-txt">
+          <div class="author-name">{d.author}</div>
+          <p>On cuisine, on rate, on recommence — puis on ne publie que les réglages qui marchent vraiment, du premier coup et avec ton modèle d'air fryer. Chaque recette indique le temps et la température exacts, testés contre des repères fiables. <a href="/a-propos/">En savoir plus sur nous →</a></p>
+        </div>
+      </div>
 
       {related.length>0 && (
         <div class="related" style="margin-top:34px;border-top:1px solid #f0e6dc;padding-top:22px">
