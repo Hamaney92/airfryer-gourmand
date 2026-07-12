@@ -20,7 +20,10 @@ const recipes = defineCollection({
     steps: z.array(z.string()).default([]),
     tips: z.array(z.string()).default([]),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    author: z.string().default("L'équipe Airfryer Gourmand"),
+    note: z.string().optional(),
     pubDate: z.coerce.date().default(() => new Date()),
+    updatedDate: z.coerce.date().optional(),
   }),
 });
 
