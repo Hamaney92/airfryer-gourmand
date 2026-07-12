@@ -10,6 +10,7 @@ prepTime: 15
 cookTime: 10
 servings: 3
 temp: "200 °C"
+image: "/img/onion-rings-air-fryer.jpg"
 quickAnswer: "Cuis les onion rings maison au air fryer 8 à 12 min à 200 °C, en les retournant à mi-cuisson, avec une pulvérisation d'huile. Surgelés : 8 à 10 min sans décongeler. La panure croustille et l'oignon devient fondant, sans bain d'huile."
 ingredients:
   - "2 gros oignons doux"

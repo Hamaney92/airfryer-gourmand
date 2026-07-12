@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 18
 servings: 4
 temp: "200 °C"
+image: "/img/legumes-rotis-air-fryer.jpg"
 quickAnswer: "Cuis un mélange de légumes rôtis au air fryer 15 à 20 min à 200 °C, en secouant le panier à mi-cuisson. Coupe-les en morceaux réguliers de taille similaire, mélange-les avec un filet d'huile et des herbes, en une seule couche."
 ingredients:
   - "1 courgette, 1 poivron, 1/2 aubergine, 1 oignon rouge"
