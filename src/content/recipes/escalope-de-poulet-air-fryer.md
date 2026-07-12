@@ -3,6 +3,7 @@ title: "Escalope de poulet au air fryer : moelleuse et dorée"
 metaTitle: "Escalope de poulet air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de l'escalope de poulet au air fryer : 180 °C, 10 à 14 min pour une escalope nature moelleuse, ou panée et croustillante façon milanaise."
 category: "Volaille"
+image: "/img/escalope-de-poulet-air-fryer.jpg"
 keyword: "escalope de poulet air fryer"
 rating: 4.8
 reviews: 176

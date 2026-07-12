@@ -3,6 +3,7 @@ title: "Pilons de poulet au air fryer : croustillants et laqués"
 metaTitle: "Pilon de poulet air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des pilons de poulet au air fryer : 200 °C, 20 à 25 min, peau croustillante et chair juteuse. Marinés ou laqués BBQ, sans four."
 category: "Volaille"
+image: "/img/pilon-de-poulet-air-fryer.jpg"
 keyword: "pilon de poulet air fryer"
 rating: 4.9
 reviews: 217

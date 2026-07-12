@@ -3,6 +3,7 @@ title: "Truite au air fryer : entière ou en filet, moelleuse"
 metaTitle: "Truite air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de la truite au air fryer : 180 °C, 12 à 15 min entière ou 8 à 10 min en filet. Chair moelleuse, peau dorée, sans odeur."
 category: "Poisson"
+image: "/img/truite-air-fryer.jpg"
 keyword: "truite air fryer"
 rating: 4.7
 reviews: 121

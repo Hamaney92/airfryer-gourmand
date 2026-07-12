@@ -3,6 +3,7 @@ title: "Travers de porc au air fryer : tendres et laqués"
 metaTitle: "Travers de porc air fryer : temps de cuisson et laque"
 description: "Le temps de cuisson exact des travers de porc au air fryer : 180 °C, 25 à 35 min, tendres à cœur et laqués. La marinade BBQ et l'astuce du caramel qui colle."
 category: "Viande"
+image: "/img/travers-de-porc-air-fryer.jpg"
 keyword: "travers de porc air fryer"
 rating: 4.9
 reviews: 201

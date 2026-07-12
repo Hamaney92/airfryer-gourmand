@@ -3,6 +3,7 @@ title: "Poulet mariné au air fryer : tendre et parfumé"
 metaTitle: "Poulet mariné air fryer : temps et marinade"
 description: "Le temps de cuisson exact du poulet mariné au air fryer : 190 °C, 12 à 20 min selon le morceau. La marinade qui parfume et attendrit, sans dessécher."
 category: "Volaille"
+image: "/img/poulet-marine-air-fryer.jpg"
 keyword: "poulet mariné air fryer"
 rating: 4.9
 reviews: 187

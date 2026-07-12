@@ -3,6 +3,7 @@ title: "Côte de porc au air fryer : dorée et tendre"
 metaTitle: "Côte de porc air fryer : temps et température"
 description: "Le temps de cuisson exact de la côte de porc au air fryer, par épaisseur : 200 °C, 8 à 18 min, cœur à 63 °C. Dorée, tendre, jamais sèche. L'astuce du repos."
 category: "Viande"
+image: "/img/cote-de-porc-air-fryer.jpg"
 keyword: "côte de porc air fryer"
 rating: 4.8
 reviews: 196

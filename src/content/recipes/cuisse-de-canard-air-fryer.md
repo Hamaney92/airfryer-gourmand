@@ -3,6 +3,7 @@ title: "Cuisse de canard confite au air fryer : peau croustillante"
 metaTitle: "Cuisse de canard air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la cuisse de canard confite au air fryer : 180 °C, 12 à 15 min, peau ultra-croustillante et chair fondante. L'astuce anti-fumée."
 category: "Volaille"
+image: "/img/cuisse-de-canard-air-fryer.jpg"
 keyword: "cuisse de canard air fryer"
 rating: 4.9
 reviews: 156

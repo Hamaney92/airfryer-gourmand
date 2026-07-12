@@ -3,6 +3,7 @@ title: "Dorade au air fryer : entière ou en filet, moelleuse"
 metaTitle: "Dorade air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de la dorade au air fryer : 180 °C, 15 à 20 min entière ou 8 à 12 min en filet. Chair moelleuse, peau dorée, farcie de citron et d'herbes."
 category: "Poisson"
+image: "/img/dorade-air-fryer.jpg"
 keyword: "dorade air fryer"
 rating: 4.8
 reviews: 107

@@ -3,6 +3,7 @@ title: "Tenders de poulet au air fryer : croustillants sans friture"
 metaTitle: "Tenders de poulet air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des tenders de poulet au air fryer : 200 °C, 12 à 15 min, panure dorée et chair juteuse. Façon KFC, panko, ou surgelés, sans bain d'huile."
 category: "Volaille"
+image: "/img/tenders-de-poulet-air-fryer.jpg"
 keyword: "tenders de poulet air fryer"
 rating: 4.9
 reviews: 226

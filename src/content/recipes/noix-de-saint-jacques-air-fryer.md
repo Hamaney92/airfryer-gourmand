@@ -3,6 +3,7 @@ title: "Noix de Saint-Jacques au air fryer : nacrées en 8 min"
 metaTitle: "Saint-Jacques air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des noix de Saint-Jacques au air fryer : 200 °C, 6 à 8 min, nacrées et fondantes. Au beurre d'ail, sur coquille ou surgelées."
 category: "Poisson"
+image: "/img/noix-de-saint-jacques-air-fryer.jpg"
 keyword: "noix de saint jacques air fryer"
 rating: 4.9
 reviews: 148

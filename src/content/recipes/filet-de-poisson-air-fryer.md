@@ -3,6 +3,7 @@ title: "Filet de poisson au air fryer : moelleux et rapide"
 metaTitle: "Filet de poisson air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du filet de poisson au air fryer : 180 °C, 8 à 12 min selon l'épaisseur. Cabillaud, saumon, colin : moelleux, sans odeur ni matière grasse."
 category: "Poisson"
+image: "/img/filet-de-poisson-air-fryer.jpg"
 keyword: "filet de poisson air fryer"
 rating: 4.8
 reviews: 158

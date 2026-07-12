@@ -3,6 +3,7 @@ title: "Poulet entier au air fryer : doré et juteux"
 metaTitle: "Poulet entier air fryer : temps de cuisson par poids"
 description: "Le temps de cuisson exact du poulet entier au air fryer : 180 °C, environ 30 min par kg + 15 min. Peau croustillante, chair juteuse, sans four."
 category: "Volaille"
+image: "/img/poulet-entier-air-fryer.jpg"
 keyword: "poulet entier air fryer"
 rating: 4.9
 reviews: 176
@@ -65,10 +66,4 @@ Chaque poulet et chaque air fryer sont différents. Se fier uniquement à la mon
 
 ## Poitrine vers le bas, puis on retourne
 
-Le blanc est la partie qui sèche le plus vite. En démarrant **poitrine vers le bas**, elle cuit dans son jus et reste moelleuse ; on retourne ensuite pour dorer la peau du dessus. Et surtout, **sèche bien la peau** avant cuisson : c'est l'humidité qui empêche le croustillant.
-
-## Pour aller plus loin
-
-- garde la carcasse pour un bouillon maison ;
-- pour des morceaux, vois nos [cuisses de poulet](/recettes/cuisse-de-poulet-air-fryer/) et [blancs de poulet au air fryer](/recettes/blanc-de-poulet-air-fryer/) ;
-- en version express, les [aiguillettes de poulet](/recettes/aiguillettes-de-poulet-air-fryer/) cuisent en 10 minutes.
+Le blanc est la partie qui sèche le plus vite. En démarrant **poitrine vers le bas**, elle cuit dans son jus et reste moelleuse ; on retourne ensuite pour dorer la peau du dessus. Et surtout, **sèche bien la peau** avant cuisson : c'est l'humidité qui empêche le crou

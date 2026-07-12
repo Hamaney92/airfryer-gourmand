@@ -3,6 +3,7 @@ title: "Dinde au air fryer : escalope ou rôti, moelleuse"
 metaTitle: "Dinde air fryer : temps de cuisson et moelleux"
 description: "Le temps de cuisson exact de la dinde au air fryer : 180 °C, 12 à 15 min l'escalope, 30 à 40 min le rôti. Moelleuse et dorée, sans dessécher, avec l'astuce du repos."
 category: "Volaille"
+image: "/img/dinde-air-fryer.jpg"
 keyword: "dinde air fryer"
 rating: 4.7
 reviews: 103

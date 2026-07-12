@@ -3,6 +3,7 @@ title: "Magret de canard au air fryer : rosé et croustillant"
 metaTitle: "Magret de canard air fryer : temps et température"
 description: "Le temps de cuisson exact du magret de canard au air fryer : peau croustillante et cœur rosé en 15 min. Températures à cœur pour rosé, à point ou bien cuit."
 category: "Volaille"
+image: "/img/magret-de-canard-air-fryer.jpg"
 keyword: "magret de canard air fryer"
 rating: 4.9
 reviews: 143
@@ -66,14 +67,4 @@ Le réflexe qui rate un magret, c'est de le poser côté chair d'abord. La **cou
 
 ## Rosé, à point ou bien cuit
 
-Le magret est une viande à muscle entier : il se déguste **rosé**, comme un bon steak. Vise 58 °C à cœur pour ce classique. Ceux qui préfèrent une viande à point iront à 65-68 °C. Le thermomètre évite de couper la viande pour vérifier — et donc de lui faire perdre son jus. **Repos de 5 minutes** obligatoire avant de trancher en biais.
-
-## Magret au miel, à l'orange ou laqué
-
-Le magret adore les glaçages sucrés-acidulés. Badigeonne-le les **3 dernières minutes** de cuisson (pas avant, le sucre brûlerait) : **miel** et thym pour un magret laqué, **miel-balsamique** pour une note acidulée, ou **sauce à l'orange** pour le grand classique. La chaleur de l'air fryer caramélise le glaçage sans dessécher la chair.
-
-## Pour aller plus loin
-
-- servi avec des [pommes de terre sautées](/recettes/pommes-de-terre-sautees-air-fryer/) ou un [gratin dauphinois au air fryer](/recettes/gratin-dauphinois-air-fryer/) ;
-- pour une autre viande rapide, vois la [côte de porc au air fryer](/recettes/cote-de-porc-air-fryer/) ;
-- les restes, tranchés froids, sont parfaits sur une salade.
+Le magret est une viande à muscle entier : il se déguste **rosé**, comme un bon steak. Vise 58 °C à cœur pour ce

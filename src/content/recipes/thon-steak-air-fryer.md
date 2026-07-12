@@ -3,6 +3,7 @@ title: "Steak de thon au air fryer : mi-cuit ou à cœur"
 metaTitle: "Steak de thon air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du steak de thon au air fryer : 200 °C, 4 à 8 min. Mi-cuit rosé au centre ou cuit à cœur, moelleux et jamais sec."
 category: "Poisson"
+image: "/img/thon-steak-air-fryer.jpg"
 keyword: "thon steak air fryer"
 rating: 4.7
 reviews: 98

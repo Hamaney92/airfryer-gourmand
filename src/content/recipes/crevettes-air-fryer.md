@@ -3,6 +3,7 @@ title: "Crevettes au air fryer : parfaites en 8 minutes"
 metaTitle: "Crevettes air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact des crevettes au air fryer : 190 °C, 6 à 10 min, même surgelées. Roses, juteuses, jamais caoutchouteuses. Marinade et astuces."
 category: "Poisson"
+image: "/img/crevettes-air-fryer.jpg"
 keyword: "crevettes air fryer"
 rating: 4.9
 reviews: 214

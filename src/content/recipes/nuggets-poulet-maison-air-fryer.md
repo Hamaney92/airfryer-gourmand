@@ -3,6 +3,7 @@ title: "Nuggets de poulet maison au air fryer : croustillants"
 metaTitle: "Nuggets poulet maison air fryer : temps & astuce"
 description: "Le temps de cuisson exact des nuggets de poulet maison au air fryer : 200 °C, 10 à 12 min, panure dorée et poulet moelleux, sans friture. La recette facile."
 category: "Volaille"
+image: "/img/nuggets-poulet-maison-air-fryer.jpg"
 keyword: "nuggets de poulet maison air fryer"
 rating: 4.9
 reviews: 214

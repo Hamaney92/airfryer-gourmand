@@ -3,6 +3,7 @@ title: "Poulet croustillant au air fryer : façon KFC maison"
 metaTitle: "Poulet croustillant air fryer : temps & panure"
 description: "Le temps de cuisson exact du poulet croustillant au air fryer : 190-200 °C, 18 à 25 min. La panure façon KFC, croustillante et dorée, sans bain d'huile."
 category: "Volaille"
+image: "/img/poulet-croustillant-air-fryer.jpg"
 keyword: "poulet croustillant air fryer"
 rating: 4.9
 reviews: 231

@@ -3,6 +3,7 @@ title: "Dos de cabillaud au air fryer : fondant en 12 min"
 metaTitle: "Dos de cabillaud air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du dos de cabillaud au air fryer : 180 °C, 10 à 15 min selon l'épaisseur, sans le retourner. Chair nacrée qui s'effeuille."
 category: "Poisson"
+image: "/img/dos-de-cabillaud-air-fryer.jpg"
 keyword: "dos de cabillaud air fryer"
 rating: 4.9
 reviews: 187

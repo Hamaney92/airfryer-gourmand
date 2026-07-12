@@ -3,6 +3,7 @@ title: "Rôti de bœuf au air fryer : rosbif saignant et doré"
 metaTitle: "Rôti de bœuf air fryer : temps de cuisson par poids"
 description: "Le temps de cuisson exact du rôti de bœuf au air fryer : 180 °C, environ 15-20 min par 500 g. Doré dehors, rosé dedans. Températures à cœur saignant à point."
 category: "Viande"
+image: "/img/roti-de-boeuf-air-fryer.jpg"
 keyword: "roti de boeuf air fryer"
 rating: 4.9
 reviews: 196

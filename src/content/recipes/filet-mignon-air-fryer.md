@@ -3,6 +3,7 @@ title: "Filet mignon au air fryer : juteux et doré"
 metaTitle: "Filet mignon air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du filet mignon de porc au air fryer : 180 °C, 20 à 25 min, doré dehors et rosé-juteux dedans. Version moutarde, miel ou en croûte."
 category: "Viande"
+image: "/img/filet-mignon-air-fryer.jpg"
 keyword: "filet mignon air fryer"
 rating: 4.9
 reviews: 212

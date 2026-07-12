@@ -3,6 +3,7 @@ title: "Brochettes de poulet au air fryer : marinées et dorées"
 metaTitle: "Brochettes de poulet air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des brochettes de poulet au air fryer : 190 °C, 12 à 15 min, dorées dehors et moelleuses dedans. La marinade et l'astuce des pics."
 category: "Volaille"
+image: "/img/brochettes-de-poulet-air-fryer.jpg"
 keyword: "brochettes de poulet air fryer"
 rating: 4.8
 reviews: 163

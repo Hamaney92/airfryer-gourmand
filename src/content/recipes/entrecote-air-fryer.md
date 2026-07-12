@@ -3,6 +3,7 @@ title: "Entrecôte au air fryer : saignante et croûtée"
 metaTitle: "Entrecôte air fryer : temps de cuisson par cuisson"
 description: "Le temps de cuisson exact de l'entrecôte au air fryer : 200 °C, 8 à 14 min selon l'épaisseur et la cuisson. Croûte dorée, cœur rosé. Saignant à bien cuit."
 category: "Viande"
+image: "/img/entrecote-air-fryer.jpg"
 keyword: "entrecote air fryer"
 rating: 4.9
 reviews: 178

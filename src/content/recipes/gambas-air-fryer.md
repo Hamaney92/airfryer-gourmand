@@ -3,6 +3,7 @@ title: "Gambas au air fryer : juteuses en 7 minutes"
 metaTitle: "Gambas air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des gambas au air fryer : 200 °C, 6 à 8 min, juteuses et parfumées. Version al ajillo à l'ail, crues ou surgelées, l'astuce anti-caoutchouc."
 category: "Poisson"
+image: "/img/gambas-air-fryer.jpg"
 keyword: "gambas air fryer"
 rating: 4.9
 reviews: 171
