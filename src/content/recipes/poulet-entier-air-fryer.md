@@ -41,6 +41,8 @@ faq:
     a: "Un poulet de 1,2 à 1,6 kg convient à la plupart des air fryers de 5-6 L. Au-delà, vérifiez qu'il ne touche pas la résistance ; sinon, préférez des morceaux (cuisses, blancs)."
   - q: "Peut-on cuire un poulet entier dans un Ninja ou un air fryer double panier ?"
     a: "Oui, la méthode et les temps sont identiques sur tous les modèles (Ninja, Moulinex, Cosori, Seb, Silvercrest). Sur un double panier comme le Ninja Dual Zone, utilisez une seule zone assez grande ; si le poulet ne rentre pas, coupez-le en deux ou cuisez des morceaux."
+note: "Un poulet entier réussi tient à un détail : commence poitrine vers le bas pour protéger la chair blanche, puis retourne à mi-cuisson pour dorer la peau. Vérifie toujours 75 °C à cœur dans la cuisse, c'est le seul repère qui ne ment pas."
+updatedDate: 2026-07-12
 pubDate: 2026-08-06
 ---
 

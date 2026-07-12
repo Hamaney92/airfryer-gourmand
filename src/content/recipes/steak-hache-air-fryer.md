@@ -9,8 +9,8 @@ reviews: 214
 prepTime: 2
 cookTime: 8
 servings: 2
-temp: "200 °C"
 image: "/img/steak-hache-air-fryer.jpg"
+temp: "200 °C"
 quickAnswer: "Cuis un steak haché frais 6 à 9 min à 200 °C (6 saignant, 8 à point, 9-10 bien cuit), en le retournant à mi-cuisson. Surgelé : 10 à 13 min à 200 °C, sans décongeler."
 ingredients:
   - "2 steaks hachés (frais ou surgelés)"
@@ -37,7 +37,9 @@ faq:
     a: "Non, ce n'est pas obligatoire. Un léger filet d'huile aide simplement à obtenir une belle croûte dorée."
   - q: "À quelle température cuire un steak haché au air fryer ?"
     a: "200 °C est la température idéale pour dorer l'extérieur tout en gardant l'intérieur juteux."
+note: "Le piège qu'on voit tout le temps : vouloir bien cuire un steak haché fin. Au-delà de 8 minutes, il se dessèche à vitesse grand V. Notre repère : sors-le à 8 min pour un cœur encore rosé, laisse-le reposer 1 minute, et il finit de cuire tout seul en gardant son jus."
 pubDate: 2026-07-06
+updatedDate: 2026-07-12
 ---
 
 Le steak haché à l'air fryer, c'est la solution express pour une viande **dorée dehors, juteuse dedans**, sans poêle qui éclabousse ni surveillance. Encore faut-il le bon temps de cuisson — trop, et il devient sec ; trop peu, et il reste cru au centre. Voici les réglages exacts, pour le frais comme pour le surgelé.

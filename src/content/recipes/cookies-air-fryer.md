@@ -37,6 +37,8 @@ faq:
     a: "160 °C, une température douce qui évite qu'ils brûlent dessus tout en restant crus dedans."
   - q: "Peut-on mettre du papier cuisson au air fryer ?"
     a: "Oui, un papier cuisson adapté (perforé) est parfait pour les cookies et évite qu'ils collent."
+note: "En air fryer, les cookies gonflent puis retombent vite : sors-les quand les bords sont pris mais que le centre paraît encore un peu mou. Ils finissent de se figer sur la grille et gardent un cœur moelleux. Laisse de l'espace entre chaque, ils s'étalent."
+updatedDate: 2026-07-12
 pubDate: 2026-07-06
 ---
 

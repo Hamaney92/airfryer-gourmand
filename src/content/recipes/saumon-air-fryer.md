@@ -37,6 +37,8 @@ faq:
     a: "Oui, sans décongeler : 12 à 15 minutes à 170 °C pour un pavé surgelé classique. Assaisonne à mi-cuisson quand la surface a dégelé."
   - q: "Faut-il de l'huile pour le saumon au air fryer ?"
     a: "Un léger filet suffit à éviter que la chair n'accroche et à dorer la surface. Le saumon étant gras, inutile d'en mettre beaucoup."
+note: "Le saumon continue de cuire hors de l'air fryer : sors-le quand le cœur est encore légèrement translucide, il finira nacré et fondant plutôt que sec. Peau vers le bas, il se décolle tout seul du panier une fois cuit."
+updatedDate: 2026-07-12
 pubDate: 2026-07-12
 ---
 

@@ -38,6 +38,8 @@ faq:
     a: "Oui, à mi-cuisson, pour dorer les deux faces uniformément et cuire à cœur sans dessécher."
   - q: "Peut-on cuire un blanc de poulet surgelé au air fryer ?"
     a: "Oui, sans décongeler : comptez 18 à 22 minutes à 200 °C selon la taille, en retournant à mi-cuisson, jusqu'à 74 °C à cœur."
+note: "Le blanc de poulet sec, c'est LA hantise de l'air fryer. Notre parade : ne dépasse jamais 75 °C à cœur (un thermomètre coûte 10 € et change tout), et laisse reposer 3 minutes sous une feuille d'alu avant de trancher. Un blanc de taille moyenne est parfait en 12 min à 180 °C."
+updatedDate: 2026-07-12
 pubDate: 2026-07-11
 ---
 

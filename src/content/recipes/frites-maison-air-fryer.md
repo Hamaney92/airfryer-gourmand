@@ -34,6 +34,8 @@ faq:
     a: "Une seule cuillère à soupe suffit pour tout le plat, contre un litre pour une friteuse classique."
   - q: "Pourquoi mes frites ne sont pas croustillantes ?"
     a: "Le plus souvent parce qu'elles n'ont pas été assez séchées, ou parce que le panier est trop rempli."
+note: "Le secret d'une frite dorée et croustillante, ce n'est pas plus d'huile : c'est de bien sécher les bâtonnets avant cuisson et de ne pas surcharger le panier. Trop de frites d'un coup et elles cuisent à la vapeur au lieu de dorer. On préfère deux petites fournées à une seule tassée."
+updatedDate: 2026-07-12
 pubDate: 2026-07-06
 ---
 
