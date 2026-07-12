@@ -3,6 +3,7 @@ title: "Brioche au air fryer : moelleuse et dorée"
 metaTitle: "Brioche air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact de la brioche au air fryer : 160-170 °C, 15 à 25 min, moelleuse dedans et dorée dehors. En moule ou petites brioches individuelles."
 category: "Dessert"
+image: "/img/brioche-air-fryer.jpg"
 keyword: "brioche air fryer"
 rating: 4.7
 reviews: 102

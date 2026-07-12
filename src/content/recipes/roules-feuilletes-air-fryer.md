@@ -3,6 +3,7 @@ title: "Roulés feuilletés au air fryer : apéro doré et croustillant"
 metaTitle: "Roulés feuilletés air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des roulés feuilletés apéritifs au air fryer : 180 °C, 8 à 12 min, feuilletage doré et croustillant. Saucisse, pesto ou fromage, faits maison."
 category: "Apéro"
+image: "/img/roules-feuilletes-air-fryer.jpg"
 keyword: "roules feuilletes air fryer"
 rating: 4.8
 reviews: 121

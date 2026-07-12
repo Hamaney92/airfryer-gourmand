@@ -3,6 +3,7 @@ title: "Réchauffer des frites au air fryer : croustillantes à nouveau"
 metaTitle: "Réchauffer frites air fryer : temps et astuce"
 description: "Comment réchauffer des frites au air fryer : 180 °C, 3 à 5 min, et elles redeviennent croustillantes comme au premier jour. Bien mieux que le micro-ondes."
 category: "Accompagnement"
+image: "/img/rechauffer-frites-air-fryer.jpg"
 keyword: "rechauffer frites air fryer"
 rating: 4.9
 reviews: 176

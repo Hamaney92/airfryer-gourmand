@@ -3,6 +3,7 @@ title: "Tarte aux pommes au air fryer : dorée et rapide"
 metaTitle: "Tarte aux pommes air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la tarte aux pommes au air fryer : 160-170 °C, 18 à 25 min. Pâte dorée et pommes fondantes, en format individuel ou petit moule."
 category: "Dessert"
+image: "/img/tarte-aux-pommes-air-fryer.jpg"
 keyword: "tarte aux pommes air fryer"
 rating: 4.8
 reviews: 149

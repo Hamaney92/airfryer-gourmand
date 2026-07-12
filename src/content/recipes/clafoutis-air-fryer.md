@@ -3,6 +3,7 @@ title: "Clafoutis au air fryer : moelleux aux cerises"
 metaTitle: "Clafoutis air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du clafoutis au air fryer : 160-170 °C, 15 à 20 min. Moelleux et doré, aux cerises ou aux fruits de saison, en ramequins ou petit moule."
 category: "Dessert"
+image: "/img/clafoutis-air-fryer.jpg"
 keyword: "clafoutis air fryer"
 rating: 4.7
 reviews: 96

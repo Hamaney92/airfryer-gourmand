@@ -3,6 +3,7 @@ title: "Chausson aux pommes au air fryer : feuilleté et doré"
 metaTitle: "Chausson aux pommes air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du chausson aux pommes au air fryer : 180 °C, 12 à 15 min, pâte feuilletée dorée et croustillante. Maison ou surgelé, sans four."
 category: "Dessert"
+image: "/img/chausson-aux-pommes-air-fryer.jpg"
 keyword: "chausson aux pommes air fryer"
 rating: 4.8
 reviews: 166

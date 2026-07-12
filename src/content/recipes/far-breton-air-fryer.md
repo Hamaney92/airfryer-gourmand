@@ -3,6 +3,7 @@ title: "Far breton au air fryer : fondant aux pruneaux"
 metaTitle: "Far breton air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du far breton au air fryer : 160-170 °C, 25 à 35 min, appareil fondant et dessus doré. Le flan breton aux pruneaux, sans four."
 category: "Dessert"
+image: "/img/far-breton-air-fryer.jpg"
 keyword: "far breton air fryer"
 rating: 4.7
 reviews: 89

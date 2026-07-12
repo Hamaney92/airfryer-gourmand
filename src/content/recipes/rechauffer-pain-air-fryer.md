@@ -3,6 +3,7 @@ title: "Réchauffer du pain au air fryer : croûte croustillante"
 metaTitle: "Réchauffer pain air fryer : temps et astuce"
 description: "Comment réchauffer du pain rassis au air fryer : 160-180 °C, 2 à 5 min, croûte croustillante et mie moelleuse. L'astuce de l'eau pour un pain comme frais."
 category: "Accompagnement"
+image: "/img/rechauffer-pain-air-fryer.jpg"
 keyword: "rechauffer pain air fryer"
 rating: 4.8
 reviews: 143

@@ -3,6 +3,7 @@ title: "Financiers au air fryer : moelleux à la poudre d'amande"
 metaTitle: "Financiers air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des financiers au air fryer : 170-180 °C, 8 à 12 min, dorés dehors et moelleux dedans. Le beurre noisette et les moules silicone font tout."
 category: "Dessert"
+image: "/img/financiers-air-fryer.jpg"
 keyword: "financiers air fryer"
 rating: 4.8
 reviews: 96

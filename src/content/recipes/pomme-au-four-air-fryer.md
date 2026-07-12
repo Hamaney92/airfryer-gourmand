@@ -3,6 +3,7 @@ title: "Pomme au four au air fryer : fondante et caramélisée"
 metaTitle: "Pomme au four air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la pomme au four au air fryer : 170-180 °C, 12 à 18 min. Fondante et caramélisée, farcie de sucre, cannelle et beurre. Dessert minute."
 category: "Dessert"
+image: "/img/pomme-au-four-air-fryer.jpg"
 keyword: "pomme au four air fryer"
 rating: 4.8
 reviews: 124

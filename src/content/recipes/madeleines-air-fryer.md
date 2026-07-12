@@ -3,6 +3,7 @@ title: "Madeleines au air fryer : la bosse en 10 minutes"
 metaTitle: "Madeleines air fryer : temps de cuisson et bosse"
 description: "Le temps de cuisson exact des madeleines au air fryer : 170-180 °C, 8 à 11 min. L'astuce du choc thermique pour obtenir la fameuse bosse, en moules silicone."
 category: "Dessert"
+image: "/img/madeleines-air-fryer.jpg"
 keyword: "madeleines air fryer"
 rating: 4.7
 reviews: 108

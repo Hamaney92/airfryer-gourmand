@@ -3,6 +3,7 @@ title: "Flan au air fryer : pâtissier, crémeux et doré"
 metaTitle: "Flan air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du flan pâtissier au air fryer : 150-160 °C, 25 à 35 min, appareil crémeux et dessus doré. L'astuce de la basse température pour ne pas cracher."
 category: "Dessert"
+image: "/img/flan-air-fryer.jpg"
 keyword: "flan air fryer"
 rating: 4.7
 reviews: 118

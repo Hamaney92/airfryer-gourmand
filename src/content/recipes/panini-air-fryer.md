@@ -3,6 +3,7 @@ title: "Panini au air fryer : croustillant sans machine"
 metaTitle: "Panini air fryer : temps de cuisson (sans machine)"
 description: "Le temps de cuisson exact du panini au air fryer : 180-200 °C, 5 à 8 min, pain croustillant et fromage fondu, sans appareil à panini. L'astuce anti-panini volant."
 category: "Plat"
+image: "/img/panini-air-fryer.jpg"
 keyword: "panini air fryer"
 rating: 4.8
 reviews: 128

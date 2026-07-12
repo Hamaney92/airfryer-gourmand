@@ -3,6 +3,7 @@ title: "Gaufres au air fryer : moelleuses et dorées"
 metaTitle: "Gaufres air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des gaufres au air fryer : 180 °C, 6 à 10 min dans des moules en silicone, ou 3-4 min pour réchauffer des gaufres surgelées croustillantes."
 category: "Dessert"
+image: "/img/gaufres-air-fryer.jpg"
 keyword: "gaufres air fryer"
 rating: 4.7
 reviews: 138

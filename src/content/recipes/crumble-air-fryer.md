@@ -3,6 +3,7 @@ title: "Crumble au air fryer : croustillant en 15 minutes"
 metaTitle: "Crumble air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du crumble (pommes, fruits rouges) au air fryer : 160-170 °C, 12 à 18 min. Pâte croustillante et fruits fondants, en ramequins."
 category: "Dessert"
+image: "/img/crumble-air-fryer.jpg"
 keyword: "crumble air fryer"
 rating: 4.8
 reviews: 137

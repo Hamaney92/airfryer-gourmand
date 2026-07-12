@@ -3,6 +3,7 @@ title: "Réchauffer un croissant au air fryer : comme frais"
 metaTitle: "Réchauffer croissant air fryer : temps et astuce"
 description: "Comment réchauffer un croissant ou une viennoiserie au air fryer : 150-160 °C, 2 à 4 min, feuilletage croustillant et cœur moelleux. Comme sorti de la boulangerie."
 category: "Dessert"
+image: "/img/rechauffer-croissant-viennoiserie-air-fryer.jpg"
 keyword: "rechauffer croissant viennoiserie air fryer"
 rating: 4.9
 reviews: 167
