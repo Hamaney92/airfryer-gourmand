@@ -3,6 +3,7 @@ title: "Asperges au air fryer : croquantes en 10 minutes"
 metaTitle: "Asperges air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des asperges au air fryer : 200 °C, 7 à 12 min, tendres et légèrement croustillantes. Vertes ou blanches, au parmesan, sans eau."
 category: "Legume"
+image: "/img/asperges-air-fryer.jpg"
 keyword: "asperges air fryer"
 rating: 4.8
 reviews: 143

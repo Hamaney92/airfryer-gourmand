@@ -3,6 +3,7 @@ title: "Betterave au air fryer : rôtie, tendre et sucrée"
 metaTitle: "Betterave air fryer : temps de cuisson (crue)"
 description: "Le temps de cuisson exact de la betterave crue au air fryer : 190 °C, 25 à 35 min entière, ou 15 à 20 min en cubes. Rôtie, tendre et naturellement sucrée."
 category: "Legume"
+image: "/img/betterave-air-fryer.jpg"
 keyword: "betterave air fryer"
 rating: 4.7
 reviews: 94

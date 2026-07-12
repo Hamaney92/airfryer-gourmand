@@ -3,6 +3,7 @@ title: "Œuf cocotte au air fryer : crémeux en 10 minutes"
 metaTitle: "Œuf cocotte air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de l'œuf cocotte au air fryer : 160 °C, 8 à 10 min, blanc pris et jaune coulant. Version crème, jambon-fromage ou épinards, sans four."
 category: "Œufs"
+image: "/img/oeuf-cocotte-air-fryer.jpg"
 keyword: "oeuf cocotte air fryer"
 rating: 4.9
 reviews: 174

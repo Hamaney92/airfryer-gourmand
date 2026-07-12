@@ -3,6 +3,7 @@ title: "Choux de Bruxelles au air fryer : croustillants, pas amers"
 metaTitle: "Choux de Bruxelles air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des choux de Bruxelles au air fryer : 190-200 °C, 12 à 18 min, croustillants et dorés, sans amertume. Frais ou surgelés."
 category: "Legume"
+image: "/img/chou-de-bruxelles-air-fryer.jpg"
 keyword: "chou de bruxelles air fryer"
 rating: 4.8
 reviews: 116

@@ -3,6 +3,7 @@ title: "Œuf dur au air fryer : sans eau, facile à écaler"
 metaTitle: "Œuf dur air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de l'œuf dur au air fryer : 130 °C, 13 à 16 min, sans eau. Mollet, dur, facile à écaler grâce au bain d'eau glacée."
 category: "Œufs"
+image: "/img/oeuf-dur-air-fryer.jpg"
 keyword: "oeuf dur air fryer"
 rating: 4.8
 reviews: 151

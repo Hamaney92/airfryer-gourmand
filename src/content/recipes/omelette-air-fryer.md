@@ -3,6 +3,7 @@ title: "Omelette au air fryer : moelleuse et gonflée"
 metaTitle: "Omelette air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de l'omelette au air fryer : 180 °C, 8 à 10 min, moelleuse et bien gonflée. Garnie jambon-fromage, sans surveiller la poêle."
 category: "Œufs"
+image: "/img/omelette-air-fryer.jpg"
 keyword: "omelette air fryer"
 rating: 4.8
 reviews: 162
