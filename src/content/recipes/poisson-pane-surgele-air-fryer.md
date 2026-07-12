@@ -3,6 +3,7 @@ title: "Poisson pané surgelé au air fryer : croustillant en 12 min"
 metaTitle: "Poisson pané surgelé air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du poisson pané surgelé au air fryer : 200 °C, 12 à 15 min, sans huile ni décongélation. Panure dorée, cœur moelleux."
 category: "Surgelé"
+image: "/img/poisson-pane-surgele-air-fryer.jpg"
 keyword: "poisson pané surgelé air fryer"
 rating: 4.8
 reviews: 207

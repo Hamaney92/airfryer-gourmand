@@ -3,6 +3,7 @@ title: "Carottes au air fryer : rôties et caramélisées"
 metaTitle: "Carotte air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des carottes au air fryer : 200 °C, 15 à 18 min, tendres et caramélisées. Rôties, glacées au miel ou en frites, l'accompagnement facile."
 category: "Legume"
+image: "/img/carotte-air-fryer.jpg"
 keyword: "carotte air fryer"
 rating: 4.8
 reviews: 159

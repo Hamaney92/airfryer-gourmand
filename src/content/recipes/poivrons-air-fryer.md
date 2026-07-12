@@ -3,6 +3,7 @@ title: "Poivrons au air fryer : fondants et grillés"
 metaTitle: "Poivrons air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact des poivrons au air fryer : entiers ou en lanières. 180-200 °C, 12 à 20 min. Fondants, grillés, faciles à peler. L'astuce du repos."
 category: "Legume"
+image: "/img/poivrons-air-fryer.jpg"
 keyword: "poivrons air fryer"
 rating: 4.8
 reviews: 172

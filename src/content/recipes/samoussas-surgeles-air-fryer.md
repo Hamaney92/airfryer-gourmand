@@ -3,6 +3,7 @@ title: "Samoussas surgelés au air fryer : croustillants en 14 min"
 metaTitle: "Samoussas surgelés air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des samoussas surgelés au air fryer : 180 °C, 12 à 15 min, sans huile ni décongélation. Feuille de brick dorée et croustillante."
 category: "Surgelé"
+image: "/img/samoussas-surgeles-air-fryer.jpg"
 keyword: "samoussas surgelés air fryer"
 rating: 4.8
 reviews: 189

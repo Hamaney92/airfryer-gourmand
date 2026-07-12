@@ -3,6 +3,7 @@ title: "Nems surgelés au air fryer : croustillants en 14 min"
 metaTitle: "Nems surgelés air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des nems surgelés au air fryer : 200 °C, 12 à 15 min, sans huile ni décongélation. Croustillants et dorés comme à la friteuse."
 category: "Surgelé"
+image: "/img/nems-surgeles-air-fryer.jpg"
 keyword: "nems surgelés air fryer"
 rating: 4.8
 reviews: 198

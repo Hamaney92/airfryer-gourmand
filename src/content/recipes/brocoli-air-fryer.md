@@ -3,6 +3,7 @@ title: "Brocoli au air fryer : croustillant en 8 minutes"
 metaTitle: "Brocoli air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact du brocoli au air fryer : 200 °C, 6 à 10 min, croustillant sur les bords. Frais ou surgelé, l'astuce pour un brocoli doré, pas mou."
 category: "Legume"
+image: "/img/brocoli-air-fryer.jpg"
 keyword: "brocoli air fryer"
 rating: 4.8
 reviews: 203

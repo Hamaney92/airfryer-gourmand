@@ -3,6 +3,7 @@ title: "Camembert pané surgelé au air fryer : coulant à cœur"
 metaTitle: "Camembert pané surgelé air fryer : temps cuisson"
 description: "Le temps de cuisson exact du camembert pané surgelé au air fryer : 190-200 °C, 6 à 9 min, panure croustillante et cœur coulant. L'astuce anti-fromage qui s'échappe."
 category: "Surgelé"
+image: "/img/camembert-pane-surgele-air-fryer.jpg"
 keyword: "camembert pane surgele air fryer"
 rating: 4.8
 reviews: 116

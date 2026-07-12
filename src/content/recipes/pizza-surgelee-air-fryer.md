@@ -3,6 +3,7 @@ title: "Pizza surgelée au air fryer : pâte croustillante"
 metaTitle: "Pizza surgelée air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la pizza surgelée au air fryer : 180 °C, 6 à 10 min, pâte croustillante et fromage fondu, sans four à préchauffer."
 category: "Surgelé"
+image: "/img/pizza-surgelee-air-fryer.jpg"
 keyword: "pizza surgelée air fryer"
 rating: 4.7
 reviews: 189

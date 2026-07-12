@@ -3,6 +3,7 @@ title: "Courgettes au air fryer : croustillantes en 12 minutes"
 metaTitle: "Courgette air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact des courgettes au air fryer selon la découpe : 200 °C, 10 à 15 min. Dorées et croustillantes, jamais détrempées. L'astuce anti-mou."
 category: "Legume"
+image: "/img/courgette-air-fryer.jpg"
 keyword: "courgette air fryer"
 rating: 4.8
 reviews: 198

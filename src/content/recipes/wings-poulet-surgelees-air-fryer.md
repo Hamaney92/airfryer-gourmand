@@ -3,6 +3,7 @@ title: "Wings de poulet surgelées au air fryer : croustillantes"
 metaTitle: "Wings surgelées air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des wings de poulet surgelées au air fryer : 200 °C, 12 à 16 min, croustillantes sans friture ni décongélation. Version buffalo ou BBQ."
 category: "Surgelé"
+image: "/img/wings-poulet-surgelees-air-fryer.jpg"
 keyword: "wings de poulet surgelées air fryer"
 rating: 4.9
 reviews: 208

@@ -3,6 +3,7 @@ title: "Croquettes surgelées au air fryer : croustillantes"
 metaTitle: "Croquettes surgelées air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des croquettes surgelées au air fryer : 200 °C, 8 à 12 min, dorées et croustillantes sans friture ni décongélation. Pomme de terre, fromage…"
 category: "Surgelé"
+image: "/img/croquettes-surgelees-air-fryer.jpg"
 keyword: "croquettes surgelees air fryer"
 rating: 4.7
 reviews: 118

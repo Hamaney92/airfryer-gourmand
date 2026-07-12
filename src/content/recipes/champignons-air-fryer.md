@@ -3,6 +3,7 @@ title: "Champignons au air fryer : dorés en 8 minutes"
 metaTitle: "Champignons air fryer : temps de cuisson et astuces"
 description: "Le temps de cuisson exact des champignons au air fryer : 180-200 °C, 6 à 12 min selon la coupe. Dorés et savoureux, sans qu'ils rendent de l'eau."
 category: "Legume"
+image: "/img/champignons-air-fryer.jpg"
 keyword: "champignons air fryer"
 rating: 4.8
 reviews: 178

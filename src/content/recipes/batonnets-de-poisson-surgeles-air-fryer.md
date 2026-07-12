@@ -3,6 +3,7 @@ title: "Bâtonnets de poisson surgelés au air fryer : croustillants"
 metaTitle: "Bâtonnets de poisson air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des bâtonnets de poisson panés surgelés au air fryer : 200 °C, 8 à 10 min, croustillants sans friture ni décongélation."
 category: "Surgelé"
+image: "/img/batonnets-de-poisson-surgeles-air-fryer.jpg"
 keyword: "batonnets de poisson surgeles air fryer"
 rating: 4.8
 reviews: 147
