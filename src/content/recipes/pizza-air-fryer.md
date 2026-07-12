@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 11
 servings: 2
 temp: "180 °C"
+image: "/img/pizza-air-fryer.jpg"
 quickAnswer: "Cuis une pizza au air fryer 8 à 12 min à 180 °C, jusqu'à ce que le fromage soit fondu et la pâte dorée. Pâte maison épaisse : précuis-la 3 min à 200 °C avant de garnir. Surgelée : 8 à 10 min à 180 °C, sans décongeler."
 ingredients:
   - "1 pâte à pizza (maison, fraîche du commerce, ou 1 pizza surgelée)"
@@ -68,14 +69,4 @@ L'erreur classique, c'est de charger la pizza comme au four. Dans l'air fryer, u
 
 ## Le fond croustillant, tout se joue là
 
-Contrairement au four, c'est le **dessous** de la pâte qu'il faut surveiller, pas le dessus. Soulève un bord à mi-cuisson : s'il est doré et rigide, c'est prêt. Pour une pâte maison épaisse, une **précuisson de 3 minutes à 200 °C** avant de garnir évite le fond mou. Un papier cuisson perforé empêche la pâte de coller sans bloquer la circulation d'air.
-
-## Réchauffer une pizza au air fryer
-
-C'est le meilleur usage secret de l'air fryer : **réchauffer une part de pizza de la veille**. Là où le micro-ondes la rend molle et caoutchouteuse, l'air fryer lui **redonne son croustillant du premier jour**. Pose la part directement dans le panier et compte **3 à 4 minutes à 160 °C** : la pâte redevient croquante, le fromage refond, et personne ne devine que c'est un reste. Pour une pizza surgelée ou une grande part, ajoute 1 à 2 minutes.
-
-## Pour aller plus loin
-
-- une base blanche (crème + mozzarella) change de la sauce tomate ;
-- du [camembert rôti au air fryer](/recettes/camembert-roti-air-fryer/) en entrée pour un repas 100 % air fryer ;
-- pour l'apéro, teste les [nuggets surgelés](/recettes/nuggets-surgeles-air-fryer/) ou un [halloumi au air fryer](/recettes/halloumi-air-fryer/).
+Contrairement au four, c'est le **dessous** de la pâte qu'il faut surveiller, pas le dessus. Soulève un bord à mi-cuisson : s'il est doré et rigide, c'est prêt. Pour une pâte maison épaisse, une **précuisson de 3 minutes à 200 °C** avant de garnir évite le fond mou. Un papier cuisson perforé empêche la pâte de coller sans bloquer la circulation d'

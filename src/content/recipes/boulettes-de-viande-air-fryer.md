@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 9
 servings: 3
 temp: "200 °C"
+image: "/img/boulettes-de-viande-air-fryer.jpg"
 quickAnswer: "Cuis les boulettes de viande 8 à 10 min à 200 °C au air fryer, en les retournant à mi-cuisson, jusqu'à 74 °C à cœur. Surgelées : 12 à 14 min, sans décongeler."
 ingredients:
   - "500 g de boulettes de viande (fraîches ou du commerce)"

@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 28
 servings: 6
 temp: "160 °C"
+image: "/img/gateau-au-yaourt-air-fryer.jpg"
 quickAnswer: "Cuis le gâteau au yaourt au air fryer 25 à 30 min à 160 °C, dans un moule adapté au panier. À cette température douce, il gonfle et cuit à cœur sans brûler dessus. La pointe d'un couteau doit ressortir propre."
 ingredients:
   - "1 pot de yaourt nature (garde le pot comme mesure)"

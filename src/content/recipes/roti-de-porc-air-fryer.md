@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 45
 servings: 4
 temp: "180 °C"
+image: "/img/roti-de-porc-air-fryer.jpg"
 quickAnswer: "Cuis le rôti de porc au air fryer à 180 °C en comptant 25 à 30 min par 500 g. Saisis-le d'abord 10 min à 200 °C pour dorer, puis baisse à 180 °C. Retourne à mi-cuisson et vise 68-72 °C à cœur. Laisse reposer 10 min avant de trancher."
 ingredients:
   - "1 rôti de porc (échine, filet ou longe), 600 g à 1 kg"

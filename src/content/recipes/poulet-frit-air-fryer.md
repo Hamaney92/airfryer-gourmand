@@ -10,6 +10,7 @@ prepTime: 15
 cookTime: 22
 servings: 4
 temp: "200 °C"
+image: "/img/poulet-frit-air-fryer.jpg"
 quickAnswer: "Cuis le poulet frit au air fryer 20 à 25 min à 200 °C pour des morceaux avec os (pilons, cuisses), ou 12 à 15 min à 190 °C pour du blanc en aiguillettes. Retourne à mi-cuisson, pulvérise d'huile, et vise 75 °C à cœur. L'enrobage croustille sans bain d'huile."
 ingredients:
   - "4 à 6 morceaux de poulet (pilons, cuisses, ailes ou aiguillettes)"

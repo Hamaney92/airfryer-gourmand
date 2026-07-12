@@ -10,6 +10,7 @@ prepTime: 5
 cookTime: 16
 servings: 3
 temp: "200 °C"
+image: "/img/ailes-de-poulet-air-fryer.jpg"
 quickAnswer: "Cuis les ailes de poulet 15 à 17 min à 200 °C au air fryer, en les retournant à mi-cuisson, jusqu'à 74 °C à cœur. Pour une peau extra croustillante, finis 5 min à 200 °C après la sauce."
 ingredients:
   - "800 g à 1 kg d'ailes de poulet"
