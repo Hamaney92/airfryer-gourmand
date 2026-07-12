@@ -10,6 +10,7 @@ prepTime: 1
 cookTime: 13
 servings: 3
 temp: "180 °C"
+image: "/img/merguez-air-fryer.jpg"
 quickAnswer: "Cuis les merguez 12 à 14 min à 180 °C au air fryer, en les retournant à mi-cuisson. Ne les pique pas : elles gardent leur jus. Sans huile, sans fumée."
 ingredients:
   - "4 à 6 merguez fraîches"

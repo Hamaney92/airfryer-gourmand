@@ -10,6 +10,7 @@ prepTime: 10
 cookTime: 19
 servings: 6
 temp: "160 °C"
+image: "/img/brownie-air-fryer.jpg"
 quickAnswer: "Cuis le brownie 18 à 20 min à 160 °C au air fryer, dans un moule adapté. Pour un cœur bien fondant, sors-le à 15-16 min : la pointe du couteau doit ressortir légèrement humide."
 ingredients:
   - "150 g de chocolat noir"

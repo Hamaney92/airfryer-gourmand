@@ -10,6 +10,7 @@ prepTime: 15
 cookTime: 10
 servings: 4
 temp: "200 °C"
+image: "/img/beignet-air-fryer.jpg"
 quickAnswer: "Au air fryer, cuis les beignets salés (calamars, courgette, crevettes) 8 à 12 min à 200 °C, et les beignets sucrés (pommes, carnaval) 8 à 10 min à 180 °C, en les retournant à mi-cuisson. Pulvérise d'huile pour un doré croustillant, sans bain de friture."
 ingredients:
   - "Beignets surgelés (calamars, crevettes) OU pâte à beignets maison"

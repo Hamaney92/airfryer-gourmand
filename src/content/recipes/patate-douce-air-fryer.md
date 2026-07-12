@@ -10,6 +10,7 @@ prepTime: 5
 cookTime: 18
 servings: 3
 temp: "200 °C"
+image: "/img/patate-douce-air-fryer.jpg"
 quickAnswer: "Cuis la patate douce à 200 °C au air fryer : en cubes de 2,5 cm, 15 à 18 min ; en frites, 15 à 20 min ; entière, 25 à 35 min. Secoue le panier à mi-cuisson."
 ingredients:
   - "2 patates douces moyennes"
