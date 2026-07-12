@@ -3,6 +3,7 @@ title: "Gratin dauphinois au air fryer : crémeux et doré"
 metaTitle: "Gratin dauphinois air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du gratin dauphinois au air fryer : 180 °C, environ 30 min, pommes de terre fondantes et dessus doré. L'astuce de l'épaisseur."
 category: "Accompagnement"
+image: "/img/gratin-dauphinois-air-fryer.jpg"
 keyword: "gratin dauphinois air fryer"
 rating: 4.8
 reviews: 158
@@ -68,18 +69,4 @@ C'est LA cause d'un gratin raté : des pommes de terre coupées trop épaisses r
 
 ## Le bon plat, le bon nappage
 
-Choisis un **plat qui rentre dans le panier** avec de l'espace autour pour que l'air chaud circule. Et veille à ce que les pommes de terre soient **recouvertes de crème** : celles qui dépassent sèchent et durcissent. Un dernier contrôle à la pointe du couteau — elle doit s'enfoncer sans résistance — et le gratin est prêt.
-
-## Surgelé, mini-portions ou à réchauffer
-
-- **Gratin dauphinois surgelé** (du commerce) : cuis-le directement congelé, 15 à 20 min à 180-200 °C, jusqu'à ce qu'il soit chaud à cœur et doré. Les mini-gratins surgelés : 12 à 15 min.
-- **Mini-gratins / portions individuelles** : dans des ramequins, 20 à 25 min à 180 °C — pratiques et jolis à servir.
-- **Réchauffer un gratin** de la veille : 8 à 10 min à 160 °C lui rendent son croustillant sans le dessécher, bien mieux qu'au micro-ondes.
-
-Sur un air fryer Ninja, Moulinex ou Cosori, utilise le mode « Air Fry » à 180 °C : les temps sont identiques d'un modèle à l'autre.
-
-## Pour aller plus loin
-
-- l'accompagnement parfait d'un [magret de canard](/recettes/magret-de-canard-air-fryer/) ou d'une [côte de porc au air fryer](/recettes/cote-de-porc-air-fryer/) ;
-- pour changer, teste les [pommes de terre sautées](/recettes/pommes-de-terre-sautees-air-fryer/) ;
-- version plus légère : remplace une partie de la crème par du lait.
+Choisis un **plat qui rentre dans le panier** avec de l'espace autour pour qu

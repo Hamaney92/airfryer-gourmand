@@ -3,6 +3,7 @@ title: "Chipolatas au air fryer : croustillantes en 10 min"
 metaTitle: "Chipolata air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des chipolatas au air fryer : 180-200 °C, 8 à 12 min, sans les piquer. Dorées, juteuses, sans fumée. Fraîches ou surgelées."
 category: "Charcuterie"
+image: "/img/chipolata-air-fryer.jpg"
 keyword: "chipolata air fryer"
 rating: 4.8
 reviews: 209

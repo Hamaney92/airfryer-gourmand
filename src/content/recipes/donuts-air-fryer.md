@@ -3,6 +3,7 @@ title: "Donuts au air fryer : moelleux et glacés sans friture"
 metaTitle: "Donuts air fryer : temps de cuisson et glaçage"
 description: "Le temps de cuisson exact des donuts au air fryer : 180 °C, 6 à 8 min, moelleux et dorés sans bain d'huile. Glaçage sucre-cannelle ou chocolat, l'astuce express."
 category: "Dessert"
+image: "/img/donuts-air-fryer.jpg"
 keyword: "donuts air fryer"
 rating: 4.9
 reviews: 198

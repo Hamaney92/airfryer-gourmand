@@ -3,6 +3,7 @@ title: "Bacon au air fryer : croustillant en 10 minutes"
 metaTitle: "Bacon air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact du bacon au air fryer : 200 °C, 8 à 10 min pour un bacon croustillant, sans éclaboussures ni poêle grasse. L'astuce anti-fumée."
 category: "Charcuterie"
+image: "/img/bacon-air-fryer.jpg"
 keyword: "bacon air fryer"
 rating: 4.8
 reviews: 152
@@ -64,10 +65,4 @@ Le bacon continue de durcir en **refroidissant** : sors-le quand il est doré ma
 
 ## Bacon enrobé et chips de bacon
 
-L'air fryer est imbattable pour le **bacon enrobé** : entoure des asperges, des saucisses, des dattes ou des blancs de poulet d'une tranche de bacon, et cuis à 200 °C — la tranche croustille et parfume l'aliment. Compte 10 à 14 min selon la garniture. Envie de **chips de bacon** ? Coupe le bacon en petits morceaux et cuis-les 6 à 8 min à 200 °C jusqu'à ce qu'ils soient cassants : parfaits à émietter sur une salade ou une soupe.
-
-## Pour aller plus loin
-
-- émietté sur une salade, une soupe ou des pâtes ;
-- avec des [œufs au air fryer](/recettes/oeuf-air-fryer/) et un toast pour un petit-déjeuner complet ;
-- en topping d'un [blanc de poulet](/recettes/blanc-de-poulet-air-fryer/) ou d'un [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/).
+L'air fryer est imbattable pour le **bacon enrobé** : entoure des asperges, des saucisses, des dattes ou des blancs de poulet d'une tranche de bacon, et cuis à 200 °C — la tranche croustille et parfume l'aliment. Compte 1

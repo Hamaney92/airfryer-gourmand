@@ -3,6 +3,7 @@ title: "Croque-monsieur au air fryer : doré en 8 minutes"
 metaTitle: "Croque-monsieur air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du croque-monsieur au air fryer : 180 °C, 6 à 8 min, pain doré et fromage fondant. La recette express et l'astuce anti-brûlé."
 category: "Plat"
+image: "/img/croque-monsieur-air-fryer.jpg"
 keyword: "croque-monsieur air fryer"
 rating: 4.8
 reviews: 167
@@ -66,14 +67,4 @@ La ventilation puissante de l'air fryer peut **soulever la tranche du dessus** e
 
 ## Doré uniforme
 
-Beurre légèrement l'**extérieur** des tranches : c'est ce qui donne ce doré appétissant et régulier, comme à la poêle mais sans surveillance. Et garde un œil sur les **deux dernières minutes** : le pain de mie passe du doré au brûlé en un rien de temps.
-
-## Variantes gourmandes et réchauffage
-
-Le croque se décline à l'infini au air fryer : **raclette**, **saumon-boursin**, version **italienne** (mozzarella-tomate), ou en **croque-monsieur roulé** (garni puis roulé dans du pain de mie). Envie plus léger ? Un croque **sans béchamel**, juste jambon-fromage, cuit tout aussi bien. Et pour **réchauffer un croque-monsieur** de la veille : 3 à 4 min à 160 °C lui rendent tout son croustillant, bien mieux qu'au micro-ondes.
-
-## Pour aller plus loin
-
-- une version croque-madame avec un [œuf au air fryer](/recettes/oeuf-air-fryer/) sur le dessus ;
-- du [bacon au air fryer](/recettes/bacon-air-fryer/) émietté à l'intérieur pour un croque gourmand ;
-- en entrée, un [camembert rôti au air fryer](/recettes/camembert-roti-air-fryer/) à partager.
+Beurre légèrement l'**extérieur** des tranches : c'est ce qui donne ce doré appétissant et régulier, comme à la poêle mais 

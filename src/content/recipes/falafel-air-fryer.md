@@ -3,6 +3,7 @@ title: "Falafels au air fryer : croustillants sans friture"
 metaTitle: "Falafel air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des falafels au air fryer : 190 °C, 12 à 15 min, croustillants dehors et moelleux dedans. L'astuce des pois chiches et la version surgelée."
 category: "Apéro"
+image: "/img/falafel-air-fryer.jpg"
 keyword: "falafel air fryer"
 rating: 4.9
 reviews: 187

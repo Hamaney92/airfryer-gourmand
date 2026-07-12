@@ -3,6 +3,7 @@ title: "Gâteau au chocolat au air fryer : moelleux et fondant"
 metaTitle: "Gâteau au chocolat air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du gâteau au chocolat au air fryer : 160 °C, 20 à 25 min, moelleux ou fondant à cœur. La recette facile et l'astuce du moule et du couteau."
 category: "Dessert"
+image: "/img/gateau-au-chocolat-air-fryer.jpg"
 keyword: "gateau au chocolat air fryer"
 rating: 4.9
 reviews: 241

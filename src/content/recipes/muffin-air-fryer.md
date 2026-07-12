@@ -3,6 +3,7 @@ title: "Muffins au air fryer : moelleux en 15 minutes"
 metaTitle: "Muffin air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des muffins au air fryer : 160 °C, 12 à 15 min, moelleux et bien gonflés. Chocolat, banane, myrtille ou salés, l'astuce du moule."
 category: "Dessert"
+image: "/img/muffin-air-fryer.jpg"
 keyword: "muffin air fryer"
 rating: 4.9
 reviews: 219

@@ -3,6 +3,7 @@ title: "Moelleux au chocolat au air fryer : cœur coulant"
 metaTitle: "Moelleux au chocolat air fryer : temps de cuisson"
 description: "Le temps de cuisson exact du moelleux au chocolat au air fryer : 180 °C, 9 à 11 min pour un cœur coulant. La recette express en ramequin, le mi-cuit parfait."
 category: "Dessert"
+image: "/img/moelleux-au-chocolat-air-fryer.jpg"
 keyword: "moelleux au chocolat air fryer"
 rating: 4.9
 reviews: 227

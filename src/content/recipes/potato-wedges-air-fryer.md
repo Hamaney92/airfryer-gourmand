@@ -3,6 +3,7 @@ title: "Potato wedges au air fryer : croustillants et dorés"
 metaTitle: "Potato wedges air fryer : temps de cuisson (quartiers)"
 description: "Le temps de cuisson exact des potato wedges au air fryer : 200 °C, 18 à 22 min, croustillants dehors et fondants dedans. Version ail-parmesan, patate douce ou surgelés."
 category: "Accompagnement"
+image: "/img/potato-wedges-air-fryer.jpg"
 keyword: "potato wedges air fryer"
 rating: 4.8
 reviews: 166

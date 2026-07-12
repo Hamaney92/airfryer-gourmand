@@ -3,6 +3,7 @@ title: "Tofu au air fryer : ultra croustillant et facile"
 metaTitle: "Tofu air fryer : temps de cuisson et astuce croustillant"
 description: "Le temps de cuisson exact du tofu au air fryer : 200 °C, 15 à 20 min, croustillant dehors et moelleux dedans. L'astuce de la fécule et la marinade qui change tout."
 category: "Plat"
+image: "/img/tofu-air-fryer.jpg"
 keyword: "tofu air fryer"
 rating: 4.9
 reviews: 208

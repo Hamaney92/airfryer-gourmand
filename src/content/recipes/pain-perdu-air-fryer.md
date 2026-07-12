@@ -3,6 +3,7 @@ title: "Pain perdu au air fryer : doré en 8 minutes"
 metaTitle: "Pain perdu air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du pain perdu au air fryer : 180 °C, 6 à 8 min, doré et moelleux sans poêle. Brioche, pain au lait ou rassis, l'astuce anti-détrempé."
 category: "Dessert"
+image: "/img/pain-perdu-air-fryer.jpg"
 keyword: "pain perdu air fryer"
 rating: 4.8
 reviews: 178

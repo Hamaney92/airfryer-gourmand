@@ -3,6 +3,7 @@ title: "Churros au air fryer : croustillants sans friture"
 metaTitle: "Churros air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact des churros au air fryer : 180 °C, 10 à 12 min, croustillants dehors et moelleux dedans, sans bain d'huile. Maison ou surgelés."
 category: "Dessert"
+image: "/img/churros-air-fryer.jpg"
 keyword: "churros air fryer"
 rating: 4.9
 reviews: 217

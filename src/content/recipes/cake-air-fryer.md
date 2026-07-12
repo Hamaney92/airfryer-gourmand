@@ -3,6 +3,7 @@ title: "Cake au air fryer : moelleux, sucré ou salé"
 metaTitle: "Cake air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact du cake au air fryer : 160 °C, 25 à 35 min, moelleux et doré. Cake marbré, aux fruits ou salé jambon-olives, l'astuce du moule."
 category: "Dessert"
+image: "/img/cake-air-fryer.jpg"
 keyword: "cake air fryer"
 rating: 4.8
 reviews: 168

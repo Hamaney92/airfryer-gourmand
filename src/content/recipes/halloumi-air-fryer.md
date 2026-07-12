@@ -3,6 +3,7 @@ title: "Halloumi au air fryer : croustillant et fondant"
 metaTitle: "Halloumi air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact du halloumi au air fryer : 200 °C, 8 à 10 min, doré dehors et fondant dedans. En tranches ou en frites, l'astuce anti-caoutchouc."
 category: "Apéro"
+image: "/img/halloumi-air-fryer.jpg"
 keyword: "halloumi air fryer"
 rating: 4.9
 reviews: 189
@@ -66,10 +67,4 @@ Deux gestes font la différence : **éponger** le halloumi (la saumure humide em
 
 ## Frites de halloumi, panées ou au miel
 
-Le halloumi se décline en mille formats au air fryer : en **frites** ou **sticks** (bâtonnets), **panés au panko** pour un croustillant maximal, dans un **burger végétarien**, ou nappés de **miel** (honey halloumi) pour le contraste salé-sucré irrésistible. Bon à savoir : le halloumi étant naturellement pauvre en glucides, ses **frites sont une excellente alternative keto** aux frites de pomme de terre.
-
-## Pour aller plus loin
-
-- un filet de miel et un peu de citron à la sortie, le combo salé-sucré parfait ;
-- dans une salade tiède avec des [poivrons au air fryer](/recettes/poivrons-air-fryer/) ;
-- en apéro avec un [camembert rôti](/recettes/camembert-roti-air-fryer/) et des légumes rôtis comme l'[aubergine au air fryer](/recettes/aubergine-air-fryer/).
+Le halloumi se décline en mille formats au air fryer : en **frites** ou **sticks** (bâtonnets), **panés au panko** pour un croustillant maximal, dans un **burger végétarien**, ou nappés de **miel** (honey halloumi) pour le contraste salé-sucré irrésistible. Bon à savoir : le halloumi étant naturellement pauvre

@@ -3,6 +3,7 @@ title: "Banane au air fryer : caramélisée en 7 minutes"
 metaTitle: "Banane air fryer : temps de cuisson (caramélisée, rôtie)"
 description: "Le temps de cuisson exact de la banane au air fryer : 180-200 °C, 7 à 10 min, caramélisée et fondante. Le dessert minute sain, sans sucre ajouté."
 category: "Dessert"
+image: "/img/banane-air-fryer.jpg"
 keyword: "banane air fryer"
 rating: 4.8
 reviews: 164
