@@ -2,11 +2,11 @@
 import Base from '../../layouts/Base.astro';
 
 const guides = [
-  ['🥇', 'Meilleur air fryer 2026', 'Notre comparatif des modèles qui valent vraiment leur prix, pour chaque budget.'],
-  ['🍽️', 'Meilleur air fryer double panier', 'Deux tiroirs pour cuire deux plats à la fois : les meilleurs modèles familiaux.'],
-  ['📦', 'Air fryer XXL & familial', 'Les grandes capacités (7 L et +) pour les familles nombreuses et les grandes tablées.'],
-  ['🔧', 'Accessoires air fryer indispensables', 'Moules, papiers cuisson perforés, grilles… ce qui change vraiment la donne.'],
-  ['⚖️', 'Ninja, Moulinex ou Philips ?', 'On compare les grandes marques pour t\'aider à choisir selon tes besoins.'],
+  ['🥇', 'Meilleur air fryer 2026', 'Notre comparatif des modèles qui valent vraiment leur prix, pour chaque budget.', '/guides/meilleur-air-fryer-2026/'],
+  ['🍽️', 'Meilleur air fryer double panier', 'Deux tiroirs pour cuire deux plats à la fois : les meilleurs modèles familiaux.', null],
+  ['📦', 'Air fryer XXL & familial', 'Les grandes capacités (7 L et +) pour les familles nombreuses et les grandes tablées.', null],
+  ['🔧', 'Accessoires air fryer indispensables', 'Moules, papiers cuisson perforés, grilles… ce qui change vraiment la donne.', null],
+  ['⚖️', 'Ninja, Moulinex ou Philips ?', 'On compare les grandes marques pour t\'aider à choisir selon tes besoins.', null],
 ];
 ---
 <Base title="Guides d'achat air fryer 2026 — Quel modèle choisir ?" description="Nos guides d'achat air fryer : comment choisir, comparatifs des meilleurs modèles (simple, double panier, XXL) et accessoires indispensables. Pour chaque budget.">
@@ -25,12 +25,14 @@ const guides = [
       </p>
 
       <div class="cards">
-        {guides.map(([e, t, d]) => (
-          <div class="rcard" style="cursor:default">
+        {guides.map(([e, t, d, url]) => (
+          <div class="rcard">
             <div class="ph" style="height:120px"><span style="font-size:2rem">{e}</span></div>
             <div style="padding:14px 16px 18px">
-              <span class="rtag">Guide d'achat · à venir</span>
-              <h2 class="rtitle" style="margin-top:8px">{t}</h2>
+              <span class="rtag">{url ? 'Guide d\'achat' : 'Guide d\'achat · à venir'}</span>
+              {url
+                ? <h2 class="rtitle" style="margin-top:8px"><a href={url} style="color:var(--brand-d);text-decoration:none">{t} →</a></h2>
+                : <h2 class="rtitle" style="margin-top:8px">{t}</h2>}
               <p style="color:#6a5d54;font-size:.92rem;margin:6px 0 0">{d}</p>
             </div>
           </div>

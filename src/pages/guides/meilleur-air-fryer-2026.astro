@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Meilleur air fryer 2026 : comparatif pour choisir (par budget)";
+const description = "Notre comparatif air fryer 2026 : les meilleurs modèles par besoin (polyvalent, compact, double panier, XXL, petit budget) et les critères pour bien choisir. Objectif, sans blabla.";
+
+const modeles = [
+  { cat: "🏆 Meilleur rapport qualité-prix / polyvalent", nom: "Cosori TurboBlaze 6L", capa: "6 L", puis: "1725 W", prix: "~100-140 €", pour: "Un seul appareil pour tout faire, sans se ruiner.", plus: "Moteur silencieux, chauffe rapide, écran tactile, 30-230 °C.", moins: "Panier unique (pas de double zone)." },
+  { cat: "👥 Meilleur compact (1-2 personnes)", nom: "Ninja AF100EU", capa: "3,8 L", puis: "1550 W", prix: "~90-100 €", pour: "Solo, couple ou petite cuisine.", plus: "Compact mais 3,8 L, panier lave-vaisselle, marque fiable.", moins: "Juste pour 1-2 personnes, fonctions basiques." },
+  { cat: "🍽️ Meilleur double panier (2 plats à la fois)", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Un repas complet (protéine + accompagnement) en une fois.", plus: "Deux zones indépendantes, fonction Sync, grande capacité.", moins: "Encombrant et un peu bruyant, prix élevé." },
+  { cat: "💶 Meilleur double panier abordable", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans le prix Ninja.", plus: "Deux tiroirs, marque française, moins cher.", moins: "Tiroirs de tailles inégales." },
+  { cat: "👨‍👩‍👧‍👦 Meilleur XXL / familial", nom: "Cosori gamme 10L (Dual Blaze)", capa: "~9-11 L", puis: "~1700-2600 W", prix: "~150-250 €", pour: "Grandes tablées et batch cooking.", plus: "Énorme capacité, certaines versions évitent de retourner les aliments.", moins: "Très encombrant, prix élevé." },
+  { cat: "🪙 Meilleur petit budget", nom: "Silvercrest 6,7L (Lidl) / Xiaomi 6.5L", capa: "6,5-6,7 L", puis: "~1800-2150 W", prix: "~50-70 €", pour: "Grande capacité au prix d'un compact.", plus: "Imbattable sur le prix, performances honnêtes.", moins: "Dispo ponctuelle (Lidl), SAV plus limité." },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Quelle capacité d'air fryer choisir ?", "acceptedAnswer": { "@type": "Answer", "text": "Comptez environ 1 L par personne : 3,5-4 L pour 1-2 personnes, 5-6 L pour 3-4 personnes, 7-9 L ou un double panier pour 5 personnes et plus. Pour cuire un poulet entier, visez au moins 5-6 L." } },
+    { "@type": "Question", "name": "Simple ou double panier ?", "acceptedAnswer": { "@type": "Answer", "text": "Le double panier (DualZone) permet de cuire deux plats à des températures et durées différentes, donc un repas complet en une fois. Il est plus cher et plus encombrant : utile pour les familles, superflu pour 1-2 personnes." } },
+    { "@type": "Question", "name": "Faut-il beaucoup de watts ?", "acceptedAnswer": { "@type": "Answer", "text": "1400-1700 W suffisent pour un compact. Les grands formats et doubles paniers montent à 2400-2700 W pour chauffer plus vite et plus uniformément. Une puissance élevée aide sur les grandes capacités, mais ne fait pas tout." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
+        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Meilleur air fryer 2026
+      </div>
+      <h1>Meilleur air fryer 2026 : comment choisir (comparatif par budget)</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> pas d'air fryer « meilleur » dans l'absolu — le bon dépend de ton foyer et de ton budget. Pour la plupart des gens, un modèle polyvalent de 5-6 L (type Cosori TurboBlaze) est le meilleur compromis. Familles : un double panier. Petit budget ou 1-2 personnes : un compact ou un premier prix suffit largement.</div>
+
+      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">
+        ⚖️ <b>Transparence :</b> ce guide est <b>100 % informatif</b> et ne contient aucun lien commercial. Les <b>prix sont indicatifs (2026) et varient</b> beaucoup selon le revendeur et les promotions — vérifie toujours le prix et la référence exacte chez le vendeur avant d'acheter.
+      </p>
+
+      <h2>Les 5 critères qui comptent vraiment</h2>
+      <ul>
+        <li><b>La capacité</b> (le critère n°1) : ~1 L par personne. 3,5-4 L pour 1-2 pers., 5-6 L pour 3-4 pers., 7-9 L ou double panier au-delà. Un poulet entier réclame 5-6 L minimum.</li>
+        <li><b>Simple ou double panier</b> : le double (DualZone) cuit deux plats différents en même temps — pratique pour un repas complet, mais plus cher et plus encombrant.</li>
+        <li><b>La puissance</b> : 1400-1700 W pour un compact, 2400-2700 W sur les grands formats. Plus de watts = chauffe plus rapide et homogène, surtout en grande capacité.</li>
+        <li><b>Le nettoyage</b> : privilégie un <b>panier compatible lave-vaisselle</b> et un revêtement anti-adhésif (idéalement sans PFOA/PFAS).</li>
+        <li><b>L'encombrement & le bruit</b> : mesure ton plan de travail. Les gros modèles sont volumineux et plus bruyants ; les moteurs récents (DC) sont plus silencieux.</li>
+      </ul>
+
+      <h2>Notre sélection par besoin</h2>
+      {modeles.map((m) => (
+        <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
+          <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
+          <div style="font-weight:700;font-size:1.05rem">{m.nom}</div>
+          <p style="margin:6px 0;color:#6a5d54"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.prix}</span></p>
+          <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>👎</b> {m.moins}</p>
+        </div>
+      ))}
+
+      <h2>Tableau récapitulatif</h2>
+      <table class="rectable">
+        <thead><tr><th>Modèle</th><th>Capacité</th><th>Puissance</th><th>Prix indicatif*</th><th>Pour qui</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Cosori TurboBlaze 6L</td><td>6 L</td><td>1725 W</td><td>~100-140 €</td><td>Polyvalent</td></tr>
+          <tr><td class="t">Ninja AF100EU</td><td>3,8 L</td><td>1550 W</td><td>~90-100 €</td><td>1-2 personnes</td></tr>
+          <tr><td class="t">Ninja Foodi MAX Dual Zone AF400EU</td><td>9,5 L</td><td>2470 W</td><td>~160-229 €</td><td>Familles, 2 plats</td></tr>
+          <tr><td class="t">Moulinex Dual Easy Fry & Grill 8.3L</td><td>8,3 L</td><td>~2450 W</td><td>~110-150 €</td><td>Double panier abordable</td></tr>
+          <tr><td class="t">Cosori 10L (Dual Blaze)</td><td>~9-11 L</td><td>~1700-2600 W</td><td>~150-250 €</td><td>XXL familial</td></tr>
+          <tr><td class="t">Silvercrest 6,7L (Lidl) / Xiaomi 6.5L</td><td>6,5-6,7 L</td><td>~1800-2150 W</td><td>~50-70 €</td><td>Petit budget</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:#9a8c7d;margin-top:8px"><i>*Prix indicatifs 2026, très variables selon revendeur et promotions. À vérifier au moment de l'achat.</i></p>
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Le piège, c'est de surpayer pour 12 programmes qu'on n'utilise jamais. En pratique, le trio <b>réglage manuel température + durée + un panier assez grand</b> couvre 95 % des besoins. Choisis d'abord la bonne <b>capacité</b> pour ton foyer, le reste est du confort.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Quelle capacité d'air fryer choisir ?</h3>
+      <p>Environ 1 L par personne : 3,5-4 L pour 1-2 personnes, 5-6 L pour 3-4, 7-9 L ou double panier au-delà. Un poulet entier réclame 5-6 L minimum.</p>
+      <h3>Simple ou double panier ?</h3>
+      <p>Le double panier cuit deux plats à réglages différents en même temps (repas complet en une fois). Plus cher et encombrant : utile en famille, superflu pour 1-2 personnes.</p>
+      <h3>Faut-il beaucoup de watts ?</h3>
+      <p>1400-1700 W suffisent pour un compact ; les grands formats montent à 2400-2700 W pour chauffer plus vite et plus uniformément.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ En attendant, découvre les temps de cuisson air fryer</a></p>
+    </article>
+  </div>
+</Base>
