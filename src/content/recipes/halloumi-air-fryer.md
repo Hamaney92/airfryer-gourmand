@@ -38,7 +38,10 @@ faq:
     a: "Un léger badigeon d'huile aide à dorer et à croustiller, mais le halloumi est déjà gras : inutile d'en mettre beaucoup. Épongez-le d'abord pour retirer l'excès de saumure."
   - q: "Comment servir le halloumi au air fryer ?"
     a: "Chaud, dès la sortie : avec un filet de miel, de citron, de la menthe fraîche, dans une salade, un wrap, ou en apéro avec une sauce. Il durcit en refroidissant, donc à déguster sans attendre."
+note: "Le point commun de tous nos halloumis réussis : on l'éponge bien avant, et on le sort DÈS que les bords dorent. Une minute de trop et il devient élastique — mieux vaut le retirer un poil tôt, il reste fondant. Et un filet de miel à la sortie, c'est non négociable chez nous."
+author: "L'équipe Airfryer Gourmand"
 pubDate: 2026-08-10
+updatedDate: 2026-07-13
 ---
 
 Le halloumi au air fryer, c'est l'apéro ou l'accompagnement qui fait toujours son effet : **doré et croustillant dehors, fondant et moelleux dedans**, prêt en 10 minutes. Ce fromage à pâte ferme ne fond pas — il grille — ce qui en fait un candidat parfait pour l'air fryer.
