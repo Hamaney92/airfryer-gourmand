@@ -1,0 +1,113 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.slug));
+const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
+
+const title = "Air fryer pour 2 : 12 recettes bien portionnées (+ quelle taille choisir)";
+const description = "12 recettes à l'air fryer pour 2 personnes : dîners complets, portions justes, rapides et sans gaspillage. Plus nos conseils pour choisir la bonne capacité d'air fryer à deux.";
+
+const familles = [
+  {
+    titre: "Dîners complets pour 2",
+    items: [
+      ['🍗', 'Blanc de poulet', '/recettes/blanc-de-poulet-air-fryer/', 'Protéine + légumes : le dîner équilibré express.'],
+      ['🐟', 'Saumon', '/recettes/saumon-air-fryer/', 'Deux pavés + légumes, prêts en 15 minutes.'],
+      ['🥩', 'Steak haché', '/recettes/steak-hache-air-fryer/', 'Le repas rapide et rassasiant à deux.'],
+      ['🍢', 'Brochettes de poulet', '/recettes/brochettes-de-poulet-air-fryer/', 'Conviviales, parfaites pour un dîner à deux.'],
+    ],
+  },
+  {
+    titre: "Accompagnements & apéro à deux",
+    items: [
+      ['🥔', 'Pommes de terre sautées', '/recettes/pommes-de-terre-sautees-air-fryer/', "L'accompagnement doré qui va avec tout."],
+      ['🥦', 'Légumes rôtis', '/recettes/legumes-rotis-air-fryer/', 'La portion de légumes juste pour deux.'],
+      ['🧀', 'Halloumi', '/recettes/halloumi-air-fryer/', "L'apéro à deux, croustillant et fondant."],
+    ],
+  },
+  {
+    titre: "Desserts pour 2",
+    items: [
+      ['🍫', 'Fondant au chocolat', '/recettes/fondant-chocolat-air-fryer/', 'Deux ramequins coulants, sans allumer le four.'],
+      ['🍫', 'Moelleux au chocolat', '/recettes/moelleux-au-chocolat-air-fryer/', 'Le dessert minute pour finir en douceur.'],
+    ],
+  },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Quelle capacité d'air fryer pour 2 personnes ?", "acceptedAnswer": { "@type": "Answer", "text": "Une capacité de 3 à 4 litres est idéale pour 2 personnes : assez pour un repas complet, sans encombrer le plan de travail. En dessous de 3 L, on est vite limité pour cuire une protéine et son accompagnement en même temps." } },
+    { "@type": "Question", "name": "Peut-on tout cuire en une seule fournée pour 2 ?", "acceptedAnswer": { "@type": "Answer", "text": "Souvent oui pour une protéine et des légumes coupés menu, à condition de ne pas surcharger le panier (une seule couche). Sinon, on cuit en deux temps rapides : la protéine d'abord, puis l'accompagnement, ou l'inverse en gardant au chaud." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Air fryer pour 2
+      </div>
+      <h1>Air fryer pour 2 : 12 recettes bien portionnées</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> l'air fryer est parfait à deux — portions justes, zéro gaspillage, et un dîner complet en 15 minutes. Voici 12 recettes bien dosées pour 2, et le conseil clé pour choisir la bonne capacité (3-4 L).</div>
+
+      <p>Cuisiner à deux, c'est l'écueil du gaspillage : on prépare trop, ou on jongle avec des restes. L'air fryer règle le problème — il cuit <b>juste ce qu'il faut</b>, vite et sans huile. Voici nos recettes préférées pour deux, des dîners complets aux desserts, plus nos conseils si tu hésites encore sur la taille de l'appareil.</p>
+
+      <h2>Quelle taille d'air fryer pour 2 personnes ?</h2>
+      <p>Pour deux, vise une capacité de <b>3 à 4 litres</b> : assez pour cuire une protéine et son accompagnement, sans monopoliser tout le plan de travail. En dessous de 3 L, tu seras vite à l'étroit pour un repas complet ; au-dessus de 5 L, c'est surdimensionné pour un couple (mais pratique si tu reçois). Regarde aussi la <b>puissance</b> (1500 W et plus pour bien croustiller) et le <b>panier compatible lave-vaisselle</b>. Notre <a href="/guides/" style="color:var(--accent)">guide d'achat</a> détaille les modèles.</p>
+
+      {familles.map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) })).filter((f) => f.items.length).map((f) => (
+        <>
+          <h2>{f.titre}</h2>
+          <div class="cards" style="margin-top:12px">
+            {f.items.map(([e, nom, url, note]) => (
+              <div class="rcard" style="cursor:default">
+                <div class="ph" style="height:90px"><span style="font-size:1.7rem">{e}</span></div>
+                <div style="padding:12px 15px 16px">
+                  <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{nom} →</a>
+                  <p style="color:#6a5d54;font-size:.88rem;margin:6px 0 0">{note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ))}
+
+      <h2>Astuces pour bien portionner à deux</h2>
+      <ul>
+        <li>Compte environ <b>150 g de protéine par personne</b> (un blanc de poulet, un pavé de saumon chacun).</li>
+        <li>Coupe les légumes en morceaux réguliers pour une cuisson homogène en une fournée.</li>
+        <li>Ne surcharge pas : mieux vaut deux petites fournées rapides qu'un panier tassé qui cuit mal.</li>
+        <li>Garde au chaud la première fournée pendant que la seconde cuit — l'air fryer réchauffe en 2 min.</li>
+      </ul>
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Notre combo préféré à deux : une protéine (poulet ou saumon) et des légumes coupés menu, tout dans le même panier. On lance la protéine, on ajoute les légumes à mi-cuisson, et le dîner complet sort en une seule fournée. Zéro reste, zéro vaisselle grasse.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Quelle capacité d'air fryer pour 2 personnes ?</h3>
+      <p>3 à 4 litres : assez pour un repas complet à deux, sans encombrer. En dessous de 3 L, on est vite limité.</p>
+      <h3>Peut-on tout cuire en une seule fournée pour 2 ?</h3>
+      <p>Souvent oui pour une protéine + des légumes coupés menu, sans surcharger. Sinon, on cuit en deux temps rapides.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/recettes/">🍽️ Voir toutes les recettes</a></p>
+    </article>
+  </div>
+</Base>

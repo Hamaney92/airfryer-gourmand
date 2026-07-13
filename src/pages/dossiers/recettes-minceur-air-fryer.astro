@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.slug));
+const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
+
+const title = "Recettes minceur air fryer : 12 idées gourmandes et légères";
+const description = "12 recettes minceur à l'air fryer, sans huile ou presque et peu caloriques : poulet, poisson, légumes, en-cas protéinés. Calories indicatives, réglages et astuces pour alléger.";
+
+const familles = [
+  {
+    titre: "Protéines maigres (rassasiantes)",
+    items: [
+      ['🍗', 'Blanc de poulet', '/recettes/blanc-de-poulet-air-fryer/', '≈ 165 kcal', 'Sans huile, hyper protéiné. La base d\'un repas minceur.'],
+      ['🐟', 'Saumon', '/recettes/saumon-air-fryer/', '≈ 230 kcal', 'Riche en oméga-3, moelleux, prêt en 10 min.'],
+      ['🍤', 'Crevettes', '/recettes/crevettes-air-fryer/', '≈ 120 kcal', 'Ultra légères et express, parfaites en salade.'],
+      ['🐟', 'Dos de cabillaud', '/recettes/dos-de-cabillaud-air-fryer/', '≈ 105 kcal', 'Poisson blanc maigre, doux et rassasiant.'],
+    ],
+  },
+  {
+    titre: "Légumes & chips (peu caloriques)",
+    items: [
+      ['🥦', 'Légumes rôtis', '/recettes/legumes-rotis-air-fryer/', '≈ 90 kcal', 'Colorés, sans huile, à volonté ou presque.'],
+      ['🥕', 'Chips de légumes', '/recettes/chips-de-legumes-air-fryer/', '≈ 110 kcal', 'Le grignotage croustillant sans friture.'],
+      ['🍄', 'Champignons', '/recettes/champignons-air-fryer/', '≈ 45 kcal', 'Très peu caloriques, dorés et savoureux.'],
+    ],
+  },
+  {
+    titre: "En-cas & options végé protéinées",
+    items: [
+      ['🧆', 'Falafels', '/recettes/falafel-air-fryer/', '≈ 160 kcal', 'Pois chiches = protéines végétales + satiété.'],
+      ['⬜', 'Tofu croustillant', '/recettes/tofu-air-fryer/', '≈ 145 kcal', 'Doré sans huile, riche en protéines végétales.'],
+      ['🍏', 'Pomme au four', '/recettes/pomme-au-four-air-fryer/', '≈ 95 kcal', 'Le dessert léger et réconfortant.'],
+    ],
+  },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "L'air fryer aide-t-il à maigrir ?", "acceptedAnswer": { "@type": "Answer", "text": "L'air fryer ne fait pas maigrir en soi, mais il permet de cuire sans bain d'huile : on obtient le croustillant de la friture avec bien moins de matière grasse, donc des plats moins caloriques. Associé à des ingrédients légers, c'est un allié de choix." } },
+    { "@type": "Question", "name": "Faut-il de l'huile pour cuisiner minceur à l'air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Non, ou très peu. Un simple spray d'huile suffit à dorer la plupart des aliments. C'est justement l'intérêt de l'air fryer pour une cuisine légère." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Recettes minceur
+      </div>
+      <h1>Recettes minceur à l'air fryer : 12 idées gourmandes et légères</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> l'air fryer cuit sans bain d'huile — le croustillant de la friture, mais bien moins de calories. Avec les bons ingrédients (protéines maigres, légumes), on compose des repas légers, rassasiants et gourmands. Voici nos 12 préférés.</div>
+
+      <p>Manger léger sans manger triste, c'est toute la promesse de l'air fryer. Comme il dore les aliments <b>sans les baigner dans l'huile</b>, on divise souvent les matières grasses par rapport à une poêle ou une friteuse — sans sacrifier le croustillant. Voici 12 recettes minceur, classées par famille, avec leurs calories indicatives.</p>
+
+      <h2>Pourquoi l'air fryer est l'allié minceur n°1</h2>
+      <p>La friture traditionnelle ajoute énormément de calories via l'huile absorbée. L'air fryer, lui, cuit à l'air chaud pulsé : un simple <b>spray d'huile</b> suffit. Résultat, des frites, du poulet pané ou des légumes rôtis <b>bien plus légers</b>, avec la même texture croustillante. Le secret d'un repas minceur réussi : associer cette cuisson à des <b>protéines maigres</b> (poulet, poisson, tofu) et beaucoup de <b>légumes</b>.</p>
+
+      {familles.map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) })).filter((f) => f.items.length).map((f) => (
+        <>
+          <h2>{f.titre}</h2>
+          <div class="cards" style="margin-top:12px">
+            {f.items.map(([e, nom, url, kcal, note]) => (
+              <div class="rcard" style="cursor:default">
+                <div class="ph" style="height:90px"><span style="font-size:1.7rem">{e}</span></div>
+                <div style="padding:12px 15px 16px">
+                  <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{nom} →</a>
+                  <p style="color:#6a5d54;font-size:.88rem;margin:6px 0 8px">{note}</p>
+                  <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:3px 9px;border-radius:20px;font-size:.8rem;font-weight:700">🔥 {kcal} / portion</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ))}
+      <p style="font-size:.85rem;color:#9a8c7d;margin-top:10px"><i>Calories indicatives par portion, à titre d'estimation ; elles varient selon les quantités et les assaisonnements.</i></p>
+
+      <h2>Nos astuces pour alléger encore vos cuissons</h2>
+      <ul>
+        <li>Remplace l'huile par un <b>spray</b> : quelques pulvérisations suffisent à dorer.</li>
+        <li>Assaisonne avec des <b>épices et herbes</b> (paprika, cumin, ail, citron) plutôt que des sauces grasses.</li>
+        <li>Ne surcharge pas le panier : en une seule couche, les aliments dorent au lieu de cuire à la vapeur.</li>
+        <li>Mise sur les <b>légumes</b> pour remplir l'assiette et la satiété, à faible coût calorique.</li>
+      </ul>
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Le vrai levier minceur de l'air fryer, ce n'est pas la magie, c'est l'huile qu'on ne met pas. Notre réflexe : un spray d'huile au lieu d'un filet, beaucoup d'épices, et une assiette moitié légumes / moitié protéine maigre. On mange croustillant, on mange à sa faim, et c'est léger.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>L'air fryer aide-t-il à maigrir ?</h3>
+      <p>Pas par magie, mais il permet de cuire sans bain d'huile : le croustillant de la friture avec bien moins de matière grasse, donc des plats moins caloriques. Associé à des ingrédients légers, c'est un vrai allié.</p>
+      <h3>Faut-il de l'huile pour cuisiner minceur à l'air fryer ?</h3>
+      <p>Non, ou très peu : un simple spray suffit à dorer la plupart des aliments.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ Voir tous les temps de cuisson</a></p>
+    </article>
+  </div>
+</Base>

@@ -1,5 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.slug));
+const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
 
 const title = "Batch cooking air fryer : 6 repas de la semaine en 1h30";
 const description = "Le guide batch cooking à l'air fryer : préparez 6 repas de la semaine en 1h30. Plan de session, ordre de cuisson, tableau temps/température et conservation (frigo & congélateur).";
@@ -58,7 +62,7 @@ const faqSchema = {
 
       <h2>Les 6 recettes de la session</h2>
       <div class="cards" style="margin-top:14px">
-        {recettes.map(([e, nom, url, temp, temps, note]) => (
+        {recettes.filter(([,,url]) => isLive(url)).map(([e, nom, url, temp, temps, note]) => (
           <div class="rcard" style="cursor:default">
             <div class="ph" style="height:96px"><span style="font-size:1.8rem">{e}</span></div>
             <div style="padding:12px 15px 16px">
