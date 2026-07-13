@@ -3,6 +3,7 @@ title: "Artichaut à l'air fryer : fondant dedans, doré dehors"
 metaTitle: "Artichaut air fryer : temps de cuisson (entier & cœurs)"
 description: "Cuire l'artichaut à l'air fryer : temps de cuisson exact pour l'artichaut entier ou les cœurs, l'astuce pour qu'il reste fondant, et les sauces qui vont avec. Simple et sans eau bouillante."
 category: "Legume"
+image: "/img/artichaut-air-fryer.jpg"
 keyword: "artichaut air fryer"
 rating: 4.8
 reviews: 34

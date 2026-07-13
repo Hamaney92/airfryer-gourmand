@@ -3,6 +3,7 @@ title: "Pommes de terre grenaille à l'air fryer : dorées et fondantes"
 metaTitle: "Pommes de terre grenaille air fryer : temps de cuisson"
 description: "Cuire des pommes de terre grenaille à l'air fryer : temps de cuisson exact, croustillantes dehors et fondantes dedans, sans les éplucher. L'astuce pour une peau dorée et des herbes qui accrochent."
 category: "Accompagnement"
+image: "/img/pommes-de-terre-grenaille-air-fryer.jpg"
 keyword: "pommes de terre grenaille air fryer"
 rating: 4.9
 reviews: 88

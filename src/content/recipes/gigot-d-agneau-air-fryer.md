@@ -3,6 +3,7 @@ title: "Gigot d'agneau à l'air fryer : rosé et fondant (tranche ou rôti)"
 metaTitle: "Gigot d'agneau air fryer : temps de cuisson et température à cœur"
 description: "Cuire le gigot d'agneau à l'air fryer : temps de cuisson exact pour une tranche ou un petit rôti, la température à cœur pour un agneau rosé, et l'astuce du repos. Parfait pour Pâques."
 category: "Viande"
+image: "/img/gigot-d-agneau-air-fryer.jpg"
 keyword: "gigot d'agneau air fryer"
 rating: 4.9
 reviews: 52

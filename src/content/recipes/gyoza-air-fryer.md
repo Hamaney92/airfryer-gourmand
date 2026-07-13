@@ -3,6 +3,7 @@ title: "Gyoza à l'air fryer : croustillants dessous, fondants dessus"
 metaTitle: "Gyoza air fryer : temps de cuisson (frais & surgelés)"
 description: "Cuire des gyoza à l'air fryer, frais ou surgelés : temps de cuisson exact, l'astuce eau + huile pour le fond croustillant façon poêlée, et la sauce qui va avec. Prêts en 10 minutes, sans décongeler."
 category: "Apéro"
+image: "/img/gyoza-air-fryer.jpg"
 keyword: "gyoza air fryer"
 rating: 4.9
 reviews: 61
