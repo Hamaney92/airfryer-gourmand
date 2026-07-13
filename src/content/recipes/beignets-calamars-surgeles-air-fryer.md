@@ -3,6 +3,7 @@ title: "Beignets de calamars surgelés au air fryer : croustillants"
 metaTitle: "Beignets de calamars surgelés air fryer : cuisson"
 description: "Le temps de cuisson exact des beignets de calamars surgelés au air fryer : 200 °C, 8 à 12 min, dorés et croustillants sans friture ni décongélation."
 category: "Surgelé"
+image: "/img/beignets-calamars-surgeles-air-fryer.jpg"
 keyword: "beignets de calamars surgelés air fryer"
 rating: 4.8
 reviews: 193

@@ -3,6 +3,7 @@ title: "Bavette au air fryer : saignante et juteuse"
 metaTitle: "Bavette air fryer : temps de cuisson et repos"
 description: "Le temps de cuisson exact de la bavette au air fryer : 200 °C, 6 à 10 min selon la cuisson voulue. Saignante et juteuse, avec l'astuce du repos et de la coupe."
 category: "Viande"
+image: "/img/bavette-air-fryer.jpg"
 keyword: "bavette air fryer"
 rating: 4.8
 reviews: 144

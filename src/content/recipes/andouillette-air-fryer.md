@@ -3,6 +3,7 @@ title: "Andouillette au air fryer : dorée et sans éclaboussures"
 metaTitle: "Andouillette air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de l'andouillette au air fryer : 180 °C, 12 à 16 min, dorée et grillée sans éclaboussures ni odeur envahissante. L'astuce anti-éclatement."
 category: "Charcuterie"
+image: "/img/andouillette-air-fryer.jpg"
 keyword: "andouillette air fryer"
 rating: 4.6
 reviews: 78

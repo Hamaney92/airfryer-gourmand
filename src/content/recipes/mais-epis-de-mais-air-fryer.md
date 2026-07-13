@@ -3,6 +3,7 @@ title: "Maïs (épi) au air fryer : grillé et fondant"
 metaTitle: "Maïs / épi de maïs air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de l'épi de maïs au air fryer : 190-200 °C, 12 à 16 min, grains grillés et fondants. Frais ou surgelé, façon corn on the cob beurré."
 category: "Legume"
+image: "/img/mais-epis-de-mais-air-fryer.jpg"
 keyword: "mais epis de mais air fryer"
 rating: 4.8
 reviews: 131

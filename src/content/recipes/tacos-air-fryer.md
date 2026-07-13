@@ -3,6 +3,7 @@ title: "Tacos croustillants à l'air fryer : dorés et garnis en 8 minutes"
 metaTitle: "Tacos air fryer : croustillants sans friture (temps & astuces)"
 description: "Des tacos croustillants à l'air fryer, dorés et bien garnis sans bain d'huile : température exacte, l'astuce pour qu'ils ne s'ouvrent pas, garnitures et sauces. Prêts en 8 minutes."
 category: "Plat"
+image: "/img/tacos-air-fryer.jpg"
 keyword: "tacos air fryer"
 rating: 4.8
 reviews: 39

@@ -3,6 +3,7 @@ title: "Quesadilla air fryer : croustillante et fondante en 6 minutes"
 metaTitle: "Quesadilla air fryer : temps, température et l'astuce anti-envol"
 description: "La quesadilla à l'air fryer : croustillante dehors, fondante dedans, sans huile en 6 minutes. Température exacte, l'astuce pour que la tortilla ne s'ouvre pas, garnitures et sauces."
 category: "Plat"
+image: "/img/quesadilla-air-fryer.jpg"
 keyword: "quesadilla air fryer"
 rating: 4.8
 reviews: 41

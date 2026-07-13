@@ -3,6 +3,7 @@ title: "Bricks à la viande à l'air fryer : croustillantes sans friture"
 metaTitle: "Bricks à la viande air fryer : temps de cuisson et pliage"
 description: "Des bricks à la viande croustillantes à l'air fryer, dorées sans bain d'huile : temps de cuisson à 180 °C, pliage, garniture qui ne coule pas et astuce anti-éclatement. Parfaites pour l'apéro et le ramadan."
 category: "Apéro"
+image: "/img/bricks-a-la-viande-air-fryer.jpg"
 keyword: "bricks à la viande air fryer"
 rating: 4.9
 reviews: 44

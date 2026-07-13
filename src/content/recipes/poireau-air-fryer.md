@@ -3,6 +3,7 @@ title: "Poireau au air fryer : fondant et légèrement grillé"
 metaTitle: "Poireau air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du poireau au air fryer : 180-190 °C, 10 à 15 min, fondant dedans et grillé dehors. En tronçons ou en lanières, sans matière grasse."
 category: "Legume"
+image: "/img/poireau-air-fryer.jpg"
 keyword: "poireau air fryer"
 rating: 4.6
 reviews: 82

@@ -3,6 +3,7 @@ title: "Pomme de terre au four au air fryer : peau croustillante"
 metaTitle: "Pomme de terre au four air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la pomme de terre au four au air fryer : 200 °C, 35 à 45 min, peau croustillante et chair fondante. À garnir cheddar-bacon."
 category: "Accompagnement"
+image: "/img/pomme-de-terre-au-four-air-fryer.jpg"
 keyword: "pomme de terre au four air fryer"
 rating: 4.9
 reviews: 176

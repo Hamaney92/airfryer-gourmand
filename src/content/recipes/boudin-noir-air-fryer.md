@@ -3,6 +3,7 @@ title: "Boudin noir au air fryer : doré sans éclater"
 metaTitle: "Boudin noir air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du boudin noir au air fryer : 180 °C, 8 à 12 min, doré sans qu'il éclate. L'astuce pour le piquer et le servir avec des pommes."
 category: "Charcuterie"
+image: "/img/boudin-noir-air-fryer.jpg"
 keyword: "boudin noir air fryer"
 rating: 4.7
 reviews: 109

@@ -3,6 +3,7 @@ title: "Réchauffer des nuggets au air fryer : croustillants"
 metaTitle: "Réchauffer nuggets air fryer : temps et astuce"
 description: "Comment réchauffer des nuggets au air fryer : 175-180 °C, 3 à 5 min, panure croustillante et intérieur moelleux. La meilleure méthode, loin du micro-ondes."
 category: "Surgelé"
+image: "/img/rechauffer-nuggets-air-fryer.jpg"
 keyword: "rechauffer nuggets air fryer"
 rating: 4.9
 reviews: 154

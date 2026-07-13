@@ -3,6 +3,7 @@ title: "Calamars au air fryer : tendres et dorés à la romaine"
 metaTitle: "Calamars air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des calamars au air fryer : 200 °C, 8 à 12 min panés, tendres et dorés. À la romaine, frais ou surgelés, l'astuce anti-caoutchouc."
 category: "Poisson"
+image: "/img/calamars-air-fryer.jpg"
 keyword: "calamars air fryer"
 rating: 4.8
 reviews: 161

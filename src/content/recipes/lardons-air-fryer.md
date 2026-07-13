@@ -3,6 +3,7 @@ title: "Lardons au air fryer : croustillants sans éclaboussures"
 metaTitle: "Lardons air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des lardons au air fryer : 180-200 °C, 6 à 10 min, croustillants et dorés sans éclaboussures. L'astuce pour éviter la fumée."
 category: "Charcuterie"
+image: "/img/lardons-air-fryer.jpg"
 keyword: "lardons air fryer"
 rating: 4.7
 reviews: 96

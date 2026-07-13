@@ -3,6 +3,7 @@ title: "Légumes surgelés au air fryer : dorés, pas mous"
 metaTitle: "Légumes surgelés air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des légumes surgelés au air fryer : 190-200 °C, 10 à 18 min, dorés et croquants sans décongeler. L'astuce anti-légumes mous et détrempés."
 category: "Surgelé"
+image: "/img/legumes-surgeles-air-fryer.jpg"
 keyword: "legumes surgeles air fryer"
 rating: 4.7
 reviews: 134

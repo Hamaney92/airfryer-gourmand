@@ -3,6 +3,7 @@ title: "Panais au air fryer : rôti, doré et sucré"
 metaTitle: "Panais air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du panais au air fryer : 190-200 °C, 15 à 20 min, doré et caramélisé. En frites ou en cubes, un légume oublié qui devient irrésistible."
 category: "Legume"
+image: "/img/panais-air-fryer.jpg"
 keyword: "panais air fryer"
 rating: 4.7
 reviews: 88

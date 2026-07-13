@@ -3,6 +3,7 @@ title: "Châtaignes à l'air fryer : grillées et faciles à éplucher"
 metaTitle: "Châtaigne air fryer : temps de cuisson et astuce épluchage"
 description: "Cuire des châtaignes à l'air fryer : temps de cuisson exact, l'entaille indispensable pour qu'elles n'explosent pas, et l'astuce pour les éplucher facilement. Grillées et fondantes comme au feu de bois."
 category: "Accompagnement"
+image: "/img/chataigne-air-fryer.jpg"
 keyword: "chataigne air fryer"
 rating: 4.9
 reviews: 76

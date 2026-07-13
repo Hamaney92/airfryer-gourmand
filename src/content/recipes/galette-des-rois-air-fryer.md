@@ -3,6 +3,7 @@ title: "Galette des rois à l'air fryer : la recette facile (mini ou entière)"
 metaTitle: "Galette des rois air fryer : temps de cuisson par taille et modèle"
 description: "Réussir sa galette des rois à l'air fryer : frangipane maison, cuisson à 180 °C, format mini ou entière, astuces anti-débordement et réglages Ninja/Cosori. Dorée et feuilletée."
 category: "Dessert"
+image: "/img/galette-des-rois-air-fryer.jpg"
 keyword: "galette des rois air fryer"
 rating: 4.8
 reviews: 47

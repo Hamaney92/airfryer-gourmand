@@ -3,6 +3,7 @@ title: "Knacki au air fryer : saucisse de Strasbourg dorée"
 metaTitle: "Knacki air fryer : temps de cuisson (Strasbourg)"
 description: "Le temps de cuisson exact des knacki (saucisses de Strasbourg) au air fryer : 180 °C, 5 à 7 min, dorées et croustillantes. L'astuce pour qu'elles n'éclatent pas."
 category: "Charcuterie"
+image: "/img/knacki-saucisse-strasbourg-air-fryer.jpg"
 keyword: "saucisse de strasbourg knacki air fryer"
 rating: 4.7
 reviews: 132

@@ -3,6 +3,7 @@ title: "Frites de patate douce au air fryer : croustillantes"
 metaTitle: "Frites de patate douce air fryer : temps de cuisson"
 description: "Le temps de cuisson exact des frites de patate douce au air fryer : 200 °C, 15 à 18 min, croustillantes dehors et fondantes dedans. L'astuce de la fécule."
 category: "Accompagnement"
+image: "/img/frites-de-patate-douce-air-fryer.jpg"
 keyword: "frites de patate douce air fryer"
 rating: 4.9
 reviews: 194

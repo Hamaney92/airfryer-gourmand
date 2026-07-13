@@ -3,6 +3,7 @@ title: "Courge et potiron au air fryer : rôtis et caramélisés"
 metaTitle: "Courge / potiron air fryer : temps de cuisson"
 description: "Le temps de cuisson exact de la courge et du potiron au air fryer : 180-200 °C, 12 à 18 min. Cubes rôtis et caramélisés, fondants dedans, sans les éplucher."
 category: "Legume"
+image: "/img/courge-potiron-air-fryer.jpg"
 keyword: "courge potiron air fryer"
 rating: 4.8
 reviews: 128

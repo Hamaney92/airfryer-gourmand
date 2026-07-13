@@ -3,6 +3,7 @@ title: "Moules au air fryer : ouvertes et parfumées"
 metaTitle: "Moules air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des moules au air fryer : 200 °C, 6 à 10 min, jusqu'à ce qu'elles s'ouvrent. Parfumées à l'ail et au persil, ou gratinées façon farcies."
 category: "Poisson"
+image: "/img/moules-air-fryer.jpg"
 keyword: "moules air fryer"
 rating: 4.6
 reviews: 74

@@ -3,6 +3,7 @@ title: "Fenouil au air fryer : rôti, fondant et caramélisé"
 metaTitle: "Fenouil air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du fenouil au air fryer : 190-200 °C, 12 à 18 min, fondant et caramélisé. En quartiers, son goût anisé s'adoucit et devient sucré."
 category: "Legume"
+image: "/img/fenouil-air-fryer.jpg"
 keyword: "fenouil air fryer"
 rating: 4.7
 reviews: 86

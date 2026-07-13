@@ -3,6 +3,7 @@ title: "Samoussa air fryer : croustillants sans friture (frais & surgelés)"
 metaTitle: "Samoussa air fryer : temps de cuisson frais & surgelé (par modèle)"
 description: "Le temps de cuisson exact des samoussas à l'air fryer, frais ou surgelés : 180 °C, réglages par modèle (Ninja, Cosori, Philips), pliage, farces et sauces. Croustillants, jamais gras."
 category: "Apéro"
+image: "/img/samoussa-air-fryer.jpg"
 keyword: "samoussa air fryer"
 rating: 4.9
 reviews: 68

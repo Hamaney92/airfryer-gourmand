@@ -3,6 +3,7 @@ title: "Réchauffer du poulet (KFC) au air fryer : croustillant"
 metaTitle: "Réchauffer poulet KFC air fryer : temps et astuce"
 description: "Comment réchauffer du poulet frit ou KFC au air fryer : 170-180 °C, 4 à 8 min, panure croustillante et chair juteuse. Bien mieux que le micro-ondes."
 category: "Volaille"
+image: "/img/rechauffer-poulet-kfc-air-fryer.jpg"
 keyword: "rechauffer poulet kfc air fryer"
 rating: 4.9
 reviews: 188

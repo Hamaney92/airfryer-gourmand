@@ -3,6 +3,7 @@ title: "Jambon au air fryer : grillé, croque ou à l'os"
 metaTitle: "Jambon air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact du jambon au air fryer : 180-200 °C, 5 à 15 min selon la tranche. Grillé, en croque-monsieur ou tranche de jambon à l'os glacée au miel."
 category: "Charcuterie"
+image: "/img/jambon-air-fryer.jpg"
 keyword: "jambon air fryer"
 rating: 4.6
 reviews: 84
