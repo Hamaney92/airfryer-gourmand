@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Batch cooking air fryer : 6 repas de la semaine en 1h30";
+const description = "Le guide batch cooking à l'air fryer : préparez 6 repas de la semaine en 1h30. Plan de session, ordre de cuisson, tableau temps/température et conservation (frigo & congélateur).";
+
+const recettes = [
+  ['🍗', 'Pilons de poulet', '/recettes/pilon-de-poulet-air-fryer/', '200 °C', '25 min', 'La protéine longue à lancer en premier.'],
+  ['🐟', 'Pavés de saumon', '/recettes/saumon-air-fryer/', '190 °C', '10 min', 'Rapide, à garder pour le début de semaine.'],
+  ['🍗', 'Blancs de poulet', '/recettes/blanc-de-poulet-air-fryer/', '180 °C', '12 min', 'À trancher pour salades, wraps et bowls.'],
+  ['🧆', 'Boulettes de viande', '/recettes/boulettes-de-viande-air-fryer/', '180 °C', '12 min', 'Se réchauffent parfaitement, se congèlent bien.'],
+  ['🥦', 'Légumes rôtis', '/recettes/legumes-rotis-air-fryer/', '180 °C', '18-20 min', 'Le côté veggie, en dernier (cuisson courte).'],
+  ['🥔', 'Pommes de terre', '/recettes/pommes-de-terre-sautees-air-fryer/', '200 °C', '15 min', "L'accompagnement qui cale tout le monde."],
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Peut-on faire du batch cooking avec un air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, c'est même redoutable : en 1h30, on cuit successivement protéines, légumes et féculents pour 5 à 6 repas de la semaine, sans huile et plus vite qu'au four." } },
+    { "@type": "Question", "name": "Dans quel ordre cuire pour le batch cooking à l'air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "On commence par les protéines longues (pilons, saumon, boulettes), puis les féculents (pommes de terre), puis les légumes (cuisson courte). On garde les cuissons douces pour la fin." } },
+    { "@type": "Question", "name": "Combien de temps se conservent les plats batch cooking ?", "acceptedAnswer": { "@type": "Answer", "text": "3 à 4 jours au réfrigérateur dans des boîtes hermétiques (3 jours pour le poisson et la viande hachée), ou 1 à 3 mois au congélateur. Refroidir en moins de 2 h et étiqueter." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Batch cooking
+      </div>
+      <h1>Batch cooking à l'air fryer : 6 repas de la semaine en 1h30</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> une session d'1h30 le dimanche, un ordre de cuisson malin (protéines → féculents → légumes), et tu as 6 repas prêts pour la semaine — sans huile, sans surveiller, sans vaisselle grasse.</div>
+
+      <p>Le batch cooking, c'est cuisiner une fois pour manger toute la semaine. Et l'air fryer y excelle : il cuit <b>jusqu'à 30 % plus vite qu'un four</b>, sans huile ou presque, et enchaîne les fournées sans préchauffage interminable. Voici notre méthode clé en main, avec les recettes, l'ordre de cuisson et la conservation.</p>
+
+      <h2>Pourquoi l'air fryer est parfait pour le batch cooking</h2>
+      <p>Trois atouts : la <b>vitesse</b> (pas de four à préchauffer 15 minutes), le <b>croustillant sans matière grasse</b>, et la <b>simplicité de nettoyage</b> (un seul panier à laver). En 1h30, on prépare de quoi composer les dîners de la semaine sans jamais rallumer les fourneaux.</p>
+
+      <h2>Le matériel</h2>
+      <p>Un air fryer classique suffit. Si tu as un modèle <b>double panier</b> (type Ninja DualZone ou Cosori Twin), tu gagnes encore du temps en cuisant deux aliments en parallèle. Prévois aussi des <b>boîtes hermétiques</b>, un papier cuisson perforé, et de quoi étiqueter (date + contenu).</p>
+
+      <h2>Le plan de session en 1h30</h2>
+      <p>La clé, c'est l'<b>ordre de cuisson</b> : on lance les protéines qui prennent le plus de temps, on enchaîne avec les féculents, et on termine par les légumes (cuisson la plus courte). Comme ça, tout est prêt à peu près en même temps.</p>
+
+      <h2>Les 6 recettes de la session</h2>
+      <div class="cards" style="margin-top:14px">
+        {recettes.map(([e, nom, url, temp, temps, note]) => (
+          <div class="rcard" style="cursor:default">
+            <div class="ph" style="height:96px"><span style="font-size:1.8rem">{e}</span></div>
+            <div style="padding:12px 15px 16px">
+              <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{nom} →</a>
+              <p style="color:#6a5d54;font-size:.88rem;margin:6px 0 8px">{note}</p>
+              <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:3px 9px;border-radius:20px;font-size:.8rem;font-weight:700">🌡️ {temp} · ⏱️ {temps}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>Tableau des temps de cuisson</h2>
+      <table class="rectable">
+        <thead><tr><th>Aliment</th><th>Température</th><th>Temps</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Pilons de poulet</td><td>200 °C</td><td>25 min</td></tr>
+          <tr><td class="t">Boulettes de viande</td><td>180 °C</td><td>12 min</td></tr>
+          <tr><td class="t">Pavés de saumon</td><td>190 °C</td><td>10 min</td></tr>
+          <tr><td class="t">Blancs de poulet</td><td>180 °C</td><td>12 min</td></tr>
+          <tr><td class="t">Pommes de terre</td><td>200 °C</td><td>15 min</td></tr>
+          <tr><td class="t">Légumes rôtis</td><td>180 °C</td><td>18-20 min</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Conservation : frigo et congélateur</h2>
+      <table class="rectable">
+        <thead><tr><th>Mode</th><th>Durée</th><th>Conseil</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Réfrigérateur</td><td>3-4 jours</td><td>Boîtes hermétiques. 3 jours max pour poisson & viande hachée.</td></tr>
+          <tr><td class="t">Congélateur</td><td>1-3 mois</td><td>Refroidir en moins de 2 h, étiqueter (date + plat).</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Réchauffer sans perdre le croustillant</h2>
+      <p>Le gros avantage : on réchauffe aussi à l'air fryer. <b>3 à 5 minutes à 180 °C</b> et les plats retrouvent leur croustillant, bien mieux qu'au micro-ondes qui ramollit tout. Pour les plats congelés, ajoute quelques minutes sans décongeler.</p>
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Notre astuce de session : on lance les pilons de poulet en premier (25 min), et pendant qu'ils cuisent, on prépare et assaisonne tout le reste. Quand ils sortent, tout s'enchaîne. En pratique, la session « active » ne dure que 30-40 minutes — le reste, c'est l'air fryer qui bosse tout seul.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Peut-on faire du batch cooking avec un air fryer ?</h3>
+      <p>Oui, c'est même redoutable : en 1h30, on cuit successivement protéines, légumes et féculents pour 5 à 6 repas, sans huile et plus vite qu'au four.</p>
+      <h3>Dans quel ordre cuire ?</h3>
+      <p>Protéines longues d'abord (pilons, saumon, boulettes), puis féculents (pommes de terre), puis légumes (cuisson courte).</p>
+      <h3>Combien de temps ça se conserve ?</h3>
+      <p>3 à 4 jours au frigo (3 jours pour poisson et viande hachée), 1 à 3 mois au congélateur. Refroidir vite et étiqueter.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/temps-de-cuisson/">🌡️ Voir tous les temps de cuisson</a></p>
+    </article>
+  </div>
+</Base>
