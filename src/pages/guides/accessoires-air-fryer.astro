@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Accessoires air fryer indispensables : le vrai utile (2026)";
+const description = "Les accessoires air fryer qui changent vraiment la donne : papier cuisson perforé, moules silicone, grille étagée, spray à huile, thermomètre… Ce qui sert, ce qui est gadget. Guide informatif.";
+
+const accessoires = [
+  { emoji: "📄", nom: "Papier cuisson perforé", util: "Évite que les aliments collent et facilite le nettoyage, sans bloquer la circulation d'air (grâce aux perforations).", note: "Indispensable pour les pâtes, poissons, fromages. Ne jamais utiliser un papier non perforé qui s'envole." },
+  { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, gâteaux, œufs cocotte, gratins individuels. Passent au lave-vaisselle.", note: "Très utile pour les desserts et tout ce qui est liquide au départ." },
+  { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un deuxième niveau pour cuire plus en une fournée, ou surélève les aliments pour un air qui circule dessous.", note: "Pratique dans les paniers profonds." },
+  { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé." },
+  { emoji: "🌡️", nom: "Thermomètre à viande", util: "Le seul moyen fiable de cuire viandes et volailles à la bonne température à cœur (juteuses, jamais sèches).", note: "Le meilleur investissement à ~10 € pour ne plus rater un poulet ou un agneau." },
+  { emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve." },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article", "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Peut-on mettre du papier cuisson dans un air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, mais uniquement du papier cuisson PERFORÉ, conçu pour l'air fryer, et toujours lesté par des aliments. Un papier plein ou libre s'envole dans le flux d'air et peut toucher la résistance." } },
+    { "@type": "Question", "name": "Quels accessoires air fryer sont vraiment utiles ?", "acceptedAnswer": { "@type": "Answer", "text": "Les plus utiles : le papier cuisson perforé, les moules en silicone (desserts, œufs), un spray à huile et un thermomètre à viande. Le reste (grilles étagées, pinces) est un confort selon les usages." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
+        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Accessoires
+      </div>
+      <h1>Accessoires air fryer indispensables (et les gadgets à éviter)</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+      <div class="quick"><b>En bref :</b> pas besoin de tout acheter. Les 4 accessoires vraiment utiles : <b>papier cuisson perforé</b>, <b>moules en silicone</b>, <b>spray à huile</b> et <b>thermomètre à viande</b>. Le reste est du confort.</div>
+      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> guide <b>100 % informatif</b>, aucun lien commercial. On te dit ce qui sert vraiment, pas ce qui se vend.</p>
+
+      {accessoires.map((a) => (
+        <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)">
+          <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
+          <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
+        </div>
+      ))}
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Si on ne devait en garder qu'un : le <b>thermomètre à viande</b>. À 10 €, il transforme les poulets et rôtis ratés en viandes juteuses à tous les coups. Le papier perforé et le spray à huile suivent de près. Le reste est sympa, mais pas vital.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Peut-on mettre du papier cuisson dans un air fryer ?</h3>
+      <p>Oui, mais uniquement du papier <b>perforé</b> conçu pour l'air fryer, et toujours lesté par des aliments — sinon il s'envole dans le flux d'air.</p>
+      <h3>Quels accessoires sont vraiment utiles ?</h3>
+      <p>Le papier perforé, les moules en silicone, un spray à huile et un thermomètre à viande. Le reste est un confort selon tes usages.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-2026/">→ Voir notre comparatif air fryer 2026</a></p>
+    </article>
+  </div>
+</Base>

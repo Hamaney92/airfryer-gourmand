@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Meilleur air fryer double panier 2026 : lequel choisir ?";
+const description = "Comparatif air fryer double panier (DualZone) 2026 : cuire deux plats à la fois. Ninja AF400, Moulinex Dual, Ninja Double Stack — capacités, prix indicatifs et pour qui. Guide informatif.";
+
+const modeles = [
+  { cat: "🏆 La référence", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Familles qui veulent un repas complet en une fois.", plus: "Deux zones vraiment indépendantes, fonction Sync (tout prêt en même temps), grande capacité.", moins: "Encombrant (~41 cm de large), un peu bruyant." },
+  { cat: "💶 Le meilleur rapport prix", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans exploser le budget.", plus: "Deux tiroirs de tailles différentes (pratique), marque française, écran LCD.", moins: "Tiroirs de tailles inégales, homogénéité un cran en dessous du Ninja." },
+  { cat: "📐 Le gain de place", nom: "Ninja Double Stack XL SL400EU", capa: "~9,5 L (double zone verticale)", puis: "~2400 W", prix: "~160-170 €", pour: "Petites cuisines : grande capacité, faible largeur (~28 cm).", plus: "2 zones + 2 niveaux (4 étages) sur peu de largeur.", moins: "Format haut, prix élevé." },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article", "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "À quoi sert un air fryer double panier ?", "acceptedAnswer": { "@type": "Answer", "text": "Un double panier (DualZone) permet de cuire deux aliments dans deux tiroirs séparés, à des températures et durées différentes. On peut ainsi préparer la protéine et l'accompagnement en même temps, et la fonction Sync les fait finir ensemble." } },
+    { "@type": "Question", "name": "Double panier ou grand panier simple ?", "acceptedAnswer": { "@type": "Answer", "text": "Le double panier est idéal pour cuire deux plats différents à la fois (repas complet). Un grand panier simple est moins cher et moins encombrant, mais ne cuit qu'un seul aliment à la fois à une seule température." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
+        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Double panier
+      </div>
+      <h1>Meilleur air fryer double panier 2026</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+      <div class="quick"><b>En bref :</b> le double panier (DualZone) cuit deux plats à la fois, à des réglages différents — parfait pour un repas complet en une fournée. Le <b>Ninja AF400</b> est la référence ; le <b>Moulinex Dual 8.3L</b> est l'option maligne côté budget ; le <b>Ninja Double Stack</b> pour les petites cuisines.</div>
+      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> guide <b>100 % informatif</b>, aucun lien commercial. Prix indicatifs 2026, variables selon revendeur — à vérifier avant achat.</p>
+
+      <h2>Pourquoi un double panier ?</h2>
+      <p>Le principe : deux tiroirs séparés, chacun avec sa <b>température</b> et sa <b>durée</b>. Tu cuis le poulet dans l'un et les légumes dans l'autre, sans mélanger les goûts. La fonction <b>Sync/Match</b> synchronise les deux pour qu'ils soient prêts en même temps. C'est l'idéal pour un repas complet en une seule fournée — le principal atout face à un panier simple.</p>
+
+      <h2>Notre sélection</h2>
+      {modeles.map((m) => (
+        <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
+          <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
+          <div style="font-weight:700;font-size:1.05rem">{m.nom}</div>
+          <p style="margin:6px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.prix}</span></p>
+          <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>👎</b> {m.moins}</p>
+        </div>
+      ))}
+
+      <h2>Tableau récapitulatif</h2>
+      <table class="rectable">
+        <thead><tr><th>Modèle</th><th>Capacité</th><th>Puissance</th><th>Prix indicatif*</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Ninja Foodi MAX Dual Zone AF400EU</td><td>9,5 L</td><td>2470 W</td><td>~160-229 €</td></tr>
+          <tr><td class="t">Moulinex Dual Easy Fry & Grill 8.3L</td><td>8,3 L</td><td>~2450 W</td><td>~110-150 €</td></tr>
+          <tr><td class="t">Ninja Double Stack XL SL400EU</td><td>~9,5 L</td><td>~2400 W</td><td>~160-170 €</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:#9a8c7d;margin-top:8px"><i>*Prix indicatifs 2026, à vérifier chez le revendeur.</i></p>
+
+      <h2>Questions fréquentes</h2>
+      <h3>À quoi sert un air fryer double panier ?</h3>
+      <p>À cuire deux aliments dans deux tiroirs séparés, à températures et durées différentes — la protéine et l'accompagnement en même temps, synchronisés pour finir ensemble.</p>
+      <h3>Double panier ou grand panier simple ?</h3>
+      <p>Le double panier cuit deux plats différents à la fois ; le grand panier simple est moins cher et moins encombrant mais ne fait qu'un aliment à la fois.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-2026/">← Voir le comparatif air fryer complet</a></p>
+    </article>
+  </div>
+</Base>

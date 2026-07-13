@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Ninja, Moulinex ou Philips : quelle marque d'air fryer choisir ?";
+const description = "Ninja vs Moulinex vs Philips : on compare les trois grandes marques d'air fryer (points forts, prix, fiabilité) pour t'aider à choisir selon ton profil. Comparatif 2026, informatif.";
+
+const marques = [
+  { nom: "Ninja", emoji: "⚫", prix: "~90-229 €", forces: "Puissance et performances, le champion du double panier (DualZone), grande capacité, réputation solide.", limites: "Modèles souvent encombrants et un peu bruyants ; le haut de gamme est cher.", pour: "Ceux qui veulent la performance et le double panier." },
+  { nom: "Moulinex", emoji: "🔵", prix: "~70-150 €", forces: "Marque française, prix contenus, simplicité d'usage, engagement sur la réparabilité et les pièces détachées.", limites: "Finitions plus basiques, un cran en dessous sur la puissance/homogénéité.", pour: "Ceux qui veulent le meilleur rapport qualité-prix et un SAV FR." },
+  { nom: "Philips", emoji: "🟣", prix: "~120-280 €", forces: "Pionnier de l'air fryer (techno Rapid Air), réputation de fiabilité et de cuisson homogène, hublot et cuve céramique sur les gammes récentes.", limites: "Souvent plus cher à capacité égale, gamme très segmentée.", pour: "Ceux qui privilégient la fiabilité et la durée, prêts à y mettre le prix." },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article", "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Ninja ou Philips, quelle est la meilleure marque d'air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Ninja excelle sur la puissance et le double panier, à prix compétitif. Philips mise sur la fiabilité et l'homogénéité de cuisson, mais coûte souvent plus cher. Le choix dépend de votre priorité : performance et capacité (Ninja) ou durabilité premium (Philips)." } },
+    { "@type": "Question", "name": "Moulinex est-elle une bonne marque d'air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui : Moulinex offre un très bon rapport qualité-prix, une prise en main simple, et met en avant la réparabilité et la disponibilité des pièces détachées. C'est un choix rassurant pour un premier air fryer sans se ruiner." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
+        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Ninja, Moulinex ou Philips
+      </div>
+      <h1>Ninja, Moulinex ou Philips : quelle marque choisir ?</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+      <div class="quick"><b>En bref :</b> <b>Ninja</b> pour la puissance et le double panier, <b>Moulinex</b> pour le rapport qualité-prix et le SAV français, <b>Philips</b> pour la fiabilité premium. À noter : <b>Cosori</b> s'est imposé comme un excellent challenger polyvalent.</div>
+      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> guide <b>100 % informatif</b>, aucun lien commercial. Prix indicatifs 2026, variables selon revendeur.</p>
+
+      {marques.map((m) => (
+        <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
+          <div style="font-weight:800;font-size:1.1rem">{m.emoji} {m.nom} <span style="font-weight:600;color:var(--muted);font-size:.9rem">· {m.prix}</span></div>
+          <p style="margin:6px 0;color:#5f5147"><b>👍 Forces :</b> {m.forces}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>👎 Limites :</b> {m.limites}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
+        </div>
+      ))}
+
+      <h2>Le verdict par profil</h2>
+      <ul>
+        <li><b>Tu veux la performance et cuire deux plats à la fois</b> → Ninja.</li>
+        <li><b>Tu veux le meilleur prix et un SAV français</b> → Moulinex.</li>
+        <li><b>Tu privilégies la fiabilité premium et la durée</b> → Philips.</li>
+        <li><b>Tu cherches le meilleur compromis polyvalent</b> → regarde aussi Cosori (TurboBlaze).</li>
+      </ul>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Ninja ou Philips, quelle est la meilleure marque ?</h3>
+      <p>Ninja pour la puissance et le double panier à prix compétitif ; Philips pour la fiabilité et l'homogénéité, mais plus cher. Ça dépend de ta priorité.</p>
+      <h3>Moulinex est-elle une bonne marque d'air fryer ?</h3>
+      <p>Oui : bon rapport qualité-prix, simplicité, et un vrai engagement sur la réparabilité et les pièces détachées.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-2026/">→ Voir notre comparatif complet 2026</a></p>
+    </article>
+  </div>
+</Base>
