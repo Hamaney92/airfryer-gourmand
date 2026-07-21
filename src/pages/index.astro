@@ -12,9 +12,20 @@ for (const r of recipes) {
   const s = catInfo(r.data.category).slug;
   counts.set(s, (counts.get(s) ?? 0) + 1);
 }
+// Photo représentative par catégorie (WebP 380px générés dans /img/w/).
+const TILE_IMG: Record<string, string> = {
+  'Volaille': 'poulet-roti-air-fryer',
+  'Viande': 'steak-hache-air-fryer',
+  'Legume': 'courgette-air-fryer',
+  'Poisson': 'saumon-air-fryer',
+  'Dessert': 'cookies-air-fryer',
+  'Surgelé': 'frites-surgelees-air-fryer',
+};
 const tiles = ['Volaille', 'Viande', 'Legume', 'Poisson', 'Dessert', 'Surgelé'].map((c) => ({
   ...CATEGORIES[c],
   count: counts.get(CATEGORIES[c].slug) ?? 0,
+  img: `/img/w/${TILE_IMG[c]}-380.webp`,
+  imgJpg: `/img/${TILE_IMG[c]}.jpg`,
 }));
 
 const totalReviews = recipes.reduce((n, r) => n + (r.data.reviews ?? 0), 0);
@@ -73,7 +84,10 @@ const jsonLd = {
       <div class="cattiles">
         {tiles.map((t) => (
           <a class="tile" href={`/categorie/${t.slug}/`}>
-            <div class="ph"><span>{t.label}</span></div>
+            <picture>
+              <source type="image/webp" srcset={t.img} />
+              <img src={t.imgJpg} alt={`Recettes ${t.label} air fryer`} width="380" height="380" loading="lazy" decoding="async" style="width:100%;height:110px;object-fit:cover;display:block" />
+            </picture>
             <p>{t.label}<br /><span style="color:var(--muted);font-weight:600">{t.count} recettes</span></p>
           </a>
         ))}
