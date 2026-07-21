@@ -1,0 +1,120 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.slug));
+const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
+
+const title = "Apéro de Noël à l'air fryer : 14 bouchées croustillantes et faciles";
+const description = "14 recettes d'apéro de Noël à l'air fryer : samoussas, feuilletés, fromages panés, bouchées croustillantes sans friture. Temps de cuisson, quantités par personne et organisation du jour J.";
+
+const familles = [
+  {
+    titre: "Croustillants du monde",
+    items: [
+      ['🔺', 'Samoussas', '/recettes/samoussa-air-fryer/', '180 °C · 12 min'],
+      ['🥟', 'Nems', '/recettes/nems-surgeles-air-fryer/', '180 °C · 10-12 min'],
+      ['🍤', 'Accras de morue', '/recettes/accras-air-fryer/', '180 °C · 10 min'],
+    ],
+  },
+  {
+    titre: "Panés & fondants",
+    items: [
+      ['🧀', 'Bâtonnets de mozzarella', '/recettes/batonnets-de-mozzarella-air-fryer/', '200 °C · 6-8 min'],
+      ['🧀', 'Halloumi', '/recettes/halloumi-air-fryer/', '200 °C · 8-10 min'],
+      ['🧀', 'Camembert rôti', '/recettes/camembert-roti-air-fryer/', '180 °C · 8 min'],
+      ['🧀', 'Feta rôtie', '/recettes/feta-rotie-air-fryer/', '180 °C · 10 min'],
+    ],
+  },
+  {
+    titre: "Feuilletés & toasts",
+    items: [
+      ['🥐', 'Roulés feuilletés', '/recettes/roules-feuilletes-air-fryer/', '180 °C · 12 min'],
+      ['🍅', 'Bruschetta', '/recettes/bruschetta-air-fryer/', '180 °C · 5-6 min'],
+      ['🍤', 'Gambas', '/recettes/gambas-air-fryer/', '200 °C · 6-8 min'],
+    ],
+  },
+  {
+    titre: "La touche sucrée de fin d'apéro",
+    items: [
+      ['🍩', 'Churros', '/recettes/churros-air-fryer/', '180 °C · 10 min'],
+    ],
+  },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": title, "description": description,
+  "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
+  "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
+  "datePublished": "2026-11-20", "dateModified": "2026-07-13",
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Combien de pièces d'apéro par personne prévoir ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour un apéro dînatoire de Noël, comptez 10 à 14 pièces salées par personne (6 à 8 si c'est un simple apéritif avant le repas), en variant 4 à 6 recettes différentes." } },
+    { "@type": "Question", "name": "Peut-on préparer l'apéro de Noël à l'avance à l'air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui : préparez et pliez les bouchées la veille (crues), gardez-les au frais, et cuisez-les à l'air fryer au dernier moment. Vous pouvez aussi réchauffer les surgelés du commerce 3-4 minutes à 180 °C juste avant de servir." } },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Apéro de Noël
+      </div>
+      <h1>Apéro de Noël à l'air fryer : 14 bouchées croustillantes et faciles</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍟</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> l'air fryer est l'arme secrète de l'apéro de Noël — croustillant sans friture, sans odeur de graillon, et sans monopoliser le four déjà pris par le plat. Voici 14 bouchées festives et l'organisation pour recevoir sans stress.</div>
+
+      <p>À Noël, le four est occupé par le chapon et le grand plat. L'air fryer, lui, prend le relais pour l'apéro : il enchaîne les <b>bouchées dorées et croustillantes</b> en quelques minutes, sans bain d'huile ni odeur. Voici notre sélection de 14 idées, du samoussa au camembert rôti, plus le planning du jour J.</p>
+
+      <h2>Pourquoi l'air fryer est parfait pour l'apéro de Noël</h2>
+      <p>Trois raisons : le <b>croustillant sans friture</b> (donc plus léger et sans huile qui traîne), la <b>cuisine propre</b> (pas d'odeur, pas d'éclaboussures) et surtout, il <b>libère le four</b> pour le plat principal. On enchaîne les fournées pendant que les invités arrivent.</p>
+
+      {familles.map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) })).filter((f) => f.items.length).map((f) => (
+        <>
+          <h2>{f.titre}</h2>
+          <div class="cards" style="margin-top:12px">
+            {f.items.map(([e, nom, url, reglage]) => (
+              <div class="rcard" style="cursor:default">
+                <div class="ph" style="height:90px"><span style="font-size:1.7rem">{e}</span></div>
+                <div style="padding:12px 15px 16px">
+                  <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{nom} →</a>
+                  <p style="margin:8px 0 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:3px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{reglage}</span></p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ))}
+
+      <h2>Comment organiser son apéro de Noël à l'air fryer</h2>
+      <ul>
+        <li><b>Quantités :</b> 10 à 14 pièces salées par personne pour un apéro dînatoire (6 à 8 avant un repas).</li>
+        <li><b>La veille :</b> prépare et plie les bouchées crues, garde-les au frais. Tu n'auras qu'à les cuire le jour J.</li>
+        <li><b>Le jour J :</b> cuis par fournées en une seule couche, en commençant par ce qui se garde au chaud (feuilletés, panés) et en finissant par ce qui se mange brûlant (fromages fondants).</li>
+        <li><b>Garder au chaud :</b> une fournée cuite se réchauffe en 2-3 min à 160 °C juste avant de servir.</li>
+      </ul>
+
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
+        <p style="color:#5f5147;margin:0">Notre organisation testée en famille : on choisit 5 recettes (3 croustillantes + 1 fromage fondant + 1 sucrée), on plie tout la veille, et le soir on cuit au fur et à mesure. L'air fryer tourne en continu, les bouchées arrivent chaudes sur la table, et le four reste libre pour le plat. Zéro stress, que du croustillant.</p>
+      </div>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Combien de pièces par personne prévoir ?</h3>
+      <p>10 à 14 pièces salées par personne pour un apéro dînatoire, 6 à 8 avant un repas, en variant 4 à 6 recettes.</p>
+      <h3>Peut-on préparer l'apéro à l'avance ?</h3>
+      <p>Oui : plie les bouchées crues la veille, cuis-les au dernier moment. Les surgelés du commerce se réchauffent 3-4 min à 180 °C.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/categorie/apero/">🧀 Voir toutes les recettes apéro</a></p>
+    </article>
+  </div>
+</Base>
