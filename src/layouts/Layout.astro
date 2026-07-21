@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import { SITE, CATEGORIES } from '../lib/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Chemin relatif (ex. /recettes/mon-plat/) — sert à la canonical. */
+  path?: string;
+  image?: string;
+  /** JSON-LD prêt à injecter (objet ou tableau d'objets schema.org). */
+  jsonLd?: unknown;
+  noindex?: boolean;
+}
+
+const { title, description, path = Astro.url.pathname, image, jsonLd, noindex = false } = Astro.props;
+const canonical = new URL(path, SITE.url).href;
+const ogImage = image ? new URL(image, SITE.url).href : new URL('/img/air-fryer-appareil.jpg', SITE.url).href;
+
+const navCats = ['Volaille', 'Viande', 'Legume', 'Poisson', 'Dessert', 'Surgelé'];
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J24QNEE9GV" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J24QNEE9GV');
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+    )}
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
+        <nav class="cats">
+          {navCats.map((c) => (
+            <a href={`/categorie/${CATEGORIES[c].slug}/`}>{CATEGORIES[c].label}</a>
+          ))}
+          <a href="/temps-de-cuisson/">Temps de cuisson</a>
+        </nav>
+        <a href="/recettes/" class="icobtn" aria-label="Toutes les recettes">☰</a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="fgrid">
+          <div>
+            <a href="/" class="logo" style="color:#fff">Airfryer <b style="color:var(--accent)">Gourmand</b></a>
+            <p style="margin-top:10px;max-width:320px;color:#c9bdb3;font-size:.9rem">{SITE.tagline}. Chaque recette est testée avant publication.</p>
+          </div>
+          <div>
+            <h4>Recettes</h4>
+            <a href="/categorie/volaille/">Volaille</a>
+            <a href="/categorie/viandes/">Viandes</a>
+            <a href="/categorie/legumes/">Légumes</a>
+            <a href="/categorie/poissons/">Poissons</a>
+            <a href="/categorie/desserts/">Desserts</a>
+          </div>
+          <div>
+            <h4>Outils</h4>
+            <a href="/temps-de-cuisson/">Temps de cuisson</a>
+            <a href="/recettes/">Toutes les recettes</a>
+            <a href="/guides/">Guides</a>
+          </div>
+          <div>
+            <h4>Le site</h4>
+            <a href="/a-propos/">À propos</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </div>
+        <div class="disc">© {year} {SITE.name} — Les temps de cuisson sont donnés à titre indicatif et varient selon le modèle d'air fryer.</div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -4,66 +4,60 @@ export interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const cats = [
-['Recettes','/recettes/'],['Viandes','/categorie/viandes/'],['Poissons','/categorie/poissons/'],
-['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/']
+  ['Recettes','/recettes/'],['Viandes','/categorie/viandes/'],['Poissons','/categorie/poissons/'],
+  ['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/']
 ];
 ---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J24QNEE9GV" is:inline></script>
-<script is:inline>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-J24QNEE9GV');
-</script>
-<!-- MailerLite Universal -->
-<script is:inline>
-(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-ml('account', '2516614');
-</script>
-<!-- End MailerLite Universal -->
-<title>{title}</title>
-<meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="fr_FR" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<slot name="head" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J24QNEE9GV" is:inline></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J24QNEE9GV');
+  </script>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <slot name="head" />
 </head>
 <body>
-<header>
-<div class="wrap bar">
-<a href="/" class="logo">🍟 Airfryer <b>Gourmand</b></a>
-<nav class="cats">
-{cats.map(([label, href]) => <a href={href}>{label}</a>)}
-</nav>
-<button class="icobtn burger" aria-label="Menu">☰</button>
-</div>
-</header>
-<main>
-<slot />
-</main>
-<footer>
-<div class="wrap">
-<div class="fgrid">
-<div>
-<div class="logo" style="color:#fff;margin-bottom:10px">🍟 Airfryer <b style="color:var(--accent)">Gourmand</b></div>
-<p style="color:#b6a99d;font-size:.9rem;max-width:280px">Le guide francophone pour tout réussir avec ton air fryer : recettes, temps de cuisson et guides d'achat.</p>
-</div>
-<div><h4>Recettes</h4><a href="/categorie/viandes/">Viandes</a><a href="/categorie/poissons/">Poissons</a><a href="/categorie/surgeles/">Surgelés</a><a href="/categorie/desserts/">Desserts</a></div>
-<div><h4>Outils</h4><a href="/temps-de-cuisson/">Temps de cuisson</a><a href="/temps-de-cuisson/">Convertisseur four</a><a href="/guides/">Guides d'achat</a></div>
-<div><h4>Le site</h4><a href="/a-propos/">À propos</a><a href="/contact/">Contact</a><a href="/#newsletter">Newsletter</a></div>
-</div>
-<p class="disc">Certains liens sont des liens d'affiliation : si tu achètes via eux, on touche une petite commission sans surcoût pour toi. © 2026 Airfryer Gourmand · airfryergourmand.fr</p>
-</div>
-</footer>
+  <header>
+    <div class="wrap bar">
+      <a href="/" class="logo">🍟 Airfryer <b>Gourmand</b></a>
+      <nav class="cats">
+        {cats.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <button class="icobtn burger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="logo" style="color:#fff;margin-bottom:10px">🍟 Airfryer <b style="color:var(--accent)">Gourmand</b></div>
+          <p style="color:#b6a99d;font-size:.9rem;max-width:280px">Le guide francophone pour tout réussir avec ton air fryer : recettes, temps de cuisson et guides d'achat.</p>
+        </div>
+        <div><h4>Recettes</h4><a href="/categorie/viandes/">Viandes</a><a href="/categorie/poissons/">Poissons</a><a href="/categorie/surgeles/">Surgelés</a><a href="/categorie/desserts/">Desserts</a></div>
+        <div><h4>Outils</h4><a href="/temps-de-cuisson/">Temps de cuisson</a><a href="/temps-de-cuisson/">Convertisseur four</a><a href="/guides/">Guides d'achat</a></div>
+        <div><h4>Le site</h4><a href="/a-propos/">À propos</a><a href="/contact/">Contact</a><a href="/#newsletter">Newsletter</a></div>
+      </div>
+      <p class="disc">Certains liens sont des liens d'affiliation : si tu achètes via eux, on touche une petite commission sans surcoût pour toi. © 2026 Airfryer Gourmand · airfryergourmand.fr</p>
+    </div>
+  </footer>
 </body>
 </html>
