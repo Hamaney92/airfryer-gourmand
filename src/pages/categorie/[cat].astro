@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const recipes = await getPublishedRecipes();
+  // Une page par slug de catégorie effectivement présent.
+  const bySlug = new Map<string, { label: string; list: typeof recipes }>();
+  for (const r of recipes) {
+    const { slug, label } = catInfo(r.data.category);
+    if (!bySlug.has(slug)) bySlug.set(slug, { label, list: [] });
+    bySlug.get(slug)!.list.push(r);
+  }
+  return [...bySlug.entries()].map(([slug, { label, list }]) => ({
+    params: { cat: slug },
+    props: { label, list },
+  }));
+}
+
+const { label, list } = Astro.props;
+const cat = Astro.params.cat;
+const title = `${label} au air fryer — ${list.length} recettes & temps de cuisson`;
+const description = `Toutes les recettes ${label.toLowerCase()} au air fryer : temps de cuisson, température et astuces testées. ${list.length} recettes.`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${label} au air fryer`,
+  url: `${SITE.url}/categorie/${cat}/`,
+  description,
+};
+---
+<Layout title={title} description={description} path={`/categorie/${cat}/`} jsonLd={jsonLd}>
+  <div class="wrap">
+    <nav class="crumb" style="margin-top:24px">
+      <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › {label}
+    </nav>
+    <section style="padding-top:8px">
+      <div class="h2" style="font-size:2rem">{label} au air fryer<small>{list.length} recettes testées</small></div>
+      <div class="cats" style="flex-wrap:wrap;margin-top:16px">
+        {Object.values(CATEGORIES).map((c) => (
+          <a href={`/categorie/${c.slug}/`} style={c.slug === cat ? 'color:var(--brand)' : ''}>{c.label}</a>
+        ))}
+      </div>
+    </section>
+    <section style="padding-top:8px">
+      <div class="cards">{list.map((r) => <RecipeCard recipe={r} />)}</div>
+    </section>
+  </div>
+</Layout>
