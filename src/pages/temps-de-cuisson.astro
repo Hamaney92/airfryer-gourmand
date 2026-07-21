@@ -1,29 +1,90 @@
 ---
-import Base from '../layouts/Base.astro';
-import CookingTool from '../components/CookingTool.astro';
-const faqSchema = {
-  "@context":"https://schema.org","@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Quelle température pour cuire au air fryer ?","acceptedAnswer":{"@type":"Answer","text":"La plupart des aliments se cuisent entre 160 °C et 200 °C. Frites et viandes croustillantes à 200 °C, poissons et gâteaux plutôt à 160-180 °C. En général, baisse de 20 °C par rapport au four."}},
-    {"@type":"Question","name":"Comment convertir un temps de four en air fryer ?","acceptedAnswer":{"@type":"Answer","text":"Réduis la température d'environ 20 °C et le temps d'environ 20 %. Par exemple 200 °C / 30 min au four devient environ 180 °C / 24 min au air fryer."}},
-    {"@type":"Question","name":"Faut-il préchauffer un air fryer ?","acceptedAnswer":{"@type":"Answer","text":"Ce n'est pas obligatoire, mais 2 à 3 minutes de préchauffage améliorent le croustillant, surtout pour les frites et les viandes."}}
-  ]
+import Layout from '../layouts/Layout.astro';
+import { SITE, getPublishedRecipes, catInfo } from '../lib/site';
+
+// Tableau des temps construit à partir des recettes publiées (source unique de vérité).
+const recipes = await getPublishedRecipes();
+const rows = recipes
+  .map((r) => ({
+    title: r.data.title.split(' au air fryer')[0].split(' :')[0],
+    slug: r.slug,
+    cat: catInfo(r.data.category).label,
+    temp: r.data.temp,
+    time: (r.data.prepTime ?? 0) + (r.data.cookTime ?? 0) - (r.data.prepTime ?? 0),
+    cook: r.data.cookTime,
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title, 'fr'));
+
+const title = 'Temps de cuisson air fryer : tableau + convertisseur four → air fryer';
+const description =
+  "Tableau des temps et températures de cuisson au air fryer par aliment, plus un convertisseur four vers air fryer. Réglages testés.";
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Convertisseur four → air fryer',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  url: `${SITE.url}/temps-de-cuisson/`,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
 };
 ---
-<Base title="Temps de cuisson Air Fryer : le tableau complet + convertisseur" description="Le tableau des temps de cuisson air fryer pour tous les aliments, plus un convertisseur four → air fryer. Température et durée exactes.">
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <div class="wrap">
-    <article class="article">
-      <div class="crumb"><a href="/">Accueil</a> › Outils › Temps de cuisson</div>
-      <h1>Temps de cuisson Air Fryer : le tableau complet</h1>
-      <div class="quick"><b>La règle d'or :</b> depuis une recette au four, baisse la température de <b>20 °C</b> et le temps de <b>20 %</b>. Exemple : 200 °C / 30 min → environ 180 °C / 24 min au air fryer.</div>
-      <CookingTool />
-      <h2>Les 5 erreurs qui gâchent la cuisson</h2>
-      <p><b>1. Trop remplir le panier.</b> L'air doit circuler : cuis en une seule couche.<br/>
-      <b>2. Oublier de secouer.</b> À mi-cuisson, secoue ou retourne pour un croustillant uniforme.<br/>
-      <b>3. Zéro matière grasse sur les légumes.</b> Un filet d'huile évite qu'ils sèchent.<br/>
-      <b>4. Ne pas surveiller la fin.</b> Les modèles varient : garde un œil sur les 2 dernières minutes.<br/>
-      <b>5. Ne pas préchauffer pour le croustillant.</b> 2-3 minutes suffisent.</p>
-    </article>
+<Layout title={title} description={description} path="/temps-de-cuisson/" jsonLd={jsonLd}>
+  <div class="wrap article">
+    <h1>Temps de cuisson air fryer</h1>
+    <p>Les réglages ci-dessous sont testés. La règle générale : par rapport au four, <b>baissez la température d'environ 20 °C</b> et <b>réduisez le temps de ~20 %</b>. Utilisez le convertisseur pour un calcul instantané.</p>
+
+    <div class="card-box">
+      <h2 style="margin-top:0">Convertisseur four → air fryer</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
+        <label style="font-weight:700">Température four (°C)<br />
+          <input id="ovenTemp" type="number" value="200" min="80" max="280" step="5" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
+        </label>
+        <label style="font-weight:700">Temps four (min)<br />
+          <input id="ovenTime" type="number" value="30" min="1" max="240" step="1" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
+        </label>
+      </div>
+      <div class="quick" style="margin-top:18px">
+        <b>Au air fryer :</b> <span id="result">180 °C pendant 24 min</span>
+      </div>
+      <p class="note">Indicatif — vérifiez la cuisson et adaptez selon votre modèle. Préchauffez 2-3 min pour les résultats croustillants.</p>
+    </div>
+
+    <h2>Tableau des temps par aliment</h2>
+    <p>{rows.length} aliments testés. Cliquez pour la recette détaillée.</p>
+    <table class="rectable">
+      <thead>
+        <tr><th>Aliment</th><th>Catégorie</th><th>Température</th><th>Cuisson</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr>
+            <td class="t"><a href={`/recettes/${r.slug}/`} style="color:var(--brand-d)">{r.title}</a></td>
+            <td>{r.cat}</td>
+            <td>{r.temp}</td>
+            <td>{r.cook} min</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
-</Base>
+
+  <script is:inline>
+    (function () {
+      const t = document.getElementById('ovenTemp');
+      const m = document.getElementById('ovenTime');
+      const out = document.getElementById('result');
+      function round5(n) { return Math.round(n / 5) * 5; }
+      function calc() {
+        const temp = Math.max(80, Math.min(280, Number(t.value) || 0));
+        const time = Math.max(1, Number(m.value) || 0);
+        const afTemp = round5(temp - 20);
+        const afTime = Math.max(1, Math.round(time * 0.8));
+        out.textContent = `${afTemp} °C pendant ${afTime} min`;
+      }
+      t.addEventListener('input', calc);
+      m.addEventListener('input', calc);
+      calc();
+    })();
+  </script>
+</Layout>

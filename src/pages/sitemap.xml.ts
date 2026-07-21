@@ -3,13 +3,24 @@ import { getCollection } from 'astro:content';
 
 const SITE = 'https://airfryergourmand.fr';
 
+// Slugs de catégorie dérivés du contenu (doivent matcher src/lib/site.ts).
+const CAT_SLUGS: Record<string, string> = {
+  'Apéro': 'apero', 'Volaille': 'volaille', 'Charcuterie': 'charcuterie',
+  'Legume': 'legumes', 'Viande': 'viandes', 'Dessert': 'desserts',
+  'Surgelé': 'surgeles', 'Poisson': 'poissons', 'Plat': 'plats',
+  'Accompagnement': 'accompagnements', 'Œufs': 'oeufs',
+};
+
 export const GET: APIRoute = async () => {
-  const recipes = (await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now());
+  const recipes = (await getCollection('recipes')).filter(
+    (r) => r.data.pubDate.getTime() <= Date.now()
+  );
+
+  const catSlugs = [...new Set(recipes.map((r) => CAT_SLUGS[r.data.category]).filter(Boolean))];
 
   const staticPaths = [
     '/', '/recettes/', '/temps-de-cuisson/', '/guides/', '/a-propos/', '/contact/',
-    '/categorie/viandes/', '/categorie/poissons/', '/categorie/legumes/',
-    '/categorie/surgeles/', '/categorie/desserts/', '/categorie/apero/', '/categorie/plats/',
+    ...catSlugs.map((s) => `/categorie/${s}/`),
   ];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);
   const paths = [...staticPaths, ...recipePaths];
