@@ -1,0 +1,193 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const recipes = await getPublishedRecipes();
+  return recipes.map((recipe) => ({
+    params: { slug: recipe.slug },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const { data } = recipe;
+const cat = catInfo(data.category);
+const path = `/recettes/${recipe.slug}/`;
+const { Content } = await recipe.render();
+
+// Recettes liées : même catégorie, hors recette courante.
+const related = (await getPublishedRecipes())
+  .filter((r) => r.data.category === data.category && r.slug !== recipe.slug)
+  .slice(0, 4);
+
+const imageUrl = data.image ? new URL(data.image, SITE.url).href : undefined;
+
+// Versions WebP optimisées (générées dans /img/w/) : <nom>-380.webp et <nom>-760.webp.
+// On garde le JPG original en fallback + pour og:image / JSON-LD.
+const imgName = data.image ? data.image.replace(/^\/img\//, '').replace(/\.jpg$/, '') : undefined;
+const webp380 = imgName ? `/img/w/${imgName}-380.webp` : undefined;
+const webp760 = imgName ? `/img/w/${imgName}-760.webp` : undefined;
+
+// --- JSON-LD : Recipe + FAQPage + BreadcrumbList (résultats enrichis Google) ---
+const recipeLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Recipe',
+  name: data.title,
+  description: data.description,
+  ...(imageUrl ? { image: [imageUrl] } : {}),
+  author: { '@type': 'Organization', name: data.author },
+  datePublished: data.pubDate.toISOString().split('T')[0],
+  ...(data.updatedDate ? { dateModified: data.updatedDate.toISOString().split('T')[0] } : {}),
+  recipeCategory: cat.label,
+  recipeCuisine: 'Française',
+  keywords: data.keyword,
+  prepTime: isoDuration(data.prepTime),
+  cookTime: isoDuration(data.cookTime),
+  totalTime: isoDuration(totalTime(recipe)),
+  recipeYield: `${data.servings} portions`,
+  recipeIngredient: data.ingredients,
+  recipeInstructions: data.steps.map((s: string, i: number) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    text: s,
+  })),
+  ...(data.reviews > 0
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: data.rating,
+          reviewCount: data.reviews,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      }
+    : {}),
+};
+
+const faqLd =
+  data.faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faq.map((f: { q: string; a: string }) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Recettes', item: SITE.url + '/recettes/' },
+    { '@type': 'ListItem', position: 3, name: cat.label, item: `${SITE.url}/categorie/${cat.slug}/` },
+    { '@type': 'ListItem', position: 4, name: data.title, item: SITE.url + path },
+  ],
+};
+
+const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+---
+<Layout
+  title={data.metaTitle ?? data.title}
+  description={data.description}
+  path={path}
+  image={data.image}
+  jsonLd={jsonLd}
+>
+  <article class="article wrap">
+    <nav class="crumb">
+      <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> ›
+      <a href={`/categorie/${cat.slug}/`}>{cat.label}</a> › {data.title}
+    </nav>
+
+    <h1>{data.title}</h1>
+
+    <div class="byline">
+      <span class="by-av">👩‍🍳</span>
+      <span>Par <a href="/a-propos/">{data.author}</a> · Publié le {fmtDate(data.pubDate)}
+        {data.updatedDate && <> · Mis à jour le {fmtDate(data.updatedDate)}</>}</span>
+    </div>
+
+    <div class="amETA">
+      <span class="chip">⏱ Prépa {data.prepTime} min</span>
+      <span class="chip">🔥 Cuisson {data.cookTime} min</span>
+      <span class="chip">🌡 {data.temp}</span>
+      <span class="chip">🍽 {data.servings} pers.</span>
+      <span class="stars">★★★★★</span> <span>{data.rating}/5 ({data.reviews} avis)</span>
+    </div>
+
+    <a href="#recette" class="jump">↓ Aller au temps de cuisson</a>
+
+    {data.image ? (
+      <picture>
+        <source type="image/webp" srcset={`${webp380} 380w, ${webp760} 760w`} sizes="(max-width: 800px) 100vw, 760px" />
+        <img src={data.image} alt={data.alt ?? data.title} width="760" height="320" style="height:320px;object-fit:cover;border-radius:18px;margin-bottom:22px" fetchpriority="high" decoding="async" />
+      </picture>
+    ) : (
+      <div class="ph" style="height:320px;border-radius:18px;margin-bottom:22px"><span>Photo à venir</span></div>
+    )}
+
+    <div class="quick" id="recette">
+      <b>Réponse rapide —</b> {data.quickAnswer}
+    </div>
+
+    <!-- Corps de l'article (markdown) -->
+    <Content />
+
+    <div class="card-box">
+      <h2 style="margin-top:0">Ingrédients</h2>
+      <ul>{data.ingredients.map((i: string) => <li>{i}</li>)}</ul>
+      <h2>Étapes</h2>
+      <ol>{data.steps.map((s: string) => <li>{s}</li>)}</ol>
+      {data.tips.length > 0 && (
+        <>
+          <h3>Astuces</h3>
+          <ul>{data.tips.map((t: string) => <li>{t}</li>)}</ul>
+        </>
+      )}
+    </div>
+
+    <aside class="gear-box" style="background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0">
+      <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🍳 Le bon matériel pour cette recette</div>
+      <p style="margin:6px 0;color:#5f5147">Un résultat régulier tient à 90 % au bon appareil et aux bons accessoires. On a comparé les modèles pour chaque budget et listé les 5 accessoires qui changent vraiment la cuisson.</p>
+      <p style="margin:8px 0 0">
+        <a href="/guides/meilleur-air-fryer-2026/" style="color:var(--brand-d);font-weight:700">→ Quel air fryer choisir en 2026</a><br/>
+        <a href="/guides/accessoires-air-fryer/" style="color:var(--brand-d);font-weight:700">→ Les accessoires vraiment utiles</a>
+      </p>
+    </aside>
+
+    {data.faq.length > 0 && (
+      <section class="faq">
+        <h2>Questions fréquentes</h2>
+        {data.faq.map((f: { q: string; a: string }) => (
+          <>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </>
+        ))}
+      </section>
+    )}
+
+    {data.note && <p class="note">{data.note}</p>}
+
+    <div class="author-box">
+      <div class="author-av">👩‍🍳</div>
+      <div>
+        <div class="author-name">{data.author}</div>
+        <p>Nous testons chaque recette au air fryer avant de la publier : temps, température, pièges et variantes surgelées. <a href="/a-propos/">En savoir plus →</a></p>
+      </div>
+    </div>
+
+    {related.length > 0 && (
+      <section>
+        <div class="row"><div class="h2">Dans la même catégorie</div></div>
+        <div class="cards">{related.map((r) => <RecipeCard recipe={r} />)}</div>
+      </section>
+    )}
+  </article>
+</Layout>
