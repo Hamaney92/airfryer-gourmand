@@ -15,6 +15,7 @@ const recipes = defineCollection({
     servings: z.number().default(2),
     temp: z.string(),
     image: z.string().optional(),
+    alt: z.string().optional(),
     quickAnswer: z.string(),
     ingredients: z.array(z.string()).default([]),
     steps: z.array(z.string()).default([]),
