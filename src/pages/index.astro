@@ -1,95 +1,111 @@
 ---
-import Base from '../layouts/Base.astro';
+import Layout from '../layouts/Layout.astro';
 import RecipeCard from '../components/RecipeCard.astro';
-import { getCollection } from 'astro:content';
-const recipes = (await getCollection('recipes')).filter(r=>r.data.pubDate.getTime()<=Date.now()).sort((a,b)=>b.data.reviews-a.data.reviews).slice(0,4);
-const cats = [
-['🍗','Viandes','/categorie/viandes/','/img/ailes-de-poulet-air-fryer.jpg'],
-['🐟','Poissons','/categorie/poissons/','/img/saumon-air-fryer.jpg'],
-['🥦','Légumes','/categorie/legumes/','/img/legumes-rotis-air-fryer.jpg'],
-['❄️','Surgelés','/categorie/surgeles/','/img/nuggets-surgeles-air-fryer.jpg'],
-['🍰','Desserts','/categorie/desserts/','/img/gateau-au-yaourt-air-fryer.jpg'],
-['🧀','Apéro','/categorie/apero/','/img/onion-rings-air-fryer.jpg']
-];
+import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../lib/site';
+
+const recipes = await getPublishedRecipes();
+const latest = recipes.slice(0, 8);
+
+// Compte par catégorie pour les tuiles.
+const counts = new Map<string, number>();
+for (const r of recipes) {
+  const s = catInfo(r.data.category).slug;
+  counts.set(s, (counts.get(s) ?? 0) + 1);
+}
+const tiles = ['Volaille', 'Viande', 'Legume', 'Poisson', 'Dessert', 'Surgelé'].map((c) => ({
+  ...CATEGORIES[c],
+  count: counts.get(CATEGORIES[c].slug) ?? 0,
+}));
+
+const totalReviews = recipes.reduce((n, r) => n + (r.data.reviews ?? 0), 0);
+
+const title = `${SITE.name} — Recettes & temps de cuisson air fryer`;
+const description = SITE.description;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: 'fr-FR',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE.url}/recettes/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
-<Base title="Airfryer Gourmand — Recettes, temps de cuisson & guides air fryer" description="Recettes air fryer testées, temps de cuisson exacts, convertisseur four → air fryer et guides d'achat. Tout pour réussir avec ta friteuse sans huile.">
-<div class="wrap">
-<section class="hero">
-<div>
-<span class="badge">🔥 Recette de la semaine</span>
-<h1>Réussis <span>tout</span> avec ton air fryer</h1>
-<p>Des recettes testées, les temps de cuisson exacts et un convertisseur four → air fryer. Fini le poulet sec et les frites molles.</p>
-<a class="cta" href="/recettes/">Voir les recettes →</a>
-<a class="cta ghost" href="/temps-de-cuisson/">Temps de cuisson</a>
-<div class="rating"><span class="stars">★★★★★</span> 4,9 · noté par la communauté</div>
-</div>
-<div class="ph" style="background-image:url('/img/poulet-roti-air-fryer.jpg');background-size:cover;background-position:center"></div>
-</section>
+<Layout title={title} description={description} path="/" jsonLd={jsonLd}>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="badge">🔥 {recipes.length} recettes testées</span>
+        <h1>Réussissez tout à <span>l'air fryer</span>, du premier coup.</h1>
+        <p>Temps de cuisson exacts, températures et astuces testées en cuisine. Zéro devinette, juste des résultats croustillants.</p>
+        <div>
+          <a href="/recettes/" class="cta">Voir les recettes →</a>
+          <a href="/temps-de-cuisson/" class="cta ghost">Temps de cuisson</a>
+        </div>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span>Plus de {totalReviews.toLocaleString('fr-FR')} avis de lecteurs</span>
+        </div>
+      </div>
+      <picture>
+        <source type="image/webp" srcset="/img/w/air-fryer-appareil-380.webp 380w, /img/w/air-fryer-appareil-760.webp 760w" sizes="(max-width: 800px) 100vw, 560px" />
+        <img src="/img/air-fryer-appareil.jpg" alt="Air fryer sur un plan de travail de cuisine" width="560" height="340" style="height:340px;object-fit:cover;border-radius:20px" fetchpriority="high" decoding="async" />
+      </picture>
+    </section>
 
-<div class="trust">
-<span>✅ Recettes <b>testées</b></span>
-<span>⏱️ <b>Temps de cuisson</b> exacts</span>
-<span>🥇 des recettes <b>par centaines</b></span>
-<span>🇫🇷 100% en français</span>
-</div>
+    <div class="trust">
+      <span><b>Testé</b> avant publication</span>
+      <span><b>Temps & °C</b> précis</span>
+      <span><b>Sans</b> bain d'huile</span>
+      <span><b>Maison</b> & surgelés</span>
+    </div>
 
-<section>
-<div class="row"><h2 class="h2">Parcourir par catégorie</h2></div>
-<div class="cattiles">
-{cats.map(([e,l,h,img]) => <a class="tile" href={h}><div class="ph" style={`background-image:url('${img}');background-size:cover;background-position:center`}></div><p>{e} {l}</p></a>)}
-</div>
-</section>
+    <section>
+      <div class="row">
+        <div class="h2">Explorer par catégorie<small>Trouvez la cuisson idéale par type d'aliment</small></div>
+        <a href="/recettes/" class="seeall">Tout voir →</a>
+      </div>
+      <div class="cattiles">
+        {tiles.map((t) => (
+          <a class="tile" href={`/categorie/${t.slug}/`}>
+            <div class="ph"><span>{t.label}</span></div>
+            <p>{t.label}<br /><span style="color:var(--muted);font-weight:600">{t.count} recettes</span></p>
+          </a>
+        ))}
+      </div>
+    </section>
 
-<section>
-<div class="row">
-<h2 class="h2">Recettes populaires<small>Les plus testées et approuvées</small></h2>
-<a class="seeall" href="/recettes/">Tout voir →</a>
-</div>
-<div class="cards">
-{recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} image={r.data.image} />)}
-</div>
-</section>
+    <section>
+      <div class="row">
+        <div class="h2">Dernières recettes<small>Fraîchement testées et publiées</small></div>
+        <a href="/recettes/" class="seeall">Tout voir →</a>
+      </div>
+      <div class="cards">
+        {latest.map((r, i) => <RecipeCard recipe={r} eager={i < 4} />)}
+      </div>
+    </section>
 
-<section>
-<div class="tool">
-<div class="txt">
-<span class="badge">🛠️ Outil gratuit</span>
-<h3>Le bon temps de cuisson, à chaque fois</h3>
-<p>Notre tableau interactif + le convertisseur four → air fryer. Cherche ton aliment, on te donne la température et la durée exactes.</p>
-<a class="cta" href="/temps-de-cuisson/">Ouvrir l'outil →</a>
-</div>
-<div class="ph" style="background-image:url('/img/nuggets-surgeles-air-fryer.jpg');background-size:cover;background-position:center"></div>
-</div>
-</section>
+    <section>
+      <div class="tool">
+        <div class="txt">
+          <h3>Convertisseur four → air fryer</h3>
+          <p>Une recette pensée pour le four ? Obtenez la température et le temps ajustés pour l'air fryer en un clic, plus le tableau des temps par aliment.</p>
+          <a href="/temps-de-cuisson/" class="cta">Ouvrir l'outil →</a>
+        </div>
+        <div class="ph"><span>Convertisseur</span></div>
+      </div>
+    </section>
 
-<section id="newsletter">
-<div class="lead">
-<div class="ebook">📕 20 recettes + temps de cuisson</div>
-<div>
-<h3>Reçois ton ebook gratuit 🎁</h3>
-<p>Nos 20 meilleures recettes air fryer + le tableau complet des temps de cuisson, directement dans ta boîte mail.</p>
-<div class="ml-embedded" data-form="7QNwhz"></div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="guide">
-<div class="ph" style="background-image:url('/img/air-fryer-appareil.jpg');background-size:cover;background-position:center"></div>
-<div class="g">
-<span class="rtag">Guide d'achat</span>
-<h3>Quel air fryer choisir en 2026 ?</h3>
-<p>Simple, double panier, XXL… On compare les modèles qui valent vraiment leur prix, pour chaque budget et chaque famille.</p>
-<a class="cta" href="/guides/">Voir le comparatif →</a>
-</div>
-</div>
-</section>
-
-<section>
-<div class="author">
-<div class="avatar">AG</div>
-<p><b>La cuisine Airfryer Gourmand.</b> On teste chaque recette dans notre air fryer avant de la publier — temps, températures, astuces. Pas de théorie, que du concret qui marche.</p>
-</div>
-</section>
-</div>
-</Base>
+    <section>
+      <div class="author">
+        <div class="avatar">AG</div>
+        <p><b>Chaque recette est testée dans notre cuisine.</b> Nous notons le temps et la température exacts, les pièges à éviter et les variantes surgelées — puis on publie. Pas de recette au hasard.</p>
+      </div>
+    </section>
+  </div>
+</Layout>
