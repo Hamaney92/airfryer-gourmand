@@ -1,16 +1,38 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
-import { getCollection } from 'astro:content';
-const recipes = (await getCollection('recipes')).filter(r=>r.data.pubDate.getTime()<=Date.now()).sort((a,b)=>b.data.reviews-a.data.reviews);
+import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../../lib/site';
+
+const recipes = await getPublishedRecipes();
+
+// Regroupe par catégorie pour afficher des sections + filtres.
+const groups = new Map<string, typeof recipes>();
+for (const r of recipes) {
+  const label = catInfo(r.data.category).label;
+  if (!groups.has(label)) groups.set(label, []);
+  groups.get(label)!.push(r);
+}
+const cats = Object.values(CATEGORIES).filter((c) =>
+  recipes.some((r) => catInfo(r.data.category).slug === c.slug)
+);
+
+const title = `Toutes les recettes air fryer — ${recipes.length} recettes testées`;
+const description = `Parcourez ${recipes.length} recettes air fryer testées, classées par catégorie : temps de cuisson, température et astuces pour chaque aliment.`;
 ---
-<Base title="Toutes les recettes Air Fryer — Airfryer Gourmand" description="Toutes nos recettes air fryer testées : viandes, poissons, légumes, surgelés et desserts. Temps de cuisson exacts pour chaque plat.">
+<Layout title={title} description={description} path="/recettes/">
   <div class="wrap">
-    <section style="padding-top:34px">
-      <div class="row"><h1 class="h2">Toutes les recettes<small>{recipes.length} recettes testées au air fryer</small></h1></div>
-      <div class="cards">
-        {recipes.map(r => <RecipeCard title={r.data.title} category={r.data.category} rating={r.data.rating} cookTime={r.data.cookTime} slug={r.slug} image={r.data.image} />)}
+    <section>
+      <div class="h2" style="font-size:2rem">Toutes les recettes air fryer<small>{recipes.length} recettes testées, classées par catégorie</small></div>
+      <div class="cats" style="flex-wrap:wrap;margin-top:16px">
+        {cats.map((c) => <a href={`/categorie/${c.slug}/`}>{c.label}</a>)}
       </div>
     </section>
+
+    {[...groups.entries()].map(([label, list]) => (
+      <section>
+        <div class="row"><div class="h2">{label} <span style="color:var(--muted);font-weight:600;font-size:1rem">({list.length})</span></div></div>
+        <div class="cards">{list.map((r) => <RecipeCard recipe={r} />)}</div>
+      </section>
+    ))}
   </div>
-</Base>
+</Layout>
