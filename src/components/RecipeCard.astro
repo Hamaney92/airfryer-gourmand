@@ -9,18 +9,23 @@ export interface Props {
 const { recipe, eager = false } = Astro.props;
 const { data, slug } = recipe;
 const cat = catInfo(data.category);
+// WebP 380px optimisé (généré dans /img/w/), JPG en fallback.
+const webp = data.image ? data.image.replace(/^\/img\//, '/img/w/').replace(/\.jpg$/, '-380.webp') : undefined;
 ---
 <a class="rcard" href={`/recettes/${slug}/`}>
   {data.image ? (
-    <img
-      src={data.image}
-      alt={data.alt ?? data.title}
-      width="400"
-      height="300"
-      loading={eager ? 'eager' : 'lazy'}
-      decoding="async"
-      style="height:150px;object-fit:cover;width:100%"
-    />
+    <picture>
+      <source type="image/webp" srcset={webp} />
+      <img
+        src={data.image}
+        alt={data.alt ?? data.title}
+        width="400"
+        height="300"
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        style="height:150px;object-fit:cover;width:100%"
+      />
+    </picture>
   ) : (
     <div class="ph" style="height:150px"><span>Photo à venir</span></div>
   )}
