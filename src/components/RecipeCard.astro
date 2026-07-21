@@ -1,18 +1,35 @@
 ---
-export interface Props { title:string; category:string; rating:number; cookTime:number; slug:string; image?:string; }
-const { title, category, rating, cookTime, slug, image } = Astro.props;
+import type { Recipe } from '../lib/site';
+import { catInfo, totalTime } from '../lib/site';
+
+export interface Props {
+  recipe: Recipe;
+  eager?: boolean;
+}
+const { recipe, eager = false } = Astro.props;
+const { data, slug } = recipe;
+const cat = catInfo(data.category);
 ---
 <a class="rcard" href={`/recettes/${slug}/`}>
-  <div class="pin" aria-hidden="true">📌</div>
-  {image
-    ? <img src={image} alt={title} loading="lazy" style="height:150px;width:100%;object-fit:cover;display:block" />
-    : <div class="ph"><span>📷 Photo</span></div>}
+  {data.image ? (
+    <img
+      src={data.image}
+      alt={data.alt ?? data.title}
+      width="400"
+      height="300"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      style="height:150px;object-fit:cover;width:100%"
+    />
+  ) : (
+    <div class="ph" style="height:150px"><span>Photo à venir</span></div>
+  )}
   <div class="rbody">
-    <div class="rtag">{category}</div>
-    <h2 class="rtitle">{title}</h2>
+    <span class="rtag">{cat.label}</span>
+    <h3 class="rtitle">{data.title}</h3>
     <div class="rmeta">
-      <span class="stars">★ {rating.toFixed(1)}</span>
-      <span class="time">⏱️ {cookTime} min</span>
+      <span>★ {data.rating} · {data.reviews} avis</span>
+      <span class="time">⏱ {totalTime(recipe)} min</span>
     </div>
   </div>
 </a>
