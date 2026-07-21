@@ -1,16 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { amazonSearch } from '../../lib/site';
 
 const title = "Meilleur air fryer 2026 : comparatif pour choisir (par budget)";
 const description = "Notre comparatif air fryer 2026 : les meilleurs modèles par besoin (polyvalent, compact, double panier, XXL, petit budget) et les critères pour bien choisir. Objectif, sans blabla.";
 
+// Affiliation Amazon : tag centralisé dans src/lib/site.ts (un seul endroit à modifier).
+const amazonLink = amazonSearch;
+
 const modeles = [
-  { cat: "🏆 Meilleur rapport qualité-prix / polyvalent", nom: "Cosori TurboBlaze 6L", capa: "6 L", puis: "1725 W", prix: "~100-140 €", pour: "Un seul appareil pour tout faire, sans se ruiner.", plus: "Moteur silencieux, chauffe rapide, écran tactile, 30-230 °C.", moins: "Panier unique (pas de double zone)." },
-  { cat: "👥 Meilleur compact (1-2 personnes)", nom: "Ninja AF100EU", capa: "3,8 L", puis: "1550 W", prix: "~90-100 €", pour: "Solo, couple ou petite cuisine.", plus: "Compact mais 3,8 L, panier lave-vaisselle, marque fiable.", moins: "Juste pour 1-2 personnes, fonctions basiques." },
-  { cat: "🍽️ Meilleur double panier (2 plats à la fois)", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Un repas complet (protéine + accompagnement) en une fois.", plus: "Deux zones indépendantes, fonction Sync, grande capacité.", moins: "Encombrant et un peu bruyant, prix élevé." },
-  { cat: "💶 Meilleur double panier abordable", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans le prix Ninja.", plus: "Deux tiroirs, marque française, moins cher.", moins: "Tiroirs de tailles inégales." },
-  { cat: "👨‍👩‍👧‍👦 Meilleur XXL / familial", nom: "Cosori gamme 10L (Dual Blaze)", capa: "~9-11 L", puis: "~1700-2600 W", prix: "~150-250 €", pour: "Grandes tablées et batch cooking.", plus: "Énorme capacité, certaines versions évitent de retourner les aliments.", moins: "Très encombrant, prix élevé." },
-  { cat: "🪙 Meilleur petit budget", nom: "Silvercrest 6,7L (Lidl) / Xiaomi 6.5L", capa: "6,5-6,7 L", puis: "~1800-2150 W", prix: "~50-70 €", pour: "Grande capacité au prix d'un compact.", plus: "Imbattable sur le prix, performances honnêtes.", moins: "Dispo ponctuelle (Lidl), SAV plus limité." },
+  { cat: "🏆 Meilleur rapport qualité-prix / polyvalent", nom: "Cosori TurboBlaze 6L", lien: "Cosori TurboBlaze 6L air fryer", capa: "6 L", puis: "1725 W", prix: "~100-140 €", pour: "Un seul appareil pour tout faire, sans se ruiner.", plus: "Moteur silencieux, chauffe rapide, écran tactile, 30-230 °C.", moins: "Panier unique (pas de double zone)." },
+  { cat: "👥 Meilleur compact (1-2 personnes)", nom: "Ninja AF100EU", lien: "Ninja AF100EU air fryer", capa: "3,8 L", puis: "1550 W", prix: "~90-100 €", pour: "Solo, couple ou petite cuisine.", plus: "Compact mais 3,8 L, panier lave-vaisselle, marque fiable.", moins: "Juste pour 1-2 personnes, fonctions basiques." },
+  { cat: "🍽️ Meilleur double panier (2 plats à la fois)", nom: "Ninja Foodi MAX Dual Zone AF400EU", lien: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Un repas complet (protéine + accompagnement) en une fois.", plus: "Deux zones indépendantes, fonction Sync, grande capacité.", moins: "Encombrant et un peu bruyant, prix élevé." },
+  { cat: "💶 Meilleur double panier abordable", nom: "Moulinex Dual Easy Fry & Grill 8.3L", lien: "Moulinex Dual Easy Fry Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans le prix Ninja.", plus: "Deux tiroirs, marque française, moins cher.", moins: "Tiroirs de tailles inégales." },
+  { cat: "👨‍👩‍👧‍👦 Meilleur XXL / familial", nom: "Cosori gamme 10L (Dual Blaze)", lien: "Cosori Dual Blaze air fryer 10L", capa: "~9-11 L", puis: "~1700-2600 W", prix: "~150-250 €", pour: "Grandes tablées et batch cooking.", plus: "Énorme capacité, certaines versions évitent de retourner les aliments.", moins: "Très encombrant, prix élevé." },
+  { cat: "🪙 Meilleur petit budget", nom: "Xiaomi Smart Air Fryer 6.5L", lien: "Xiaomi Smart Air Fryer 6.5L", capa: "6,5 L", puis: "~1800-2150 W", prix: "~60-80 €", pour: "Grande capacité au prix d'un compact.", plus: "Imbattable sur le prix, connecté, performances honnêtes.", moins: "Fonctions avancées via l'appli, SAV plus limité." },
 ];
 
 const articleSchema = {
@@ -47,7 +51,7 @@ const faqSchema = {
       <div class="quick"><b>En bref :</b> pas d'air fryer « meilleur » dans l'absolu — le bon dépend de ton foyer et de ton budget. Pour la plupart des gens, un modèle polyvalent de 5-6 L (type Cosori TurboBlaze) est le meilleur compromis. Familles : un double panier. Petit budget ou 1-2 personnes : un compact ou un premier prix suffit largement.</div>
 
       <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">
-        ⚖️ <b>Transparence :</b> ce guide est <b>100 % informatif</b> et ne contient aucun lien commercial. Les <b>prix sont indicatifs (2026) et varient</b> beaucoup selon le revendeur et les promotions — vérifie toujours le prix et la référence exacte chez le vendeur avant d'acheter.
+        ⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b> — si tu achètes via un de nos liens, nous touchons une petite commission, <b>sans surcoût pour toi</b>. Ça nous aide à faire vivre le site. Nos recommandations restent basées sur les caractéristiques et l'usage réel. Les <b>prix sont indicatifs (2026) et varient</b> selon le revendeur et les promotions — vérifie toujours le prix et la référence exacte avant d'acheter.
       </p>
 
       <h2>Les 5 critères qui comptent vraiment</h2>
@@ -67,6 +71,7 @@ const faqSchema = {
           <p style="margin:6px 0;color:#6a5d54"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.prix}</span></p>
           <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
           <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>👎</b> {m.moins}</p>
+          <a href={amazonLink(m.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir le prix sur Amazon →</a>
         </div>
       ))}
 
