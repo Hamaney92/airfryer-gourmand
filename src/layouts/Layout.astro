@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SITE, CATEGORIES } from '../lib/site';
+import PdfPopup from '../components/PdfPopup.astro';
 
 export interface Props {
   title: string;
@@ -97,6 +98,7 @@ const year = new Date().getFullYear();
           </div>
           <div>
             <h4>Le site</h4>
+            <a href="/tableau-temps-cuisson-air-fryer/">Tableau à imprimer</a>
             <a href="/a-propos/">À propos</a>
             <a href="/contact/">Contact</a>
           </div>
@@ -104,5 +106,6 @@ const year = new Date().getFullYear();
         <div class="disc">© {year} {SITE.name} — Les temps de cuisson sont donnés à titre indicatif et varient selon le modèle d'air fryer.</div>
       </div>
     </footer>
+    <PdfPopup />
   </body>
 </html>
