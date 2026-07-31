@@ -1,0 +1,56 @@
+---
+// Bloc « Enregistrer cette recette ».
+//
+// POURQUOI CE BLOC EXISTE — un visiteur qui arrive de Pinterest n'est pas en train de
+// cuisiner : il collectionne. C'est littéralement l'usage de Pinterest, et c'est ce qui
+// explique nos 18 s de session moyenne contre 2 min 41 s pour le trafic Google.
+// On ne lutte donc pas contre ce comportement : on le capte. L'email est présenté comme
+// un SERVICE (« je te l'envoie pour que tu le retrouves »), pas comme une demande
+// d'abonnement — c'est le mécanisme utilisé par tous les gros blogs air fryer US.
+import { MAILERLITE_FORM_ACTION } from '../lib/site';
+
+interface Props { titre: string; url: string; }
+const { titre, url } = Astro.props;
+const configured = Boolean(MAILERLITE_FORM_ACTION);
+---
+
+<aside class="save-box">
+  <div class="save-head">
+    <span class="save-emoji">🔖</span>
+    <div>
+      <strong>Tu veux garder cette recette ?</strong>
+      <p>Laisse ton email : on t'envoie <b>{titre}</b> pour que tu la retrouves quand tu passeras vraiment en cuisine. Un clic de confirmation et elle arrive.</p>
+    </div>
+  </div>
+
+  {configured ? (
+    <form class="save-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank">
+      <input type="hidden" name="fields[recette]" value={titre} />
+      <input type="hidden" name="fields[url_recette]" value={url} />
+      <input type="email" name="fields[email]" required placeholder="ton@email.fr" aria-label="Ton adresse email" />
+      <button type="submit">Envoie-la-moi →</button>
+    </form>
+  ) : (
+    <p class="save-fallback">
+      <a href="/temps-de-cuisson/#pdf">📄 En attendant, récupère le tableau des temps de cuisson (PDF gratuit) →</a>
+    </p>
+  )}
+
+  <p class="save-note">Pas de spam, une recette testée par semaine. Désinscription en un clic.</p>
+</aside>
+
+<style>
+  .save-box{background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:16px;padding:20px 22px;margin:26px 0}
+  .save-head{display:flex;gap:14px;align-items:flex-start}
+  .save-emoji{font-size:1.7rem;line-height:1}
+  .save-box strong{display:block;font-size:1.08rem;color:var(--brand-d);margin-bottom:4px}
+  .save-box p{margin:0;color:#5f5147;font-size:.95rem}
+  .save-form{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .save-form input[type=email]{flex:1;min-width:200px;border:1px solid var(--line);padding:12px 14px;border-radius:10px;font-size:1rem}
+  .save-form button{background:var(--brand);color:#fff;font-weight:800;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-size:1rem}
+  .save-form button:hover{filter:brightness(.94)}
+  .save-fallback{margin-top:12px!important}
+  .save-fallback a{color:var(--brand-d);font-weight:700;text-decoration:none}
+  .save-note{margin-top:10px!important;font-size:.8rem!important;color:#9a8c7d!important}
+  @media(max-width:560px){ .save-form button{width:100%} }
+</style>
