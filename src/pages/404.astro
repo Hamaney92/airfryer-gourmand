@@ -1,0 +1,38 @@
+---
+// Sans cette page, Cloudflare Pages servait l'accueil avec un statut HTTP 200 pour
+// TOUTE URL inexistante (soft-404). Google peut alors indexer une infinité d'URL
+// bidon comme autant de copies de l'accueil — c'est mauvais pour le budget de crawl
+// et pour la qualité perçue du site. Astro génère /404.html, que Cloudflare Pages
+// sert automatiquement avec un vrai statut 404.
+import Layout from '../layouts/Layout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import { getPublishedRecipes } from '../lib/site';
+
+const populaires = (await getPublishedRecipes()).slice(0, 4);
+---
+
+<Layout
+  title="Page introuvable — Airfryer Gourmand"
+  description="Cette page n'existe pas ou a été déplacée. Retrouvez nos recettes air fryer et le tableau des temps de cuisson."
+  noindex={true}
+>
+  <div class="wrap article" style="text-align:center">
+    <div style="font-size:3.4rem;line-height:1;margin-bottom:8px">🍟</div>
+    <h1>Cette page n'existe pas</h1>
+    <p style="max-width:520px;margin:0 auto 26px">
+      Le lien est peut-être erroné, ou la recette a changé d'adresse. Voici par où continuer :
+    </p>
+    <p style="margin-bottom:34px">
+      <a href="/recettes/" class="cta">Toutes les recettes →</a>
+      &nbsp;
+      <a href="/tableau-temps-cuisson-air-fryer/" style="color:var(--brand-d);font-weight:700">Le tableau des temps de cuisson</a>
+    </p>
+  </div>
+
+  {populaires.length > 0 && (
+    <section class="wrap">
+      <div class="row"><div class="h2">Les recettes du moment</div></div>
+      <div class="cards">{populaires.map((r) => <RecipeCard recipe={r} />)}</div>
+    </section>
+  )}
+</Layout>

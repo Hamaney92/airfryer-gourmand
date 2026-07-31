@@ -1,0 +1,141 @@
+---
+// Page dédiée au mot-clé n°1 de la niche air fryer : « tableau des temps de cuisson à imprimer ».
+// Chez tous les gros blogs air fryer anglophones, c'est la page la plus vue, la plus épinglée
+// et le premier capteur d'emails. On lui donne sa propre page (au lieu d'un bloc perdu sur
+// /temps-de-cuisson/) pour qu'elle puisse ranker seule et servir d'aimant.
+import Layout from '../layouts/Layout.astro';
+import { SITE, getPublishedRecipes, catInfo, MAILERLITE_FORM_ACTION } from '../lib/site';
+
+const recipes = await getPublishedRecipes();
+const rows = recipes
+  .map((r) => ({
+    nom: r.data.title.split(' au air fryer')[0].split(' à l')[0].split(' :')[0],
+    slug: r.slug,
+    cat: catInfo(r.data.category).label,
+    temp: r.data.temp,
+    cook: r.data.cookTime,
+  }))
+  .filter((r) => r.temp && r.cook)
+  .sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+
+const parCat = rows.reduce((acc: Record<string, typeof rows>, r) => {
+  (acc[r.cat] ||= []).push(r);
+  return acc;
+}, {});
+
+const configured = Boolean(MAILERLITE_FORM_ACTION);
+
+const title = 'Tableau des temps de cuisson air fryer à imprimer (PDF gratuit)';
+const description =
+  "Le tableau complet des temps et températures de cuisson au air fryer, aliment par aliment, à imprimer gratuitement et à coller sur le frigo. Réglages testés.";
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: `${SITE.url}/tableau-temps-cuisson-air-fryer/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Quelle température pour cuire au air fryer ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "La plupart des cuissons se font entre 160 °C et 200 °C. 200 °C pour tout ce qui doit croustiller (frites, panés, ailes de poulet), 180 °C pour les viandes et les plats complets, 160 °C pour les desserts et les gâteaux.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment convertir une recette du four vers le air fryer ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Baissez la température d'environ 20 °C et réduisez le temps d'environ 20 %. Une recette prévue 30 minutes à 200 °C au four devient environ 24 minutes à 180 °C au air fryer. Vérifiez toujours la cuisson avant de servir.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Faut-il préchauffer un air fryer ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Oui, 2 à 3 minutes suffisent. Le préchauffage est ce qui sépare une cuisson correcte d'une cuisson vraiment croustillante, surtout pour les frites et les panés.",
+        },
+      },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} path="/tableau-temps-cuisson-air-fryer/" jsonLd={jsonLd}>
+  <div class="wrap article">
+    <h1>Tableau des temps de cuisson air fryer</h1>
+    <p>
+      Tous les réglages testés chez nous, aliment par aliment. La règle générale par rapport au four :
+      <b>−20 °C sur la température</b> et <b>−20 % sur le temps</b>. Et on préchauffe toujours 2 à 3 minutes.
+    </p>
+
+    <aside class="magnet">
+      <div class="magnet-txt">
+        <strong>📄 La version à imprimer, gratuite</strong>
+        <p>Une seule page, à coller sur la porte du frigo. Plus besoin de toucher ton téléphone avec les mains pleines de farine.</p>
+        {configured ? (
+          <form class="magnet-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank">
+            <input type="hidden" name="fields[recette]" value="Tableau des temps de cuisson" />
+            <input type="hidden" name="fields[url_recette]" value={`${SITE.url}/tableau-temps-cuisson-air-fryer.pdf`} />
+            <input type="email" name="fields[email]" required placeholder="ton@email.fr" aria-label="Ton adresse email" />
+            <button type="submit">Recevoir le tableau →</button>
+          </form>
+        ) : (
+          <a href="/tableau-temps-cuisson-air-fryer.pdf" download class="magnet-cta">Télécharger le PDF →</a>
+        )}
+        <p style="margin-top:10px;font-size:.8rem;color:#9a8c7d">
+          Ou <a href="/tableau-temps-cuisson-air-fryer.pdf" download style="color:var(--brand-d);font-weight:700">télécharger directement le PDF</a>, sans email.
+        </p>
+      </div>
+    </aside>
+
+    {Object.entries(parCat).map(([cat, list]) => (
+      <>
+        <h2>{cat}</h2>
+        <div style="overflow-x:auto">
+          <table class="rectable">
+            <thead><tr><th>Aliment</th><th>Température</th><th>Temps</th><th></th></tr></thead>
+            <tbody>
+              {list.map((r) => (
+                <tr>
+                  <td>{r.nom}</td>
+                  <td class="t">{r.temp}</td>
+                  <td style="font-weight:700;white-space:nowrap">{r.cook} min</td>
+                  <td><a href={`/recettes/${r.slug}/`} style="color:var(--brand-d);font-weight:700;white-space:nowrap">La recette →</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ))}
+
+    <h2>Questions fréquentes</h2>
+    <h3>Quelle température pour cuire au air fryer ?</h3>
+    <p>La plupart des cuissons se font entre 160 °C et 200 °C. <b>200 °C</b> pour tout ce qui doit croustiller (frites, panés, ailes de poulet), <b>180 °C</b> pour les viandes et les plats complets, <b>160 °C</b> pour les desserts et les gâteaux.</p>
+
+    <h3>Comment convertir une recette du four vers le air fryer ?</h3>
+    <p>Baissez la température d'environ 20 °C et réduisez le temps d'environ 20 %. Une recette prévue 30 minutes à 200 °C au four devient environ 24 minutes à 180 °C au air fryer. Le <a href="/temps-de-cuisson/">convertisseur</a> fait le calcul pour vous.</p>
+
+    <h3>Faut-il préchauffer un air fryer ?</h3>
+    <p>Oui, 2 à 3 minutes suffisent. C'est le détail qui sépare une cuisson correcte d'une cuisson vraiment croustillante, surtout pour les frites et les panés.</p>
+
+    <p class="note">Valeurs indicatives : elles varient selon le modèle, la quantité et l'épaisseur des morceaux. Vérifiez toujours la cuisson avant de servir.</p>
+  </div>
+</Layout>
+
+<style>
+  .magnet-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .magnet-form input{flex:1;min-width:200px;border:1px solid var(--line);padding:12px 14px;border-radius:10px;font-size:1rem}
+  .magnet-form button{background:var(--brand);color:#fff;font-weight:800;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-size:1rem}
+  @media(max-width:560px){ .magnet-form button{width:100%} }
+</style>
