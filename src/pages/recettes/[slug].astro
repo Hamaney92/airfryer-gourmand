@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
-import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes } from '../../lib/site';
+import SaveRecipe from '../../components/SaveRecipe.astro';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, gearFor, magnetUpsell } from '../../lib/site';
 
 export async function getStaticPaths() {
   const recipes = await getPublishedRecipes();
@@ -17,10 +18,14 @@ const cat = catInfo(data.category);
 const path = `/recettes/${recipe.slug}/`;
 const { Content } = await recipe.render();
 
-// Recettes liées : même catégorie, hors recette courante.
-const related = (await getPublishedRecipes())
-  .filter((r) => r.data.category === data.category && r.slug !== recipe.slug)
-  .slice(0, 4);
+const gear = gearFor({ category: data.category, slug: recipe.slug, keyword: data.keyword });
+
+// Recettes liées : d'abord la même catégorie, puis on complète avec d'autres recettes
+// pour toujours proposer 4 portes de sortie (une seule carte = visiteur qui repart).
+const allPublished = await getPublishedRecipes();
+const sameCat = allPublished.filter((r) => r.data.category === data.category && r.slug !== recipe.slug);
+const others = allPublished.filter((r) => r.data.category !== data.category && r.slug !== recipe.slug);
+const related = [...sameCat, ...others].slice(0, 4);
 
 const imageUrl = data.image ? new URL(data.image, SITE.url).href : undefined;
 
@@ -142,6 +147,8 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     <div class="card-box">
       <h2 style="margin-top:0">Ingrédients</h2>
       <ul>{data.ingredients.map((i: string) => <li>{i}</li>)}</ul>
+      <SaveRecipe titre={data.title} url={new URL(path, SITE.url).href} />
+
       <h2>Étapes</h2>
       <ol>{data.steps.map((s: string) => <li>{s}</li>)}</ol>
       {data.tips.length > 0 && (
@@ -153,12 +160,20 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     </div>
 
     <aside class="gear-box" style="background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0">
-      <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🍳 Le bon matériel pour cette recette</div>
-      <p style="margin:6px 0;color:#5f5147">Un résultat régulier tient à 90 % au bon appareil et aux bons accessoires. On a comparé les modèles pour chaque budget et listé les 5 accessoires qui changent vraiment la cuisson.</p>
-      <p style="margin:8px 0 0">
-        <a href="/guides/meilleur-air-fryer-2026/" style="color:var(--brand-d);font-weight:700">→ Quel air fryer choisir en 2026</a><br/>
-        <a href="/guides/accessoires-air-fryer/" style="color:var(--brand-d);font-weight:700">→ Les accessoires vraiment utiles</a>
+      <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{gear.emoji} L'accessoire qui change cette recette : {gear.nom}</div>
+      <p style="margin:6px 0;color:#5f5147">{gear.util}</p>
+      <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener"
+         style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
+        Voir sur Amazon →
+      </a>
+      <p style="margin:8px 0 2px;font-size:.9rem">
+        🧲 Débutant ? <a href={amazonSearch(magnetUpsell.query)} target="_blank" rel="sponsored nofollow noopener" style="color:var(--brand-d);font-weight:700">{magnetUpsell.nom} →</a> (tous les temps sous les yeux, collé au frigo)
       </p>
+      <p style="margin:8px 0 0;font-size:.85rem">
+        <a href="/guides/accessoires-air-fryer/" style="color:var(--brand-d);font-weight:700">→ Tous les accessoires vraiment utiles</a> ·
+        <a href="/guides/meilleur-air-fryer-2026/" style="color:var(--brand-d);font-weight:700">Quel air fryer choisir</a>
+      </p>
+      <p style="margin:6px 0 0;font-size:.78rem;color:#9a8c7d">Lien affilié — commission possible, sans surcoût pour toi.</p>
     </aside>
 
     {data.faq.length > 0 && (
@@ -185,7 +200,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
     {related.length > 0 && (
       <section>
-        <div class="row"><div class="h2">Dans la même catégorie</div></div>
+        <div class="row"><div class="h2">À tester juste après</div></div>
         <div class="cards">{related.map((r) => <RecipeCard recipe={r} />)}</div>
       </section>
     )}
