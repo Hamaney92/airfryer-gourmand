@@ -1,0 +1,41 @@
+---
+// Page d'USAGE, pas de catégorie d'ingrédient. Les gens ne cherchent pas « volaille »,
+// ils cherchent « qu'est-ce que je fais à manger ce soir en 15 minutes ». C'est aussi
+// l'angle qui convertit le mieux sur Pinterest (audience FR : 86 % de femmes, 71 % de 18-44 ans).
+import Layout from '../layouts/Layout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import { SITE, getPublishedRecipes, isRapide } from '../lib/site';
+
+const list = (await getPublishedRecipes())
+  .filter(isRapide)
+  .sort((a, b) => (a.data.cookTime ?? 99) - (b.data.cookTime ?? 99));
+
+const title = 'Dîner rapide au air fryer : 15 minutes de cuisson maximum';
+const description =
+  "Les recettes air fryer prêtes en 15 minutes de cuisson ou moins, classées de la plus rapide à la plus longue. Temps et températures testés.";
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Dîner rapide au air fryer',
+  url: `${SITE.url}/rapide/`,
+  description,
+};
+---
+<Layout title={title} description={description} path="/rapide/" jsonLd={jsonLd}>
+  <div class="wrap">
+    <nav class="crumb" style="margin-top:24px">
+      <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › Dîner rapide
+    </nav>
+    <section style="padding-top:8px">
+      <div class="h2" style="font-size:2rem">Dîner rapide au air fryer<small>{list.length} recettes en 15 min de cuisson ou moins</small></div>
+      <p style="color:#7a6a5c;max-width:640px;margin-top:10px">
+        Classées de la plus rapide à la plus longue. Ajoute 2 à 3 minutes de préchauffage —
+        c'est ce qui sépare une cuisson correcte d'une cuisson vraiment croustillante.
+      </p>
+    </section>
+    <section style="padding-top:8px">
+      <div class="cards">{list.map((r) => <RecipeCard recipe={r} />)}</div>
+    </section>
+  </div>
+</Layout>

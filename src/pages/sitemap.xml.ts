@@ -19,7 +19,8 @@ export const GET: APIRoute = async () => {
   const catSlugs = [...new Set(recipes.map((r) => CAT_SLUGS[r.data.category]).filter(Boolean))];
 
   const staticPaths = [
-    '/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/', '/guides/', '/a-propos/', '/contact/',
+    '/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/',
+    '/rapide/', '/minceur/', '/guides/', '/a-propos/', '/contact/',
     ...catSlugs.map((s) => `/categorie/${s}/`),
   ];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);

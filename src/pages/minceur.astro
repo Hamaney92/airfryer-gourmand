@@ -1,0 +1,41 @@
+---
+// Page d'usage « minceur / léger » — l'un des angles les plus porteurs de l'audience
+// française sur Pinterest. On reste honnête : on ne promet aucune perte de poids, on
+// regroupe simplement les recettes légères (légumes, poissons, volaille maigre) cuites
+// sans bain d'huile.
+import Layout from '../layouts/Layout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import { SITE, getPublishedRecipes, isMinceur } from '../lib/site';
+
+const list = (await getPublishedRecipes()).filter(isMinceur);
+
+const title = 'Recettes air fryer légères : légumes, poissons et volaille sans friture';
+const description =
+  "Les recettes air fryer les plus légères : légumes rôtis, poissons et volaille maigre, cuits sans bain d'huile. Temps et températures testés.";
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Recettes air fryer légères',
+  url: `${SITE.url}/minceur/`,
+  description,
+};
+---
+<Layout title={title} description={description} path="/minceur/" jsonLd={jsonLd}>
+  <div class="wrap">
+    <nav class="crumb" style="margin-top:24px">
+      <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › Léger
+    </nav>
+    <section style="padding-top:8px">
+      <div class="h2" style="font-size:2rem">Recettes air fryer légères<small>{list.length} recettes sans bain d'huile</small></div>
+      <p style="color:#7a6a5c;max-width:660px;margin-top:10px">
+        Légumes rôtis, poissons et volaille maigre. L'air fryer permet de retrouver le croustillant
+        avec une cuillère d'huile au lieu d'un litre — mais une recette reste une recette :
+        ces pages ne remplacent pas l'avis d'un professionnel de santé.
+      </p>
+    </section>
+    <section style="padding-top:8px">
+      <div class="cards">{list.map((r) => <RecipeCard recipe={r} />)}</div>
+    </section>
+  </div>
+</Layout>
