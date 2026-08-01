@@ -77,6 +77,50 @@ export function gearFor(data: { category?: string; slug?: string; keyword?: stri
 
 export const magnetUpsell = MAGNET;
 
+// ===== MAILLAGE INTERNE PAR USAGE =====
+// Le trafic Pinterest repart en ~18 s (contre 2 min 41 s pour Google) : le problème
+// n'est pas le contenu, c'est qu'il n'y a nulle part où aller ensuite. On propose donc
+// DEUX sorties de nature différente, comme le font les gros blogs recettes :
+//   1. « Avec quoi le servir ? » → la suite logique du repas (un plat appelle un
+//      accompagnement, un accompagnement appelle un plat). C'est une intention réelle.
+//   2. « À tester juste après » → plus de recettes du même genre.
+const PLATS = ['Volaille', 'Viande', 'Poisson', 'Plat', 'Charcuterie'];
+const COTES = ['Accompagnement', 'Legume'];
+
+/** Catégories à proposer en accompagnement d'une recette, selon sa catégorie. */
+export function pairingCategories(category: string): { titre: string; cats: string[] } | null {
+  if (PLATS.includes(category)) return { titre: 'Avec quoi le servir ?', cats: COTES };
+  if (COTES.includes(category)) return { titre: 'Avec quel plat le servir ?', cats: PLATS };
+  if (category === 'Apéro') return { titre: 'Pour compléter l’apéro', cats: ['Apéro', 'Surgelé'] };
+  if (category === 'Surgelé') return { titre: 'Pour accompagner', cats: COTES };
+  return null; // Desserts et œufs : pas d'accompagnement qui ait du sens.
+}
+
+// ===== NAVIGATION PAR USAGE =====
+// On navigue comme les gens cherchent (« dîner rapide », « apéro », « minceur »),
+// pas comme on range un frigo (« volaille », « charcuterie »). Ces intentions sont
+// exactement celles qui convertissent déjà sur Pinterest.
+export const USAGES = [
+  { slug: '/rapide/', label: 'Dîner rapide' },
+  { slug: '/categorie/apero/', label: 'Apéro' },
+  { slug: '/minceur/', label: 'Minceur' },
+  { slug: '/categorie/surgeles/', label: 'Surgelés' },
+  { slug: '/categorie/desserts/', label: 'Desserts' },
+  { slug: '/tableau-temps-cuisson-air-fryer/', label: 'Temps de cuisson' },
+];
+
+/** Recettes « dîner rapide » : prêtes en 15 min de cuisson ou moins. */
+export function isRapide(r: Recipe) {
+  return (r.data.cookTime ?? 99) <= 15;
+}
+
+/** Recettes « minceur » : légumes, poissons et blancs de volaille, sans friture. */
+export function isMinceur(r: Recipe) {
+  const c = r.data.category;
+  if (c === 'Legume' || c === 'Poisson') return true;
+  return c === 'Volaille' && /blanc|aiguillette|filet/i.test(r.slug);
+}
+
 export type Recipe = CollectionEntry<'recipes'>;
 
 export function catInfo(category: string) {
