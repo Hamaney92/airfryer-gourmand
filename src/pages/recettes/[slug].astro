@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
-import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, gearFor, magnetUpsell } from '../../lib/site';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, gearFor, magnetUpsell, pairingCategories } from '../../lib/site';
 
 export async function getStaticPaths() {
   const recipes = await getPublishedRecipes();
@@ -20,11 +20,19 @@ const { Content } = await recipe.render();
 
 const gear = gearFor({ category: data.category, slug: recipe.slug, keyword: data.keyword });
 
-// Recettes liées : d'abord la même catégorie, puis on complète avec d'autres recettes
-// pour toujours proposer 4 portes de sortie (une seule carte = visiteur qui repart).
 const allPublished = await getPublishedRecipes();
-const sameCat = allPublished.filter((r) => r.data.category === data.category && r.slug !== recipe.slug);
-const others = allPublished.filter((r) => r.data.category !== data.category && r.slug !== recipe.slug);
+const autres = allPublished.filter((r) => r.slug !== recipe.slug);
+
+// Sortie n°1 — la suite logique du repas (intention réelle : « et avec ça ? »).
+const pairing = pairingCategories(data.category);
+const pairingRecipes = pairing
+  ? autres.filter((r) => pairing.cats.includes(r.data.category)).slice(0, 4)
+  : [];
+const dejaVus = new Set(pairingRecipes.map((r) => r.slug));
+
+// Sortie n°2 — plus de recettes du même genre, en évitant les doublons de la 1re section.
+const sameCat = autres.filter((r) => r.data.category === data.category && !dejaVus.has(r.slug));
+const others = autres.filter((r) => r.data.category !== data.category && !dejaVus.has(r.slug));
 const related = [...sameCat, ...others].slice(0, 4);
 
 const imageUrl = data.image ? new URL(data.image, SITE.url).href : undefined;
@@ -197,6 +205,13 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         <p>Nous testons chaque recette au air fryer avant de la publier : temps, température, pièges et variantes surgelées. <a href="/a-propos/">En savoir plus →</a></p>
       </div>
     </div>
+
+    {pairing && pairingRecipes.length > 0 && (
+      <section>
+        <div class="row"><div class="h2">{pairing.titre}</div></div>
+        <div class="cards">{pairingRecipes.map((r) => <RecipeCard recipe={r} />)}</div>
+      </section>
+    )}
 
     {related.length > 0 && (
       <section>
