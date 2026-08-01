@@ -184,12 +184,18 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <p style="margin:6px 0 0;font-size:.78rem;color:#9a8c7d">Lien affilié — commission possible, sans surcoût pour toi.</p>
     </aside>
 
+    {/*
+      Chaque question est un H2 à part entière, dans le fil de l'article — et non des H3
+      empilés sous un « Questions fréquentes » générique. Les gens tapent leur question
+      telle quelle dans Google (« combien de temps cuire… ») : un H2 qui reprend
+      exactement cette formulation est ce que Google retient pour les extraits enrichis.
+      Un titre générique, lui, ne correspond à aucune recherche.
+    */}
     {data.faq.length > 0 && (
       <section class="faq">
-        <h2>Questions fréquentes</h2>
         {data.faq.map((f: { q: string; a: string }) => (
           <>
-            <h3>{f.q}</h3>
+            <h2>{f.q}</h2>
             <p>{f.a}</p>
           </>
         ))}
