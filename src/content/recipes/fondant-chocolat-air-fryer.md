@@ -42,3 +42,46 @@ pubDate: 2026-07-06
 Le fondant au chocolat au air fryer, c'est le dessert minute qui impressionne : un **cœur coulant** dans une coque moelleuse, prêt en 12 minutes sans four.
 
 Toute la réussite tient au timing : on sort les fondants quand le contour est pris mais que le centre tremble encore. Une minute de trop, et le cœur fige.
+
+## Temps de cuisson selon le moule
+
+À 160 °C, la matière et la taille du ramequin changent tout. Ne préchauffe pas trop fort : un fondant se rate par excès de chaleur.
+
+| Contenant | Température | Durée | Repère |
+|---|---|---|---|
+| Ramequin en céramique (8 cm) | 160 °C | 10–12 min | contour pris, centre tremblotant |
+| Moule en silicone individuel | 160 °C | 9–11 min | chauffe plus vite |
+| Grand ramequin (12 cm), à partager | 160 °C | 14–16 min | vérifier au centre |
+| Fondants préparés à l'avance, sortis du frigo | 160 °C | +2 min | ne pas cuire glacés |
+
+Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+
+## Le repère du centre tremblotant
+
+Un fondant ne se teste pas au couteau — la lame ressortirait forcément sale, c'est le principe. Le seul repère fiable est **visuel** : secoue légèrement le ramequin. **Le tour doit être ferme et mat, le centre doit encore trembler** comme une gelée sur 2-3 centimètres. C'est cuit.
+
+Si le centre ne bouge plus, tu as un moelleux — bon, mais plus coulant.
+
+## Pourquoi le air fryer est meilleur que le four ici
+
+Le fondant se joue à la minute près, et un four met 12 minutes à monter en température : impossible de rattraper une cuisson. Le air fryer chauffe en 2 minutes et, surtout, **tu peux ouvrir et refermer sans perte de chaleur**. Contrôle le à 10 min, puis toutes les 30 secondes. C'est le dessert où l'appareil apporte un vrai avantage, pas seulement de la vitesse.
+
+## Le cœur ultra-coulant, sans stress
+
+La méthode infaillible : glisse **un carré de chocolat noir au centre de la pâte** avant d'enfourner, sans l'enfoncer jusqu'au fond. Même légèrement trop cuit, ton fondant aura un cœur liquide. C'est ce que font la plupart des restaurants.
+
+## Beurre et farine, dans cet ordre
+
+Beurre généreusement le ramequin **puis farine-le** (ou saupoudre-le de cacao amer, qui ne laisse pas de trace blanche). Sans cela, le démoulage arrache le tour et le cœur s'échappe. Si tu sers directement dans le ramequin, tu peux sauter l'étape.
+
+## Variantes
+
+- **Cœur praliné ou pâte à tartiner** : une cuillère congelée au centre, effet garanti.
+- **Chocolat au lait** : réduis le sucre de 20 g, il est déjà plus doux.
+- **Sans gluten** : remplace la farine par 40 g de poudre d'amande, la texture est encore plus fondante.
+
+## Avec quoi le servir
+
+- avec une boule de glace vanille, le contraste chaud-froid classique ;
+- à côté de [cookies au air fryer](/recettes/cookies-air-fryer/) pour un plateau dessert ;
+- avec un [brownie au air fryer](/recettes/brownie-air-fryer/) si tu reçois du monde.

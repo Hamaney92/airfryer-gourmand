@@ -42,3 +42,46 @@ pubDate: 2026-07-06
 Les tomates farcies au air fryer, c'est le plat familial réinventé : **fondantes dedans, dorées dessus**, en deux fois moins de temps qu'au four et sans dessécher.
 
 Le secret d'une belle tenue : faire dégorger les tomates salées quelques minutes avant de les garnir, pour qu'elles ne rendent pas trop d'eau à la cuisson.
+
+## Temps de cuisson selon la taille
+
+À 180 °C, tout dépend du calibre de la tomate et de la farce. Pas besoin de retourner : la chaleur tourne autour.
+
+| Type | Température | Durée | Repère |
+|---|---|---|---|
+| Petites tomates (100–130 g) | 180 °C | 15–17 min | dessus doré |
+| Tomates moyennes (150–200 g) | 180 °C | 18–22 min | farce à 70 °C à cœur |
+| Grosses tomates (250 g et +) | 180 °C | 22–26 min | farce à 70 °C à cœur |
+| Farce déjà cuite (restes) | 180 °C | 12–15 min | juste réchauffer et gratiner |
+
+Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+
+## Le vrai problème des tomates farcies : l'eau
+
+C'est ce qui rate le plus souvent. La tomate est un fruit gorgé d'eau : chauffée, elle se vide dans le panier, la farce baigne et la peau s'affaisse. Deux gestes suffisent à l'éviter.
+
+**Faire dégorger.** Évide les tomates, sale l'intérieur et **retourne-les 10 minutes sur du papier absorbant**. Le sel tire l'eau avant la cuisson, pas pendant.
+
+**Absorber ce qui reste.** Ajoute à ta farce une cuillère à soupe de **chapelure, de riz cru ou de pain rassis émietté**. Pendant la cuisson, cet ingrédient boit le jus au lieu de le laisser couler — et c'est aussi ce qui rend la farce moelleuse plutôt que compacte.
+
+## La farce : les proportions qui marchent
+
+Pour 4 grosses tomates, compte **400 g de viande** et un tiers de volume d'« autre chose » : oignon fondu, ail, persil, un œuf pour lier. La chair à saucisse apporte le gras qui empêche la farce de sécher ; si tu utilises du bœuf maigre à 5 %, ajoute une cuillère d'huile d'olive.
+
+Ne tasse pas la farce : garnis en dôme, sans presser. Une farce compressée cuit en boule dense, une farce aérée reste fondante.
+
+## Les 3 minutes qui font le dessus doré
+
+Le chapeau de chapelure ne dore vraiment qu'à la fin. **Ajoute la chapelure (et un peu de fromage râpé) seulement pour les 3-5 dernières minutes**, à 190 °C : elle croustille sans brûler. Mise dès le départ, elle noircit avant que la farce soit chaude.
+
+## Variantes
+
+- **Végétarienne** : lentilles cuites + féta + herbes, ou quinoa + courgette râpée.
+- **Provençale** : ajoute des olives noires hachées et un filet d'huile d'olive.
+- **Restes du dimanche** : un reste de bolognaise ou de poulet effiloché fait une excellente farce (réduis alors à 12-15 min).
+
+## Avec quoi les servir
+
+- des [pommes de terre sautées au air fryer](/recettes/pommes-de-terre-sautees-air-fryer/), cuites juste après ;
+- une [poêlée de courgettes au air fryer](/recettes/courgette-air-fryer/) pour rester sur les légumes d'été ;
+- des [poivrons fondants au air fryer](/recettes/poivrons-air-fryer/) et un peu de riz.

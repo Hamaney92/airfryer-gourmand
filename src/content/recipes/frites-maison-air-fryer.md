@@ -42,3 +42,42 @@ pubDate: 2026-07-06
 Les frites maison au air fryer, c'est le plaisir de la friture **sans le bain d'huile ni l'odeur**. Avec une seule cuillère d'huile, tu obtiens des frites dorées et croustillantes, moelleuses à l'intérieur.
 
 Le geste qui change tout : **tremper puis sécher** les bâtonnets avant cuisson. C'est ce qui garantit un extérieur croustillant plutôt que mou.
+
+## Temps de cuisson selon l'épaisseur
+
+À 200 °C, l'épaisseur du bâtonnet commande tout. Secoue le panier deux fois.
+
+| Découpe | Température | Durée | Résultat |
+|---|---|---|---|
+| Allumettes (5 mm) | 200 °C | 12–15 min | très croustillantes |
+| Frites classiques (1 cm) | 200 °C | 15–20 min | croustillant + moelleux |
+| Grosses frites / steak fries (1,5 cm) | 200 °C | 20–25 min | fondantes dedans |
+| Pommes de terre en robe, coupées après | 200 °C | 10–12 min | pour finir des restes |
+
+Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+
+## Le trempage : ce qu'il fait vraiment
+
+Ce n'est pas une superstition. La surface d'une frite coupée est couverte d'**amidon libre** ; à la cuisson, cet amidon forme une couche gommeuse qui empêche le croustillant et fait coller les frites entre elles.
+
+**Trempe les bâtonnets 30 minutes dans l'eau froide** (une heure, c'est encore mieux), puis **sèche-les vraiment** dans un torchon. L'eau qui reste se transforme en vapeur et annule tout le bénéfice — c'est l'erreur la plus fréquente.
+
+Pas le temps ? Un rinçage à l'eau froide + un séchage soigneux récupère déjà l'essentiel.
+
+## La bonne variété de pomme de terre
+
+Toutes ne donnent pas des frites. Il faut une variété **farineuse, pauvre en eau** : Bintje, Agria, Manon, Marabel. Les pommes de terre à chair ferme (Charlotte, Ratte) restent molles et un peu translucides — elles sont excellentes en [pommes de terre sautées](/recettes/pommes-de-terre-sautees-air-fryer/), pas en frites.
+
+## Une couche, pas deux
+
+Le panier doit être rempli **aux trois quarts maximum, en une seule couche**. Des frites empilées cuisent à la vapeur les unes contre les autres. Deux petites fournées battent toujours une grosse : la première reste chaude pendant la seconde, et se re-croustille en 2 minutes à la fin.
+
+## Sale à la sortie
+
+Le sel tire l'eau. Salé avant, il ramollit la surface pendant les vingt premières minutes. Sale **dès la sortie du panier**, tant que les frites sont brûlantes et légèrement grasses : le sel accroche parfaitement.
+
+## Avec quoi les servir
+
+- avec un [steak haché au air fryer](/recettes/steak-hache-air-fryer/), l'assiette classique ;
+- avec un [blanc de poulet au air fryer](/recettes/blanc-de-poulet-air-fryer/) tranché ;
+- avec des [ailes de poulet au air fryer](/recettes/ailes-de-poulet-air-fryer/) pour une soirée à partager.

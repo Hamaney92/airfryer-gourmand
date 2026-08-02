@@ -45,3 +45,42 @@ updatedDate: 2026-07-12
 Le steak haché à l'air fryer, c'est la solution express pour une viande **dorée dehors, juteuse dedans**, sans poêle qui éclabousse ni surveillance. Encore faut-il le bon temps de cuisson — trop, et il devient sec ; trop peu, et il reste cru au centre. Voici les réglages exacts, pour le frais comme pour le surgelé.
 
 Le secret d'un steak qui ne sèche pas : une température élevée (200 °C) sur un temps court, et un repos d'une minute à la sortie pour que le jus se répartisse.
+
+## Temps de cuisson selon la cuisson voulue
+
+À 200 °C, pour un steak haché de 125 g et 2 cm d'épaisseur. Retourne à mi-cuisson.
+
+| Cuisson | Température | Durée | À cœur |
+|---|---|---|---|
+| Saignant | 200 °C | 6 min | 55–57 °C |
+| À point | 200 °C | 8 min | 63–65 °C |
+| Bien cuit | 200 °C | 9–10 min | 71 °C |
+| Surgelé, sans décongeler | 200 °C | 10–13 min | 71 °C |
+
+Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+
+**Une précision de sécurité qui compte** : contrairement à une pièce de bœuf entière, la viande hachée est contaminée à cœur, pas seulement en surface. Pour les enfants, les femmes enceintes et les personnes âgées, la recommandation officielle est **une cuisson à cœur complète (71 °C)**, pas saignante.
+
+## Le creux au centre
+
+C'est l'astuce que personne n'applique et qui change la forme du steak. Un steak haché **gonfle en boule** en cuisant : les protéines se contractent sur les bords et poussent le centre vers le haut. Résultat, une boulette bombée qui ne tient pas dans un pain et cuit mal sur les bords.
+
+Remède : **creuse un petit puits avec le pouce au centre du steak** avant cuisson, sur environ 1 cm. Il se comble exactement pendant la cuisson et tu obtiens un disque plat et régulier.
+
+## Ne l'écrase jamais
+
+Le réflexe du grill — appuyer sur le steak avec une spatule — vide la viande de son jus dans le panier. Rien ne cuit plus vite, et tu perds tout le moelleux. Dans un air fryer, il n'y a de toute façon rien à saisir contre une plaque : laisse-le tranquille.
+
+## Le steak surgelé, directement
+
+Un steak haché surgelé se cuit **sans décongélation**, et c'est même préférable : décongelé, il rend son eau et devient gris. Compte 10 à 13 minutes à 200 °C, en le séparant bien des autres. Sale seulement à mi-cuisson, quand la surface est sèche.
+
+## Le fromage, à la toute fin
+
+Si tu fais un cheeseburger : pose la tranche de fromage **sur les 60 dernières secondes**, air fryer éteint mais encore chaud. Mise plus tôt, elle coule dans le panier et brûle sur la résistance.
+
+## Avec quoi le servir
+
+- avec des [frites maison au air fryer](/recettes/frites-maison-air-fryer/), le duo évident ;
+- avec des [pommes de terre sautées au air fryer](/recettes/pommes-de-terre-sautees-air-fryer/) ;
+- avec des [haricots verts au air fryer](/recettes/haricots-verts-air-fryer/) pour une version plus légère.
