@@ -21,6 +21,7 @@ export const GET: APIRoute = async () => {
   const staticPaths = [
     '/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/',
     '/rapide/', '/minceur/', '/guides/', '/a-propos/', '/contact/',
+    '/mentions-legales/', '/confidentialite/',
     ...catSlugs.map((s) => `/categorie/${s}/`),
   ];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);
