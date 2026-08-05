@@ -18,6 +18,20 @@ export const GET: APIRoute = async () => {
 
   const catSlugs = [...new Set(recipes.map((r) => CAT_SLUGS[r.data.category]).filter(Boolean))];
 
+  // Guides d'achat et dossiers : dérivés du système de fichiers, PAS d'une liste écrite à la main.
+  // La liste manuelle avait laissé 9 pages (5 guides + 4 dossiers, toutes porteuses de liens
+  // affiliés) hors du sitemap ; toute nouvelle page .astro déposée dans ces dossiers y entre
+  // désormais automatiquement.
+  const globToPaths = (mods: Record<string, unknown>, base: string) =>
+    Object.keys(mods)
+      .map((f) => f.split('/').pop()!.replace(/\.astro$/, ''))
+      .filter((slug) => slug !== 'index')
+      .sort()
+      .map((slug) => `${base}${slug}/`);
+
+  const guidePaths = globToPaths(import.meta.glob('./guides/*.astro'), '/guides/');
+  const dossierPaths = globToPaths(import.meta.glob('./dossiers/*.astro'), '/dossiers/');
+
   const staticPaths = [
     '/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/',
     '/rapide/', '/minceur/', '/guides/', '/a-propos/', '/contact/',
@@ -25,7 +39,7 @@ export const GET: APIRoute = async () => {
     ...catSlugs.map((s) => `/categorie/${s}/`),
   ];
   const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);
-  const paths = [...staticPaths, ...recipePaths];
+  const paths = [...staticPaths, ...guidePaths, ...dossierPaths, ...recipePaths];
 
   const today = new Date().toISOString().split('T')[0];
 
