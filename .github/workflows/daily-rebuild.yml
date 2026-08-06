@@ -5,7 +5,13 @@ name: Publication programmee
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # tous les jours a 06:00 UTC
+    - cron: "17 3 * * *"  # 03:17 UTC. PAS 06:00, PAS une heure ronde :
+                          # GitHub met les crons planifies en file d'attente et les
+                          # retarde de 30 min a 3 h aux heures rondes. Mesure du 06/08 :
+                          # demande 06:00 UTC, execute reellement 08:24 a 09:45 UTC,
+                          # soit APRES le briefing de 9h CEST -> la recette du jour
+                          # etait encore en 404 au moment de l'epingler.
+                          # 03:17 laisse ~6 h de marge meme avec le pire retard observe.
   workflow_dispatch:        # bouton "Run workflow" pour declencher a la main
 
 permissions:
