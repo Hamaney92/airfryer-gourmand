@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, AMAZON_TAG } from '../lib/site';
+
+// Notre propre livre. Lien direct par ASIN + tag Partenaires : on encaisse la
+// redevance KDP ET la commission d'affiliation (categorie Livres, 5 % sur amazon.fr).
+// De tres loin le produit le mieux remunere du site : ~10 EUR la vente, contre
+// 1,20 EUR pour un accessoire et 5,40 EUR pour un air fryer.
+const ASIN = 'B0HCSM8ZMD';
+const COUV = 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
+const urlAmazon = 'https://www.amazon.fr/dp/' + ASIN;
+const lien = urlAmazon + '/?tag=' + AMAZON_TAG;
+
+const title = "Notre livre : Air Fryer gourmand pour seniors (100 recettes pour 1 ou 2 personnes)";
+const description = "100 recettes air fryer faciles, en grands caracteres, avec des quantites justes pour 1 ou 2 personnes. Le livre pour celles et ceux qui cuisinent seuls ou a deux, et pour ceux qui veulent l offrir.";
+
+const bookLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: 'Air Fryer gourmand pour seniors',
+  author: { '@type': 'Person', name: 'Camille Lefevre' },
+  bookFormat: 'https://schema.org/Paperback',
+  numberOfPages: 224,
+  inLanguage: 'fr',
+  image: COUV,
+  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand' },
+  offers: { '@type': 'Offer', price: '22.90', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: urlAmazon },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Notre livre', item: SITE.url + '/livre/' },
+  ],
+};
+---
+<Base title={title} description={description} path="/livre/" image={COUV} jsonLd={[bookLd, breadcrumbLd]}>
+  <div class="wrap">
+    <article class="article">
+      <nav class="crumb"><a href="/">Accueil</a> › Notre livre</nav>
+      <h1>Air Fryer gourmand pour seniors</h1>
+      <p style="font-size:1.05rem;color:#5f5147;margin-top:-6px">100 recettes faciles, rapides et équilibrées — <strong>pour 1 ou 2 personnes</strong>.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;background:var(--cream,#fff7ef);border:1px solid var(--line);border-radius:18px;padding:24px;margin:22px 0">
+        <img src={COUV} alt="Couverture du livre Air Fryer gourmand pour seniors, par Camille Lefèvre" width="220" height="275" style="border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.18);flex:0 0 220px" />
+        <div style="flex:1 1 300px;min-width:280px">
+          <p style="margin:0 0 10px;color:#4a423b;line-height:1.65">Écrit par <strong>Camille Lefèvre</strong> pour Airfryer Gourmand. 224 pages, <strong>grands caractères</strong>, étapes courtes, et surtout des quantités calculées pour <strong>une ou deux personnes</strong> — pas des recettes pour quatre qu'on divise à la louche.</p>
+          <p style="margin:0 0 16px;font-size:1.35rem;font-weight:800;color:var(--brand-d)">22,90 €</p>
+          <a href={lien} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:14px 26px;border-radius:12px;font-size:1.05rem">Voir le livre sur Amazon →</a>
+          <p style="margin:12px 0 0;font-size:.82rem;color:#9a8c7d">Livre broché, en stock, expédié par Amazon. Lien affilié — commission possible, sans surcoût pour toi.</p>
+        </div>
+      </div>
+      <h2>Pourquoi on l'a écrit</h2>
+      <p>Sur ce site, la question qui revient le plus souvent n'est pas « quelle recette ? » mais <strong>« quelles quantités ? »</strong>. La quasi-totalité des recettes air fryer en ligne sont prévues pour quatre. Quand on cuisine seul ou à deux, on divise au jugé, on rate les temps, et on finit avec des restes au frigo.</p>
+      <p>Ce livre part de l'autre bout : <strong>chaque recette est calibrée pour une ou deux personnes</strong>, avec le temps et la température exacts pour cette quantité-là. Pas de conversion mentale à faire.</p>
+      <h2>Ce qu'il y a dedans</h2>
+      <ul>
+        <li><strong>100 recettes</strong> : volaille, poisson, légumes, plats complets, desserts.</li>
+        <li><strong>Le temps et la température pour chaque recette</strong>, pour la portion indiquée.</li>
+        <li><strong>Des grands caractères et des étapes courtes</strong> — lisible posé sur le plan de travail, sans lunettes.</li>
+        <li>Les réglages de base : préchauffage, une seule couche, conversion four → air fryer.</li>
+        <li>224 pages, format confortable, à plat sur le plan de travail.</li>
+      </ul>
+      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:26px 0">
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:8px">🎁 Si c'est pour l'offrir</div>
+        <p style="color:#5f5147;margin:0 0 10px">Beaucoup de gens offrent un air fryer à leurs parents… qui ne s'en servent pas. Pas par manque d'envie : parce que le mode d'emploi parle de watts et pas de dîner, et que les recettes en ligne sont écrites petit, pour quatre, avec dix ingrédients.</p>
+        <p style="color:#5f5147;margin:0">C'est exactement le trou que ce livre remplit : <strong>gros caractères, étapes courtes, quantités pour deux</strong>. C'est le cadeau qui fait enfin servir l'appareil déjà offert.</p>
+      </div>
+      <h2>Pour qui c'est vraiment</h2>
+      <ul>
+        <li>Celles et ceux qui <strong>cuisinent pour une ou deux personnes</strong> — retraités, jeunes couples, personnes seules.</li>
+        <li>Celles et ceux qui veulent <strong>lire une recette sans chercher ses lunettes</strong>.</li>
+        <li>Celles et ceux qui viennent de recevoir un air fryer et <strong>n'osent pas s'en servir</strong>.</li>
+      </ul>
+      <p>En revanche, si tu cuisines pour une famille de cinq et que tu es déjà à l'aise avec l'appareil, nos <a href="/recettes/">recettes du site</a> te suffiront largement — elles sont gratuites, et c'est très bien comme ça.</p>
+      <div style="text-align:center;margin:34px 0 10px">
+        <a href={lien} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:15px 34px;border-radius:12px;font-size:1.1rem">Voir le livre sur Amazon — 22,90 € →</a>
+      </div>
+      <h2>Questions fréquentes</h2>
+      <h3>Les recettes sont-elles différentes de celles du site ?</h3>
+      <p>Oui. Le site donne les temps de cuisson aliment par aliment ; le livre donne 100 recettes complètes, calibrées pour une ou deux portions.</p>
+      <h3>Faut-il un air fryer particulier ?</h3>
+      <p>Non. Les recettes marchent sur n'importe quel modèle à panier. Si tu hésites encore sur l'appareil, on a écrit un <a href="/guides/meilleur-air-fryer-2026/">comparatif des air fryers</a>.</p>
+      <h3>« Pour seniors », ça veut dire quoi exactement ?</h3>
+      <p>Grands caractères, étapes courtes, ingrédients simples et quantités pour une ou deux personnes. Rien n'empêche quelqu'un de 30 ans de l'utiliser — beaucoup de lecteurs cuisinent à deux et cherchent exactement ça.</p>
+      <p style="margin-top:26px"><a class="cta" href="/recettes/">🍽️ Voir aussi nos recettes gratuites</a></p>
+    </article>
+  </div>
+</Base>
