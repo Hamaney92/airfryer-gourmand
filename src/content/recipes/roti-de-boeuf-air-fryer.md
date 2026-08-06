@@ -37,7 +37,7 @@ faq:
     a: "Le repos de 10 minutes sous une feuille d'aluminium permet aux jus de se répartir dans la viande. Sans lui, le jus s'échappe à la découpe et le rôti est plus sec. Tranchez toujours finement."
   - q: "Peut-on manger le rôti de bœuf froid ensuite ?"
     a: "Oui, c'est même délicieux : un rosbif saignant, tranché fin et servi froid, est parfait en salade, sandwich ou plateau. Conservez-le au frais et sortez-le un peu avant de servir."
-pubDate: 2026-08-23
+pubDate: 2026-08-10
 ---
 
 Le rôti de bœuf au air fryer, c'est le rosbif du dimanche version rapide : **une croûte dorée et savoureuse, un cœur rosé et fondant**, en moins de 35 minutes. La chaleur tournante saisit la surface et cuit le centre exactement au point voulu — à condition d'avoir un thermomètre.

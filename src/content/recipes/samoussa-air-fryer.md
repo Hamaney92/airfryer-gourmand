@@ -43,7 +43,7 @@ faq:
     a: "Presque toujours à cause d'une farce trop humide ou d'un pliage mal serré. Assèche bien la farce à la poêle et colle le dernier rabat avec un peu d'eau."
 author: "L'équipe Airfryer Gourmand"
 note: "Le vrai secret d'un samoussa qui reste croustillant, ce n'est pas la quantité d'huile, c'est la farce SÈCHE et le fait de ne pas entasser le panier. On a comparé une fournée serrée et une fournée espacée : la seconde dore deux fois mieux. Et pour le surgelé, inutile de décongeler — ça les ramollirait."
-pubDate: 2026-08-25
+pubDate: 2026-08-11
 updatedDate: 2026-07-13
 ---
 

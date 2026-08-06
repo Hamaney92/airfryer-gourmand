@@ -38,7 +38,7 @@ faq:
     a: "Non : coupés en morceaux réguliers, ils cuisent à cœur directement en 15-20 minutes. Ajoutez simplement les légumes qui cuisent plus vite (tomates, courgette) un peu après les plus denses (carotte, oignon)."
   - q: "Peut-on cuire des légumes surgelés au air fryer ?"
     a: "Oui, directement congelés : 15 à 20 minutes à 200 °C, en secouant à mi-cuisson. Épongez l'excès d'eau à mi-cuisson pour qu'ils dorent au lieu de cuire à la vapeur."
-pubDate: 2026-08-24
+pubDate: 2026-08-10
 ---
 
 Les légumes rôtis au air fryer, c'est l'accompagnement santé qui plaît à tous : **dorés et caramélisés dehors, fondants dedans**, avec juste un filet d'huile. La chaleur tournante concentre les saveurs — bien plus gourmand qu'à la vapeur, et prêt en 20 minutes.

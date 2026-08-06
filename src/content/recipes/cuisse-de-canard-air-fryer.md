@@ -37,7 +37,7 @@ faq:
     a: "La graisse de canard qui goutte dans le tiroir peut fumer. Essuyez bien l'excès de gras avant cuisson, et ajoutez éventuellement une cuillère d'eau dans le fond du tiroir pour empêcher la graisse de brûler."
   - q: "Peut-on cuire une cuisse de canard crue au air fryer ?"
     a: "Oui, mais c'est plus long : comptez 25 à 30 minutes à 180 °C pour une cuisse crue, jusqu'à 75 °C à cœur, en surveillant la peau. Le confit reste toutefois la version la plus fondante et la plus rapide."
-pubDate: 2026-08-30
+pubDate: 2026-08-13
 ---
 
 La cuisse de canard confite au air fryer, c'est le plat du Sud-Ouest sublimé en un quart d'heure : **une peau ultra-croustillante et une chair fondante qui se détache de l'os**, sans four à surveiller ni poêle qui éclabousse. L'air fryer est l'outil idéal pour croustiller le confit.
