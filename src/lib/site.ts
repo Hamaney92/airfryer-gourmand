@@ -49,6 +49,11 @@ type Gear = {
   /** Accroche courte (une clause), pour la relance placee juste sous la reponse rapide. */
   hook: string;
   query: string;
+  /** Si present, la relance pointe vers cette page INTERNE au lieu d'Amazon.
+      Cas d'usage : la frustration de capacite (« une seule couche ») vend le double panier,
+      et cet achat reflechi se travaille sur notre guide (7 %/30 j via Boulanger a terme),
+      pas sur un lien Amazon a 3 %/24 h. */
+  href?: string;
 };
 
 const GEAR: Record<string, Gear> = {
@@ -60,6 +65,7 @@ const GEAR: Record<string, Gear> = {
   grille:  { emoji: '🍢', nom: 'Grille étagée / rack', util: 'Cuis le plat en bas + les légumes en haut EN MÊME TEMPS. Double la capacité pour les repas de famille.', hook: "deux étages, donc le plat et l'accompagnement en même temps", query: 'grille étagée air fryer rack' },
   grill:   { emoji: '🔥', nom: 'Plaque de gril', util: 'Des marques de saisie « resto » et une belle coloration, sans sortir le barbecue. Idéal viandes et brochettes.', hook: "des marques de saisie sans sortir le barbecue", query: 'plaque gril air fryer grill pan' },
   plat:    { emoji: '🥘', nom: 'Plat rond pour air fryer', util: "Lasagnes, gratins, tomates farcies : il faut un plat qui entre VRAIMENT dans le panier — 18 a 20 cm, avec des bords assez hauts et un fond qui laisse circuler l'air.", hook: "il faut un plat de 18-20 cm qui entre vraiment dans le panier", query: 'plat cuisson rond air fryer 20 cm' },
+  capacite:{ emoji: '🍗', nom: 'notre comparatif double panier', util: "Si cette recette remplit ton panier, deux tiroirs synchronises changent la logistique du repas : la volaille d'un cote, l'accompagnement de l'autre, prets en meme temps.", hook: "si ton panier est trop petit pour cette recette, deux tiroirs changent tout", query: 'air fryer double panier', href: '/guides/meilleur-air-fryer-double-panier/' },
   coffret: { emoji: '🎁', nom: "Coffret d'accessoires air fryer", util: "Tout l'équipement en une commande : moules, grille, pinces, papier… Le plus simple pour bien démarrer.", hook: "de quoi bien démarrer en une seule commande", query: 'coffret accessoires air fryer kit universel' },
 };
 
@@ -69,6 +75,8 @@ const MAGNET = { nom: 'le tableau des temps aimanté', query: 'tableau temps cui
 /** Renvoie l'accessoire pertinent pour une recette (même logique que les pins Pinterest). */
 export function gearFor(data: { category?: string; slug?: string; keyword?: string }): Gear {
   const sl = (data.slug || data.keyword || '').toLowerCase();
+  // Frustration de capacite : recettes qui remplissent le panier -> guide double panier (interne).
+  if (/(poulet-entier|poulet-roti|dinde|gratin-dauphinois|lasagnes|hachis-parmentier|legumes-rotis)/.test(sl)) return GEAR.capacite;
   if (/(magret|entrecote|bavette|cote-de|steak|onglet|brochette)/.test(sl)) return GEAR.grill;
   if (/(cake|muffin|cupcake|madeleine|financier|clafoutis|brownie|gateau|gâteau|quatre-quart|far-breton)/.test(sl)) return GEAR.moule;
   if (/(frite|chips|pomme-de-terre|potatoes)/.test(sl)) return GEAR.spray;
