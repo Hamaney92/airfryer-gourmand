@@ -38,7 +38,7 @@ faq:
     a: "Un filet d'huile, des épices, et surtout une seule couche bien espacée pour que l'air chaud dore les bords. Un peu de miel ou de sirop d'érable les 3 dernières minutes accentue la caramélisation."
   - q: "Peut-on faire une soupe de butternut avec l'air fryer ?"
     a: "Oui : rôtissez les cubes de butternut au air fryer (leur goût est plus prononcé que bouillis), puis mixez-les avec du bouillon et de la crème. La cuisson à l'air fryer donne une soupe plus savoureuse."
-pubDate: 2099-01-01
+pubDate: 2026-09-17
 ---
 
 La butternut au air fryer, c'est le meilleur de l'automne en version express : **fondante à cœur, caramélisée et dorée sur les bords**, en moins de 20 minutes. La chaleur tournante concentre ses sucres naturels et lui donne un goût bien plus prononcé que la cuisson à l'eau.

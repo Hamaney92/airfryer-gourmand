@@ -38,7 +38,7 @@ faq:
     a: "Pour la version maison, prolongez un peu la cuisson (jusqu'à 10-11 minutes) et une légère pulvérisation d'huile aide. Pour les surgelées, l'air fryer les rend naturellement plus croustillantes que le grille-pain."
   - q: "Comment servir les gaufres au air fryer ?"
     a: "Tièdes, saupoudrées de sucre glace, nappées de chocolat fondu, de sirop d'érable, de chantilly ou garnies de fruits. Sucrées ou même salées (fromage, jambon) pour une version brunch."
-pubDate: 2099-01-01
+pubDate: 2026-09-16
 ---
 
 Les gaufres au air fryer, c'est le goûter réconfortant sans sortir le gaufrier : **moelleuses et dorées** en version maison (dans des moules en silicone), ou **croustillantes** en réchauffant des gaufres surgelées. Dans les deux cas, prêtes en quelques minutes.

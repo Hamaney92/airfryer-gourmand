@@ -38,7 +38,7 @@ faq:
     a: "Oui : remplacez la béchamel par un peu de crème fraîche, de la moutarde ou simplement plus de fromage. La béchamel apporte du moelleux, mais un croque plus simple (jambon-fromage + œuf) fonctionne très bien au air fryer."
   - q: "Quelle différence entre croque-monsieur et croque-madame ?"
     a: "Le croque-madame est un croque-monsieur (pain, jambon, fromage, béchamel, gratiné) surmonté d'un œuf au plat. C'est ce jaune coulant sur le dessus qui fait toute la différence et le gourmand du plat."
-pubDate: 2099-01-01
+pubDate: 2026-09-09
 ---
 
 Le croque-madame au air fryer, c'est le croque-monsieur en version gourmande : **un pain doré, un fromage gratiné et un œuf au plat coulant** posé sur le dessus. L'air fryer le réussit mieux que l'appareil à croque, avec un vrai gratiné — et l'œuf en bonus.

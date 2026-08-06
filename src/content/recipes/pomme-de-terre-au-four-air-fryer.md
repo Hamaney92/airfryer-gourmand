@@ -38,7 +38,7 @@ faq:
     a: "Oui : cuisez les pommes de terre, ouvrez-les, écrasez un peu la chair, garnissez de cheddar et de bacon, et repassez 3-5 minutes à l'air fryer pour faire fondre le fromage. La fameuse jacket potato."
   - q: "Faut-il envelopper les pommes de terre dans de l'aluminium ?"
     a: "Non, au contraire : sans aluminium, la peau croustille. L'aluminium garde l'humidité et donne une peau molle. Pour l'air fryer, cuisez-les à nu, frottées d'huile et de sel."
-pubDate: 2099-01-01
+pubDate: 2026-09-14
 ---
 
 La pomme de terre au four au air fryer, c'est le réconfort ultime version croustillante : **une peau dorée et craquante, une chair fondante et vaporeuse**, à garnir de tout ce qu'on aime. La chaleur tournante fait mieux que le four traditionnel — et sans le préchauffer 15 minutes.

@@ -38,7 +38,7 @@ faq:
     a: "La feta ne fond pas comme un fromage à pâte molle : elle devient fondante, crémeuse et tartinable, tout en gardant sa forme jusqu'à ce qu'on l'écrase. Un bon filet d'huile la rend encore plus onctueuse."
   - q: "Avec quoi servir la feta rôtie ?"
     a: "En apéro, tartinée sur du pain grillé avec les tomates confites. En plat, mélangée à des pâtes (feta pasta). Elle accompagne aussi très bien des légumes rôtis ou une salade tiède. Basilic frais et poivre pour finir."
-pubDate: 2099-01-01
+pubDate: 2026-09-11
 ---
 
 La feta rôtie au air fryer, c'est l'apéro tendance et le dîner express en un : **une feta fondante et crémeuse, des tomates cerises confites**, le tout prêt en une dizaine de minutes. C'est aussi la base de la fameuse **feta pasta** devenue virale — une sauce onctueuse en un tour de main.

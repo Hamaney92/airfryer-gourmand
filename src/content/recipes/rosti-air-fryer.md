@@ -38,7 +38,7 @@ faq:
     a: "Glissez le rösti sur une assiette, posez une seconde assiette dessus, retournez l'ensemble, puis faites-le reglisser dans le panier. Une galette pas trop épaisse et bien compacte se retourne plus facilement sans se briser."
   - q: "Peut-on faire des röstis individuels au air fryer ?"
     a: "Oui, et c'est même plus pratique : formez de petites galettes individuelles, plus faciles à retourner et à cuire uniformément. Comptez 12 à 15 minutes à 195 °C. Parfaites en accompagnement ou avec un œuf au plat dessus."
-pubDate: 2099-01-01
+pubDate: 2026-09-19
 ---
 
 Le rösti au air fryer, c'est la spécialité suisse réussie sans poêle grasse : **une galette de pommes de terre râpées, dorée et croustillante dehors, moelleuse dedans**, sans bain d'huile. En grande galette à partager ou en versions individuelles, l'air fryer la croustille à merveille.

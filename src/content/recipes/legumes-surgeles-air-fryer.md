@@ -37,7 +37,7 @@ faq:
     a: "Un filet d'huile est recommandé : il aide les légumes à dorer, à croustiller et empêche qu'ils sèchent. Une cuillère suffit pour tout le panier. Sans huile, les légumes cuisent quand même mais dorent moins et sont plus secs."
   - q: "Peut-on cuire une poêlée de légumes surgelée au air fryer ?"
     a: "Oui, très bien : mélangez la poêlée congelée avec un peu d'huile et des épices, étalez en une couche et cuisez 15-18 minutes à 195 °C en secouant. Les légumes ressortent dorés et savoureux, bien mieux qu'à la poêle où ils rendent de l'eau."
-pubDate: 2099-01-01
+pubDate: 2026-09-07
 ---
 
 Les légumes surgelés au air fryer, c'est la solution maligne pour un accompagnement sain sans effort : **dorés, tendres et légèrement croquants**, au lieu des légumes **mous et détrempés** de la poêle. Directement du congélateur au panier, avec juste un filet d'huile.

@@ -38,7 +38,7 @@ faq:
     a: "Oui : précuisez le filet 10 minutes, laissez-le tiédir, enroulez-le de pâte feuilletée (et lardons/moutarde), dorez à l'œuf, puis cuisez 15 minutes à 180 °C jusqu'à ce que la pâte soit dorée."
   - q: "Pourquoi mon filet mignon est-il sec au air fryer ?"
     a: "C'est une surcuisson : le filet mignon est un morceau maigre qui sèche vite. Sortez-le à 65-68 °C à cœur, pas plus, et respectez le repos de 5 minutes. Un thermomètre évite l'erreur."
-pubDate: 2099-01-01
+pubDate: 2026-09-06
 ---
 
 Le filet mignon au air fryer, c'est le morceau noble version facile : **doré et croustillant dehors, rosé et fondant dedans**, en une vingtaine de minutes. Ce morceau maigre et tendre adore la cuisson rapide de l'air fryer — à condition de ne pas le pousser trop loin.

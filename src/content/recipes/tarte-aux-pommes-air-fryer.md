@@ -38,7 +38,7 @@ faq:
     a: "Couvrez la tarte d'une feuille d'aluminium dès que le dessus est assez doré : les pommes et la pâte finissent de cuire à l'abri. Une température modérée (165 °C) limite aussi ce risque."
   - q: "Peut-on faire des tartelettes aux pommes au air fryer ?"
     a: "Oui, c'est même plus pratique : les tartelettes individuelles cuisent uniformément et rentrent facilement dans le panier. Comptez 15 à 20 minutes à 165 °C. Parfaites pour un dessert express et joliment présenté."
-pubDate: 2099-01-01
+pubDate: 2026-09-13
 ---
 
 La tarte aux pommes au air fryer, c'est le dessert familial revisité en version rapide : **une pâte dorée et croustillante, des pommes fondantes et parfumées à la cannelle**, sans allumer le four. En petit moule ou en tartelettes individuelles, elle cuit en une vingtaine de minutes.

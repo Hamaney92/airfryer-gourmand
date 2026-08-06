@@ -38,7 +38,7 @@ faq:
     a: "Oui, c'est excellent : 10 à 15 minutes à 160-170 °C réchauffent une portion de lasagnes à cœur et redonnent un dessus gratiné. Couvrez d'alu au début si le dessus est déjà bien coloré, pour ne pas le dessécher."
   - q: "Quel plat pour des lasagnes au air fryer ?"
     a: "De petits plats ou ramequins individuels (verre, céramique, aluminium) qui rentrent dans le panier en laissant l'air circuler. Les portions individuelles cuisent plus uniformément qu'un grand plat, et présentent joliment à l'assiette."
-pubDate: 2099-01-01
+pubDate: 2026-09-12
 ---
 
 Les lasagnes au air fryer, c'est le plat italien réconfortant en **portions individuelles gratinées** : **des pâtes fondantes, une bolognaise parfumée, une béchamel crémeuse et un dessus doré**. L'air fryer gratine à merveille — à condition de gérer la cuisson des pâtes avec une astuce simple.

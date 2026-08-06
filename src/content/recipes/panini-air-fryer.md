@@ -38,7 +38,7 @@ faq:
     a: "Badigeonnez légèrement le pain d'huile ou de beurre, retournez le panini à mi-cuisson, et pressez-le avec un léger poids. À 190 °C, le pain dore et croustille sur les deux faces, avec un fromage bien coulant à l'intérieur."
   - q: "Quel pain utiliser pour un panini au air fryer ?"
     a: "Le pain à panini (ciabatta allongée) est idéal, mais une ciabatta, une baguette coupée ou un pain de mie épais fonctionnent aussi. Choisissez un pain qui tient à la garniture et croustille bien, sans être trop épais pour le panier."
-pubDate: 2099-01-01
+pubDate: 2026-09-08
 ---
 
 Le panini au air fryer, c'est le plaisir du panini croustillant **sans acheter d'appareil à panini** : **un pain doré et croquant, un fromage fondu et coulant**, en quelques minutes. L'air fryer remplace la machine à merveille — et fait même mieux, en croustillant les deux faces.
