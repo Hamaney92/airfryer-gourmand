@@ -163,7 +163,9 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     */}
     <p class="gear-inline" style="margin:-6px 0 22px;padding:10px 14px;border-left:3px solid var(--brand-d);background:var(--cream,#fff7ef);border-radius:0 10px 10px 0;font-size:.95rem;color:#5f5147">
       <span aria-hidden="true">{gear.emoji}</span> <b>Pour la réussir à coup sûr :</b> {gear.hook} —
-      <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>
+      {gear.href
+        ? <a href={gear.href} style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>
+        : <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>}
     </p>
 
     <!-- Corps de l'article (markdown) -->
@@ -189,10 +191,17 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     <aside id="materiel" class="gear-box" style="background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0;scroll-margin-top:80px">
       <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{gear.emoji} L'accessoire qui change cette recette : {gear.nom}</div>
       <p style="margin:6px 0;color:#5f5147">{gear.util}</p>
-      <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener"
-         style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
-        Voir sur Amazon →
-      </a>
+      {gear.href ? (
+        <a href={gear.href}
+           style="display:inline-block;background:var(--brand-d);color:#fff;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
+          Voir le comparatif →
+        </a>
+      ) : (
+        <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener"
+           style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
+          Voir sur Amazon →
+        </a>
+      )}
       <p style="margin:8px 0 2px;font-size:.9rem">
         🧲 Débutant ? <a href={amazonSearch(magnetUpsell.query)} target="_blank" rel="sponsored nofollow noopener" style="color:var(--brand-d);font-weight:700">{magnetUpsell.nom} →</a> (tous les temps sous les yeux, collé au frigo)
       </p>
