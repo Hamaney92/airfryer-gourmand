@@ -39,7 +39,7 @@ faq:
     a: "Après avoir cuit les steaks, placez les pains (face intérieure vers le haut) 2 minutes à 200 °C : ils dorent légèrement et deviennent croustillants, ce qui les empêche de se détremper avec la sauce."
   - q: "Le burger au air fryer est-il aussi bon qu'au barbecue ?"
     a: "Il est plus pratique et moins gras : le steak cuit sans ajout de matière grasse et la graisse s'égoutte. Il n'a pas le goût fumé du barbecue, mais reste juteux et doré, parfait toute l'année."
-pubDate: 2099-01-01
+pubDate: 2026-08-29
 ---
 
 Le burger au air fryer, c'est le fast-food maison sans la poêle grasse ni le barbecue : **un steak juteux et doré, du fromage fondant, un pain toasté**, monté en quelques minutes. Le steak cuit dans son jus, la graisse s'égoutte, et le résultat est bluffant.

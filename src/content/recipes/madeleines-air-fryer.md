@@ -38,7 +38,7 @@ faq:
     a: "Le repos au frais raffermit la pâte et le beurre, ce qui, combiné à la chaleur vive de la cuisson, provoque le gonflement brutal du centre (la bosse). C'est l'étape à ne pas sauter pour des madeleines réussies et bien bombées."
   - q: "Peut-on faire des madeleines au chocolat au air fryer ?"
     a: "Oui : ajoutez une cuillère de cacao à la pâte, ou insérez un carré de chocolat au centre de chaque madeleine avant cuisson pour un cœur coulant. Les temps et la technique de la bosse restent identiques."
-pubDate: 2099-01-01
+pubDate: 2026-09-02
 ---
 
 Les madeleines au air fryer, c'est la petite douceur de Proust en version express : **dorées, moelleuses et surtout bien bombées**, avec la fameuse bosse. Grâce aux moules en silicone et à une astuce toute simple, l'air fryer les réussit en une dizaine de minutes.

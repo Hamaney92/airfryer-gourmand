@@ -38,7 +38,7 @@ faq:
     a: "Ce n'est pas indispensable, mais une légère pulvérisation d'huile sur la tortilla accentue le croustillant et la couleur dorée. Sans huile, le wrap croustille quand même grâce à l'air chaud, mais reste un peu plus pâle."
   - q: "Peut-on réchauffer un wrap tout prêt au air fryer ?"
     a: "Oui, c'est même idéal : 3 à 5 minutes à 180 °C redonnent du croustillant à un wrap acheté ou préparé à l'avance, bien mieux que le micro-ondes qui le ramollit. Surveillez que la garniture soit bien chaude à cœur."
-pubDate: 2099-01-01
+pubDate: 2026-08-31
 ---
 
 Le wrap au air fryer, c'est le repas nomade transformé : **une tortilla dorée et croustillante autour d'une garniture chaude et fondante**, en 5 minutes. Fini le wrap mou du micro-ondes — l'air fryer lui donne le croquant d'un panini, sans poêle ni matière grasse.

@@ -39,7 +39,7 @@ faq:
     a: "Des gros oignons doux (jaunes ou blancs), coupés en rondelles épaisses d'environ 1 cm. Séparez bien les anneaux et gardez les plus grands, plus faciles à paner et à manger."
   - q: "Quelle sauce servir avec les onion rings ?"
     a: "Une sauce barbecue, une mayo épicée, une sauce burger ou un ketchup. Les onion rings se trempent : ils accompagnent parfaitement un burger ou un plateau apéro."
-pubDate: 2099-01-01
+pubDate: 2026-08-28
 ---
 
 Les onion rings au air fryer, c'est le classique des diners américains en version légère : **une panure dorée et croustillante, un oignon fondant et sucré à l'intérieur**, sans le grand bain d'huile. À tremper dans une sauce, ils accompagnent burgers et apéros à merveille.

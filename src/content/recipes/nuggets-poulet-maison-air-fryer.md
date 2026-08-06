@@ -38,7 +38,7 @@ faq:
     a: "Oui : panez-les puis congelez-les crus à plat. Cuisez-les ensuite directement congelés au air fryer, en ajoutant 3 à 4 minutes. Pratique pour avoir des nuggets maison prêts à cuire à tout moment."
   - q: "Faut-il préchauffer l'air fryer pour les nuggets ?"
     a: "Un préchauffage de 2-3 minutes à 200 °C aide la panure à saisir dès le départ et à mieux croustiller. Ce n'est pas obligatoire, mais recommandé pour un résultat plus doré."
-pubDate: 2099-01-01
+pubDate: 2026-08-26
 ---
 
 Les nuggets de poulet maison au air fryer, c'est le plaisir des enfants (et des grands) en version saine : **une panure dorée et croustillante autour d'un poulet moelleux**, sans le bain d'huile ni les additifs des versions industrielles. Et c'est bien plus simple qu'on ne le pense.

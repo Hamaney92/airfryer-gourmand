@@ -39,7 +39,7 @@ faq:
     a: "Directement congelée : 15 à 20 minutes à 170 °C, jusqu'à ce qu'elle soit chaude à cœur et dorée. Pour une grande quiche, couvrez d'alu si le dessus dore trop vite et prolongez un peu."
   - q: "Quel moule utiliser pour une quiche au air fryer ?"
     a: "Un moule à tarte ou à manqué (métal ou silicone) qui rentre dans le panier avec un peu d'espace autour. Pour des portions individuelles, des petits moules ou ramequins sont pratiques et rapides."
-pubDate: 2099-01-01
+pubDate: 2026-09-03
 ---
 
 La quiche au air fryer, c'est le plat familial réconfortant sans monopoliser le four : **une pâte croustillante, un appareil crémeux et doré**, en moins de 30 minutes. Lorraine, aux légumes ou sans pâte, elle se réussit facilement à condition de maîtriser la température.

@@ -38,7 +38,7 @@ faq:
     a: "Oui, c'est idéal : 10 à 15 minutes à 180 °C réchauffent un hachis parmentier (maison ou du commerce) à cœur et lui redonnent un dessus gratiné et croustillant, bien mieux que le micro-ondes qui ramollit tout."
   - q: "Avec quel reste faire un hachis parmentier au air fryer ?"
     a: "Le hachis parmentier est parfait pour recycler un reste de pot-au-feu, de bœuf braisé, de daube ou de poulet effiloché. Émincez ou hachez la viande, assaisonnez, recouvrez de purée et gratinez : un plat anti-gaspillage savoureux."
-pubDate: 2099-01-01
+pubDate: 2026-08-27
 ---
 
 Le hachis parmentier au air fryer, c'est le plat réconfortant qui gratine à la perfection : **une purée dorée et croustillante sur le dessus, une viande fondante et parfumée dessous**. En portions individuelles, l'air fryer le gratine mieux et plus vite qu'un four — idéal aussi pour recycler un reste de viande.

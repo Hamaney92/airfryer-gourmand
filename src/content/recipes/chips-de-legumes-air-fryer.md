@@ -37,7 +37,7 @@ faq:
     a: "À 165 °C plutôt que 200 °C, les chips ont le temps de sécher et de croustiller sans brûler. Les légumes sucrés (betterave, patate douce, carotte) caramélisent vite : une chaleur modérée évite qu'ils noircissent avant d'être croustillants."
   - q: "Faut-il cuire chaque légume séparément ?"
     a: "Idéalement oui, car les temps varient d'un légume à l'autre. Si vous les mélangez, coupez-les à épaisseur comparable et retirez au fur et à mesure les chips déjà prêtes pour éviter que certaines brûlent pendant que d'autres finissent."
-pubDate: 2099-01-01
+pubDate: 2026-09-04
 ---
 
 Les chips de légumes au air fryer, c'est l'apéro coloré et malin : **des tranches fines et croustillantes de betterave, patate douce, panais ou carotte**, avec juste une cuillère d'huile. Aussi belles que bonnes, elles remplacent avantageusement les chips du commerce.
