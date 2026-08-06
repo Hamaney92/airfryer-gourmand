@@ -149,6 +149,23 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <b>Réponse rapide —</b> {data.quickAnswer}
     </div>
 
+    {/*
+      RELANCE AFFILIÉE HAUTE — ajoutée le 06/08/2026, voir pinterest/insights-log.md.
+      Mesure : 509 clics sortants Pinterest sur 30 jours pour SIX clics affiliés, soit 1,2 %
+      du trafic qu'on ramène. Le bloc `gear-box` plus bas est bon, mais il vit après le corps
+      de l'article, les ingrédients ET les étapes — à ~70 % de la page — alors que le trafic
+      Pinterest la quitte en 3 à 20 s (GA4). Il n'est tout simplement jamais vu.
+      On place donc la relance juste après la réponse rapide : le moment précis où le lecteur
+      a obtenu son information et s'apprête à repartir.
+      Volontairement UNE seule ligne, sans gros bouton orange : la promesse de la page reste la
+      recette, et un encart publicitaire au-dessus du contenu abîmerait autant la lecture que
+      le signal qualité. L'accroche prolonge la réponse au lieu de l'interrompre.
+    */}
+    <p class="gear-inline" style="margin:-6px 0 22px;padding:10px 14px;border-left:3px solid var(--brand-d);background:var(--cream,#fff7ef);border-radius:0 10px 10px 0;font-size:.95rem;color:#5f5147">
+      <span aria-hidden="true">{gear.emoji}</span> <b>Pour la réussir à coup sûr :</b> {gear.hook} —
+      <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>
+    </p>
+
     <!-- Corps de l'article (markdown) -->
     <Content />
 
