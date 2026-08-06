@@ -38,7 +38,7 @@ faq:
     a: "Oui, directement congelés : 8 à 10 minutes à 190 °C, en les retournant à mi-cuisson. Inutile d'ajouter de l'huile s'ils sont déjà frits avant congélation. Ils ressortent chauds et croustillants, parfaits pour un apéro express."
   - q: "Avec quoi servir les accras au air fryer ?"
     a: "À l'apéro, avec une sauce chien (persil, oignon, citron vert, piment) ou une sauce piquante antillaise, accompagnés d'un ti-punch sans alcool. Ils se dégustent tièdes, dès la sortie du panier."
-pubDate: 2099-01-01
+pubDate: 2026-08-28
 ---
 
 Les accras au air fryer, c'est le soleil des Antilles à l'apéro, en version allégée : **des petits beignets de morue dorés et croustillants dehors, moelleux dedans**, sans le grand bain de friture. Un peu différents des accras traditionnels, mais tout aussi savoureux et bien moins gras.

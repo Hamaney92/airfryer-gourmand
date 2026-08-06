@@ -38,7 +38,7 @@ faq:
     a: "Les pilons, hauts de cuisse et ailes sont idéaux : ils restent juteux même bien cuits et leur peau ajoute du croustillant. Le blanc pané marche aussi (tenders), mais surveillez-le davantage pour qu'il ne sèche pas."
   - q: "Le poulet croustillant au air fryer est-il plus sain que le KFC ?"
     a: "Oui, nettement : sans bain de friture, il contient bien moins de matière grasse tout en gardant le croustillant. Vous contrôlez aussi les épices et la qualité du poulet. Une alternative maison plus légère au fast-food."
-pubDate: 2099-01-01
+pubDate: 2026-08-23
 ---
 
 Le poulet croustillant au air fryer, c'est le fast-food à la maison, version plus saine : **une panure épicée dorée et croquante, un poulet juteux à l'intérieur**, façon KFC mais sans le bain d'huile. Le secret d'un vrai « fried chicken » tient dans la **panure** et une bonne **pulvérisation d'huile**.

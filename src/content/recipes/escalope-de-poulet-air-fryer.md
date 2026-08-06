@@ -37,7 +37,7 @@ faq:
     a: "Oui, retournez-la à mi-cuisson pour qu'elle dore uniformément des deux côtés. C'est encore plus important pour les escalopes panées, afin d'obtenir un croustillant homogène."
   - q: "Peut-on cuire une escalope de poulet surgelée au air fryer ?"
     a: "Oui, directement congelée : comptez quelques minutes de plus (environ 15-18 minutes à 180 °C) et vérifiez bien les 75 °C à cœur. Une escalope décongelée reste toutefois plus moelleuse."
-pubDate: 2099-01-01
+pubDate: 2026-08-25
 ---
 
 L'escalope de poulet au air fryer, c'est le repas express par excellence : **moelleuse et dorée en version nature**, ou **croustillante façon milanaise** en version panée. Dans les deux cas, prête en une dizaine de minutes, sans matière grasse superflue.

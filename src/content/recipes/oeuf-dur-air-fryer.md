@@ -36,7 +36,7 @@ faq:
     a: "Réduisez le temps à 11-12 minutes à 130 °C : le blanc est pris mais le jaune reste crémeux et coulant. Le bain d'eau glacée est encore plus important pour stopper la cuisson au bon moment."
   - q: "Pourquoi mes œufs éclatent-ils au air fryer ?"
     a: "C'est rare, mais cela peut arriver à température trop élevée. Restez à 130 °C (chaleur douce) et évitez les chocs. Des œufs à température ambiante plutôt que sortis du frigo limitent aussi le risque."
-pubDate: 2099-01-01
+pubDate: 2026-08-24
 ---
 
 L'œuf dur au air fryer, c'est l'astuce qui change la vie : **cuits à sec dans leur coquille, sans casserole d'eau à surveiller, et surtout faciles à écaler**. La chaleur douce de l'air fryer fait un travail impeccable, et le résultat s'épluche comme un rêve.

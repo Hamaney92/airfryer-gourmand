@@ -38,7 +38,7 @@ faq:
     a: "Ce n'est pas obligatoire mais très recommandé, car la dinde est peu grasse. Une marinade au yaourt épicé, au citron ou à l'huile d'olive et aux herbes l'attendrit et la parfume, pour un résultat bien plus moelleux et savoureux."
   - q: "Peut-on cuire un rôti de dinde farci au air fryer ?"
     a: "Oui, mais surveillez bien la cuisson à cœur (la farce doit aussi atteindre 75 °C), ce qui allonge le temps. Vérifiez que le rôti tient dans le panier. Un rôti nature est plus simple à réussir uniformément."
-pubDate: 2099-01-01
+pubDate: 2026-08-30
 ---
 
 La dinde au air fryer, c'est une viande blanche saine et rapide : **moelleuse, dorée et parfumée**, à condition de maîtriser la cuisson. En escalope pour un repas express ou en rôti pour un repas familial, l'air fryer la réussit sans la dessécher — le grand défi de cette viande très maigre.

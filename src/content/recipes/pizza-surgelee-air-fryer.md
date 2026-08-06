@@ -36,7 +36,7 @@ faq:
     a: "L'air fryer excelle justement pour ça : la circulation d'air chaud rend la pâte plus croustillante qu'au four traditionnel, dessous comme sur les bords. Ne surchargez pas et laissez l'air circuler sous la pizza."
   - q: "Peut-on cuire une pizza fraîche ou maison au air fryer ?"
     a: "Oui, une pizza fraîche du rayon frais ou une pâte maison cuit aussi : 8 à 10 minutes à 180 °C environ. Surveillez, car une pâte maison plus épaisse peut demander un peu plus de temps."
-pubDate: 2099-01-01
+pubDate: 2026-08-29
 ---
 
 La pizza surgelée au air fryer, c'est le repas dépannage transformé : **une pâte plus croustillante qu'au four et un fromage bien fondu**, prêts en moins de 10 minutes, sans préchauffage. La circulation d'air chaud fait des merveilles sur la pâte.

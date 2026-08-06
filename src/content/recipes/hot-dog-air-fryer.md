@@ -38,7 +38,7 @@ faq:
     a: "Oui : posez du fromage râpé sur la saucisse (dans le pain) et repassez 2 minutes à l'air fryer pour le faire fondre. Un hot dog gratiné, façon chili cheese dog."
   - q: "Quelles saucisses utiliser pour un hot dog au air fryer ?"
     a: "Des saucisses de Francfort, de Strasbourg (knacki) ou des saucisses fumées. Toutes cuisent en 5 à 7 minutes à 200 °C. Les saucisses fraîches (chipolata) demandent un peu plus de temps."
-pubDate: 2099-01-01
+pubDate: 2026-08-26
 ---
 
 Le hot dog au air fryer, c'est le repas rapide et réconfortant sans casserole d'eau ni poêle : **une saucisse dorée et croustillante, un pain moelleux et chaud**, monté en quelques minutes. Bien meilleur que la saucisse bouillie qui ramollit.

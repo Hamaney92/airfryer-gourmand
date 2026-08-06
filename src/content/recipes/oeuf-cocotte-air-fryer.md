@@ -39,7 +39,7 @@ faq:
     a: "Crème et fromage râpé pour la base, puis jambon, épinards, lardons, saumon fumé ou champignons au fond du ramequin. C'est un plat express infiniment personnalisable pour le petit-déjeuner ou l'apéro dînatoire."
   - q: "Comment savoir si l'œuf cocotte est cuit ?"
     a: "Le blanc doit être entièrement pris (plus translucide) et le jaune encore tremblant si vous l'aimez coulant. Secouez légèrement le ramequin : si le centre bouge à peine, c'est prêt."
-pubDate: 2099-01-01
+pubDate: 2026-08-31
 ---
 
 L'œuf cocotte au air fryer, c'est le petit plat réconfortant prêt en un clin d'œil : **un blanc fondant, un jaune coulant, une base crémeuse**, à tremper avec des mouillettes. Parfait pour un petit-déjeuner gourmand ou une entrée express, sans allumer le four.

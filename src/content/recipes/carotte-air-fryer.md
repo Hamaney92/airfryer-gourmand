@@ -38,7 +38,7 @@ faq:
     a: "Oui : coupez les carottes en bâtonnets fins, enrobez d'huile et d'épices, et cuisez 12 à 15 minutes à 200 °C en secouant à mi-cuisson. Une alternative saine et colorée aux frites classiques."
   - q: "Peut-on cuire des carottes surgelées au air fryer ?"
     a: "Oui, directement congelées : 15 à 18 minutes à 200 °C, en secouant à mi-cuisson. Épongez l'excès d'eau à mi-cuisson pour qu'elles dorent au lieu de cuire à la vapeur."
-pubDate: 2099-01-01
+pubDate: 2026-08-27
 ---
 
 Les carottes au air fryer, c'est l'accompagnement malin qu'on oublie trop souvent : **tendres à cœur, caramélisées et légèrement croustillantes sur les bords**, en un quart d'heure. La chaleur tournante concentre leur sucre naturel — bien plus savoureuses que bouillies.
