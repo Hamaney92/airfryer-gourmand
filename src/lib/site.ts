@@ -59,6 +59,7 @@ const GEAR: Record<string, Gear> = {
   thermo:  { emoji: '🌡️', nom: 'Thermomètre à viande', util: 'La fin du poulet raté : température à cœur exacte, viande juteuse à tous les coups.', hook: "la température à cœur, c'est la seule façon d'en être sûr", query: 'thermomètre cuisson viande' },
   grille:  { emoji: '🍢', nom: 'Grille étagée / rack', util: 'Cuis le plat en bas + les légumes en haut EN MÊME TEMPS. Double la capacité pour les repas de famille.', hook: "deux étages, donc le plat et l'accompagnement en même temps", query: 'grille étagée air fryer rack' },
   grill:   { emoji: '🔥', nom: 'Plaque de gril', util: 'Des marques de saisie « resto » et une belle coloration, sans sortir le barbecue. Idéal viandes et brochettes.', hook: "des marques de saisie sans sortir le barbecue", query: 'plaque gril air fryer grill pan' },
+  plat:    { emoji: '🥘', nom: 'Plat rond pour air fryer', util: "Lasagnes, gratins, tomates farcies : il faut un plat qui entre VRAIMENT dans le panier — 18 a 20 cm, avec des bords assez hauts et un fond qui laisse circuler l'air.", hook: "il faut un plat de 18-20 cm qui entre vraiment dans le panier", query: 'plat cuisson rond air fryer 20 cm' },
   coffret: { emoji: '🎁', nom: "Coffret d'accessoires air fryer", util: "Tout l'équipement en une commande : moules, grille, pinces, papier… Le plus simple pour bien démarrer.", hook: "de quoi bien démarrer en une seule commande", query: 'coffret accessoires air fryer kit universel' },
 };
 
@@ -74,7 +75,7 @@ export function gearFor(data: { category?: string; slug?: string; keyword?: stri
   if (sl.includes('papillote')) return GEAR.papier;
   if (sl.includes('oeuf') || sl.includes('œuf')) return GEAR.moule;
   const byCat: Record<string, keyof typeof GEAR> = {
-    Volaille: 'thermo', Viande: 'thermo', Plat: 'coffret', Poisson: 'papier',
+    Volaille: 'thermo', Viande: 'thermo', Plat: 'plat', Poisson: 'papier',
     Dessert: 'moule', Legume: 'spray', Accompagnement: 'liner', 'Apéro': 'liner',
     Charcuterie: 'grille', 'Surgelé': 'liner', 'Œufs': 'moule',
   };
