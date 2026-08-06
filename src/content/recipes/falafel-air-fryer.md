@@ -39,7 +39,7 @@ faq:
     a: "Oui : à base de pois chiches, riches en protéines végétales et en fibres, et cuits avec très peu d'huile (juste un spray) au lieu d'un bain de friture. C'est une option végane, rassasiante et beaucoup plus légère que la version frite."
   - q: "Comment réchauffer des falafels au air fryer ?"
     a: "3 à 4 minutes à 180 °C leur redonnent tout leur croustillant, bien mieux qu'au micro-ondes qui les ramollit. Idéal pour des falafels de la veille ou du traiteur."
-pubDate: 2026-08-20
+pubDate: 2026-08-09
 ---
 
 Les falafels au air fryer, c'est le meilleur de la street food libanaise version légère : **croustillants dehors, moelleux et parfumés dedans**, sans le grand bain d'huile. Riches en protéines végétales, véganes et rassasiants, ils se cuisent en un quart d'heure.

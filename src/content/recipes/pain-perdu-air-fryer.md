@@ -39,7 +39,7 @@ faq:
     a: "Oui : remplacez le sucre par du sel, du poivre et un peu de fromage râpé dans l'appareil œuf-lait. Cuit 6 à 8 minutes à 180 °C, c'est une base parfaite pour un croque ou un brunch salé."
   - q: "Peut-on faire du pain perdu sans œuf au air fryer ?"
     a: "Oui : remplacez les œufs par un mélange de lait (ou lait végétal) et de fécule de maïs, ou de la banane écrasée. La tranche dore un peu moins mais reste moelleuse."
-pubDate: 2026-08-21
+pubDate: 2026-08-09
 ---
 
 Le pain perdu au air fryer, c'est le goûter anti-gaspi par excellence : **doré et croustillant dehors, moelleux et fondant dedans**, sans la poêle à surveiller ni le beurre qui brûle. En 8 minutes, on transforme du pain rassis en dessert réconfortant.

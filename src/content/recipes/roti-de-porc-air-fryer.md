@@ -38,7 +38,7 @@ faq:
     a: "Oui : badigeonnez de moutarde avant cuisson, ou de miel les 10 dernières minutes seulement (ajouté trop tôt, il brûlerait). Miel, moutarde, pruneaux ou chorizo : le rôti se prête à toutes les garnitures."
   - q: "Quel morceau choisir pour un rôti de porc au air fryer ?"
     a: "L'échine reste la plus moelleuse et pardonne les petits excès de cuisson ; le filet et la longe sont plus maigres, donc à surveiller pour ne pas les dessécher. Dans tous les cas, visez 68-72 °C à cœur."
-pubDate: 2026-08-14
+pubDate: 2026-08-07
 ---
 
 Le rôti de porc au air fryer, c'est le plat du dimanche sans le four qui tourne une heure : **une croûte dorée et parfumée, une chair juteuse**, prêt en moins d'une heure. La chaleur tournante saisit la surface et cuit le cœur uniformément.

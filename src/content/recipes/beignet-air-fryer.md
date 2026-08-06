@@ -39,7 +39,7 @@ faq:
     a: "Trempez des rondelles de pomme dans une pâte à beignets légère et cuisez 8 à 10 minutes à 180 °C, en retournant à mi-cuisson. Saupoudrez de sucre glace à la sortie. Parfaits pour Mardi gras, sans friture."
   - q: "Peut-on faire des beignets sans repos de pâte au air fryer ?"
     a: "Oui : utilisez une pâte à la levure chimique (et non à la levure de boulanger), qui ne nécessite pas de temps de repos. La pâte est prête immédiatement et gonfle à la cuisson."
-pubDate: 2026-08-16
+pubDate: 2026-08-08
 ---
 
 Les beignets au air fryer, c'est le plaisir de la friture sans la friture : **dorés et croustillants dehors, moelleux dedans**, mais sans le grand bain d'huile, l'odeur ni la lourdeur. Salés ou sucrés, du beignet de calamar à celui aux pommes, l'air fryer les réussit tous.

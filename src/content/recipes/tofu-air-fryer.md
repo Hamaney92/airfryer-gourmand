@@ -39,7 +39,7 @@ faq:
     a: "Oui, c'est essentiel. Le tofu est gorgé d'eau ; sans pressage, il cuit à la vapeur au lieu de croustiller. Pressez-le 15 minutes sous un poids (une assiette lestée), il rendra son excès d'eau."
   - q: "Comment faire du tofu général tao ou teriyaki au air fryer ?"
     a: "Cuisez le tofu croustillant, puis enrobez-le de sauce (général tao, teriyaki, gochujang) et repassez 2 minutes à l'air fryer pour laquer. La sauce ajoutée en fin de cuisson glace le tofu sans le ramollir."
-pubDate: 2026-08-15
+pubDate: 2026-08-07
 ---
 
 Le tofu au air fryer, c'est la révélation pour tous ceux qui le trouvaient fade et mou : **croustillant et doré dehors, moelleux dedans**, prêt à absorber toutes les sauces. En 20 minutes, sans le noyer dans l'huile, on obtient un tofu qui plaît même aux sceptiques.

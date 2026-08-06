@@ -39,7 +39,7 @@ faq:
     a: "Battez des œufs avec du fromage, du jambon ou des légumes, versez dans des moules en silicone et cuisez 10 à 12 minutes à 160 °C. Parfaits pour un petit-déjeuner protéiné, sans farine."
   - q: "Peut-on faire des muffins à la banane ou à la myrtille au air fryer ?"
     a: "Oui : ajoutez de la banane écrasée, des myrtilles, des pépites de chocolat ou des dés de pomme à la pâte de base. Le temps de cuisson reste 12 à 15 minutes à 160 °C."
-pubDate: 2026-08-17
+pubDate: 2026-08-08
 ---
 
 Les muffins au air fryer, c'est le goûter maison prêt en un quart d'heure : **moelleux, bien gonflés, dorés sur le dessus**, sans allumer le four pour six petites pièces. Sucrés ou salés, ils sortent parfaits à condition de respecter une règle simple.

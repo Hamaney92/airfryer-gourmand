@@ -38,7 +38,7 @@ faq:
     a: "Oui, c'est même recommandé : une marinade de quelques heures parfume la viande à cœur et l'attendrit. Épongez légèrement l'excès de marinade avant cuisson pour qu'ils dorent au lieu de bouillir."
   - q: "Quel mode utiliser pour les travers sur un air fryer Ninja ?"
     a: "Le mode « Air Fry » à 180 °C, puis « Grill » ou 200 °C pour la laque finale. La méthode est identique sur Moulinex, Cosori ou Philips."
-pubDate: 2026-08-18
+pubDate: 2026-08-08
 ---
 
 Les travers de porc au air fryer, c'est le plaisir du barbecue toute l'année : **une viande tendre qui se détache de l'os, une laque brillante et caramélisée**, sans allumer le grill ni surveiller les flammes. En une demi-heure, des travers dignes d'un resto de ribs.

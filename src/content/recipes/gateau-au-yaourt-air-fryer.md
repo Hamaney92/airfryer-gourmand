@@ -39,7 +39,7 @@ faq:
     a: "Oui : remplacez les œufs par de la compote de pommes (1 pot) ou une banane écrasée. Le gâteau sera un peu plus dense mais reste moelleux. Le temps de cuisson est identique."
   - q: "Quelles variantes de gâteau au yaourt au air fryer ?"
     a: "Pépites de chocolat, dés de pomme, zeste de citron, ou une couche de compote au fond du moule. La pâte de base accepte toutes les garnitures sans changer le temps de cuisson."
-pubDate: 2026-08-19
+pubDate: 2026-08-09
 ---
 
 Le gâteau au yaourt au air fryer, c'est le premier gâteau qu'on apprend à faire, version encore plus simple : **moelleux, doré, mesuré au pot de yaourt** (sans balance), et cuit en une trentaine de minutes sans allumer le four. Le goûter maison le plus facile qui soit.

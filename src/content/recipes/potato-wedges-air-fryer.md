@@ -38,7 +38,7 @@ faq:
     a: "Assaisonnez les quartiers d'ail en poudre et d'herbes avant cuisson, puis parsemez de parmesan râpé à la sortie du panier (pas avant, il brûlerait). C'est la version garlic parmesan, croustillante et gourmande."
   - q: "Faut-il précuire les pommes de terre pour des wedges ?"
     a: "Non, ce n'est pas nécessaire au air fryer : les quartiers cuivent à cœur et croustillent directement en 20 minutes. Coupez-les en quartiers réguliers pour une cuisson homogène."
-pubDate: 2026-08-22
+pubDate: 2026-08-10
 ---
 
 Les potato wedges au air fryer, ce sont ces **quartiers de pommes de terre dorés, croustillants dehors et fondants dedans** — l'accompagnement qui plaît toujours, sans le bain de friture. En 20 minutes, des wedges dignes d'un burger de resto, avec une seule cuillère d'huile.
