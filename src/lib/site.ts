@@ -42,17 +42,24 @@ export const amazonSearch = (q: string) =>
 // ===== Accessoire Amazon recommandé PAR recette =====
 // `util` = argument de vente : on met en avant une DOULEUR (nettoyage, poulet raté,
 // revêtement abîmé) plutôt qu'une caractéristique — c'est ce qui déclenche le clic.
-type Gear = { emoji: string; nom: string; util: string; query: string };
+type Gear = {
+  emoji: string;
+  nom: string;
+  util: string;
+  /** Accroche courte (une clause), pour la relance placee juste sous la reponse rapide. */
+  hook: string;
+  query: string;
+};
 
 const GEAR: Record<string, Gear> = {
-  spray:   { emoji: '💨', nom: 'Spray à huile rechargeable', util: "Un voile d'huile régulier avec 3× moins de gras. Les aérosols du commerce abîment le revêtement anti-adhésif — un spray rechargeable, non.", query: 'spray huile rechargeable cuisine' },
-  moule:   { emoji: '🧁', nom: 'Moules & caissettes silicone', util: 'Cakes, muffins, œufs cocotte : démoulage parfait, zéro vaisselle qui colle. Passent au lave-vaisselle.', query: 'moule silicone air fryer avec anses' },
-  papier:  { emoji: '📄', nom: 'Papier cuisson perforé', util: "Anti-collage sans bloquer l'air chaud. Le panier reste propre — plus de trempage interminable.", query: 'papier cuisson perforé air fryer' },
-  liner:   { emoji: '🧽', nom: 'Panier silicone réutilisable', util: "Fini le papier jetable : ce panier protège le revêtement et se lave d'un coup d'éponge. L'accessoire nettoyage n°1.", query: 'panier silicone réutilisable air fryer' },
-  thermo:  { emoji: '🌡️', nom: 'Thermomètre à viande', util: 'La fin du poulet raté : température à cœur exacte, viande juteuse à tous les coups.', query: 'thermomètre cuisson viande' },
-  grille:  { emoji: '🍢', nom: 'Grille étagée / rack', util: 'Cuis le plat en bas + les légumes en haut EN MÊME TEMPS. Double la capacité pour les repas de famille.', query: 'grille étagée air fryer rack' },
-  grill:   { emoji: '🔥', nom: 'Plaque de gril', util: 'Des marques de saisie « resto » et une belle coloration, sans sortir le barbecue. Idéal viandes et brochettes.', query: 'plaque gril air fryer grill pan' },
-  coffret: { emoji: '🎁', nom: "Coffret d'accessoires air fryer", util: "Tout l'équipement en une commande : moules, grille, pinces, papier… Le plus simple pour bien démarrer.", query: 'coffret accessoires air fryer kit universel' },
+  spray:   { emoji: '💨', nom: 'Spray à huile rechargeable', util: "Un voile d'huile régulier avec 3× moins de gras. Les aérosols du commerce abîment le revêtement anti-adhésif — un spray rechargeable, non.", hook: "un voile d'huile régulier, pas une flaque", query: 'spray huile rechargeable cuisine' },
+  moule:   { emoji: '🧁', nom: 'Moules & caissettes silicone', util: 'Cakes, muffins, œufs cocotte : démoulage parfait, zéro vaisselle qui colle. Passent au lave-vaisselle.', hook: "un moule qui démoule vraiment, sans gratter", query: 'moule silicone air fryer avec anses' },
+  papier:  { emoji: '📄', nom: 'Papier cuisson perforé', util: "Anti-collage sans bloquer l'air chaud. Le panier reste propre — plus de trempage interminable.", hook: "du papier PERFORÉ, sinon il s'envole sur la résistance", query: 'papier cuisson perforé air fryer' },
+  liner:   { emoji: '🧽', nom: 'Panier silicone réutilisable', util: "Fini le papier jetable : ce panier protège le revêtement et se lave d'un coup d'éponge. L'accessoire nettoyage n°1.", hook: "un panier qui se lave d'un coup d'éponge", query: 'panier silicone réutilisable air fryer' },
+  thermo:  { emoji: '🌡️', nom: 'Thermomètre à viande', util: 'La fin du poulet raté : température à cœur exacte, viande juteuse à tous les coups.', hook: "la température à cœur, c'est la seule façon d'en être sûr", query: 'thermomètre cuisson viande' },
+  grille:  { emoji: '🍢', nom: 'Grille étagée / rack', util: 'Cuis le plat en bas + les légumes en haut EN MÊME TEMPS. Double la capacité pour les repas de famille.', hook: "deux étages, donc le plat et l'accompagnement en même temps", query: 'grille étagée air fryer rack' },
+  grill:   { emoji: '🔥', nom: 'Plaque de gril', util: 'Des marques de saisie « resto » et une belle coloration, sans sortir le barbecue. Idéal viandes et brochettes.', hook: "des marques de saisie sans sortir le barbecue", query: 'plaque gril air fryer grill pan' },
+  coffret: { emoji: '🎁', nom: "Coffret d'accessoires air fryer", util: "Tout l'équipement en une commande : moules, grille, pinces, papier… Le plus simple pour bien démarrer.", hook: "de quoi bien démarrer en une seule commande", query: 'coffret accessoires air fryer kit universel' },
 };
 
 // Upsell universel proposé en 2ᵉ ligne sur toutes les recettes.
