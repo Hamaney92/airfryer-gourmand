@@ -39,7 +39,7 @@ faq:
     a: "Non, c'est tout l'avantage : contrairement à la poêle, l'air fryer cuit l'omelette uniformément dessus comme dessous, sans la retourner ni la surveiller. Elle gonfle façon soufflé."
   - q: "Quelles garnitures pour une omelette au air fryer ?"
     a: "Jambon-fromage (le classique), champignons, poivrons, lardons, épinards ou herbes fraîches. Ajoutez la garniture avant cuisson ou dans les œufs battus : elle cuit avec l'omelette."
-pubDate: 2099-01-01
+pubDate: 2026-08-17
 ---
 
 L'omelette au air fryer, c'est le petit-déjeuner ou le repas express sans la poêle à surveiller : **moelleuse, gonflée façon soufflé, dorée sur le dessus**, cuite uniformément sans être retournée. On verse, on attend, et c'est prêt.

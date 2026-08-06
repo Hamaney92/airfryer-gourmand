@@ -38,7 +38,7 @@ faq:
     a: "Le sucre (roux ou miel) et le beurre glissés dans le cœur fondent et caramélisent au contact de la chaleur. Arrosez la pomme de ce jus en fin de cuisson, ou ajoutez un filet de caramel. L'air fryer dore joliment la surface."
   - q: "Comment éviter que la garniture s'échappe ?"
     a: "N'évidez pas la pomme jusqu'au fond : laissez une base pour retenir le sucre et le beurre. Déposez les pommes bien droites dans le panier, sans les serrer, pour qu'elles ne basculent pas pendant la cuisson."
-pubDate: 2099-01-01
+pubDate: 2026-08-16
 ---
 
 La pomme au four au air fryer, c'est le dessert minute réconfortant par excellence : **une pomme fondante et caramélisée, un cœur coulant de sucre, cannelle et beurre**. Prête en un quart d'heure, sans allumer le four, c'est la douceur parfaite après un repas.

@@ -38,7 +38,7 @@ faq:
     a: "Oui, 5 minutes sous une feuille d'aluminium. Le repos permet aux jus de se répartir : l'entrecôte reste juteuse et rosée à la découpe au lieu de perdre son jus dans l'assiette."
   - q: "Peut-on ajouter du beurre à l'entrecôte au air fryer ?"
     a: "Oui : une noisette de beurre à l'ail et au thym déposée sur l'entrecôte en fin de cuisson (ou au repos) la nappe d'un beurre fondu parfumé, façon steakhouse."
-pubDate: 2099-01-01
+pubDate: 2026-08-22
 ---
 
 L'entrecôte au air fryer, c'est le steak du boucher sans la poêle qui fume : **une croûte dorée et savoureuse, un cœur rosé et juteux**, en une dizaine de minutes. La chaleur vive de l'air fryer saisit la viande sans dessécher — parfait pour une entrecôte de qualité.

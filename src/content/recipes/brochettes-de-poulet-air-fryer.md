@@ -38,7 +38,7 @@ faq:
     a: "Ne les surcuisez pas (sortez à 75 °C), utilisez du haut de cuisse plutôt que du blanc si vous craignez la sécheresse, et n'oubliez pas la marinade huilée. Des cubes pas trop petits restent aussi plus juteux."
   - q: "Peut-on ajouter des légumes sur les brochettes ?"
     a: "Oui : poivrons, oignons, courgettes se prêtent bien aux brochettes. Coupez-les en morceaux de taille proche de celle du poulet pour une cuisson homogène, en gardant à l'esprit que certains légumes cuisent un peu plus vite."
-pubDate: 2099-01-01
+pubDate: 2026-08-15
 ---
 
 Les brochettes de poulet au air fryer, c'est l'esprit barbecue toute l'année : **un poulet mariné, doré dehors et moelleux dedans**, prêt en un quart d'heure sans allumer le grill. Parfaites pour un repas convivial, avec ou sans légumes sur les pics.

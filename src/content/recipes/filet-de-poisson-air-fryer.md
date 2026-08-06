@@ -37,7 +37,7 @@ faq:
     a: "Badigeonnez le panier ou le filet d'un peu d'huile, ou utilisez une feuille de papier cuisson perforée. Bien sécher le poisson avant cuisson aide aussi. Décollez délicatement à la spatule."
   - q: "Quel poisson cuire au air fryer ?"
     a: "Presque tous : cabillaud, colin, saumon, lieu, dorade, truite. Les filets épais et fermes (saumon, cabillaud) tiennent le mieux. Les filets très fins cuisent très vite : surveillez-les dès 6-7 minutes."
-pubDate: 2099-01-01
+pubDate: 2026-08-18
 ---
 
 Le filet de poisson au air fryer, c'est le repas santé en un éclair : **une chair moelleuse qui s'effeuille, dorée juste ce qu'il faut**, sans matière grasse et sans envahir la cuisine d'odeurs. Cabillaud, colin, saumon : la méthode fonctionne pour tous.

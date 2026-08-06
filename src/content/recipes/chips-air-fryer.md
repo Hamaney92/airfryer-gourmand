@@ -37,7 +37,7 @@ faq:
     a: "Oui, mais un tout petit peu d'huile (une cuillère pour toutes les tranches) améliore nettement le croustillant et la couleur. Sans huile, les chips sont plus sèches et se colorent moins uniformément."
   - q: "Peut-on faire des chips d'autres légumes au air fryer ?"
     a: "Absolument : patate douce, betterave, panais, carotte ou courgette font d'excellentes chips. Le principe reste le même (tranches fines, un peu d'huile, une seule couche), mais surveillez les temps qui varient selon le légume."
-pubDate: 2099-01-01
+pubDate: 2026-08-14
 ---
 
 Les chips au air fryer, c'est l'apéro maison qui bat les paquets du commerce : **fines, dorées et ultra-croustillantes**, avec juste une cuillère d'huile au lieu d'un bain de friture. Nature ou épicées, elles sont irrésistibles et bien plus saines.

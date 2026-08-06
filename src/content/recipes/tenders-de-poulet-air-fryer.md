@@ -39,7 +39,7 @@ faq:
     a: "Oui, directement congelés : 10 à 12 minutes à 200 °C, en les retournant à mi-cuisson. Une pulvérisation d'huile leur redonne le croustillant. Vérifiez qu'ils sont bien chauds à cœur."
   - q: "Quelle sauce servir avec des tenders de poulet ?"
     a: "Sauce barbecue, miel-moutarde, ranch, ketchup ou sauce au fromage. Les tenders se trempent : prévoyez plusieurs sauces pour varier. Parfaits pour un apéro ou un repas des enfants."
-pubDate: 2099-01-01
+pubDate: 2026-08-19
 ---
 
 Les tenders de poulet au air fryer, c'est le plaisir du fast-food version maison et maligne : **une panure dorée et ultra-croustillante, une chair tendre et juteuse**, sans le grand bain d'huile. À tremper dans une sauce, ils font l'unanimité, des enfants aux grands.

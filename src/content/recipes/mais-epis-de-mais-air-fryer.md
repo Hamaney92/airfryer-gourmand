@@ -38,7 +38,7 @@ faq:
     a: "Badigeonnez l'épi d'huile ou de beurre et retournez-le une ou deux fois pendant la cuisson pour que tous les côtés dorent. Coupez l'épi en deux s'il est trop long pour tenir dans le panier."
   - q: "Comment assaisonner le maïs au air fryer ?"
     a: "Le classique : beurre et sel à la sortie. Pour varier, un beurre à l'ail et aux herbes, du paprika fumé, ou façon mexicaine (mayo, citron vert, parmesan et piment) — le fameux elote. À servir bien chaud."
-pubDate: 2099-01-01
+pubDate: 2026-08-20
 ---
 
 Le maïs au air fryer, c'est l'accompagnement d'été qui plaît à tous : **des grains tendres et fondants, légèrement grillés et torréfiés**, façon corn on the cob américain. L'air fryer donne au maïs un petit goût grillé qu'on n'obtient jamais à l'eau bouillante.

@@ -37,7 +37,7 @@ faq:
     a: "Pas obligatoire, mais une fine pulvérisation d'huile avant cuisson renforce le doré et le croustillant de la panure. Les bâtonnets contiennent déjà de la matière grasse."
   - q: "Quelle sauce servir avec les bâtonnets de mozzarella ?"
     a: "La sauce tomate ou marinara est le classique, mais le ketchup, une sauce barbecue ou un pesto fonctionnent aussi. Servez-les bien chauds pour profiter du fromage filant."
-pubDate: 2099-01-01
+pubDate: 2026-08-21
 ---
 
 Les bâtonnets de mozzarella au air fryer, c'est l'apéro qui fait toujours son effet : **une panure dorée et croustillante, un cœur de fromage fondant et filant**, avec le croustillant de la friteuse mais **sans le bain d'huile**. En moins de 8 minutes, direct du congélateur.
