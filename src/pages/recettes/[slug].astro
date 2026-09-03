@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
 import { render } from 'astro:content';
-import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, gearFor, magnetUpsell, pairingCategories } from '../../lib/site';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, gearFor, pairingCategories } from '../../lib/site';
 
 export async function getStaticPaths() {
   const recipes = await getPublishedRecipes();
@@ -139,24 +139,22 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <b>Réponse rapide —</b> {data.quickAnswer}
     </div>
 
-    {/*
-      RELANCE AFFILIÉE HAUTE — ajoutée le 06/08/2026, voir pinterest/insights-log.md.
-      Mesure : 509 clics sortants Pinterest sur 30 jours pour SIX clics affiliés, soit 1,2 %
-      du trafic qu'on ramène. Le bloc `gear-box` plus bas est bon, mais il vit après le corps
-      de l'article, les ingrédients ET les étapes — à ~70 % de la page — alors que le trafic
-      Pinterest la quitte en 3 à 20 s (GA4). Il n'est tout simplement jamais vu.
-      On place donc la relance juste après la réponse rapide : le moment précis où le lecteur
-      a obtenu son information et s'apprête à repartir.
-      Volontairement UNE seule ligne, sans gros bouton orange : la promesse de la page reste la
-      recette, et un encart publicitaire au-dessus du contenu abîmerait autant la lecture que
-      le signal qualité. L'accroche prolonge la réponse au lieu de l'interrompre.
-    */}
-    <p class="gear-inline" style="margin:-6px 0 22px;padding:10px 14px;border-left:3px solid var(--brand-d);background:var(--cream,#fff7ef);border-radius:0 10px 10px 0;font-size:.95rem;color:#5f5147">
-      <span aria-hidden="true">{gear.emoji}</span> <b>Pour la réussir à coup sûr :</b> {gear.hook} —
-      {gear.href
-        ? <a href={gear.href} style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>
-        : <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={gear.nom} data-placement="recipe_quick_answer" data-page-type="recipe" data-page-id={recipe.id} style="color:var(--brand-d);font-weight:700">{gear.nom} →</a>}
-    </p>
+    {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
+        affilié et renvoie vers cet encart visible, placé ici après la réponse à l'intention. */}
+    <aside id="materiel" class="gear-box gear-box--primary" aria-label={`Accessoire recommandé : ${gear.nom}`}>
+      <div class="gear-box__eyebrow">{gear.emoji} Pour la réussir à coup sûr</div>
+      <div class="gear-box__title">{gear.nom}</div>
+      <p>{gear.util}</p>
+      {gear.href ? (
+        <a href={gear.href} class="gear-box__cta">Voir le comparatif →</a>
+      ) : (
+        <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={gear.nom} data-placement="recipe_primary_gear" data-page-type="recipe" data-page-id={recipe.id} class="gear-box__cta">
+          Voir l'accessoire recommandé sur Amazon →
+        </a>
+      )}
+      {!gear.href && <p class="gear-box__disclosure">Lien affilié : une commission peut nous être versée, sans surcoût pour vous.</p>}
+      <p class="gear-box__guide"><a href="/guides/accessoires-air-fryer/">Voir tous les accessoires vraiment utiles →</a></p>
+    </aside>
 
     <!-- Corps de l'article (markdown) -->
     <Content />
@@ -175,32 +173,6 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         </>
       )}
     </div>
-
-    {/* id="materiel" : cible des e-mails MailerLite ({$url_recette}#materiel). Amazon interdit
-        les liens affiliés DANS les e-mails — la méthode conforme est e-mail → cette ancre → lien. */}
-    <aside id="materiel" class="gear-box" style="background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:22px 0;scroll-margin-top:80px">
-      <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{gear.emoji} L'accessoire qui change cette recette : {gear.nom}</div>
-      <p style="margin:6px 0;color:#5f5147">{gear.util}</p>
-      {gear.href ? (
-        <a href={gear.href}
-           style="display:inline-block;background:var(--brand-d);color:#fff;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
-          Voir le comparatif →
-        </a>
-      ) : (
-        <a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={gear.nom} data-placement="recipe_gear_box" data-page-type="recipe" data-page-id={recipe.id}
-           style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:10px;margin:6px 0 4px">
-          Voir sur Amazon →
-        </a>
-      )}
-      <p style="margin:8px 0 2px;font-size:.9rem">
-        🧲 Débutant ? <a href={amazonSearch(magnetUpsell.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={magnetUpsell.nom} data-placement="recipe_magnet" data-page-type="recipe" data-page-id={recipe.id} style="color:var(--brand-d);font-weight:700">{magnetUpsell.nom} →</a> (tous les temps sous les yeux, collé au frigo)
-      </p>
-      <p style="margin:8px 0 0;font-size:.85rem">
-        <a href="/guides/accessoires-air-fryer/" style="color:var(--brand-d);font-weight:700">→ Tous les accessoires vraiment utiles</a> ·
-        <a href="/guides/meilleur-air-fryer-2026/" style="color:var(--brand-d);font-weight:700">Quel air fryer choisir</a>
-      </p>
-      <p style="margin:6px 0 0;font-size:.78rem;color:#9a8c7d">Lien affilié — commission possible, sans surcoût pour toi.</p>
-    </aside>
 
     {data.servings <= 2 && (
       <aside class="book-recipe-box">
@@ -258,6 +230,13 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 </Layout>
 
 <style>
+  .gear-box--primary{background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:14px 0 26px;scroll-margin-top:80px;box-shadow:var(--shadow)}
+  .gear-box__eyebrow{font-size:.82rem;font-weight:800;color:var(--brand-d);text-transform:uppercase;letter-spacing:.02em}
+  .gear-box__title{font-size:1.15rem;font-weight:850;color:var(--ink);margin-top:3px}
+  .gear-box--primary p{margin:7px 0;color:#5f5147}
+  .gear-box__cta{display:inline-flex;align-items:center;justify-content:center;background:#ff9900;color:#111;font-weight:850;text-decoration:none;padding:11px 18px;border-radius:10px;margin:5px 0;min-height:44px}
+  .gear-box__disclosure{font-size:.78rem;color:#7d7065!important}
+  .gear-box__guide{font-size:.88rem}.gear-box__guide a{color:var(--brand-d);font-weight:750}
   .book-recipe-box{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--cream);border:1px solid #ffd6b8;border-radius:16px;padding:18px 20px;margin:22px 0}
   .book-recipe-icon{font-size:1.8rem}
   .book-recipe-box p{margin:4px 0 7px;color:#5f5147;font-size:.93rem}
