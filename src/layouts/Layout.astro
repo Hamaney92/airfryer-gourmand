@@ -62,13 +62,17 @@ const year = new Date().getFullYear();
     <header>
       <div class="wrap bar">
         <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
-        <nav class="cats">
+        <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
           {USAGES.map((u) => (
             <a href={u.slug}>{u.label}</a>
           ))}
+          <a href="/recettes/">Toutes les recettes</a>
+          <a href="/guides/">Guides</a>
           <a href="/livre/" data-book-entry data-placement="header" data-page-type={pageType}>Notre livre</a>
         </nav>
-        <a href="/recettes/" class="icobtn" aria-label="Toutes les recettes">☰</a>
+        <button class="icobtn mobile-menu-trigger" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </header>
 
@@ -112,5 +116,31 @@ const year = new Date().getFullYear();
     </footer>
     <PdfPopup />
     <AffiliateTracking />
+    <script>
+      const menuButton = document.querySelector<HTMLButtonElement>('.mobile-menu-trigger');
+      const navigation = document.querySelector<HTMLElement>('#primary-navigation');
+
+      const closeMenu = () => {
+        if (!menuButton || !navigation) return;
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Ouvrir le menu');
+      };
+
+      menuButton?.addEventListener('click', () => {
+        if (!navigation) return;
+        const isOpen = navigation.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+      });
+
+      navigation?.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLAnchorElement) closeMenu();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+    </script>
   </body>
 </html>
