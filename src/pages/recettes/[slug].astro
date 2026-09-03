@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
 import { render } from 'astro:content';
-import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, amazonProduct, gearFor, pairingCategories } from '../../lib/site';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, amazonProduct, gearFor, pairingCategories, isMinceur } from '../../lib/site';
 
 export async function getStaticPaths() {
   const recipes = await getPublishedRecipes();
@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 const { recipe } = Astro.props;
 const { data } = recipe;
 const cat = catInfo(data.category);
+const lightRecipe = isMinceur(recipe);
 const path = `/recettes/${recipe.id}/`;
 const { Content } = await render(recipe);
 
@@ -145,6 +146,13 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <p>Vous cherchez le temps ou la température d’un autre aliment ? Consultez notre <a href="/tableau-temps-cuisson-air-fryer/">tableau de cuisson air fryer</a> : les réglages essentiels y sont réunis.</p>
     </aside>
 
+    {lightRecipe && (
+      <aside class="light-recipes-link" aria-label="Recettes minceur Air Fryer express">
+        <span aria-hidden="true">🥗</span>
+        <p>Cette recette fait partie de nos idées légères. Découvrez d’autres <a href="/dossiers/recettes-minceur-air-fryer/">recettes minceur air fryer express</a>, prêtes en 15 minutes ou moins.</p>
+      </aside>
+    )}
+
     {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
         affilié et renvoie vers cet encart visible, placé ici après la réponse à l'intention. */}
     <aside id="materiel" class="gear-box gear-box--primary" aria-label={`Accessoire recommandé : ${gear.nom}`}>
@@ -249,6 +257,8 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .gear-box__guide{font-size:.88rem}.gear-box__guide a{color:var(--brand-d);font-weight:750}
   .cooking-table-link{display:flex;gap:10px;align-items:flex-start;background:#f4f9f7;border-left:4px solid var(--brand);border-radius:10px;padding:12px 15px;margin:14px 0 20px}
   .cooking-table-link span{font-size:1.1rem;line-height:1.45}.cooking-table-link p{margin:0;color:#40564c;font-size:.93rem}.cooking-table-link a{color:var(--brand-d);font-weight:800}
+  .light-recipes-link{display:flex;gap:10px;align-items:flex-start;background:#fff8ed;border-left:4px solid #f0a647;border-radius:10px;padding:12px 15px;margin:14px 0 20px}
+  .light-recipes-link span{font-size:1.1rem;line-height:1.45}.light-recipes-link p{margin:0;color:#685438;font-size:.93rem}.light-recipes-link a{color:var(--brand-d);font-weight:800}
   .book-recipe-box{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--cream);border:1px solid #ffd6b8;border-radius:16px;padding:18px 20px;margin:22px 0}
   .book-recipe-icon{font-size:1.8rem}
   .book-recipe-box p{margin:4px 0 7px;color:#5f5147;font-size:.93rem}
