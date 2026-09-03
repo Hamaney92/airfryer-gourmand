@@ -18,8 +18,19 @@ const cats = Object.values(CATEGORIES).filter((c) =>
 
 const title = `Toutes les recettes air fryer — ${recipes.length} recettes testées`;
 const description = `Parcourez ${recipes.length} recettes air fryer testées, classées par catégorie : temps de cuisson, température et astuces pour chaque aliment.`;
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Toutes les recettes air fryer',
+  itemListElement: recipes.map((recipe, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: recipe.data.title,
+    url: `${SITE.url}/recettes/${recipe.id}/`,
+  })),
+};
 ---
-<Layout title={title} description={description} path="/recettes/">
+<Layout title={title} description={description} path="/recettes/" jsonLd={itemListLd}>
   <div class="wrap">
     <section>
       <div class="h2" style="font-size:2rem">Toutes les recettes air fryer<small>{recipes.length} recettes testées, classées par catégorie</small></div>

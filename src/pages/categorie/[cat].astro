@@ -30,8 +30,19 @@ const jsonLd = {
   url: `${SITE.url}/categorie/${cat}/`,
   description,
 };
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `${label} au air fryer`,
+  itemListElement: list.map((recipe, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: recipe.data.title,
+    url: `${SITE.url}/recettes/${recipe.id}/`,
+  })),
+};
 ---
-<Layout title={title} description={description} path={`/categorie/${cat}/`} jsonLd={jsonLd}>
+<Layout title={title} description={description} path={`/categorie/${cat}/`} jsonLd={[jsonLd, itemListLd]}>
   <div class="wrap">
     <nav class="crumb" style="margin-top:24px">
       <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › {label}
