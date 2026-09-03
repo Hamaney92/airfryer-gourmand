@@ -66,6 +66,6 @@ En **nature**, assaisonne et pulvérise d'un peu d'huile : parfait pour un repas
 
 ## Pour aller plus loin
 
-- avec des [pommes de terre au four](/recettes/pomme-de-terre-au-four-air-fryer/) ou une salade ;
+- avec des [pommes de terre grenaille](/recettes/pommes-de-terre-grenailles-air-fryer/) ou une salade ;
 - pour d'autres découpes, vois les [aiguillettes de poulet](/recettes/aiguillettes-de-poulet-air-fryer/) et les [tenders de poulet au air fryer](/recettes/tenders-de-poulet-air-fryer/) ;
 - version milanaise avec des spaghettis et une sauce tomate.
