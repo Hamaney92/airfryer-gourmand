@@ -140,6 +140,11 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <b>Réponse rapide —</b> {data.quickAnswer}
     </div>
 
+    <aside class="cooking-table-link" aria-label="Tableau de cuisson Air Fryer">
+      <span aria-hidden="true">⏱️</span>
+      <p>Vous cherchez le temps ou la température d’un autre aliment ? Consultez notre <a href="/tableau-temps-cuisson-air-fryer/">tableau de cuisson air fryer</a> : les réglages essentiels y sont réunis.</p>
+    </aside>
+
     {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
         affilié et renvoie vers cet encart visible, placé ici après la réponse à l'intention. */}
     <aside id="materiel" class="gear-box gear-box--primary" aria-label={`Accessoire recommandé : ${gear.nom}`}>
@@ -242,6 +247,8 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .gear-box__fit{font-size:.82rem!important;color:#685c51!important}
   .gear-box__fallback{font-size:.86rem}.gear-box__fallback a{color:var(--brand-d);font-weight:750}
   .gear-box__guide{font-size:.88rem}.gear-box__guide a{color:var(--brand-d);font-weight:750}
+  .cooking-table-link{display:flex;gap:10px;align-items:flex-start;background:#f4f9f7;border-left:4px solid var(--brand);border-radius:10px;padding:12px 15px;margin:14px 0 20px}
+  .cooking-table-link span{font-size:1.1rem;line-height:1.45}.cooking-table-link p{margin:0;color:#40564c;font-size:.93rem}.cooking-table-link a{color:var(--brand-d);font-weight:800}
   .book-recipe-box{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--cream);border:1px solid #ffd6b8;border-radius:16px;padding:18px 20px;margin:22px 0}
   .book-recipe-icon{font-size:1.8rem}
   .book-recipe-box p{margin:4px 0 7px;color:#5f5147;font-size:.93rem}
