@@ -38,6 +38,8 @@ export const MAILERLITE_FORM_ACTION =
 export const AMAZON_TAG = 'airfryergourm-21';
 export const amazonSearch = (q: string) =>
   `https://www.amazon.fr/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`;
+export const amazonProduct = (asin: string) =>
+  `https://www.amazon.fr/dp/${asin}/?tag=${AMAZON_TAG}`;
 
 // ===== Accessoire Amazon recommandé PAR recette =====
 // `util` = argument de vente : on met en avant une DOULEUR (nettoyage, poulet raté,
@@ -49,6 +51,11 @@ type Gear = {
   /** Accroche courte (une clause), pour la relance placee juste sous la reponse rapide. */
   hook: string;
   query: string;
+  /** Référence vérifiée : on préfère une fiche produit à une recherche générique lorsque
+      l'accessoire est universel. Les accessoires dépendants du panier gardent une issue de secours. */
+  asin?: string;
+  model?: string;
+  fitNote?: string;
   /** Si present, la relance pointe vers cette page INTERNE au lieu d'Amazon.
       Cas d'usage : la frustration de capacite (« une seule couche ») vend le double panier,
       et cet achat reflechi se travaille sur notre guide (7 %/30 j via Boulanger a terme),
@@ -57,11 +64,11 @@ type Gear = {
 };
 
 const GEAR: Record<string, Gear> = {
-  spray:   { emoji: '💨', nom: 'Spray à huile rechargeable', util: "Un voile d'huile régulier avec 3× moins de gras. Les aérosols du commerce abîment le revêtement anti-adhésif — un spray rechargeable, non.", hook: "un voile d'huile régulier, pas une flaque", query: 'spray huile rechargeable cuisine' },
-  moule:   { emoji: '🧁', nom: 'Moules & caissettes silicone', util: 'Cakes, muffins, œufs cocotte : démoulage parfait, zéro vaisselle qui colle. Passent au lave-vaisselle.', hook: "un moule qui démoule vraiment, sans gratter", query: 'moule silicone air fryer avec anses' },
-  papier:  { emoji: '📄', nom: 'Papier cuisson perforé', util: "Anti-collage sans bloquer l'air chaud. Le panier reste propre — plus de trempage interminable.", hook: "du papier PERFORÉ, sinon il s'envole sur la résistance", query: 'papier cuisson perforé air fryer' },
-  liner:   { emoji: '🧽', nom: 'Panier silicone réutilisable', util: "Fini le papier jetable : ce panier protège le revêtement et se lave d'un coup d'éponge. L'accessoire nettoyage n°1.", hook: "un panier qui se lave d'un coup d'éponge", query: 'panier silicone réutilisable air fryer' },
-  thermo:  { emoji: '🌡️', nom: 'Thermomètre à viande', util: 'La fin du poulet raté : température à cœur exacte, viande juteuse à tous les coups.', hook: "la température à cœur, c'est la seule façon d'en être sûr", query: 'thermomètre cuisson viande' },
+  spray:   { emoji: '💨', nom: 'Spray à huile rechargeable', util: "Un voile d'huile régulier avec 3× moins de gras. Les aérosols du commerce abîment le revêtement anti-adhésif — un spray rechargeable, non.", hook: "un voile d'huile régulier, pas une flaque", query: 'spray huile rechargeable cuisine', asin: 'B0D5H6GFVJ', model: 'FLAIROSOL OLIVIA 200 ml' },
+  moule:   { emoji: '🧁', nom: 'Moules & caissettes silicone', util: 'Cakes, muffins, œufs cocotte : démoulage parfait, zéro vaisselle qui colle. Passent au lave-vaisselle.', hook: "un moule qui démoule vraiment, sans gratter", query: 'moule silicone air fryer avec anses', asin: 'B0DK5TDKXT', model: 'IBILI récipient silicone 20 cm', fitNote: 'mesure ton panier : ce modèle fait 20 cm de diamètre.' },
+  papier:  { emoji: '📄', nom: 'Papier cuisson perforé', util: "Anti-collage sans bloquer l'air chaud. Le panier reste propre — plus de trempage interminable.", hook: "du papier PERFORÉ, sinon il s'envole sur la résistance", query: 'papier cuisson perforé air fryer', asin: 'B0H2WWGVMB', model: 'Papier perforé 20,5 × 14 cm', fitNote: 'vérifie les dimensions de ton panier avant commande.' },
+  liner:   { emoji: '🧽', nom: 'Panier silicone réutilisable', util: "Fini le papier jetable : ce panier protège le revêtement et se lave d'un coup d'éponge. L'accessoire nettoyage n°1.", hook: "un panier qui se lave d'un coup d'éponge", query: 'panier silicone réutilisable air fryer', asin: 'B0F6T45G5S', model: 'GRIFEMA moules silicone 5–8 L', fitNote: 'ce lot est prévu pour des paniers de 5 à 8 L : vérifie la taille de ton appareil.' },
+  thermo:  { emoji: '🌡️', nom: 'Thermomètre à viande', util: 'La fin du poulet raté : température à cœur exacte, viande juteuse à tous les coups.', hook: "la température à cœur, c'est la seule façon d'en être sûr", query: 'thermomètre cuisson viande', asin: 'B01LXI5HYH', model: 'ThermoPro TP02S à lecture instantanée' },
   grille:  { emoji: '🍢', nom: 'Grille étagée / rack', util: 'Cuis le plat en bas + les légumes en haut EN MÊME TEMPS. Double la capacité pour les repas de famille.', hook: "deux étages, donc le plat et l'accompagnement en même temps", query: 'grille étagée air fryer rack' },
   grill:   { emoji: '🔥', nom: 'Plaque de gril', util: 'Des marques de saisie « resto » et une belle coloration, sans sortir le barbecue. Idéal viandes et brochettes.', hook: "des marques de saisie sans sortir le barbecue", query: 'plaque gril air fryer grill pan' },
   plat:    { emoji: '🥘', nom: 'Plat rond pour air fryer', util: "Lasagnes, gratins, tomates farcies : il faut un plat qui entre VRAIMENT dans le panier — 18 a 20 cm, avec des bords assez hauts et un fond qui laisse circuler l'air.", hook: "il faut un plat de 18-20 cm qui entre vraiment dans le panier", query: 'plat cuisson rond air fryer 20 cm' },
