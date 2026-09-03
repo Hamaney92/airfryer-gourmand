@@ -38,7 +38,7 @@ export const GET: APIRoute = async () => {
     '/mentions-legales/', '/confidentialite/',
     ...catSlugs.map((s) => `/categorie/${s}/`),
   ];
-  const recipePaths = recipes.map((r) => `/recettes/${r.slug}/`);
+  const recipePaths = recipes.map((r) => `/recettes/${r.id}/`);
   const paths = [...staticPaths, ...guidePaths, ...dossierPaths, ...recipePaths];
 
   const today = new Date().toISOString().split('T')[0];

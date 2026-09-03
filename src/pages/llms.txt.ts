@@ -6,10 +6,10 @@ const SITE = 'https://airfryergourmand.fr';
 export const GET: APIRoute = async () => {
   const recipes = (await getCollection('recipes'))
     .filter((r) => r.data.pubDate.getTime() <= Date.now())
-    .sort((a, b) => b.data.reviews - a.data.reviews);
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
   const recipeLines = recipes
-    .map((r) => `- [${r.data.title}](${SITE}/recettes/${r.slug}/): ${r.data.description}`)
+    .map((r) => `- [${r.data.title}](${SITE}/recettes/${r.id}/): ${r.data.description}`)
     .join('\n');
 
   const body = `# Airfryer Gourmand

@@ -28,7 +28,7 @@ const tiles = ['Volaille', 'Viande', 'Legume', 'Poisson', 'Dessert', 'Surgelé']
   imgJpg: `/img/${TILE_IMG[c]}.jpg`,
 }));
 
-const totalReviews = recipes.reduce((n, r) => n + (r.data.reviews ?? 0), 0);
+const BOOK_COVER = 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
 
 const title = `${SITE.name} — Recettes & temps de cuisson air fryer`;
 const description = SITE.description;
@@ -47,20 +47,16 @@ const jsonLd = {
   },
 };
 ---
-<Layout title={title} description={description} path="/" jsonLd={jsonLd}>
+<Layout title={title} description={description} path="/" jsonLd={jsonLd} pageType="homepage">
   <div class="wrap">
     <section class="hero">
       <div>
-        <span class="badge">🔥 {recipes.length} recettes testées</span>
+        <span class="badge">🔥 {recipes.length} recettes publiées</span>
         <h1>Réussissez tout à <span>l'air fryer</span>, du premier coup.</h1>
-        <p>Temps de cuisson exacts, températures et astuces testées en cuisine. Zéro devinette, juste des résultats croustillants.</p>
+        <p>Temps de cuisson, températures et astuces pratiques réunis au même endroit. Moins de devinettes, plus de résultats croustillants.</p>
         <div>
           <a href="/recettes/" class="cta">Voir les recettes →</a>
           <a href="/temps-de-cuisson/" class="cta ghost">Temps de cuisson</a>
-        </div>
-        <div class="rating">
-          <span class="stars">★★★★★</span>
-          <span>Plus de {totalReviews.toLocaleString('fr-FR')} avis de lecteurs</span>
         </div>
       </div>
       <picture>
@@ -70,7 +66,7 @@ const jsonLd = {
     </section>
 
     <div class="trust">
-      <span><b>Testé</b> avant publication</span>
+      <span><b>Instructions</b> détaillées</span>
       <span><b>Temps & °C</b> précis</span>
       <span><b>Sans</b> bain d'huile</span>
       <span><b>Maison</b> & surgelés</span>
@@ -96,7 +92,7 @@ const jsonLd = {
 
     <section>
       <div class="row">
-        <div class="h2">Dernières recettes<small>Fraîchement testées et publiées</small></div>
+        <div class="h2">Dernières recettes<small>Les nouvelles recettes publiées sur le site</small></div>
         <a href="/recettes/" class="seeall">Tout voir →</a>
       </div>
       <div class="cards">
@@ -116,10 +112,33 @@ const jsonLd = {
     </section>
 
     <section>
+      <div class="book-home">
+        <img src={BOOK_COVER} alt="Couverture du livre Air Fryer gourmand pour seniors" width="180" height="225" loading="lazy" decoding="async" />
+        <div>
+          <span class="badge">Notre livre</span>
+          <h2>100 recettes pour 1 ou 2 personnes</h2>
+          <p>Des quantités justes, des étapes courtes et les temps de cuisson précis, dans une mise en page facile à lire.</p>
+          <a href="/livre/" class="cta" data-book-entry data-placement="homepage" data-page-type="homepage">Découvrir le livre →</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="author">
         <div class="avatar">AG</div>
-        <p><b>Chaque recette est testée dans notre cuisine.</b> Nous notons le temps et la température exacts, les pièges à éviter et les variantes surgelées — puis on publie. Pas de recette au hasard.</p>
+        <p><b>Chaque recette va droit au but.</b> Vous retrouvez le temps, la température, les étapes, les pièges à éviter et les variantes utiles au même endroit.</p>
       </div>
     </section>
   </div>
 </Layout>
+
+<style>
+  .book-home{display:grid;grid-template-columns:180px 1fr;gap:30px;align-items:center;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:22px;padding:28px 34px}
+  .book-home img{width:180px;height:auto;border-radius:7px;box-shadow:0 12px 30px rgba(70,42,22,.2)}
+  .book-home h2{font-size:1.7rem;line-height:1.15;margin-bottom:8px}
+  .book-home p{color:var(--muted);margin-bottom:17px;max-width:620px}
+  @media(max-width:620px){
+    .book-home{grid-template-columns:1fr;text-align:center;padding:24px 20px}
+    .book-home img{width:145px;margin:0 auto}
+  }
+</style>

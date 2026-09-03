@@ -1,6 +1,6 @@
 ---
 title: "Œuf au air fryer : dur, mollet ou au plat, le temps exact"
-metaTitle: "Œuf air fryer : temps de cuisson (dur, mollet, au plat)"
+metaTitle: "Œuf mollet Air Fryer : 10 min à 130 °C (+ dur et au plat)"
 description: "Le temps de cuisson exact des œufs au air fryer : dur, mollet, à la coque ou au plat. Tableau complet par cuisson, sans eau bouillante ni surveillance."
 category: "Œufs"
 image: "/img/oeuf-air-fryer.jpg"

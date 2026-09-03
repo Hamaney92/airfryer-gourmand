@@ -10,7 +10,7 @@ const recipes = await getPublishedRecipes();
 const rows = recipes
   .map((r) => ({
     nom: r.data.title.split(' au air fryer')[0].split(' à l')[0].split(' :')[0],
-    slug: r.slug,
+    slug: r.id,
     cat: catInfo(r.data.category).label,
     temp: r.data.temp,
     cook: r.data.cookTime,
@@ -27,7 +27,7 @@ const configured = Boolean(MAILERLITE_FORM_ACTION);
 
 const title = 'Tableau des temps de cuisson air fryer à imprimer (PDF gratuit)';
 const description =
-  "Le tableau complet des temps et températures de cuisson au air fryer, aliment par aliment, à imprimer gratuitement et à coller sur le frigo. Réglages testés.";
+  "Tableau de cuisson Air Fryer gratuit : temps et températures pour frites, viandes, légumes, poisson et surgelés. À imprimer et coller sur le frigo.";
 
 const jsonLd = [
   {
@@ -74,7 +74,7 @@ const jsonLd = [
   <div class="wrap article">
     <h1>Tableau des temps de cuisson air fryer</h1>
     <p>
-      Tous les réglages testés chez nous, aliment par aliment. La règle générale par rapport au four :
+      Tous les réglages réunis, aliment par aliment. La règle générale par rapport au four :
       <b>−20 °C sur la température</b> et <b>−20 % sur le temps</b>. Et on préchauffe toujours 2 à 3 minutes.
     </p>
 

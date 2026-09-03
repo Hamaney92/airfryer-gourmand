@@ -7,7 +7,7 @@ const recipes = await getPublishedRecipes();
 const rows = recipes
   .map((r) => ({
     title: r.data.title.split(' au air fryer')[0].split(' :')[0],
-    slug: r.slug,
+    slug: r.id,
     cat: catInfo(r.data.category).label,
     temp: r.data.temp,
     time: (r.data.prepTime ?? 0) + (r.data.cookTime ?? 0) - (r.data.prepTime ?? 0),

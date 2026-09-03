@@ -1,90 +1,222 @@
 ---
-import Base from '../layouts/Base.astro';
+import Layout from '../layouts/Layout.astro';
 import { SITE, AMAZON_TAG } from '../lib/site';
 
-// Notre propre livre. Lien direct par ASIN + tag Partenaires : on encaisse la
-// redevance KDP ET la commission d'affiliation (categorie Livres, 5 % sur amazon.fr).
-// De tres loin le produit le mieux remunere du site : ~10 EUR la vente, contre
-// 1,20 EUR pour un accessoire et 5,40 EUR pour un air fryer.
 const ASIN = 'B0HCSM8ZMD';
 const COUV = 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
-const urlAmazon = 'https://www.amazon.fr/dp/' + ASIN;
-const lien = urlAmazon + '/?tag=' + AMAZON_TAG;
+const urlAmazon = `https://www.amazon.fr/dp/${ASIN}`;
+const lien = `${urlAmazon}/?tag=${AMAZON_TAG}`;
 
-const title = "Notre livre : Air Fryer gourmand pour seniors (100 recettes pour 1 ou 2 personnes)";
-const description = "100 recettes air fryer faciles, en grands caracteres, avec des quantites justes pour 1 ou 2 personnes. Le livre pour celles et ceux qui cuisinent seuls ou a deux, et pour ceux qui veulent l offrir.";
+const title = 'Livre Air Fryer pour 1 ou 2 personnes | 100 recettes faciles';
+const description = '100 recettes Air Fryer faciles pour 1 ou 2 personnes : quantités justes, étapes courtes, temps et températures précis, en grands caractères.';
+
+const faq = [
+  {
+    q: 'Les recettes sont-elles différentes de celles du site ?',
+    a: 'Oui. Le livre réunit 100 recettes complètes conçues pour une ou deux portions, tandis que le site propose aussi des fiches de cuisson et des recettes gratuites.',
+  },
+  {
+    q: 'Faut-il un modèle particulier d’Air Fryer ?',
+    a: 'Non. Les recettes conviennent aux principaux modèles à panier. Le temps peut varier légèrement selon la puissance et la taille de l’appareil.',
+  },
+  {
+    q: 'Que signifie « pour seniors » ?',
+    a: 'Le livre privilégie les grands caractères, des étapes courtes, des ingrédients simples et des quantités adaptées à une ou deux personnes. Il convient à tout âge.',
+  },
+];
 
 const bookLd = {
   '@context': 'https://schema.org',
   '@type': 'Book',
   name: 'Air Fryer gourmand pour seniors',
-  author: { '@type': 'Person', name: 'Camille Lefevre' },
+  author: { '@type': 'Person', name: 'Camille Lefèvre' },
   bookFormat: 'https://schema.org/Paperback',
   numberOfPages: 224,
   inLanguage: 'fr',
   image: COUV,
-  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand' },
-  offers: { '@type': 'Offer', price: '22.90', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: urlAmazon },
+  url: `${SITE.url}/livre/`,
+  sameAs: urlAmazon,
+  publisher: { '@type': 'Organization', name: SITE.name },
 };
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.url + '/' },
-    { '@type': 'ListItem', position: 2, name: 'Notre livre', item: SITE.url + '/livre/' },
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Notre livre', item: `${SITE.url}/livre/` },
   ],
 };
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const affiliateAttrs = {
+  'data-affiliate-network': 'amazon',
+  'data-product-name': 'Air Fryer gourmand pour seniors',
+  'data-product-asin': ASIN,
+  'data-product-type': 'book',
+  'data-page-type': 'book',
+  'data-page-id': '/livre/',
+};
 ---
-<Base title={title} description={description} path="/livre/" image={COUV} jsonLd={[bookLd, breadcrumbLd]}>
-  <div class="wrap">
-    <article class="article">
-      <nav class="crumb"><a href="/">Accueil</a> › Notre livre</nav>
-      <h1>Air Fryer gourmand pour seniors</h1>
-      <p style="font-size:1.05rem;color:#5f5147;margin-top:-6px">100 recettes faciles, rapides et équilibrées — <strong>pour 1 ou 2 personnes</strong>.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;background:var(--cream,#fff7ef);border:1px solid var(--line);border-radius:18px;padding:24px;margin:22px 0">
-        <img src={COUV} alt="Couverture du livre Air Fryer gourmand pour seniors, par Camille Lefèvre" width="220" height="275" style="border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.18);flex:0 0 220px" />
-        <div style="flex:1 1 300px;min-width:280px">
-          <p style="margin:0 0 10px;color:#4a423b;line-height:1.65">Écrit par <strong>Camille Lefèvre</strong> pour Airfryer Gourmand. 224 pages, <strong>grands caractères</strong>, étapes courtes, et surtout des quantités calculées pour <strong>une ou deux personnes</strong> — pas des recettes pour quatre qu'on divise à la louche.</p>
-          <p style="margin:0 0 16px;font-size:1.35rem;font-weight:800;color:var(--brand-d)">22,90 €</p>
-          <a href={lien} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:14px 26px;border-radius:12px;font-size:1.05rem">Voir le livre sur Amazon →</a>
-          <p style="margin:12px 0 0;font-size:.82rem;color:#9a8c7d">Livre broché, en stock, expédié par Amazon. Lien affilié — commission possible, sans surcoût pour toi.</p>
+
+<Layout
+  title={title}
+  description={description}
+  path="/livre/"
+  image={COUV}
+  jsonLd={[bookLd, breadcrumbLd, faqLd]}
+  pageType="book"
+>
+  <div class="wrap book-page">
+    <nav class="crumb"><a href="/">Accueil</a> › Notre livre</nav>
+
+    <section class="book-hero">
+      <div class="book-copy">
+        <span class="badge">📖 100 recettes · 224 pages</span>
+        <h1>Le livre Air Fryer pensé pour <span>1 ou 2 personnes</span></h1>
+        <p class="book-lead">Des quantités justes, des étapes courtes et les temps de cuisson précis pour utiliser votre Air Fryer sans hésiter.</p>
+        <ul class="book-benefits">
+          <li>100 recettes faciles et variées</li>
+          <li>Temps et températures indiqués à chaque recette</li>
+          <li>Grands caractères, mise en page lisible sans effort</li>
+        </ul>
+        <a
+          class="amazon-cta"
+          href={lien}
+          target="_blank"
+          rel="sponsored nofollow noopener"
+          data-placement="hero"
+          {...affiliateAttrs}
+        >Voir le prix et les avis sur Amazon →</a>
+        <p class="affiliate-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité à vérifier sur Amazon.</p>
+      </div>
+      <div class="book-cover-wrap">
+        <img src={COUV} alt="Couverture du livre Air Fryer gourmand pour seniors, par Camille Lefèvre" width="360" height="450" fetchpriority="high" decoding="async" />
+      </div>
+    </section>
+
+    <article class="article book-content">
+      <h2>Pourquoi ce livre est différent</h2>
+      <p>La majorité des recettes en ligne sont prévues pour quatre personnes. Quand on cuisine seul ou à deux, il faut diviser les quantités au jugé et les temps ne correspondent plus toujours.</p>
+      <p>Ici, chaque recette est directement conçue pour <strong>une ou deux portions</strong>. Il n'y a aucun calcul à faire : les quantités, la température et le temps sont indiqués pour la bonne portion.</p>
+
+      <div class="book-grid">
+        <div class="book-card">
+          <span aria-hidden="true">🍗</span>
+          <h3>Des repas complets</h3>
+          <p>Volaille, poisson, légumes, plats complets et desserts pour varier toute la semaine.</p>
+        </div>
+        <div class="book-card">
+          <span aria-hidden="true">⏱️</span>
+          <h3>Des réglages clairs</h3>
+          <p>Temps, température et étapes courtes pour réussir la cuisson sans deviner.</p>
+        </div>
+        <div class="book-card">
+          <span aria-hidden="true">👓</span>
+          <h3>Une lecture confortable</h3>
+          <p>Grands caractères et présentation aérée, pratique sur le plan de travail.</p>
         </div>
       </div>
-      <h2>Pourquoi on l'a écrit</h2>
-      <p>Sur ce site, la question qui revient le plus souvent n'est pas « quelle recette ? » mais <strong>« quelles quantités ? »</strong>. La quasi-totalité des recettes air fryer en ligne sont prévues pour quatre. Quand on cuisine seul ou à deux, on divise au jugé, on rate les temps, et on finit avec des restes au frigo.</p>
-      <p>Ce livre part de l'autre bout : <strong>chaque recette est calibrée pour une ou deux personnes</strong>, avec le temps et la température exacts pour cette quantité-là. Pas de conversion mentale à faire.</p>
-      <h2>Ce qu'il y a dedans</h2>
-      <ul>
-        <li><strong>100 recettes</strong> : volaille, poisson, légumes, plats complets, desserts.</li>
-        <li><strong>Le temps et la température pour chaque recette</strong>, pour la portion indiquée.</li>
-        <li><strong>Des grands caractères et des étapes courtes</strong> — lisible posé sur le plan de travail, sans lunettes.</li>
-        <li>Les réglages de base : préchauffage, une seule couche, conversion four → air fryer.</li>
-        <li>224 pages, format confortable, à plat sur le plan de travail.</li>
-      </ul>
-      <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:26px 0">
-        <div style="font-weight:800;color:var(--brand-d);margin-bottom:8px">🎁 Si c'est pour l'offrir</div>
-        <p style="color:#5f5147;margin:0 0 10px">Beaucoup de gens offrent un air fryer à leurs parents… qui ne s'en servent pas. Pas par manque d'envie : parce que le mode d'emploi parle de watts et pas de dîner, et que les recettes en ligne sont écrites petit, pour quatre, avec dix ingrédients.</p>
-        <p style="color:#5f5147;margin:0">C'est exactement le trou que ce livre remplit : <strong>gros caractères, étapes courtes, quantités pour deux</strong>. C'est le cadeau qui fait enfin servir l'appareil déjà offert.</p>
+
+      <div class="gift-box">
+        <div class="gift-icon" aria-hidden="true">🎁</div>
+        <div>
+          <h2>Un cadeau utile avec un Air Fryer</h2>
+          <p>Le livre accompagne les personnes qui viennent de recevoir un appareil et ne savent pas encore quoi préparer. Il transforme le mode d'emploi en repas concrets, avec des ingrédients simples.</p>
+        </div>
       </div>
-      <h2>Pour qui c'est vraiment</h2>
+
+      <h2>À qui s'adresse-t-il ?</h2>
       <ul>
-        <li>Celles et ceux qui <strong>cuisinent pour une ou deux personnes</strong> — retraités, jeunes couples, personnes seules.</li>
-        <li>Celles et ceux qui veulent <strong>lire une recette sans chercher ses lunettes</strong>.</li>
-        <li>Celles et ceux qui viennent de recevoir un air fryer et <strong>n'osent pas s'en servir</strong>.</li>
+        <li>Aux personnes qui cuisinent seules ou à deux et veulent éviter les restes.</li>
+        <li>Aux débutants qui souhaitent des consignes simples et rassurantes.</li>
+        <li>À celles et ceux qui préfèrent une recette imprimée, claire et facile à relire.</li>
       </ul>
-      <p>En revanche, si tu cuisines pour une famille de cinq et que tu es déjà à l'aise avec l'appareil, nos <a href="/recettes/">recettes du site</a> te suffiront largement — elles sont gratuites, et c'est très bien comme ça.</p>
-      <div style="text-align:center;margin:34px 0 10px">
-        <a href={lien} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:15px 34px;border-radius:12px;font-size:1.1rem">Voir le livre sur Amazon — 22,90 € →</a>
+      <p>Pour une famille nombreuse ou si vous connaissez déjà parfaitement l'appareil, les <a href="/recettes/">recettes gratuites du site</a> seront souvent plus adaptées.</p>
+
+      <div class="book-mid-cta">
+        <p><strong>Envie de découvrir les 100 recettes ?</strong><br />Consultez la fiche du livre, son prix actuel et les avis directement sur Amazon.</p>
+        <a
+          class="amazon-cta"
+          href={lien}
+          target="_blank"
+          rel="sponsored nofollow noopener"
+          data-placement="content"
+          {...affiliateAttrs}
+        >Découvrir le livre sur Amazon →</a>
       </div>
+
       <h2>Questions fréquentes</h2>
-      <h3>Les recettes sont-elles différentes de celles du site ?</h3>
-      <p>Oui. Le site donne les temps de cuisson aliment par aliment ; le livre donne 100 recettes complètes, calibrées pour une ou deux portions.</p>
-      <h3>Faut-il un air fryer particulier ?</h3>
-      <p>Non. Les recettes marchent sur n'importe quel modèle à panier. Si tu hésites encore sur l'appareil, on a écrit un <a href="/guides/meilleur-air-fryer-2026/">comparatif des air fryers</a>.</p>
-      <h3>« Pour seniors », ça veut dire quoi exactement ?</h3>
-      <p>Grands caractères, étapes courtes, ingrédients simples et quantités pour une ou deux personnes. Rien n'empêche quelqu'un de 30 ans de l'utiliser — beaucoup de lecteurs cuisinent à deux et cherchent exactement ça.</p>
-      <p style="margin-top:26px"><a class="cta" href="/recettes/">🍽️ Voir aussi nos recettes gratuites</a></p>
+      {faq.map((item) => (
+        <>
+          <h3>{item.q}</h3>
+          <p>{item.a}</p>
+        </>
+      ))}
+
+      <p class="free-recipes"><a class="cta ghost" href="/recettes/">Voir aussi les recettes gratuites</a></p>
     </article>
   </div>
-</Base>
+
+  <div class="mobile-book-cta">
+    <a
+      href={lien}
+      target="_blank"
+      rel="sponsored nofollow noopener"
+      data-placement="mobile_sticky"
+      {...affiliateAttrs}
+    >Voir le livre sur Amazon →</a>
+  </div>
+</Layout>
+
+<style>
+  .book-page{padding-top:26px}
+  .book-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:52px;align-items:center;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:24px;padding:42px;margin-bottom:28px}
+  .book-copy h1{font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.04;letter-spacing:-1.5px;margin:0 0 16px}
+  .book-copy h1 span{color:var(--brand)}
+  .book-lead{font-size:1.12rem;color:var(--muted);max-width:650px;margin-bottom:18px}
+  .book-benefits{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:9px}
+  .book-benefits li{position:relative;padding-left:30px;font-weight:650}
+  .book-benefits li::before{content:'✓';position:absolute;left:0;top:0;color:var(--green);font-weight:900}
+  .amazon-cta{display:inline-flex;align-items:center;justify-content:center;background:#ff9900;color:#111;font-weight:850;text-decoration:none;padding:14px 24px;border-radius:12px;box-shadow:0 8px 22px rgba(153,91,0,.18)}
+  .amazon-cta:hover{background:#f3a620}
+  .affiliate-note{font-size:.78rem;color:#87796d;margin:11px 0 0;max-width:560px}
+  .book-cover-wrap{display:flex;justify-content:center}
+  .book-cover-wrap img{width:min(100%,360px);height:auto;border-radius:8px;box-shadow:0 18px 45px rgba(70,42,22,.24)}
+  .book-content{padding-top:10px}
+  .book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+  .book-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+  .book-card>span{font-size:1.6rem}
+  .book-card h3{margin:6px 0 4px}
+  .book-card p{font-size:.9rem;color:var(--muted);margin:0}
+  .gift-box{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--cream);border-radius:18px;padding:24px;margin:28px 0}
+  .gift-icon{font-size:2rem}
+  .gift-box h2{margin:0 0 6px}
+  .gift-box p{margin:0}
+  .book-mid-cta{text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin:30px 0;box-shadow:var(--shadow)}
+  .book-mid-cta p{margin:0 0 16px}
+  .free-recipes{text-align:center;margin-top:32px}
+  .mobile-book-cta{display:none}
+  @media(max-width:760px){
+    .book-page{padding-top:16px}
+    .book-hero{grid-template-columns:1fr;gap:28px;padding:24px 20px;border-radius:18px}
+    .book-copy h1{font-size:2.15rem}
+    .book-lead{font-size:1rem}
+    .amazon-cta{width:100%;text-align:center;padding:14px 16px}
+    .book-cover-wrap img{width:220px}
+    .book-grid{grid-template-columns:1fr}
+    .gift-box{grid-template-columns:1fr}
+    .mobile-book-cta{display:block;position:fixed;z-index:40;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));filter:drop-shadow(0 8px 18px rgba(0,0,0,.24))}
+    .mobile-book-cta a{display:block;background:#ff9900;color:#111;text-align:center;font-weight:850;padding:13px 16px;border-radius:12px}
+    footer{padding-bottom:86px}
+  }
+</style>

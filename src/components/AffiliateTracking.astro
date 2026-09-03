@@ -1,0 +1,68 @@
+<!--
+  Mesure les clics commerciaux sans interrompre la navigation.
+  Les liens Amazon non encore annotés sont aussi suivis avec des valeurs de repli,
+  afin que les anciens guides remontent immédiatement dans GA4.
+-->
+<script is:inline>
+  (() => {
+    if (window.__airfryerAffiliateTracking) return;
+    window.__airfryerAffiliateTracking = true;
+
+    const send = (name, params) => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, { ...params, transport_type: 'beacon' });
+      }
+    };
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const affiliateLink = target.closest(
+        'a[data-affiliate-network], a[href*="amazon.fr/"]'
+      );
+
+      if (affiliateLink instanceof HTMLAnchorElement) {
+        let host = '';
+        try {
+          host = new URL(affiliateLink.href, window.location.href).hostname;
+        } catch (_) {}
+
+        const params = {
+          affiliate_network:
+            affiliateLink.dataset.affiliateNetwork ||
+            (host.endsWith('amazon.fr') ? 'amazon' : 'autre'),
+          product_name:
+            affiliateLink.dataset.productName ||
+            affiliateLink.textContent?.trim().replace(/\s+/g, ' ').slice(0, 100) ||
+            'non_renseigne',
+          product_asin: affiliateLink.dataset.productAsin || 'non_renseigne',
+          placement: affiliateLink.dataset.placement || 'non_renseigne',
+          page_type: affiliateLink.dataset.pageType || document.body.dataset.pageType || 'page',
+          page_id: affiliateLink.dataset.pageId || window.location.pathname,
+          link_url: affiliateLink.href,
+        };
+
+        send('affiliate_click', params);
+        if (affiliateLink.dataset.productType === 'book') {
+          send('book_cta_click', params);
+        }
+      }
+
+      const bookEntry = target.closest('a[data-book-entry], a[href="/livre/"], a[href$="/livre/"]');
+      if (bookEntry instanceof HTMLAnchorElement) {
+        const automaticPlacement = bookEntry.closest('header')
+          ? 'header'
+          : bookEntry.closest('footer')
+            ? 'footer'
+            : 'content';
+        send('book_page_entry_click', {
+          placement: bookEntry.dataset.placement || automaticPlacement,
+          page_type: bookEntry.dataset.pageType || document.body.dataset.pageType || 'page',
+          page_id: bookEntry.dataset.pageId || window.location.pathname,
+          link_url: bookEntry.href,
+        });
+      }
+    });
+  })();
+</script>

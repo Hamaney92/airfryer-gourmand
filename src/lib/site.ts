@@ -5,7 +5,7 @@ export const SITE = {
   name: 'Airfryer Gourmand',
   tagline: "Le guide francophone pour tout réussir à l'air fryer",
   description:
-    "Temps de cuisson exacts, températures et astuces testées pour l'air fryer. Chaque recette est testée avant publication.",
+    "Temps de cuisson, températures et astuces pratiques pour réussir vos recettes à l'air fryer.",
 };
 
 // Table des catégories : libellé affiché + slug d'URL. La clé correspond
@@ -134,7 +134,7 @@ export function isRapide(r: Recipe) {
 export function isMinceur(r: Recipe) {
   const c = r.data.category;
   if (c === 'Legume' || c === 'Poisson') return true;
-  return c === 'Volaille' && /blanc|aiguillette|filet/i.test(r.slug);
+  return c === 'Volaille' && /blanc|aiguillette|filet/i.test(r.id);
 }
 
 export type Recipe = CollectionEntry<'recipes'>;

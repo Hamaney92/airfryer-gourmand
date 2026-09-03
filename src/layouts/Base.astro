@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
-export interface Props { title: string; description: string; }
-const { title, description } = Astro.props;
+import AffiliateTracking from '../components/AffiliateTracking.astro';
+export interface Props { title: string; description: string; pageType?: string; }
+const { title, description, pageType = 'page' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const cats = [
   ['Recettes','/recettes/'],['Viandes','/categorie/viandes/'],['Poissons','/categorie/poissons/'],
@@ -32,7 +33,7 @@ const cats = [
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <slot name="head" />
 </head>
-<body>
+<body data-page-type={pageType}>
   <header>
     <div class="wrap bar">
       <a href="/" class="logo">🍟 Airfryer <b>Gourmand</b></a>
@@ -59,5 +60,6 @@ const cats = [
       <p class="disc">Certains liens sont des liens d'affiliation : si tu achètes via eux, on touche une petite commission sans surcoût pour toi. © 2026 Airfryer Gourmand · airfryergourmand.fr</p>
     </div>
   </footer>
+  <AffiliateTracking />
 </body>
 </html>
