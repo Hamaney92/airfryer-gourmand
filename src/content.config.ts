@@ -1,13 +1,16 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const recipes = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/recipes' }),
   schema: z.object({
     title: z.string(),
     metaTitle: z.string().optional(),
     description: z.string(),
     category: z.string(),
     keyword: z.string(),
+    // Conservés dans les fichiers historiques, mais non affichés tant qu'un
+    // véritable système de collecte et de vérification des avis n'existe pas.
     rating: z.number().default(4.8),
     reviews: z.number().default(0),
     prepTime: z.number().default(5),

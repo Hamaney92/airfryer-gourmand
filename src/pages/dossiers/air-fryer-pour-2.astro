@@ -1,8 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.slug));
+const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.id));
 const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
 
 const title = "Air fryer pour 2 : 12 recettes bien portionnées (+ quelle taille choisir)";
@@ -40,7 +40,7 @@ const articleSchema = {
   "headline": title, "description": description,
   "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
   "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
-  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+  "datePublished": "2026-07-13", "dateModified": "2026-09-02",
 };
 const faqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
@@ -50,9 +50,7 @@ const faqSchema = {
   ],
 };
 ---
-<Base title={title} description={description}>
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<Layout title={title} description={description} path="/dossiers/air-fryer-pour-2/" jsonLd={[articleSchema, faqSchema]} pageType="dossier">
   <div class="wrap">
     <article class="article">
       <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
@@ -67,6 +65,15 @@ const faqSchema = {
       <div class="quick"><b>En bref :</b> l'air fryer est parfait à deux — portions justes, zéro gaspillage, et un dîner complet en 15 minutes. Voici 12 recettes bien dosées pour 2, et le conseil clé pour choisir la bonne capacité (3-4 L).</div>
 
       <p>Cuisiner à deux, c'est l'écueil du gaspillage : on prépare trop, ou on jongle avec des restes. L'air fryer règle le problème — il cuit <b>juste ce qu'il faut</b>, vite et sans huile. Voici nos recettes préférées pour deux, des dîners complets aux desserts, plus nos conseils si tu hésites encore sur la taille de l'appareil.</p>
+
+      <aside class="book-dossier-box">
+        <div aria-hidden="true" class="book-dossier-icon">📖</div>
+        <div>
+          <strong>100 recettes directement calculées pour une ou deux personnes</strong>
+          <p>Notre livre indique les quantités, les temps et les températures sans avoir à diviser une recette familiale.</p>
+          <a href="/livre/" data-book-entry data-placement="dossier_air_fryer_pour_2" data-page-type="dossier" data-page-id="air-fryer-pour-2">Découvrir le livre →</a>
+        </div>
+      </aside>
 
       <h2>Quelle taille d'air fryer pour 2 personnes ?</h2>
       <p>Pour deux, vise une capacité de <b>3 à 4 litres</b> : assez pour cuire une protéine et son accompagnement, sans monopoliser tout le plan de travail. En dessous de 3 L, tu seras vite à l'étroit pour un repas complet ; au-dessus de 5 L, c'est surdimensionné pour un couple (mais pratique si tu reçois). Regarde aussi la <b>puissance</b> (1500 W et plus pour bien croustiller) et le <b>panier compatible lave-vaisselle</b>. Notre <a href="/guides/" style="color:var(--accent)">guide d'achat</a> détaille les modèles.</p>
@@ -110,4 +117,11 @@ const faqSchema = {
       <p style="margin-top:26px"><a class="cta" href="/recettes/">🍽️ Voir toutes les recettes</a></p>
     </article>
   </div>
-</Base>
+</Layout>
+
+<style>
+  .book-dossier-box{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:16px;padding:20px 22px;margin:24px 0}
+  .book-dossier-icon{font-size:2rem}
+  .book-dossier-box p{margin:5px 0 7px;color:#5f5147}
+  .book-dossier-box a{color:var(--brand-d);font-weight:800}
+</style>

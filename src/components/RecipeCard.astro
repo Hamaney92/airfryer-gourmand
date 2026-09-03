@@ -7,12 +7,12 @@ export interface Props {
   eager?: boolean;
 }
 const { recipe, eager = false } = Astro.props;
-const { data, slug } = recipe;
+const { data, id } = recipe;
 const cat = catInfo(data.category);
 // WebP 380px optimisé (généré dans /img/w/), JPG en fallback.
 const webp = data.image ? data.image.replace(/^\/img\//, '/img/w/').replace(/\.jpg$/, '-380.webp') : undefined;
 ---
-<a class="rcard" href={`/recettes/${slug}/`}>
+<a class="rcard" href={`/recettes/${id}/`}>
   {data.image ? (
     <picture>
       <source type="image/webp" srcset={webp} />
@@ -33,7 +33,7 @@ const webp = data.image ? data.image.replace(/^\/img\//, '/img/w/').replace(/\.j
     <span class="rtag">{cat.label}</span>
     <h3 class="rtitle">{data.title}</h3>
     <div class="rmeta">
-      <span>★ {data.rating} · {data.reviews} avis</span>
+      <span>🍽 {data.servings} pers.</span>
       <span class="time">⏱ {totalTime(recipe)} min</span>
     </div>
   </div>

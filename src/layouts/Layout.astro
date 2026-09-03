@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SITE, USAGES } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
+import AffiliateTracking from '../components/AffiliateTracking.astro';
 
 export interface Props {
   title: string;
@@ -12,9 +13,10 @@ export interface Props {
   /** JSON-LD prêt à injecter (objet ou tableau d'objets schema.org). */
   jsonLd?: unknown;
   noindex?: boolean;
+  pageType?: string;
 }
 
-const { title, description, path = Astro.url.pathname, image, jsonLd, noindex = false } = Astro.props;
+const { title, description, path = Astro.url.pathname, image, jsonLd, noindex = false, pageType = 'page' } = Astro.props;
 const canonical = new URL(path, SITE.url).href;
 const ogImage = image ? new URL(image, SITE.url).href : new URL('/img/air-fryer-appareil.jpg', SITE.url).href;
 
@@ -56,7 +58,7 @@ const year = new Date().getFullYear();
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
     )}
   </head>
-  <body>
+  <body data-page-type={pageType}>
     <header>
       <div class="wrap bar">
         <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
@@ -64,6 +66,7 @@ const year = new Date().getFullYear();
           {USAGES.map((u) => (
             <a href={u.slug}>{u.label}</a>
           ))}
+          <a href="/livre/" data-book-entry data-placement="header" data-page-type={pageType}>Notre livre</a>
         </nav>
         <a href="/recettes/" class="icobtn" aria-label="Toutes les recettes">☰</a>
       </div>
@@ -78,7 +81,7 @@ const year = new Date().getFullYear();
         <div class="fgrid">
           <div>
             <a href="/" class="logo" style="color:#fff">Airfryer <b style="color:var(--accent)">Gourmand</b></a>
-            <p style="margin-top:10px;max-width:320px;color:#c9bdb3;font-size:.9rem">{SITE.tagline}. Chaque recette est testée avant publication.</p>
+            <p style="margin-top:10px;max-width:320px;color:#c9bdb3;font-size:.9rem">{SITE.tagline}. Des instructions claires, des temps et des températures faciles à retrouver.</p>
           </div>
           <div>
             <h4>Recettes</h4>
@@ -93,6 +96,7 @@ const year = new Date().getFullYear();
             <a href="/temps-de-cuisson/">Temps de cuisson</a>
             <a href="/recettes/">Toutes les recettes</a>
             <a href="/guides/">Guides</a>
+            <a href="/livre/" data-book-entry data-placement="footer" data-page-type={pageType}>Notre livre</a>
           </div>
           <div>
             <h4>Le site</h4>
@@ -107,5 +111,6 @@ const year = new Date().getFullYear();
       </div>
     </footer>
     <PdfPopup />
+    <AffiliateTracking />
   </body>
 </html>
