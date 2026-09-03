@@ -69,4 +69,4 @@ Version star : le **wrap au poulet croustillant** (poulet, fromage, crudités, s
 
 - au poulet croustillant, façon wrap fast-food maison ;
 - version veggie (houmous, légumes grillés, feta) ;
-- pour d'autres plats express, vois le [panini](/recettes/panini-air-fryer/) et le [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/).
+- pour d'autres plats express, vois le [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/) et le [burger au air fryer](/recettes/burger-air-fryer/).

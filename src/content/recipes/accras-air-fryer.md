@@ -67,5 +67,5 @@ Sans friture, la texture est plus proche du **beignet moelleux** que de l'accra 
 ## Pour aller plus loin
 
 - avec une sauce chien (persil, oignon, citron vert, piment) ;
-- pour d'autres apéros chauds, vois les [bâtonnets de mozzarella](/recettes/batonnets-de-mozzarella-air-fryer/) et les [beignets de calamars au air fryer](/recettes/beignets-calamars-surgeles-air-fryer/) ;
-- en plateau apéro coloré avec des [chips de légumes](/recettes/chips-de-legumes-air-fryer/).
+- pour d'autres apéros chauds, vois les [bâtonnets de mozzarella](/recettes/batonnets-de-mozzarella-air-fryer/) et les [nuggets au air fryer](/recettes/nuggets-surgeles-air-fryer/) ;
+- en plateau apéro coloré avec des [chips au air fryer](/recettes/chips-air-fryer/).

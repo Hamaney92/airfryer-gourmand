@@ -68,4 +68,4 @@ L'**escalope** est parfaite pour un repas express (12-15 min). Le **rôti** dema
 
 - avec des [légumes rôtis](/recettes/legumes-rotis-air-fryer/) et une sauce ;
 - en escalope panée façon milanaise (comme l'[escalope de poulet](/recettes/escalope-de-poulet-air-fryer/)) ;
-- pour d'autres volailles, vois le [poulet mariné au air fryer](/recettes/poulet-marine-air-fryer/).
+- pour d'autres volailles, vois le [poulet rôti au air fryer](/recettes/poulet-roti-air-fryer/).

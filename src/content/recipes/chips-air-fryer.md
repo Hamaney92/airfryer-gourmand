@@ -66,5 +66,5 @@ Une **cuillère d'huile** suffit pour toutes les tranches : les chips croustille
 ## Pour aller plus loin
 
 - avec une sauce fromage blanc-ciboulette ou un guacamole ;
-- pour d'autres apéros, vois les [potato wedges](/recettes/potato-wedges-air-fryer/) et les [frites de patate douce au air fryer](/recettes/frites-de-patate-douce-air-fryer/) ;
+- pour d'autres apéros, vois les [potato wedges](/recettes/potato-wedges-air-fryer/) et les [onion rings](/recettes/onion-rings-air-fryer/) ;
 - en chips de légumes variés (betterave, panais, carotte).

@@ -65,6 +65,6 @@ Pour un doré parfait, une **pulvérisation d'huile** avant cuisson fait des mer
 
 ## Pour aller plus loin
 
-- en plateau apéro avec des [nuggets](/recettes/nuggets-surgeles-air-fryer/) et des [beignets de calamars au air fryer](/recettes/beignets-calamars-surgeles-air-fryer/) ;
+- en plateau apéro avec des [nuggets](/recettes/nuggets-surgeles-air-fryer/) et des [onion rings](/recettes/onion-rings-air-fryer/) ;
 - avec une sauce marinara maison pour tremper ;
 - pour un apéro fromage, teste aussi le [camembert rôti](/recettes/camembert-roti-air-fryer/) et le [halloumi au air fryer](/recettes/halloumi-air-fryer/).

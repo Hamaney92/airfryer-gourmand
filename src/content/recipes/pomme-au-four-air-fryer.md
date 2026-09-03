@@ -67,5 +67,5 @@ Garnis le cœur évidé de **sucre roux (ou miel), cannelle et une noix de beurr
 ## Pour aller plus loin
 
 - tiède avec une boule de glace ou une crème anglaise ;
-- pour d'autres desserts aux pommes, vois la [tarte aux pommes](/recettes/tarte-aux-pommes-air-fryer/) et le [chausson aux pommes au air fryer](/recettes/chausson-aux-pommes-air-fryer/) ;
+- pour d'autres desserts gourmands, vois le [brownie au air fryer](/recettes/brownie-air-fryer/) et le [pain perdu au air fryer](/recettes/pain-perdu-air-fryer/) ;
 - garnie de pâte à tartiner ou de miel et amandes.

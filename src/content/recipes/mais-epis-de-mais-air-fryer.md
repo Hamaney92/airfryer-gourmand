@@ -69,4 +69,4 @@ L'air fryer offre au maïs une **légère torréfaction** irrésistible. À la s
 
 - façon elote mexicain (mayo, citron vert, parmesan, piment) ;
 - en accompagnement d'un [burger](/recettes/burger-air-fryer/) ou d'un barbecue ;
-- pour d'autres légumes, vois les [légumes rôtis](/recettes/legumes-rotis-air-fryer/) et les [asperges au air fryer](/recettes/asperges-air-fryer/).
+- pour d'autres légumes, vois les [légumes rôtis](/recettes/legumes-rotis-air-fryer/) et les [courgettes au air fryer](/recettes/courgettes-air-fryer/).

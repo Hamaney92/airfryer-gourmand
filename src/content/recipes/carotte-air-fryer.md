@@ -68,5 +68,5 @@ Les carottes se déclinent facilement : **rôties** aux herbes, **glacées au mi
 ## Pour aller plus loin
 
 - dans une salade tiède ou un bowl avec du houmous ;
-- avec d'autres légumes rôtis comme le [brocoli](/recettes/brocoli-air-fryer/) ou la [butternut au air fryer](/recettes/butternut-air-fryer/) ;
+- avec d'autres légumes rôtis comme le [brocoli](/recettes/brocoli-air-fryer/) ou les [pommes de terre grenaille](/recettes/pommes-de-terre-grenailles-air-fryer/) ;
 - en accompagnement d'un [poulet rôti au air fryer](/recettes/poulet-roti-air-fryer/).
