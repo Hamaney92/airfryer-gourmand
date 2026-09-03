@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const published = new Set(
+  (await getCollection('recipes'))
+    .filter((recipe) => recipe.data.pubDate.getTime() <= Date.now())
+    .map((recipe) => recipe.id),
+);
+const isLive = (url: string) => published.has(url.split('/').filter(Boolean).pop() ?? '');
+
+const title = "Recettes air fryer d'automne : 18 idées faciles et réconfortantes";
+const description = "18 recettes d'automne à l'air fryer : courges, pommes de terre, gratins, poulet, desserts et apéros. Des idées simples, avec les temps et températures utiles.";
+
+const selections = [
+  ['🎃', 'Butternut rôti', '/recettes/butternut-air-fryer/', 'Une courge fondante, dorée sur les bords.'],
+  ['🥔', 'Gratin dauphinois', '/recettes/gratin-dauphinois-air-fryer/', 'Le classique crémeux en portion, sans grand four.'],
+  ['🍗', 'Cuisses de poulet', '/recettes/cuisse-de-poulet-air-fryer/', 'Peau croustillante et chair juteuse pour un dîner simple.'],
+  ['🥕', 'Carottes rôties', '/recettes/carotte-air-fryer/', 'Légèrement caramélisées, prêtes à accompagner presque tout.'],
+  ['🍎', 'Pomme au four', '/recettes/pomme-au-four-air-fryer/', 'Un dessert chaud et facile quand les soirées fraîchissent.'],
+  ['🧀', 'Camembert rôti', '/recettes/camembert-roti-air-fryer/', 'Pour un apéro automnal à partager.'],
+  ['🥔', 'Pommes de terre grenaille', '/recettes/pommes-de-terre-grenaille-air-fryer/', 'Dorées dehors, fondantes dedans.'],
+  ['🍫', 'Fondant au chocolat', '/recettes/fondant-chocolat-air-fryer/', 'Le dessert express pour terminer un repas réconfortant.'],
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: "L'équipe Airfryer Gourmand", url: 'https://airfryergourmand.fr/a-propos/' },
+  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' },
+  datePublished: '2026-09-03',
+  dateModified: '2026-09-03',
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Quelles recettes faire à l'air fryer en automne ?", acceptedAnswer: { '@type': 'Answer', text: "Les courges, pommes de terre, carottes, gratins, volailles et desserts aux pommes sont particulièrement adaptés. L'air fryer les rôtit rapidement tout en gardant un cœur fondant." } },
+    { '@type': 'Question', name: "Peut-on cuire une courge à l'air fryer ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Coupée en cubes ou en quartiers, une courge butternut cuit généralement à 180 °C en 18 à 25 minutes selon la taille des morceaux. Il faut la remuer à mi-cuisson." } },
+    { '@type': 'Question', name: "Comment éviter que les légumes d'automne sèchent à l'air fryer ?", acceptedAnswer: { '@type': 'Answer', text: "Coupez-les à taille régulière, ajoutez une petite quantité d'huile et évitez de remplir le panier. Contrôlez la cuisson quelques minutes avant la fin, surtout pour les morceaux fins." } },
+  ],
+};
+---
+
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Recettes d'automne
+      </div>
+      <h1>Recettes air fryer d'automne : 18 idées faciles et réconfortantes</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🍂</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 3 septembre 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> en automne, l'air fryer est idéal pour rôtir courges et légumes, gratiner des portions, cuire une volaille croustillante et préparer un dessert chaud sans allumer le grand four.</div>
+
+      <p>Quand les températures baissent, on a envie de plats dorés, de légumes fondants et de desserts qui sortent chauds du panier. L'air fryer répond très bien à ces envies : il chauffe vite, donne du croustillant avec peu d'huile et convient autant à un dîner pour deux qu'à un accompagnement familial.</p>
+
+      <h2>Les 8 recettes d'automne à faire en premier</h2>
+      <div class="cards" style="margin-top:14px">
+        {selections.filter(([,,url]) => isLive(url)).map(([emoji, name, url, note]) => (
+          <div class="rcard" style="cursor:default">
+            <div class="ph" style="height:96px"><span style="font-size:1.8rem">{emoji}</span></div>
+            <div style="padding:12px 15px 16px">
+              <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{name} →</a>
+              <p style="color:#6a5d54;font-size:.88rem;margin:6px 0 0">{note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>1. Courges et légumes rôtis : le réflexe de saison</h2>
+      <p>Butternut, carottes, patates douces et pommes de terre prennent une texture très agréable à l'air fryer : les bords caramélisent tandis que le centre reste fondant. Coupez des morceaux réguliers, ajoutez une cuillère d'huile, du sel, du poivre et, selon l'envie, du paprika fumé, du thym ou du cumin.</p>
+      <p>Pour des cubes de butternut, comptez en général <b>18 à 25 minutes à 180 °C</b>. Pour des rondelles de carotte, <b>15 à 18 minutes à 190 °C</b> suffisent souvent. Secouez le panier à mi-cuisson et ne superposez pas les légumes : c'est la circulation d'air qui fait le croustillant.</p>
+      <p><a href="/recettes/legumes-rotis-air-fryer/">Voir notre méthode pour les légumes rôtis à l'air fryer →</a></p>
+
+      <h2>2. Gratins et portions crémeuses sans grand four</h2>
+      <p>L'automne est la bonne saison pour ressortir les plats gratinés. Avec un petit moule compatible, l'air fryer permet de cuire une portion de gratin dauphinois, de lasagnes ou de hachis parmentier sans préchauffer toute la cuisine. Le point important : ne remplissez pas le moule jusqu'au bord et posez-le bien à plat dans le panier.</p>
+      <p>Pour un gratin, une température modérée, autour de <b>160 à 170 °C</b>, donne le temps à la garniture de chauffer sans brûler le dessus. Couvrez légèrement si le fromage colore trop vite, puis découvrez les dernières minutes.</p>
+
+      <h2>3. Volaille et poisson : des dîners qui réchauffent</h2>
+      <p>Les cuisses de poulet, pilons, filets de dinde et pavés de saumon sont parfaits pour les repas de semaine. Assaisonnez simplement, laissez un peu d'espace dans le panier et retournez à mi-cuisson. Pour la sécurité alimentaire, vérifiez toujours la cuisson à cœur, en particulier pour la volaille.</p>
+      <p>Accompagnez une cuisse de poulet de carottes et pommes de terre préparées dans une seconde fournée : vous obtenez un plat complet, sans multiplier les poêles.</p>
+
+      <h2>4. Apéros d'automne : chaud, doré, à partager</h2>
+      <p>Un camembert rôti, des samoussas, des bricks ou des bouchées feuilletées apportent tout de suite une note conviviale. L'air fryer est particulièrement utile ici car il redonne du croustillant aux produits surgelés et évite la friture. Servez avec une salade, une compote de pommes peu sucrée ou quelques noix.</p>
+
+      <h2>5. Les desserts chauds qui demandent peu d'effort</h2>
+      <p>Une pomme au four, un fondant au chocolat ou un petit gâteau au yaourt transforment un repas ordinaire en moment réconfortant. Utilisez un moule adapté au panier, laissez toujours un peu de place pour que l'air chaud circule et contrôlez la cuisson avant le temps indiqué : les appareils ne chauffent pas tous exactement de la même manière.</p>
+
+      <h2>Le mini-menu d'automne pour deux personnes</h2>
+      <table class="rectable">
+        <thead><tr><th>Moment</th><th>Idée</th><th>Organisation</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Apéritif</td><td>Camembert rôti et pain</td><td>Préparez pendant que les légumes sont coupés.</td></tr>
+          <tr><td class="t">Plat</td><td>Cuisses de poulet, carottes et grenailles</td><td>Cuisez le poulet d'abord, puis les légumes.</td></tr>
+          <tr><td class="t">Dessert</td><td>Pomme au four ou fondant</td><td>Utilisez la chaleur restante après le plat.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Les trois erreurs à éviter</h2>
+      <ol>
+        <li><b>Remplir le panier à ras bord :</b> les aliments cuisent alors à la vapeur et dorent moins.</li>
+        <li><b>Oublier de remuer les légumes :</b> une secousse à mi-cuisson donne une coloration plus régulière.</li>
+        <li><b>Mettre une sauce sucrée trop tôt :</b> miel et sauce barbecue peuvent brûler ; ajoutez-les plutôt en fin de cuisson.</li>
+      </ol>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Quelles recettes faire à l'air fryer en automne ?</h3>
+      <p>Privilégiez les courges, pommes de terre, carottes, gratins, volailles et desserts aux pommes : leur texture se prête très bien à la cuisson par air chaud.</p>
+      <h3>Peut-on cuire une courge à l'air fryer ?</h3>
+      <p>Oui. En cubes ou en quartiers, la butternut cuit généralement à 180 °C en 18 à 25 minutes, selon la taille des morceaux.</p>
+      <h3>Comment garder les légumes fondants ?</h3>
+      <p>Coupez-les régulièrement, ajoutez un peu d'huile, ne surchargez pas le panier et commencez à vérifier quelques minutes avant la fin du temps prévu.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/tableau-temps-cuisson-air-fryer/">🌡️ Consulter le tableau des temps de cuisson</a></p>
+    </article>
+  </div>
+</Base>

@@ -14,6 +14,7 @@ const rows = recipes
     cat: catInfo(r.data.category).label,
     temp: r.data.temp,
     cook: r.data.cookTime,
+    servings: r.data.servings,
   }))
   .filter((r) => r.temp && r.cook)
   .sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
@@ -83,7 +84,7 @@ const jsonLd = [
         <strong>📄 La version à imprimer, gratuite</strong>
         <p>Une seule page, à coller sur la porte du frigo. Plus besoin de toucher ton téléphone avec les mains pleines de farine.</p>
         {configured ? (
-          <form class="magnet-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank">
+          <form class="magnet-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank" data-lead-form="mailerlite" data-lead-source="cooking_times_page" data-lead-magnet="cooking_times">
             <input type="hidden" name="fields[recette]" value="Tableau des temps de cuisson" />
             <input type="hidden" name="fields[url_recette]" value={`${SITE.url}/tableau-temps-cuisson-air-fryer.pdf`} />
             <input type="email" name="fields[email]" required placeholder="ton@email.fr" aria-label="Ton adresse email" />
@@ -103,11 +104,12 @@ const jsonLd = [
         <h2>{cat}</h2>
         <div style="overflow-x:auto">
           <table class="rectable">
-            <thead><tr><th>Aliment</th><th>Température</th><th>Temps</th><th></th></tr></thead>
+            <thead><tr><th>Aliment</th><th>Portions</th><th>Température</th><th>Temps</th><th></th></tr></thead>
             <tbody>
               {list.map((r) => (
                 <tr>
                   <td>{r.nom}</td>
+                  <td>{r.servings ? `${r.servings} pers.` : '—'}</td>
                   <td class="t">{r.temp}</td>
                   <td style="font-weight:700;white-space:nowrap">{r.cook} min</td>
                   <td><a href={`/recettes/${r.slug}/`} style="color:var(--brand-d);font-weight:700;white-space:nowrap">La recette →</a></td>

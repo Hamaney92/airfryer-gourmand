@@ -5,8 +5,8 @@ import { getCollection } from 'astro:content';
 const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.id));
 const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
 
-const title = "Recettes minceur air fryer : 12 idées gourmandes et légères";
-const description = "12 recettes minceur à l'air fryer, sans huile ou presque et peu caloriques : poulet, poisson, légumes, en-cas protéinés. Calories indicatives, réglages et astuces pour alléger.";
+const title = "Recettes minceur air fryer express : rapides, légères et savoureuses";
+const description = "Recettes minceur express à l'air fryer : idées rapides en moins de 15 minutes, avec poulet, poisson, légumes et calories indicatives par portion.";
 
 const familles = [
   {
@@ -59,17 +59,28 @@ const faqSchema = {
       <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
         <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Recettes minceur
       </div>
-      <h1>Recettes minceur à l'air fryer : 12 idées gourmandes et légères</h1>
+      <h1>Recettes minceur air fryer express : rapides, légères et savoureuses</h1>
       <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
         <span aria-hidden="true">🍟</span>
         <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
       </div>
 
-      <div class="quick"><b>En bref :</b> l'air fryer cuit sans bain d'huile — le croustillant de la friture, mais bien moins de calories. Avec les bons ingrédients (protéines maigres, légumes), on compose des repas légers, rassasiants et gourmands. Voici nos 12 préférés.</div>
+      <div class="quick"><b>En bref :</b> pour un repas minceur express à l'air fryer, vise une protéine ou des légumes, peu d'huile et une cuisson de 15 minutes ou moins. Voici nos recettes légères les plus rapides.</div>
 
-      <p>Manger léger sans manger triste, c'est toute la promesse de l'air fryer. Comme il dore les aliments <b>sans les baigner dans l'huile</b>, on divise souvent les matières grasses par rapport à une poêle ou une friteuse — sans sacrifier le croustillant. Voici 12 recettes minceur, classées par famille, avec leurs calories indicatives.</p>
+      <p>Manger léger sans passer une heure en cuisine, c'est possible. L'air fryer dore les aliments <b>sans bain d'huile</b> et accélère les petites portions : une protéine, des légumes et un assaisonnement simple suffisent souvent. Voici des recettes minceur express, classées par famille, avec leurs calories indicatives.</p>
 
-      <h2>Pourquoi l'air fryer est l'allié minceur n°1</h2>
+      <h2>Nos idées minceur express en 15 minutes ou moins</h2>
+      <table class="rectable">
+        <thead><tr><th>Idée</th><th>Temps</th><th>Repère léger</th></tr></thead>
+        <tbody>
+          <tr><td class="t"><a href="/recettes/blanc-de-poulet-air-fryer/">Blanc de poulet</a></td><td>15 min</td><td>Protéine maigre, à servir avec des légumes.</td></tr>
+          <tr><td class="t"><a href="/recettes/crevettes-air-fryer/">Crevettes</a></td><td>8 min</td><td>Rapides, parfaites avec une salade.</td></tr>
+          <tr><td class="t"><a href="/recettes/dos-de-cabillaud-air-fryer/">Dos de cabillaud</a></td><td>12 min</td><td>Poisson blanc et accompagnement de légumes.</td></tr>
+          <tr><td class="t"><a href="/recettes/champignons-air-fryer/">Champignons</a></td><td>8 min</td><td>Accompagnement léger et rassasiant.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Pourquoi l'air fryer aide à cuisiner plus léger</h2>
       <p>La friture traditionnelle ajoute énormément de calories via l'huile absorbée. L'air fryer, lui, cuit à l'air chaud pulsé : un simple <b>spray d'huile</b> suffit. Résultat, des frites, du poulet pané ou des légumes rôtis <b>bien plus légers</b>, avec la même texture croustillante. Le secret d'un repas minceur réussi : associer cette cuisson à des <b>protéines maigres</b> (poulet, poisson, tofu) et beaucoup de <b>légumes</b>.</p>
 
       {familles.map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) })).filter((f) => f.items.length).map((f) => (
@@ -106,7 +117,7 @@ const faqSchema = {
 
       <h2>Questions fréquentes</h2>
       <h3>L'air fryer aide-t-il à maigrir ?</h3>
-      <p>Pas par magie, mais il permet de cuire sans bain d'huile : le croustillant de la friture avec bien moins de matière grasse, donc des plats moins caloriques. Associé à des ingrédients légers, c'est un vrai allié.</p>
+      <p>Pas à lui seul. Il permet surtout de cuisiner avec moins de matière grasse qu'une friture. L'équilibre d'un repas dépend aussi des portions, des ingrédients et de l'ensemble de l'alimentation.</p>
       <h3>Faut-il de l'huile pour cuisiner minceur à l'air fryer ?</h3>
       <p>Non, ou très peu : un simple spray suffit à dorer la plupart des aliments.</p>
 

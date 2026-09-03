@@ -1,7 +1,7 @@
 ---
 title: "Nems surgelés au air fryer : croustillants en 14 min"
-metaTitle: "Nems surgelés au Air Fryer : 12–15 min à 200 °C"
-description: "Le temps de cuisson exact des nems surgelés au air fryer : 200 °C, 12 à 15 min, sans huile ni décongélation. Croustillants et dorés comme à la friteuse."
+metaTitle: "Nems surgelés au Air Fryer : croustillants en 12–15 min"
+description: "Nems surgelés croustillants sans friteuse : 12 à 15 min à 200 °C, sans décongélation. Le bon geste pour les dorer partout, du premier coup."
 category: "Surgelé"
 image: "/img/nems-surgeles-air-fryer.jpg"
 keyword: "nems surgelés air fryer"
@@ -53,7 +53,13 @@ Le secret d'un nem croustillant partout : les **espacer** et ne pas les déconge
 | Réchauffage (déjà cuits) | 180 °C | 3–5 min | 1× |
 | Frais (non surgelés) | 200 °C | 8–10 min | à mi-cuisson |
 
-Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+Retrouve tous les aliments et leurs réglages sur notre [tableau de cuisson air fryer](/tableau-temps-cuisson-air-fryer/).
+
+## Cuisson des nems surgelés à la friteuse sans huile : les bons réglages
+
+Tu cherches la **cuisson des nems surgelés en friteuse sans huile** ? Le réglage est le même sur un Air Fryer : **200 °C pendant 12 à 15 minutes**, directement à la sortie du congélateur. Ne remplis pas le panier : les nems doivent être séparés pour que l'air chaud circule et colore chaque face.
+
+Si ton appareil chauffe fort, commence à vérifier au bout de 11 minutes. Ils doivent être bien chauds à cœur et dorés sur toute la galette de riz. Pour une grosse fournée, cuis-les en deux fois plutôt que de les empiler : le résultat sera nettement plus croustillant.
 
 ## L'astuce croustillant sans friture
 
