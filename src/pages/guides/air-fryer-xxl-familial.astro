@@ -2,26 +2,29 @@
 import Base from '../../layouts/Base.astro';
 import { amazonSearch } from '../../lib/site';
 
-const title = "Air fryer XXL & familial : les grandes capacités (7 L et +)";
-const description = "Quel air fryer XXL choisir pour une famille ? Comparatif 2026 des grandes capacités (7 à 11 L) : Ninja AF400, Cosori 10L, Moulinex Dual. Capacités, prix indicatifs et conseils testés.";
+const title = "Meilleur air fryer familial 2026 : XXL, double tiroir ou vertical ?";
+const description = "Quel air fryer familial choisir ? Comparatif 2026 des grands formats : grande cuve, deux tiroirs ou format vertical. Capacités, encombrement et modèle adapté de 4 à 8 personnes.";
 
 const modeles = [
-  { cat: "🏆 Le plus polyvalent (grande capa + 2 zones)", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L", puis: "2470 W", prix: "~160-229 €", pour: "Familles de 4-6 personnes, repas complet en une fois.", plus: "9,5 L répartis en 2 tiroirs, ou une grosse pièce par tiroir.", moins: "Large (~41 cm), à mesurer sur le plan de travail.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
-  { cat: "📦 Le vrai XXL (quasi mini-four)", nom: "Cosori gamme 10L (Dual Blaze)", capa: "~9-11 L", puis: "~1700-2600 W", prix: "~150-250 €", pour: "Grandes tablées, batch cooking, grosses pièces (poulet entier +).", plus: "Énorme volume ; certaines versions à double résistance évitent de retourner les aliments.", moins: "Très encombrant, prix élevé, références qui changent souvent.", lien: "Cosori Dual Blaze air fryer 10L" },
-  { cat: "💶 Le grand format abordable", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L", puis: "~2450 W", prix: "~110-150 €", pour: "Familles au budget maîtrisé.", plus: "Bonne capacité, deux tiroirs, marque française.", moins: "Tiroirs de tailles inégales.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
+  { cat: "🏆 Le plus polyvalent pour 4 à 6 personnes", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 tiroirs)", puis: "2470 W", pour: "Les repas quotidiens avec un plat et un accompagnement qui ne cuisent pas à la même température.", plus: "Deux zones indépendantes et une fonction de synchronisation : frites et poulet peuvent finir ensemble.", moins: "Format large : mesure le plan de travail et l'espace pour ouvrir les tiroirs.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
+  { cat: "🍗 Le vrai XXL pour les grandes tablées", nom: "Moulinex Easy Fry Dual XXL", capa: "11 L (2 tiroirs)", puis: "2700 W", pour: "Les familles nombreuses, le batch cooking ou celles et ceux qui préfèrent faire moins de fournées.", plus: "La plus grande capacité de cette sélection, avec deux zones pour séparer plat et accompagnement.", moins: "Volume extérieur conséquent : vérifie les dimensions exactes de la référence choisie avant commande.", lien: "Moulinex Easy Fry Dual XXL 11L" },
+  { cat: "↕️ Le gain de place sur le plan de travail", nom: "Ninja Double Stack XL SL400EU", capa: "9,5 L (format vertical)", puis: "2470 W", pour: "Une famille de 4 à 6 personnes avec peu de largeur disponible en cuisine.", plus: "Les tiroirs sont superposés : la capacité familiale sans étaler l'appareil sur tout le plan de travail.", moins: "Plus haut qu'un modèle classique : vérifie la hauteur sous tes meubles hauts.", lien: "Ninja Double Stack XL SL400EU" },
+  { cat: "💶 Le double tiroir familial plus accessible", nom: "Moulinex Dual Easy Fry & Grill", capa: "8,3 L (5,2 L + 3,1 L)", puis: "2600 W", pour: "Un foyer de 3 à 5 personnes qui veut deux tiroirs sans viser le plus grand format.", plus: "Deux tiroirs, synchronisation et plaque gril : un choix cohérent pour les repas de tous les jours.", moins: "Les tiroirs n'ont pas la même taille : réserve le plus grand aux pièces principales.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
 ];
 
 const articleSchema = {
   "@context": "https://schema.org", "@type": "Article", "headline": title, "description": description,
   "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
   "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
-  "datePublished": "2026-08-01", "dateModified": "2026-07-13",
+  "mainEntityOfPage": "https://airfryergourmand.fr/guides/air-fryer-xxl-familial/",
+  "datePublished": "2026-08-01", "dateModified": "2026-09-03",
 };
 const faqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Quelle capacité d'air fryer pour une famille ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour 4-5 personnes, visez 7 à 9 L (ou un double panier). Pour 5 personnes et plus ou pour cuire de grosses pièces (poulet entier), un modèle de 9 à 11 L est confortable. Repère : environ 1 L par personne, plus une marge." } },
-    { "@type": "Question", "name": "Un air fryer XXL peut-il cuire un poulet entier ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui : un air fryer de 7 L et plus accueille sans problème un poulet entier de taille moyenne. En dessous de 5-6 L, c'est juste, voire impossible selon la forme du panier." } },
+    { "@type": "Question", "name": "Quelle capacité d'air fryer pour une famille ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour 4 à 5 personnes, un total de 7 à 9 litres est un bon point de départ. Pour 6 personnes et plus, ou pour limiter les fournées, 9 à 11 litres sont plus confortables. Sur un double tiroir, vérifiez aussi le volume de chaque tiroir, pas seulement le total." } },
+    { "@type": "Question", "name": "Faut-il choisir un air fryer XXL ou un double tiroir ?", "acceptedAnswer": { "@type": "Answer", "text": "Choisissez deux tiroirs si vous cuisinez régulièrement deux aliments aux températures ou durées différentes. Préférez une grande cuve si votre priorité est une grosse pièce ou un plat unique. Le format vertical répond surtout au manque de largeur sur le plan de travail." } },
+    { "@type": "Question", "name": "Un air fryer XXL peut-il cuire un poulet entier ?", "acceptedAnswer": { "@type": "Answer", "text": "Souvent oui, mais la capacité totale ne suffit pas : la largeur et la hauteur utiles du tiroir déterminent si le poulet passe. Vérifiez les dimensions intérieures du panier de la référence choisie et gardez de l'espace pour la circulation de l'air." } },
   ],
 };
 ---
@@ -32,41 +35,60 @@ const faqSchema = {
     <article class="article">
       <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
         <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
-        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › XXL & familial
+        <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Air fryer familial
       </div>
-      <h1>Air fryer XXL & familial : les grandes capacités (7 L et +)</h1>
+      <h1>Meilleur air fryer familial : XXL, double tiroir ou vertical ?</h1>
       <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
         <span aria-hidden="true">🍟</span>
-        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 3 septembre 2026</span>
       </div>
-      <div class="quick"><b>En bref :</b> pour une famille, vise <b>7 à 9 L</b> (ou un double panier). Le <b>Ninja AF400</b> (9,5 L) est le plus polyvalent, la <b>gamme Cosori 10L</b> le vrai XXL quasi mini-four, le <b>Moulinex Dual 8.3L</b> le grand format le plus abordable.</div>
-      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b> (petite commission pour nous, <b>sans surcoût pour toi</b>). Prix indicatifs 2026, très variables selon le revendeur et les promos — vérifie toujours le prix et la référence exacte avant d'acheter.</p>
+      <div class="quick"><b>Réponse rapide :</b> pour 4 à 6 personnes qui cuisinent un plat et un accompagnement, le <b>double tiroir</b> est le plus pratique. Choisis un <b>XXL de 10 à 11 L</b> pour limiter les fournées, et un modèle <b>vertical</b> si la largeur de ton plan de travail est comptée.</div>
+      <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b>. Si tu achètes via l'un d'eux, nous pouvons recevoir une commission, <b>sans surcoût pour toi</b>. Les prix et disponibilités bougent : consulte toujours la fiche du vendeur avant de choisir.</p>
 
-      <h2>Quelle capacité pour une famille ?</h2>
-      <p>Le repère simple : <b>environ 1 L par personne</b>, plus une marge pour les grosses pièces. Pour 4-5 personnes, 7 à 9 L sont confortables ; pour cuire un <b>poulet entier</b>, comptez 5-6 L minimum, idéalement plus. Au-delà de 5 personnes ou pour le batch cooking, un modèle de 9 à 11 L (ou double panier) évite de cuire en plusieurs fournées.</p>
+      <h2>Choisir en 30 secondes</h2>
+      <div style="overflow-x:auto;margin:14px 0 22px">
+        <table style="width:100%;border-collapse:collapse;min-width:560px">
+          <thead><tr style="background:var(--cream);text-align:left"><th style="padding:10px">Ton besoin</th><th style="padding:10px">Le bon format</th><th style="padding:10px">Pourquoi</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:10px;border-bottom:1px solid var(--line)">Plat + accompagnement au quotidien</td><td style="padding:10px;border-bottom:1px solid var(--line)"><b>Double tiroir</b></td><td style="padding:10px;border-bottom:1px solid var(--line)">Deux températures et deux durées, avec une fin de cuisson synchronisée.</td></tr>
+            <tr><td style="padding:10px;border-bottom:1px solid var(--line)">6 personnes et plus / moins de fournées</td><td style="padding:10px;border-bottom:1px solid var(--line)"><b>XXL 10 à 11 L</b></td><td style="padding:10px;border-bottom:1px solid var(--line)">Plus de volume total pour cuisiner en quantité.</td></tr>
+            <tr><td style="padding:10px;border-bottom:1px solid var(--line)">Plan de travail étroit</td><td style="padding:10px;border-bottom:1px solid var(--line)"><b>Vertical</b></td><td style="padding:10px;border-bottom:1px solid var(--line)">Les tiroirs superposés libèrent de la largeur.</td></tr>
+            <tr><td style="padding:10px">Un gros poulet ou un gratin</td><td style="padding:10px"><b>Grande cuve / grand tiroir</b></td><td style="padding:10px">La dimension intérieure compte davantage que le volume total annoncé.</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-      <h2>Notre sélection</h2>
+      <h2>Notre sélection familiale</h2>
+      <p>Cette sélection compare les capacités, la puissance et les fonctions annoncées par les fabricants. Nous ne classons pas les modèles selon un prix temporaire : vérifie toujours la référence exacte, les dimensions et le vendeur au moment de l'achat.</p>
       {modeles.map((m) => (
-        <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
+        <section class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
-          <div style="font-weight:700;font-size:1.05rem">{m.nom}</div>
-          <p style="margin:6px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.prix}</span></p>
+          <h3 style="margin:0;font-size:1.1rem">{m.nom}</h3>
+          <p style="margin:9px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span></p>
           <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
-          <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>👎</b> {m.moins}</p>
-          <a href={amazonSearch(m.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir le prix sur Amazon →</a>
-        </div>
+          <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>À vérifier :</b> {m.moins}</p>
+          <a href={amazonSearch(m.lien)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={m.nom} data-placement="xxl_guide_model" data-page-type="guide" data-page-id="air-fryer-xxl-familial" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir la référence sur Amazon →</a>
+        </section>
       ))}
 
-      <h2>Le point encombrement</h2>
-      <p>Les XXL sont volumineux : mesure la <b>hauteur sous meuble haut</b> et la largeur de plan de travail avant d'acheter. Ces appareils remplacent souvent un petit four, mais prennent la place en conséquence.</p>
+      <h2>Les 4 vérifications avant de commander</h2>
+      <ol>
+        <li><b>Mesure l'emplacement réel :</b> largeur, profondeur, hauteur sous meuble et place nécessaire pour ouvrir les tiroirs.</li>
+        <li><b>Regarde la taille d'un tiroir :</b> 10 L répartis sur deux zones ne permettent pas forcément un plat de 10 L dans une seule cuve.</li>
+        <li><b>Pars de tes repas habituels :</b> deux zones pour un repas complet ; un grand tiroir pour une grosse pièce ou un plat unique.</li>
+        <li><b>Vérifie l'entretien :</b> pièces amovibles, compatibilité lave-vaisselle et disponibilité des accessoires adaptés à ton panier.</li>
+      </ol>
 
       <h2>Questions fréquentes</h2>
       <h3>Quelle capacité d'air fryer pour une famille ?</h3>
-      <p>7 à 9 L pour 4-5 personnes (ou un double panier) ; 9 à 11 L au-delà ou pour les grosses pièces. Environ 1 L par personne.</p>
+      <p>Pour 4 à 5 personnes, vise 7 à 9 L au total. À partir de 6 personnes, 9 à 11 L évitent davantage de fournées. Sur un double tiroir, contrôle aussi le volume de chaque compartiment.</p>
+      <h3>Faut-il choisir un air fryer XXL ou un double tiroir ?</h3>
+      <p>Le double tiroir est plus souple pour cuire deux préparations différentes. Le XXL est pertinent si tu veux avant tout cuisiner en quantité. Un format vertical est un double tiroir pensé pour prendre moins de largeur.</p>
       <h3>Un air fryer XXL peut-il cuire un poulet entier ?</h3>
-      <p>Oui, dès 7 L un poulet entier de taille moyenne passe sans souci. En dessous de 5-6 L, c'est juste.</p>
+      <p>Souvent oui, mais vérifie la largeur et la hauteur <em>intérieures</em> du panier : le volume total ne garantit pas qu'un poulet ou un grand plat entre correctement.</p>
 
-      <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-double-panier/">→ Voir aussi : le guide double panier</a></p>
+      <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-double-panier/">→ Comparer les meilleurs air fryers double panier</a></p>
+      <p><a href="/guides/accessoires-air-fryer/">→ Voir les accessoires réellement utiles selon ton panier</a></p>
     </article>
   </div>
 </Base>
