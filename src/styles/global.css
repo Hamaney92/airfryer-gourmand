@@ -90,7 +90,7 @@ footer a{display:block;color:#c9bdb3;font-size:.88rem;padding:3px 0}
 footer a:hover{color:#fff}
 .disc{border-top:1px solid #45392f;margin-top:24px;padding-top:18px;font-size:.8rem;color:#a99c90;text-align:center}
 /* recipe article */
-.article{max-width:760px;margin:0 auto;padding:34px 0}
+.article{max-width:760px;margin:0 auto;padding:34px 20px}
 .crumb{font-size:.82rem;color:var(--muted);margin-bottom:14px}
 .article h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.15;letter-spacing:-.8px;font-weight:800;margin-bottom:12px}
 .amETA{display:flex;flex-wrap:wrap;gap:16px;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:18px}
@@ -141,4 +141,5 @@ footer a:hover{color:#fff}
   .fgrid{grid-template-columns:1fr 1fr}
   .lead{text-align:center}.eform{margin:0 auto}
   .author{flex-direction:column;text-align:center}
+  .article{padding:28px 18px 38px}
 }
