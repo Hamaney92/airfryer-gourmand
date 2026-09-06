@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../lib/site';
+
+const COVER = '/img/books/air-fryer-anti-gaspi.png';
+const AVAILABLE = false;
+const title = 'Air Fryer Anti-Gaspi : 100 recettes pour transformer les restes';
+const description = '100 recettes Air Fryer pour transformer pain rassis, riz, pâtes, légumes, protéines cuites, conserves et fruits mûrs en nouveaux plats gourmands.';
+
+const faq = [
+  {
+    q: 'Ce livre sert-il seulement à réchauffer les restes ?',
+    a: 'Non. Chaque recette transforme un reste ou un ingrédient à utiliser rapidement en un nouveau plat : croquettes, bouchées, gratins individuels, galettes, desserts et bien plus.',
+  },
+  {
+    q: 'Quels types de restes peut-on utiliser ?',
+    a: 'Le livre couvre notamment le pain, le riz, les pâtes, les pommes de terre, les légumes, la volaille, le bœuf, le poisson, les conserves, les fromages et les fruits mûrs.',
+  },
+  {
+    q: 'Les réglages conviennent-ils à tous les Air Fryers ?',
+    a: 'Les températures et durées sont conçues pour les principaux appareils à panier. Une courte adaptation peut être nécessaire selon la puissance, la taille et le remplissage du panier.',
+  },
+];
+
+const bookLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: 'Air Fryer Anti-Gaspi',
+  alternateName: '100 recettes pour transformer les restes',
+  author: { '@type': 'Person', name: 'Camille Lefèvre' },
+  bookFormat: 'https://schema.org/Paperback',
+  numberOfPages: 114,
+  inLanguage: 'fr',
+  image: `${SITE.url}${COVER}`,
+  url: `${SITE.url}/livres/air-fryer-anti-gaspi/`,
+  publisher: { '@type': 'Organization', name: SITE.name },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Nos livres', item: `${SITE.url}/livre/` },
+    { '@type': 'ListItem', position: 3, name: 'Air Fryer Anti-Gaspi', item: `${SITE.url}/livres/air-fryer-anti-gaspi/` },
+  ],
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  path="/livres/air-fryer-anti-gaspi/"
+  image={COVER}
+  jsonLd={[bookLd, breadcrumbLd, faqLd]}
+  noindex={!AVAILABLE}
+  pageType="book"
+>
+  <div class="wrap antiwaste-page">
+    <nav class="crumb"><a href="/">Accueil</a> › <a href="/livre/">Nos livres</a> › Air Fryer Anti-Gaspi</nav>
+
+    <section class="antiwaste-hero">
+      <div class="antiwaste-copy">
+        <span class="eyebrow">Nouveau livre · Camille Lefèvre</span>
+        <h1>Air Fryer <span>Anti-Gaspi</span></h1>
+        <p class="subtitle">100 recettes pour transformer les restes</p>
+        <p class="book-intro">Ouvrez le livre à l'ingrédient qu'il vous reste et transformez-le en un plat croustillant, simple et gourmand.</p>
+        <ul>
+          <li>100 recettes organisées par reste disponible</li>
+          <li>Quantités, température, durée et repère visuel</li>
+          <li>Alternatives et conseils de conservation utiles</li>
+          <li>114 pages en couleur, format broché 20,32 × 25,4 cm</li>
+        </ul>
+        <div class="price-line"><strong>22,90 €</strong><span>Prix de lancement prévu</span></div>
+        <p class="status" role="status">Publication Amazon en cours de validation</p>
+      </div>
+      <div class="cover-wrap">
+        <img src={COVER} alt="Couverture du livre Air Fryer Anti-Gaspi, 100 recettes pour transformer les restes, par Camille Lefèvre" width="600" height="750" fetchpriority="high" decoding="async" />
+      </div>
+    </section>
+
+    <article class="article antiwaste-content">
+      <section>
+        <h2>Cuisiner malin, jeter moins</h2>
+        <p>Un fond de riz, deux pommes de terre, quelques légumes cuits ou du pain devenu sec ne suffisent pas toujours à refaire le même repas. Ce livre part précisément de ces petites quantités et les transforme en préparations pensées pour l'air fryer.</p>
+        <p>Chaque fiche va au-delà d'une simple idée : elle indique le reste de départ, les quantités à ajouter, les réglages de cuisson et le résultat visuel attendu.</p>
+      </section>
+
+      <section class="feature-grid" aria-label="Points forts du livre">
+        <div><span aria-hidden="true">🥖</span><h3>Par reste disponible</h3><p>Pain, riz, pâtes, pommes de terre, légumes, protéines cuites, conserves et fruits mûrs.</p></div>
+        <div><span aria-hidden="true">🌡️</span><h3>Réglages précis</h3><p>Température, durée, quantité et repère visuel sont réunis sur chaque recette.</p></div>
+        <div><span aria-hidden="true">🔄</span><h3>Vraies transformations</h3><p>Des galettes, croquettes, bouchées, gratins et desserts — pas de simples restes réchauffés.</p></div>
+      </section>
+
+      <section class="inside-box">
+        <h2>Ce que vous trouverez dans chaque recette</h2>
+        <div class="inside-grid">
+          <span>Le reste de départ</span>
+          <span>La nouvelle préparation obtenue</span>
+          <span>Les ingrédients et quantités</span>
+          <span>Le temps et la température</span>
+          <span>Le repère visuel de cuisson</span>
+          <span>Une alternative compatible</span>
+          <span>Une consigne de conservation</span>
+          <span>Une astuce anti-gaspi supplémentaire</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Questions fréquentes</h2>
+        {faq.map((item) => (
+          <div class="faq-item">
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+          </div>
+        ))}
+      </section>
+
+      <div class="return-box">
+        <p><strong>La fiche Amazon sera ajoutée ici dès sa mise en ligne.</strong><br />En attendant, découvrez notre livre déjà disponible pour cuisiner facilement en une ou deux portions.</p>
+        <a class="cta" href="/livre/">Voir le livre pour 1 ou 2 personnes →</a>
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .antiwaste-page{padding-top:26px}
+  .antiwaste-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.75fr);gap:56px;align-items:center;background:linear-gradient(135deg,#f6ecdd,#fffaf3);border:1px solid #dfc7aa;border-radius:24px;padding:46px;margin:0 0 34px}
+  .eyebrow{display:inline-block;color:#b73f16;font-weight:850;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px}
+  .antiwaste-copy h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(3rem,7vw,5.8rem);line-height:.84;letter-spacing:-.045em;color:#173e32;margin:0}
+  .antiwaste-copy h1 span{display:block}
+  .subtitle{font-size:1.35rem;line-height:1.2;text-transform:uppercase;letter-spacing:.025em;font-weight:850;color:#244d3e;margin:20px 0 18px}
+  .book-intro{font-size:1.12rem;max-width:650px;color:#544b42;margin:0 0 18px}
+  .antiwaste-copy ul{list-style:none;padding:0;margin:22px 0;display:grid;gap:10px}
+  .antiwaste-copy li{position:relative;padding-left:28px;font-weight:650}
+  .antiwaste-copy li::before{content:'✓';position:absolute;left:0;color:#b73f16;font-weight:900}
+  .price-line{display:flex;align-items:baseline;gap:12px;margin-top:22px}
+  .price-line strong{font-size:1.8rem;color:#173e32}
+  .price-line span{font-size:.85rem;color:var(--muted)}
+  .status{display:inline-flex;margin:12px 0 0;padding:11px 16px;border-radius:999px;background:#173e32;color:#fff;font-weight:800;font-size:.88rem}
+  .cover-wrap{display:flex;justify-content:center}
+  .cover-wrap img{width:min(100%,390px);height:auto;border-radius:6px;box-shadow:0 22px 48px rgba(38,38,25,.28)}
+  .antiwaste-content{padding-top:6px}
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+  .feature-grid>div{padding:22px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}
+  .feature-grid span{font-size:1.75rem}
+  .feature-grid h3{margin:8px 0 5px;color:#173e32}
+  .feature-grid p{margin:0;font-size:.92rem;color:var(--muted)}
+  .inside-box{background:#173e32;color:#fff;border-radius:20px;padding:30px;margin:32px 0}
+  .inside-box h2{color:#fff;margin-top:0}
+  .inside-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 26px}
+  .inside-grid span{position:relative;padding-left:24px}
+  .inside-grid span::before{content:'•';position:absolute;left:5px;color:#e66c37;font-weight:900}
+  .faq-item{border-bottom:1px solid var(--line);padding:5px 0 12px}
+  .faq-item h3{margin-bottom:4px}
+  .faq-item p{margin-top:0}
+  .return-box{text-align:center;background:#fff5e9;border:1px solid #f2cfaa;border-radius:18px;padding:26px;margin:32px 0}
+  .return-box p{margin-top:0}
+  @media(max-width:760px){
+    .antiwaste-page{padding-top:16px}
+    .antiwaste-hero{grid-template-columns:1fr;gap:30px;padding:26px 20px;border-radius:18px}
+    .antiwaste-copy h1{font-size:3.6rem}
+    .subtitle{font-size:1.08rem}
+    .cover-wrap img{width:250px}
+    .feature-grid,.inside-grid{grid-template-columns:1fr}
+    .inside-box{padding:24px 20px}
+  }
+</style>
