@@ -38,7 +38,7 @@ faq:
     a: "C'est souvent une compote trop chaude ou trop liquide au moment de garnir. Laissez-la bien refroidir et épaissir avant de fourrer les chaussons : la pâte reste feuilletée et croustillante."
   - q: "Faut-il dorer le chausson aux pommes ?"
     a: "Oui, pour l'esthétique : un jaune d'œuf badigeonné avant cuisson donne cette couleur dorée et brillante des chaussons de boulangerie. Sans dorure, ils cuisent aussi bien mais restent plus pâles."
-pubDate: 2099-01-01
+pubDate: 2026-09-06
 ---
 
 Le chausson aux pommes au air fryer, c'est la viennoiserie maison prête en un quart d'heure : **une pâte feuilletée dorée, gonflée et croustillante, un cœur de pommes fondant**, sans allumer le four. Maison ou surgelé, il ressort comme chez le boulanger.

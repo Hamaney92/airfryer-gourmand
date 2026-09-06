@@ -38,7 +38,7 @@ faq:
     a: "Oui, directement congelées : 12 à 15 minutes à 200 °C, en secouant à mi-cuisson. Inutile d'ajouter de l'huile, elles en contiennent déjà. Elles ressortent croustillantes."
   - q: "Les frites de patate douce au air fryer sont-elles saines ?"
     a: "Oui : la patate douce est riche en fibres et en vitamines, et l'air fryer ne demande qu'une cuillère d'huile au lieu d'un bain de friture. Une alternative colorée et plus nutritive aux frites classiques."
-pubDate: 2099-01-01
+pubDate: 2026-09-06
 ---
 
 Les frites de patate douce au air fryer, c'est l'alternative gourmande et colorée aux frites classiques : **croustillantes dehors, fondantes et légèrement sucrées dedans**, avec une seule cuillère d'huile. Le hic habituel — des frites de patate douce molles — est réglé par une astuce toute simple.

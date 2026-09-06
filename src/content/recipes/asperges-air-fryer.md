@@ -38,7 +38,7 @@ faq:
     a: "Cuisez les asperges huilées, puis parsemez de parmesan râpé et repassez 1-2 minutes pour le faire fondre et dorer. Ou ajoutez le parmesan à la sortie : il fond sur les asperges chaudes."
   - q: "Peut-on cuire des asperges surgelées au air fryer ?"
     a: "Oui, directement congelées : 8 à 12 minutes à 200 °C, en secouant à mi-cuisson. Épongez l'excès d'eau à mi-cuisson pour qu'elles dorent au lieu de cuire à la vapeur."
-pubDate: 2099-01-01
+pubDate: 2026-09-06
 ---
 
 Les asperges au air fryer, c'est le légume de printemps sublimé : **tendres, légèrement croustillantes aux pointes, dorées**, en une dizaine de minutes. La chaleur tournante concentre leur saveur — bien plus goûteuses qu'à l'eau, et sans les rendre molles.
@@ -67,6 +67,6 @@ Simples avec un filet d'huile, sel et poivre, les asperges se subliment facileme
 
 ## Pour aller plus loin
 
-- avec un œuf poché ou une [noix de Saint-Jacques au air fryer](/recettes/noix-de-saint-jacques-air-fryer/) ;
+- avec un œuf poché ou un [filet de poisson au air fryer](/recettes/filet-de-poisson-air-fryer/) ;
 - enroulées de jambon cru ou de bacon ;
 - avec d'autres légumes rôtis comme le [brocoli au air fryer](/recettes/brocoli-air-fryer/).
