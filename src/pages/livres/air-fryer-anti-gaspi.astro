@@ -1,9 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { SITE } from '../../lib/site';
+import { SITE, amazonProduct } from '../../lib/site';
 
 const COVER = '/img/books/air-fryer-anti-gaspi.png';
-const AVAILABLE = false;
+const ASIN = 'B0HHZM8TYR';
+const AMAZON_URL = amazonProduct(ASIN);
+const AVAILABLE = true;
 const title = 'Air Fryer Anti-Gaspi : 100 recettes pour transformer les restes';
 const description = '100 recettes Air Fryer pour transformer pain rassis, riz, pâtes, légumes, protéines cuites, conserves et fruits mûrs en nouveaux plats gourmands.';
 
@@ -34,6 +36,13 @@ const bookLd = {
   image: `${SITE.url}${COVER}`,
   url: `${SITE.url}/livres/air-fryer-anti-gaspi/`,
   publisher: { '@type': 'Organization', name: SITE.name },
+  offers: {
+    '@type': 'Offer',
+    price: '22.90',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: AMAZON_URL,
+  },
 };
 
 const breadcrumbLd = {
@@ -81,8 +90,10 @@ const faqLd = {
           <li>Alternatives et conseils de conservation utiles</li>
           <li>114 pages en couleur, format broché 20,32 × 25,4 cm</li>
         </ul>
-        <div class="price-line"><strong>22,90 €</strong><span>Prix de lancement prévu</span></div>
-        <p class="status" role="status">Publication Amazon en cours de validation</p>
+        <div class="price-line"><strong>22,90 €</strong><span>Livre broché</span></div>
+        <p class="status" role="status">Disponible sur Amazon</p>
+        <p class="hero-cta"><a href={AMAZON_URL} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name="Air Fryer Anti-Gaspi" data-product-asin={ASIN} data-placement="anti_gaspi_hero" data-page-type="book" data-page-id="air-fryer-anti-gaspi">Voir le livre sur Amazon →</a></p>
+        <p class="affiliate-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité à vérifier sur Amazon.</p>
       </div>
       <div class="cover-wrap">
         <img src={COVER} alt="Couverture du livre Air Fryer Anti-Gaspi, 100 recettes pour transformer les restes, par Camille Lefèvre" width="600" height="750" fetchpriority="high" decoding="async" />
@@ -127,8 +138,9 @@ const faqLd = {
       </section>
 
       <div class="return-box">
-        <p><strong>La fiche Amazon sera ajoutée ici dès sa mise en ligne.</strong><br />En attendant, découvrez notre livre déjà disponible pour cuisiner facilement en une ou deux portions.</p>
-        <a class="cta" href="/livre/">Voir le livre pour 1 ou 2 personnes →</a>
+        <p><strong>Prêt à cuisiner malin et jeter moins ?</strong><br />Retrouvez les 100 recettes et les réglages précis directement sur Amazon.</p>
+        <a class="cta" href={AMAZON_URL} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name="Air Fryer Anti-Gaspi" data-product-asin={ASIN} data-placement="anti_gaspi_bottom" data-page-type="book" data-page-id="air-fryer-anti-gaspi">Découvrir le livre sur Amazon →</a>
+        <p class="affiliate-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous.</p>
       </div>
     </article>
   </div>
@@ -149,6 +161,10 @@ const faqLd = {
   .price-line strong{font-size:1.8rem;color:#173e32}
   .price-line span{font-size:.85rem;color:var(--muted)}
   .status{display:inline-flex;margin:12px 0 0;padding:11px 16px;border-radius:999px;background:#173e32;color:#fff;font-weight:800;font-size:.88rem}
+  .hero-cta{margin:18px 0 0}
+  .hero-cta a{display:inline-flex;align-items:center;justify-content:center;background:#ff9900;color:#111;font-weight:850;text-decoration:none;padding:14px 22px;border-radius:12px;box-shadow:0 8px 22px rgba(153,91,0,.18)}
+  .hero-cta a:hover{background:#f3a620}
+  .affiliate-note{font-size:.76rem;color:var(--muted);margin:8px 0 0;max-width:530px}
   .cover-wrap{display:flex;justify-content:center}
   .cover-wrap img{width:min(100%,390px);height:auto;border-radius:6px;box-shadow:0 22px 48px rgba(38,38,25,.28)}
   .antiwaste-content{padding-top:6px}
@@ -167,6 +183,7 @@ const faqLd = {
   .faq-item p{margin-top:0}
   .return-box{text-align:center;background:#fff5e9;border:1px solid #f2cfaa;border-radius:18px;padding:26px;margin:32px 0}
   .return-box p{margin-top:0}
+  .return-box .affiliate-note{margin:12px auto 0}
   @media(max-width:760px){
     .antiwaste-page{padding-top:16px}
     .antiwaste-hero{grid-template-columns:1fr;gap:30px;padding:26px 20px;border-radius:18px}
