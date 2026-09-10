@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const published = new Set(
+  (await getCollection('recipes'))
+    .filter((recipe) => recipe.data.pubDate.getTime() <= Date.now())
+    .map((recipe) => recipe.id),
+);
+const isLive = (url: string) => published.has(url.split('/').filter(Boolean).pop() ?? '');
+
+const title = "Lunchbox à l'air fryer : 7 idées faciles pour la semaine";
+const description = "7 idées de lunchbox à l'air fryer pour le travail ou les études : recettes faciles à préparer, à emporter et à réchauffer, avec conseils d'organisation et de conservation.";
+
+const lunchboxes = [
+  ['🌯', 'Wrap croustillant au poulet', '/recettes/wrap-air-fryer/', 'À assembler le matin ou à réchauffer 3 à 4 min avant de partir.', '190 °C · 4 à 8 min'],
+  ['🥚', 'Egg muffins salés', '/recettes/muffin-air-fryer/', 'Œufs, légumes et fromage dans des moules : pratique à emporter froid ou tiède.', '160 °C · 10 à 12 min'],
+  ['🥧', 'Mini quiche', '/recettes/quiche-air-fryer/', 'Se prépare en portions ; accompagne-la d’une salade mise à part.', '170 °C · 15 à 18 min'],
+  ['🫓', 'Quesadilla fondante', '/recettes/quesadilla-air-fryer/', 'Coupe-la en triangles une fois tiédie : elle se glisse facilement dans une boîte.', '190 °C · 6 à 8 min'],
+  ['🍗', 'Blanc de poulet et légumes rôtis', '/recettes/blanc-de-poulet-air-fryer/', 'La base protéinée à trancher pour bowls, salades ou sandwichs.', '180 °C · 12 min'],
+  ['🧆', 'Falafels et crudités', '/recettes/falafel-air-fryer/', 'Un déjeuner végétarien à compléter avec sauce au yaourt dans un petit pot.', '190 °C · 12 à 15 min'],
+  ['🥦', 'Légumes rôtis et pommes de terre', '/recettes/legumes-rotis-air-fryer/', 'Prépare une grande fournée le soir et compose deux boîtes pour le lendemain.', '180 °C · 18 à 20 min'],
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: "L'équipe Airfryer Gourmand", url: 'https://airfryergourmand.fr/a-propos/' },
+  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' },
+  datePublished: '2026-09-10',
+  dateModified: '2026-09-10',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Que mettre dans une lunchbox préparée à l'air fryer ?", acceptedAnswer: { '@type': 'Answer', text: "Un bon repère est d'associer une protéine, des légumes et un féculent ou une tortilla. Wraps, quiches individuelles, egg muffins, poulet tranché et légumes rôtis se transportent particulièrement bien." } },
+    { '@type': 'Question', name: "Peut-on préparer des lunchbox à l'avance ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Préparez-les la veille, laissez refroidir rapidement, puis rangez-les au réfrigérateur dans des boîtes fermées. Gardez les éléments humides comme les sauces et les crudités séparés pour préserver les textures." } },
+    { '@type': 'Question', name: "Comment réchauffer une lunchbox sans la ramollir ?", acceptedAnswer: { '@type': 'Answer', text: "Pour les wraps, quiches, quesadillas et aliments croustillants, quelques minutes à l'air fryer à température modérée sont préférables au micro-ondes. Les crudités et sauces restent dans une boîte séparée." } },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/dossiers/lunchbox-air-fryer/" jsonLd={[articleSchema, faqSchema]} pageType="dossier">
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
+        <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Lunchbox
+      </div>
+      <h1>Lunchbox à l'air fryer : 7 idées faciles pour la semaine</h1>
+      <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
+        <span aria-hidden="true">🥡</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 10 septembre 2026</span>
+      </div>
+
+      <div class="quick"><b>En bref :</b> préparez une base à l'air fryer le soir, gardez les éléments croustillants et les sauces séparés, puis emportez une lunchbox vraiment agréable à manger le lendemain.</div>
+
+      <p>La lunchbox réussie n'a rien à voir avec un reste triste : elle doit être simple à préparer, facile à transporter et bonne même après quelques heures. L'air fryer est particulièrement pratique pour cela : il donne du croustillant aux wraps, quiches et quesadillas, et permet de cuire rapidement une protéine ou des légumes pour composer plusieurs boîtes.</p>
+
+      <h2>Les 7 idées de lunchbox à préparer avec l'air fryer</h2>
+      <div class="cards" style="margin-top:14px">
+        {lunchboxes.filter(([,, url]) => isLive(url)).map(([emoji, name, url, note, setting]) => (
+          <div class="rcard" style="cursor:default">
+            <div class="ph" style="height:96px"><span style="font-size:1.8rem">{emoji}</span></div>
+            <div style="padding:12px 15px 16px">
+              <a class="rtitle" href={url} style="color:var(--brand-d);font-weight:700;text-decoration:none">{name} →</a>
+              <p style="color:#6a5d54;font-size:.88rem;margin:6px 0 8px">{note}</p>
+              <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:3px 9px;border-radius:20px;font-size:.8rem;font-weight:700">🌡️ {setting}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>La méthode en 30 minutes la veille</h2>
+      <ol>
+        <li><b>Choisissez une base :</b> un wrap, une quiche individuelle, des egg muffins ou une quesadilla.</li>
+        <li><b>Ajoutez un élément rassasiant :</b> poulet, falafels, œufs ou fromage selon la recette.</li>
+        <li><b>Complétez avec des légumes :</b> légumes rôtis pour le chaud, crudités pour le frais.</li>
+        <li><b>Gardez le croustillant à part :</b> sauce, salade et tomates vont dans un petit contenant séparé.</li>
+        <li><b>Laissez refroidir avant de fermer :</b> la vapeur ramollit les aliments et réduit le confort de conservation.</li>
+      </ol>
+
+      <h2>Trois combinaisons à ne pas rater</h2>
+      <table class="rectable">
+        <thead><tr><th>Envie</th><th>Composition</th><th>Astuce de transport</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Express</td><td>Wrap poulet + crudités</td><td>Place la sauce dans un petit pot ; ajoute-la au dernier moment.</td></tr>
+          <tr><td class="t">Végétarienne</td><td>Falafels + légumes rôtis + sauce yaourt</td><td>Garde la sauce séparée pour que les falafels restent agréables.</td></tr>
+          <tr><td class="t">Sans prise de tête</td><td>Mini quiche + salade verte</td><td>La quiche supporte bien une dégustation tiède ou froide.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Réchauffer sans perdre le croustillant</h2>
+      <p>Si vous avez accès à un air fryer, réchauffez les wraps, quiches et quesadillas quelques minutes à température modérée. Le micro-ondes convient mieux aux préparations moelleuses, mais il ramollit facilement les tortillas et pâtes. Les crudités, herbes et sauces restent de côté jusqu'au service.</p>
+      <p>Pour retrouver un réglage adapté à chaque aliment, consultez aussi notre <a href="/temps-de-cuisson/">outil de temps de cuisson à l'air fryer</a>.</p>
+
+      <h2>Conservation : le réflexe sécurité</h2>
+      <p>Préparez les boîtes la veille, refroidissez les aliments rapidement et conservez-les au réfrigérateur. Pour les plats contenant viande, poisson, œufs ou produits laitiers, respectez la chaîne du froid et réchauffez-les bien à cœur si vous les mangez chauds. En cas de doute sur le temps passé hors du froid, ne les consommez pas.</p>
+
+      <aside class="book-dossier-box">
+        <div aria-hidden="true" class="book-dossier-icon">📖</div>
+        <div>
+          <strong>Vous cuisinez souvent pour une ou deux personnes ?</strong>
+          <p>Notre livre réunit des recettes avec quantités, temps et températures pensés pour éviter le gaspillage au quotidien.</p>
+          <a href="/livre/" data-book-entry data-placement="dossier_lunchbox" data-page-type="dossier" data-page-id="lunchbox-air-fryer">Découvrir le livre →</a>
+        </div>
+      </aside>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Que mettre dans une lunchbox préparée à l'air fryer ?</h3>
+      <p>Associez une protéine, des légumes et un féculent ou une tortilla. Wraps, quiches individuelles, egg muffins, poulet tranché et légumes rôtis se transportent très bien.</p>
+      <h3>Peut-on préparer des lunchbox à l'avance ?</h3>
+      <p>Oui, idéalement la veille. Refroidissez rapidement, rangez au frais dans une boîte fermée et séparez les sauces et crudités.</p>
+      <h3>Comment les réchauffer sans les ramollir ?</h3>
+      <p>Réchauffez les éléments croustillants quelques minutes à l'air fryer et ajoutez les crudités après. Le micro-ondes est plus adapté aux préparations moelleuses.</p>
+
+      <p style="margin-top:26px"><a class="cta" href="/recettes/">🍽️ Voir toutes les recettes à l'air fryer</a></p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .book-dossier-box{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:16px;padding:20px 22px;margin:24px 0}
+  .book-dossier-icon{font-size:2rem}
+  .book-dossier-box p{margin:5px 0 7px;color:#5f5147}
+  .book-dossier-box a{color:var(--brand-d);font-weight:800}
+</style>
