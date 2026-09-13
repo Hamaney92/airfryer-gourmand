@@ -66,6 +66,6 @@ Le filet est **fragile** : ne le retourne pas, il se déferait. Pose-le **côté
 
 ## Pour aller plus loin
 
-- avec des [légumes rôtis](/recettes/legumes-rotis-air-fryer/) ou des [pommes de terre grenaille au air fryer](/recettes/pommes-de-terre-grenailles-air-fryer/) ;
+- avec des [légumes rôtis](/recettes/legumes-rotis-air-fryer/) ou des [pommes de terre sautées au air fryer](/recettes/pommes-de-terre-sautees-air-fryer/) ;
 - pour des espèces précises, vois le [saumon](/recettes/saumon-air-fryer/) et le [dos de cabillaud au air fryer](/recettes/dos-de-cabillaud-air-fryer/) ;
 - relevé d'une sauce citron-aneth ou d'un beurre blanc.

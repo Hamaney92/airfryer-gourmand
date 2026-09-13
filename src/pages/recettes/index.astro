@@ -33,7 +33,8 @@ const itemListLd = {
 <Layout title={title} description={description} path="/recettes/" jsonLd={itemListLd}>
   <div class="wrap">
     <section>
-      <div class="h2" style="font-size:2rem">Toutes les recettes air fryer<small>{recipes.length} recettes testées, classées par catégorie</small></div>
+      <h1 class="h2" style="font-size:2rem">Toutes les recettes air fryer</h1>
+      <p>{recipes.length} recettes avec temps de cuisson et températures, classées par catégorie.</p>
       <div class="cats" style="flex-wrap:wrap;margin-top:16px">
         {cats.map((c) => <a href={`/categorie/${c.slug}/`}>{c.label}</a>)}
       </div>

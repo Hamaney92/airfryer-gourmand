@@ -48,7 +48,8 @@ const itemListLd = {
       <a href="/">Accueil</a> › <a href="/recettes/">Recettes</a> › {label}
     </nav>
     <section style="padding-top:8px">
-      <div class="h2" style="font-size:2rem">{label} au air fryer<small>{list.length} recettes testées</small></div>
+      <h1 class="h2" style="font-size:2rem">{label} au air fryer</h1>
+      <p>{list.length} recettes avec temps de cuisson, températures et conseils de préparation.</p>
       <div class="cats" style="flex-wrap:wrap;margin-top:16px">
         {Object.values(CATEGORIES).map((c) => (
           <a href={`/categorie/${c.slug}/`} style={c.slug === cat ? 'color:var(--brand)' : ''}>{c.label}</a>

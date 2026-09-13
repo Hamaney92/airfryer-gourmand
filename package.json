@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "check:links": "node scripts/check-published-links.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "build": "npm run check:links && astro build",
     "preview": "astro preview"
   },

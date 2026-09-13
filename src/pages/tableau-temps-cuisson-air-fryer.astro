@@ -24,6 +24,7 @@ const parCat = rows.reduce((acc: Record<string, typeof rows>, r) => {
   return acc;
 }, {});
 
+const categoryId = (label: string) => 'cuisson-' + label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const configured = Boolean(MAILERLITE_FORM_ACTION);
 
 const title = 'Tableau des temps de cuisson air fryer à imprimer (PDF gratuit)';
@@ -63,7 +64,7 @@ const jsonLd = [
         name: 'Faut-il préchauffer un air fryer ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Oui, 2 à 3 minutes suffisent. Le préchauffage est ce qui sépare une cuisson correcte d'une cuisson vraiment croustillante, surtout pour les frites et les panés.",
+          text: "Cela dépend du modèle et de la recette. Suivez la notice de votre appareil : certains programmes préchauffent automatiquement, d'autres n'en ont pas besoin.",
         },
       },
     ],
@@ -73,10 +74,11 @@ const jsonLd = [
 
 <Layout title={title} description={description} path="/tableau-temps-cuisson-air-fryer/" jsonLd={jsonLd}>
   <div class="wrap article">
-    <h1>Tableau des temps de cuisson air fryer</h1>
+    <h1>Tableau de cuisson air fryer à imprimer : PDF gratuit</h1>
     <p>
-      Tous les réglages réunis, aliment par aliment. La règle générale par rapport au four :
-      <b>−20 °C sur la température</b> et <b>−20 % sur le temps</b>. Et on préchauffe toujours 2 à 3 minutes.
+      Retrouvez {rows.length} préparations avec leur température, leur temps de cuisson indicatif et le lien vers la recette.
+      Le tableau en français est consultable ici et disponible en PDF gratuit, sans inscription obligatoire.
+      Adaptez les réglages à la quantité et à votre appareil ; les consignes du fabricant restent prioritaires.
     </p>
 
     <aside class="magnet">
@@ -99,26 +101,37 @@ const jsonLd = [
       </div>
     </aside>
 
+    <section class="table-navigation" aria-label="Trouver un temps de cuisson">
+      <nav aria-label="Catégories du tableau">
+        {Object.keys(parCat).map((cat) => <a href={'#' + categoryId(cat)}>{cat}</a>)}
+      </nav>
+      <div class="table-search" hidden>
+        <label for="food-search">Rechercher un aliment dans le tableau</label>
+        <input id="food-search" type="search" placeholder="Ex. nems, chipolatas, poivrons…" autocomplete="off" />
+        <p id="food-search-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
     {Object.entries(parCat).map(([cat, list]) => (
-      <>
-        <h2>{cat}</h2>
+      <section data-cooking-category>
+        <h2 id={categoryId(cat)}>{cat}</h2>
         <div style="overflow-x:auto">
           <table class="rectable">
             <thead><tr><th>Aliment</th><th>Portions</th><th>Température</th><th>Temps</th><th></th></tr></thead>
             <tbody>
               {list.map((r) => (
-                <tr>
+                <tr data-food={r.nom}>
                   <td>{r.nom}</td>
                   <td>{r.servings ? `${r.servings} pers.` : '—'}</td>
                   <td class="t">{r.temp}</td>
                   <td style="font-weight:700;white-space:nowrap">{r.cook} min</td>
-                  <td><a href={`/recettes/${r.slug}/`} style="color:var(--brand-d);font-weight:700;white-space:nowrap">La recette →</a></td>
+                  <td><a href={`/recettes/${r.slug}/`} style="color:var(--brand-d);font-weight:700;white-space:nowrap" aria-label={`Recette : ${r.nom}`}>La recette →</a></td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </>
+      </section>
     ))}
 
     <h2>Questions fréquentes</h2>
@@ -129,13 +142,45 @@ const jsonLd = [
     <p>Baissez la température d'environ 20 °C et réduisez le temps d'environ 20 %. Une recette prévue 30 minutes à 200 °C au four devient environ 24 minutes à 180 °C au air fryer. Le <a href="/temps-de-cuisson/">convertisseur</a> fait le calcul pour vous.</p>
 
     <h3>Faut-il préchauffer un air fryer ?</h3>
-    <p>Oui, 2 à 3 minutes suffisent. C'est le détail qui sépare une cuisson correcte d'une cuisson vraiment croustillante, surtout pour les frites et les panés.</p>
+    <p>Cela dépend du modèle et de la recette. Suivez la notice de votre appareil : certains programmes préchauffent automatiquement, d'autres n'en ont pas besoin.</p>
 
     <p class="note">Valeurs indicatives : elles varient selon le modèle, la quantité et l'épaisseur des morceaux. Vérifiez toujours la cuisson avant de servir.</p>
   </div>
 </Layout>
 
+<script>
+  const search = document.querySelector<HTMLInputElement>('#food-search');
+  const searchBox = document.querySelector<HTMLElement>('.table-search');
+  const status = document.querySelector<HTMLElement>('#food-search-status');
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-cooking-category]'));
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  if (search && searchBox && status) {
+    searchBox.hidden = false;
+    search.addEventListener('input', () => {
+      const query = normalize(search.value);
+      let count = 0;
+      for (const section of sections) {
+        let matches = 0;
+        for (const row of section.querySelectorAll<HTMLTableRowElement>('tr[data-food]')) {
+          const found = normalize(row.dataset.food || '').includes(query);
+          row.hidden = !found;
+          if (found) matches += 1;
+        }
+        section.hidden = matches === 0;
+        count += matches;
+      }
+      status.textContent = query ? (count ? count + ' préparation(s) trouvée(s).' : 'Aucun aliment trouvé. Essayez un nom plus court.') : '';
+    });
+  }
+</script>
+
 <style>
+  .table-navigation nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:20px 0}
+  .table-navigation nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--brand-d)}
+  .table-search label{display:block;font-weight:700;margin-bottom:8px}
+  .table-search input{width:100%;max-width:480px;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+  [data-cooking-category] h2{scroll-margin-top:100px}
+  @media print{.table-navigation{display:none}}
   .magnet-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
   .magnet-form input{flex:1;min-width:200px;border:1px solid var(--line);padding:12px 14px;border-radius:10px;font-size:1rem}
   .magnet-form button{background:var(--brand);color:#fff;font-weight:800;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-size:1rem}

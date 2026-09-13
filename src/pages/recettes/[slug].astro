@@ -15,6 +15,8 @@ export async function getStaticPaths() {
 
 const { recipe } = Astro.props;
 const { data } = recipe;
+const updatedDate = data.updatedDate && data.updatedDate >= data.pubDate && data.updatedDate.getTime() <= Date.now()
+  ? data.updatedDate : undefined;
 const cat = catInfo(data.category);
 const lightRecipe = isMinceur(recipe);
 const path = `/recettes/${recipe.id}/`;
@@ -53,11 +55,13 @@ const recipeLd = {
   name: data.title,
   description: data.description,
   ...(imageUrl ? { image: [imageUrl] } : {}),
-  author: { '@type': 'Organization', name: data.author },
+  '@id': `${SITE.url}${path}#recipe`,
+  url: SITE.url + path,
+  mainEntityOfPage: SITE.url + path,
+  author: { '@type': 'Organization', name: data.author, url: `${SITE.url}/a-propos/` },
   datePublished: data.pubDate.toISOString().split('T')[0],
-  ...(data.updatedDate ? { dateModified: data.updatedDate.toISOString().split('T')[0] } : {}),
+  ...(updatedDate ? { dateModified: updatedDate.toISOString().split('T')[0] } : {}),
   recipeCategory: cat.label,
-  recipeCuisine: 'Française',
   keywords: data.keyword,
   prepTime: isoDuration(data.prepTime),
   cookTime: isoDuration(data.cookTime),
@@ -67,6 +71,7 @@ const recipeLd = {
   recipeInstructions: data.steps.map((s: string, i: number) => ({
     '@type': 'HowToStep',
     position: i + 1,
+    url: `${SITE.url}${path}#etape-${i + 1}`,
     text: s,
   })),
 };
@@ -116,7 +121,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     <div class="byline">
       <span class="by-av">👩‍🍳</span>
       <span>Par <a href="/a-propos/">{data.author}</a> · Publié le {fmtDate(data.pubDate)}
-        {data.updatedDate && <> · Mis à jour le {fmtDate(data.updatedDate)}</>}</span>
+        {updatedDate && <> · Mis à jour le {fmtDate(updatedDate)}</>}</span>
     </div>
 
     <div class="amETA">
@@ -126,7 +131,14 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <span class="chip">🍽 {data.servings} pers.</span>
     </div>
 
-    <a href="#recette" class="jump">↓ Aller au temps de cuisson</a>
+    <div class="quick" id="recette" tabindex="-1">
+      <b>Réponse rapide —</b> {data.quickAnswer}
+    </div>
+    <nav class="recipe-shortcuts" aria-label="Accès rapide à la recette">
+      <a href="#ingredients">Ingrédients</a>
+      <a href="#etapes">Étapes de préparation</a>
+      <a href="#conseils">Conseils et variantes</a>
+    </nav>
 
     {data.image ? (
       <picture>
@@ -136,10 +148,6 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     ) : (
       <div class="ph" style="height:320px;border-radius:18px;margin-bottom:22px"><span>Photo à venir</span></div>
     )}
-
-    <div class="quick" id="recette">
-      <b>Réponse rapide —</b> {data.quickAnswer}
-    </div>
 
     <aside class="cooking-table-link" aria-label="Tableau de cuisson Air Fryer">
       <span aria-hidden="true">⏱️</span>
@@ -153,10 +161,29 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       </aside>
     )}
 
+    <!-- Corps de l'article (markdown) -->
+    <div id="conseils"><Content /></div>
+
+    <div class="card-box">
+      <h2 id="ingredients" style="margin-top:0">Ingrédients</h2>
+      <ul>{data.ingredients.map((i: string) => <li>{i}</li>)}</ul>
+
+      <h2 id="etapes">Étapes</h2>
+      <ol>{data.steps.map((s: string, i: number) => <li id={`etape-${i + 1}`}>{s}</li>)}</ol>
+      {data.tips.length > 0 && (
+        <>
+          <h3>Astuces</h3>
+          <ul>{data.tips.map((t: string) => <li>{t}</li>)}</ul>
+        </>
+      )}
+    </div>
+
+    <SaveRecipe titre={data.title} url={new URL(path, SITE.url).href} />
+
     {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
-        affilié et renvoie vers cet encart visible, placé ici après la réponse à l'intention. */}
+        affilié et renvoie vers cet encart visible, placé après les ingrédients et la méthode. */}
     <aside id="materiel" class="gear-box gear-box--primary" aria-label={`Accessoire recommandé : ${gear.nom}`}>
-      <div class="gear-box__eyebrow">{gear.emoji} Pour la réussir à coup sûr</div>
+      <div class="gear-box__eyebrow">{gear.emoji} Accessoire facultatif</div>
       <div class="gear-box__title">{gear.nom}</div>
       <p>{gear.util}</p>
       {gear.href ? (
@@ -171,24 +198,6 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       {!gear.href && <p class="gear-box__disclosure">Lien affilié : une commission peut nous être versée, sans surcoût pour vous.</p>}
       <p class="gear-box__guide"><a href="/guides/accessoires-air-fryer/">Voir tous les accessoires vraiment utiles →</a></p>
     </aside>
-
-    <!-- Corps de l'article (markdown) -->
-    <Content />
-
-    <div class="card-box">
-      <h2 style="margin-top:0">Ingrédients</h2>
-      <ul>{data.ingredients.map((i: string) => <li>{i}</li>)}</ul>
-      <SaveRecipe titre={data.title} url={new URL(path, SITE.url).href} />
-
-      <h2>Étapes</h2>
-      <ol>{data.steps.map((s: string) => <li>{s}</li>)}</ol>
-      {data.tips.length > 0 && (
-        <>
-          <h3>Astuces</h3>
-          <ul>{data.tips.map((t: string) => <li>{t}</li>)}</ul>
-        </>
-      )}
-    </div>
 
     {data.servings <= 2 && (
       <aside class="book-recipe-box">
@@ -246,6 +255,9 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 </Layout>
 
 <style>
+  .recipe-shortcuts{display:flex;gap:10px 18px;flex-wrap:wrap;margin:12px 0 22px}
+  .recipe-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-weight:700;text-decoration:underline}
+  #recette,#ingredients,#etapes,#conseils,[id^="etape-"]{scroll-margin-top:100px}
   .gear-box--primary{background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:14px 0 26px;scroll-margin-top:80px;box-shadow:var(--shadow)}
   .gear-box__eyebrow{font-size:.82rem;font-weight:800;color:var(--brand-d);text-transform:uppercase;letter-spacing:.02em}
   .gear-box__title{font-size:1.15rem;font-weight:850;color:var(--ink);margin-top:3px}

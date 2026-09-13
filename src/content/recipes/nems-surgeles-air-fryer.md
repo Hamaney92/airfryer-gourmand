@@ -1,6 +1,6 @@
 ---
-title: "Nems surgelés au air fryer : croustillants en 14 min"
-metaTitle: "Nems surgelés au Air Fryer : croustillants en 12–15 min"
+title: "Nems surgelés au air fryer : 12 à 15 min à 200 °C"
+metaTitle: "Nems surgelés au air fryer : 12–15 min à 200 °C"
 description: "Nems surgelés croustillants sans friteuse : 12 à 15 min à 200 °C, sans décongélation. Le bon geste pour les dorer partout, du premier coup."
 category: "Surgelé"
 image: "/img/nems-surgeles-air-fryer.jpg"
@@ -19,7 +19,7 @@ steps:
   - "Préchauffe l'air fryer 2-3 min à 200 °C."
   - "Dispose les nems en une seule couche, espacés, sans les superposer, sans décongeler."
   - "Cuis 12 à 15 min à 200 °C, en les retournant à mi-cuisson."
-  - "Ils sont prêts dorés et croustillants sur toute la surface."
+  - "Vérifie que la garniture est cuite et bien chaude à cœur, conformément aux instructions du paquet ; une enveloppe dorée seule ne suffit pas."
   - "Sers chaud avec de la sauce nuoc-mâm, des feuilles de salade et de menthe."
 tips:
   - "Une légère pulvérisation d'huile avant cuisson pousse le croustillant et le doré."
@@ -37,15 +37,16 @@ faq:
   - q: "Peut-on réchauffer des nems déjà cuits au air fryer ?"
     a: "Oui, 3 à 5 minutes à 180 °C leur redonnent tout leur croustillant, bien mieux qu'au micro-ondes qui les ramollit."
 pubDate: 2026-08-01
+updatedDate: 2026-09-13
 ---
 
-Les nems surgelés au air fryer, c'est la révélation pour tous les amateurs de cuisine asiatique : une **galette de riz dorée et croustillante**, un cœur chaud et parfumé, avec le croustillant de la friteuse mais **sans le bain d'huile** ni l'odeur. En 14 minutes, direct du congélateur.
+Les nems surgelés au air fryer, c'est la révélation pour tous les amateurs de cuisine asiatique : une **galette de riz dorée et croustillante**, un cœur chaud et parfumé, avec le croustillant de la friteuse mais **sans le bain d'huile** ni l'odeur. Compte 12 à 15 minutes de cuisson, directement depuis le congélateur, selon les instructions du paquet.
 
 Le secret d'un nem croustillant partout : les **espacer** et ne pas les décongeler.
 
-## Temps de cuisson
+## Temps de cuisson des nems surgelés
 
-À 200 °C, en retournant à mi-cuisson.
+À 200 °C, en retournant à mi-cuisson. Les durées ci-dessous sont indicatives : suis en priorité les consignes du fabricant, notamment selon que la garniture est crue ou déjà cuite.
 
 | Type | Température | Durée | Retourner |
 |---|---|---|---|
@@ -67,7 +68,13 @@ La galette de riz des nems adore l'air chaud : elle croustille sans avoir besoin
 
 ## Directement du congélateur
 
-Comme tous les feuilletés, les nems se cuisent **congelés**. Décongelés, la galette de riz ramollit et perd tout son croustillant. Une seule couche, espacés, retournés à mi-cuisson : le résultat est aussi bon qu'à la friteuse.
+Lorsque le paquet prévoit une cuisson sans décongélation, dépose les nems **encore congelés** dans le panier. Décongelés, la galette de riz ramollit et perd tout son croustillant. Une seule couche, espacés, retournés à mi-cuisson : le résultat est aussi bon qu'à la friteuse.
+
+## Adapter la cuisson à la taille et au panier
+
+Les mini-nems et les grosses pièces ne chauffent pas à la même vitesse. Commence à contrôler avant la fin du créneau indiqué, sans empiler les pièces. Pour une deuxième fournée dans un appareil déjà chaud, surveille de nouveau la fin de cuisson. Si l'extérieur brunit trop vite, vérifie les réglages du fabricant avant de poursuivre.
+
+Pour d'autres produits, consulte nos [recettes de surgelés au air fryer](/categorie/surgeles/) et le [guide des samoussas surgelés](/recettes/samoussas-surgeles-air-fryer/).
 
 ## Avec quoi les servir
 

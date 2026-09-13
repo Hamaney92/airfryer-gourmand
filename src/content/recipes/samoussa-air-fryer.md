@@ -1,7 +1,7 @@
 ---
-title: "Samoussa air fryer : croustillants sans friture (frais & surgelés)"
-metaTitle: "Samoussa air fryer : temps de cuisson frais & surgelé (par modèle)"
-description: "Le temps de cuisson exact des samoussas à l'air fryer, frais ou surgelés : 180 °C, réglages par modèle (Ninja, Cosori, Philips), pliage, farces et sauces. Croustillants, jamais gras."
+title: "Samoussas maison au air fryer : farce, pliage et cuisson"
+metaTitle: "Samoussas maison au air fryer : 12 min à 180 °C"
+description: "Préparez des samoussas maison au air fryer : farce cuite, pliage en triangle et cuisson indicative de 12 min à 180 °C. Conseils pour une feuille croustillante."
 category: "Apéro"
 image: "/img/samoussa-air-fryer.jpg"
 keyword: "samoussa air fryer"
@@ -11,7 +11,7 @@ prepTime: 25
 cookTime: 12
 servings: 4
 temp: "180 °C"
-quickAnswer: "Cuis des samoussas frais 12 min à 180 °C (6 min de chaque côté), badigeonnés d'un filet d'huile, en une seule couche. Surgelés, sans décongeler : 10 à 15 min à 180 °C, en les retournant à mi-cuisson."
+quickAnswer: "Pour des samoussas maison garnis d'une farce déjà cuite, compte environ 12 min à 180 °C, en les retournant à mi-cuisson. Badigeonne légèrement la feuille, dispose une seule couche et vérifie que la garniture est bien chaude."
 ingredients:
   - "12 feuilles de brick (ou de filo)"
   - "300 g de viande hachée de bœuf (ou poulet, thon, légumes)"
@@ -36,32 +36,28 @@ faq:
   - q: "Combien de temps cuire des samoussas à l'air fryer ?"
     a: "Compte 12 minutes à 180 °C pour des samoussas frais, en les retournant à mi-cuisson (6 min de chaque côté). Ils doivent être dorés et croustillants."
   - q: "Peut-on cuire des samoussas surgelés à l'air fryer ?"
-    a: "Oui, sans les décongeler : 10 à 15 minutes à 180 °C, en les retournant à mi-cuisson. Surveille les dernières minutes selon la taille et le modèle."
+    a: "Pour les samoussas surgelés du commerce, consultez les instructions du paquet et notre guide dédié. Le repère proposé est de 12 à 15 minutes à 180 °C, avec retournement à mi-cuisson."
   - q: "Faut-il de l'huile pour les samoussas à l'air fryer ?"
     a: "Un simple filet d'huile badigeonné au pinceau (ou un coup de spray) suffit à les dorer. Pas besoin de bain de friture, c'est l'avantage de l'air fryer."
   - q: "Pourquoi mes samoussas éclatent-ils à la cuisson ?"
     a: "Presque toujours à cause d'une farce trop humide ou d'un pliage mal serré. Assèche bien la farce à la poêle et colle le dernier rabat avec un peu d'eau."
 author: "L'équipe Airfryer Gourmand"
-note: "Le vrai secret d'un samoussa qui reste croustillant, ce n'est pas la quantité d'huile, c'est la farce SÈCHE et le fait de ne pas entasser le panier. On a comparé une fournée serrée et une fournée espacée : la seconde dore deux fois mieux. Et pour le surgelé, inutile de décongeler — ça les ramollirait."
+note: "Les temps sont indicatifs. Cette recette utilise une farce déjà cuite : égoutte-la bien, évite de surcharger le panier et contrôle la garniture avant de servir."
 pubDate: 2026-08-11
-updatedDate: 2026-07-13
+updatedDate: 2026-09-13
 ---
 
-Le samoussa à l'air fryer, c'est la petite bouchée croustillante par excellence : le feuilleté doré et cassant de la friture, mais **sans le bain d'huile, sans l'odeur et sans les éclaboussures**. Que ce soit pour un apéro, une entrée ou la table du ramadan, on obtient des samoussas nets et dorés en une douzaine de minutes. Reste à connaître le bon réglage — et il change un peu selon que tes samoussas sont **frais ou surgelés**, et selon ton modèle d'air fryer.
+Cette recette explique comment préparer des **samoussas maison**, de la farce au pliage. La cuisson au air fryer prend ensuite **environ 12 minutes à 180 °C** ; la préparation de la farce et des triangles demande du temps en plus.
 
-## Combien de temps cuire des samoussas à l'air fryer ?
+Tu utilises un sachet du congélateur ? Passe directement à notre [temps de cuisson des samoussas surgelés au air fryer](/recettes/samoussas-surgeles-air-fryer/).
 
-Pour des **samoussas frais**, la règle est simple : **12 minutes à 180 °C**, en les retournant à mi-cuisson. Pour des **surgelés**, on ne décongèle pas et on compte **10 à 15 minutes à 180 °C**. Voici le détail selon les cas et les modèles les plus courants :
+## Temps et température pour des samoussas maison
 
-| Type de samoussa | Température | Temps | Remarque |
-|---|---|---|---|
-| Frais (fait maison) | 180 °C | 12 min (6 + 6) | Badigeonner d'huile, retourner à mi-cuisson |
-| Surgelé du commerce | 180 °C | 10-15 min | Sans décongeler, retourner à mi-cuisson |
-| Ninja | 180 °C | 8-10 min | Chauffe fort : surveiller la fin |
-| Cosori | 180 °C | 12 min | Réglage de référence |
-| Philips / Moulinex | 180 °C | 12-14 min | Prolonger un peu si besoin |
+| Préparation | Température | Cuisson indicative |
+|---|---|---|
+| Samoussas frais avec farce déjà cuite | 180 °C | 12 min, en retournant à mi-cuisson |
 
-Le repère visuel prime toujours sur le chronomètre : un samoussa est prêt quand il est **uniformément doré et qu'il "sonne" creux et cassant**.
+Les appareils d'une même marque peuvent différer : ajuste selon la taille des triangles, la charge du panier et la notice. Vérifie que la feuille est dorée et que la garniture est bien chaude. Pour retrouver les autres aliments, garde le [tableau de cuisson air fryer](/tableau-temps-cuisson-air-fryer/).
 
 ## Réussir le pliage en triangle
 
@@ -77,7 +73,7 @@ Coupe chaque feuille de brick en deux bandes. Pose une cuillère de farce en bas
 
 ## Samoussas surgelés à l'air fryer
 
-C'est là que l'air fryer est imbattable : **on ne décongèle pas**. On sort les samoussas du congélateur, on les dépose directement dans le panier en une seule couche, et on lance **10 à 15 minutes à 180 °C** en les retournant à mi-cuisson. Décongeler avant ne ferait que ramollir la feuille et les rendre gras — exactement ce qu'on veut éviter.
+C'est là que l'air fryer est imbattable : **on ne décongèle pas**. On sort les samoussas du congélateur, on les dépose directement dans le panier en une seule couche, et on lance **12 à 15 minutes à 180 °C**, selon les consignes du fabricant, en les retournant à mi-cuisson. Décongeler avant ne ferait que ramollir la feuille et les rendre gras — exactement ce qu'on veut éviter.
 
 ## Les sauces qui vont avec
 
@@ -85,4 +81,4 @@ Une sauce **yaourt-menthe** (yaourt, menthe, citron, ail) pour la fraîcheur, un
 
 ## Conservation et réchauffage
 
-Les samoussas cuits se gardent 2 jours au réfrigérateur. Pour retrouver le croustillant, **surtout pas le micro-ondes** : repasse-les 3-4 minutes à 180 °C à l'air fryer et ils redeviennent cassants comme au premier jour. Tu peux aussi congeler les samoussas **crus** (déjà pliés) et les cuire directement surgelés.
+Les samoussas cuits se gardent 2 jours au réfrigérateur. Pour retrouver le croustillant, **surtout pas le micro-ondes** : repasse-les 3-4 minutes à 180 °C à l'air fryer et ils redeviennent cassants comme au premier jour. Si tu congèles tes samoussas maison, garde une farce déjà cuite et ne suppose pas que le temps d'un produit du commerce convient : la taille et la garniture changent la cuisson.
