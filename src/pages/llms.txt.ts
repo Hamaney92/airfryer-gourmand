@@ -19,6 +19,11 @@ export const GET: APIRoute = async () => {
 ## Outils
 
 - [Convertisseur temps de cuisson air fryer](${SITE}/temps-de-cuisson/): tableau interactif des temps et températures par aliment, plus un convertisseur four vers air fryer.
+- [Tableau des temps de cuisson à imprimer](${SITE}/tableau-temps-cuisson-air-fryer/): repères de température et durée à conserver en cuisine.
+
+## Guides
+
+- [Réchauffer les restes au air fryer](${SITE}/dossiers/rechauffer-restes-air-fryer/): tableau de réchauffage, méthode et conseils de sécurité alimentaire.
 
 ## Recettes
 
