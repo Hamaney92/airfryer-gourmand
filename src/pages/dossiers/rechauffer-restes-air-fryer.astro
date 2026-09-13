@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = "Réchauffer les restes au air fryer : tableau, méthode et sécurité";
+const description = "Réchauffez les restes au air fryer sans les dessécher : tableau de temps et températures, méthode selon l'aliment et réflexes de conservation.";
+
+const reheats = [
+  ['Frites, potatoes et légumes rôtis', '180 °C', '3 à 6 min', 'Secouer à mi-cuisson ; une seule couche pour retrouver du croustillant.'],
+  ['Pizza, quiche et parts de tarte salée', '160–170 °C', '4 à 7 min', 'Réchauffer doucement pour chauffer le cœur sans brûler la pâte.'],
+  ['Poulet rôti, viande cuite et boulettes', '160–170 °C', '5 à 9 min', 'Couvrir très légèrement si la surface brunit avant que le centre soit chaud.'],
+  ['Poisson déjà cuit', '150–160 °C', '3 à 5 min', 'Petite durée : le poisson se dessèche vite.'],
+  ['Pain, croissants et viennoiseries', '160 °C', '2 à 4 min', 'Surveiller dès 2 min : ils colorent très vite.'],
+  ['Gratin, lasagnes et plats en sauce', '160 °C', '8 à 12 min', 'Utiliser un plat compatible ; portionner les gros restes pour une chaleur régulière.'],
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: "L'équipe Airfryer Gourmand", url: 'https://airfryergourmand.fr/a-propos/' },
+  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' },
+  datePublished: '2026-09-13',
+  dateModified: '2026-09-13',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Quelle température pour réchauffer des restes au air fryer ?", acceptedAnswer: { '@type': 'Answer', text: "Pour la plupart des restes, commencez entre 160 et 180 °C. Les aliments fragiles comme le poisson supportent mieux 150 à 160 °C ; les frites et légumes rôtis gagnent à être réchauffés vers 180 °C." } },
+    { '@type': 'Question', name: "Comment éviter que les restes se dessèchent au air fryer ?", acceptedAnswer: { '@type': 'Answer', text: "Utilisez une température modérée, réchauffez en petites portions et contrôlez tôt. Pour un plat dense ou une viande déjà cuite, évitez une température trop élevée : la surface doit chauffer sans durcir avant le centre." } },
+    { '@type': 'Question', name: "Peut-on réchauffer un reste laissé toute la nuit à température ambiante ?", acceptedAnswer: { '@type': 'Answer', text: "Non. Un plat cuisiné ne doit pas rester une nuit à température ambiante. Les autorités sanitaires recommandent de le réfrigérer rapidement et de ne pas dépasser deux heures d'attente avant réfrigération." } },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/dossiers/rechauffer-restes-air-fryer/" jsonLd={[articleSchema, faqSchema]} pageType="dossier">
+  <div class="wrap">
+    <article class="article">
+      <div class="crumb">
+        <a href="/">Accueil</a> › Dossiers › Réchauffer les restes
+      </div>
+      <h1>Réchauffer les restes au air fryer : tableau, méthode et sécurité</h1>
+      <div class="byline"><span aria-hidden="true">♻️</span><span>Par <a href="/a-propos/">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 septembre 2026</span></div>
+
+      <div class="quick"><b>En bref :</b> le bon réglage pour des restes est rarement le plus chaud. Commencez à 160–180 °C, réchauffez en petite portion et contrôlez tôt. Le air fryer rend du croustillant aux frites, pains et pâtes, mais ne rend pas sûr un aliment mal conservé.</div>
+
+      <p>Un reste ne mérite pas forcément le micro-ondes. Avec son air chaud circulant, le air fryer est particulièrement utile pour les aliments qui doivent redevenir dorés : frites, légumes rôtis, pizza, quiche, pain ou feuilletés. Le principe est simple : <b>température modérée, temps court, petite quantité</b>. C'est le moyen d'éviter une croûte trop sèche et un centre encore froid.</p>
+
+      <h2>Tableau : temps et températures pour réchauffer les restes</h2>
+      <p>Ces repères s'appliquent à une portion sortie du réfrigérateur et à un appareil déjà chaud. Ils peuvent varier selon l'épaisseur, le remplissage du panier et le modèle : vérifiez toujours le cœur du plat avant de servir.</p>
+      <table class="rectable">
+        <thead><tr><th>Reste à réchauffer</th><th>Température</th><th>Temps</th><th>Le bon geste</th></tr></thead>
+        <tbody>
+          {reheats.map(([food, temp, time, tip]) => <tr><td class="t">{food}</td><td>{temp}</td><td>{time}</td><td>{tip}</td></tr>)}
+        </tbody>
+      </table>
+
+      <h2>La méthode qui marche à tous les coups</h2>
+      <ol>
+        <li><b>Répartissez en une couche.</b> L'air doit passer autour des aliments. Un panier trop plein réchauffe de façon inégale.</li>
+        <li><b>Choisissez 160 à 180 °C.</b> Une température maximale recuit et dessèche la surface avant que le centre ne soit chaud.</li>
+        <li><b>Commencez par le bas de la fourchette.</b> Ajoutez 1 à 2 minutes si nécessaire plutôt que de dépasser la cuisson.</li>
+        <li><b>Retournez, secouez ou mélangez à mi-parcours.</b> C'est surtout utile pour les frites, légumes et petites pièces.</li>
+        <li><b>Servez sans attendre.</b> Le croustillant redescend vite dans une boîte fermée ou sous un couvercle.</li>
+      </ol>
+
+      <h2>Quel reste réchauffer au air fryer ?</h2>
+      <h3>Les restes croustillants : le meilleur terrain de jeu</h3>
+      <p>Frites, pommes de terre rôties, légumes grillés, nuggets, feuilletés et pain retrouvent une surface sèche et dorée au air fryer. Pour les frites, ne tassez pas le panier : quelques minutes à 180 °C avec un secouage à mi-cuisson suffisent souvent. Consultez nos réglages détaillés pour <a href="/recettes/rechauffer-frites-air-fryer/">réchauffer des frites</a> et <a href="/recettes/rechauffer-pain-air-fryer/">redonner du croustillant au pain</a>.</p>
+
+      <h3>Les plats denses : plus doux, plus longtemps</h3>
+      <p>Lasagnes, gratins, quiches et parts de pizza doivent réchauffer sans brûler le dessus. Préférez 160 à 170 °C dans un petit plat compatible avec votre panier. Si le plat est épais, une portion individuelle chauffe plus régulièrement qu'un grand morceau.</p>
+
+      <h3>Viandes et poissons déjà cuits : ne pas les recuire</h3>
+      <p>Pour le poulet rôti, les boulettes ou une pièce de viande cuite, restez vers 160 à 170 °C et arrêtez dès que le centre est bien chaud. Le poisson appelle encore plus de douceur : 150 à 160 °C, juste le temps nécessaire. Le but est de réchauffer, non de poursuivre la cuisson.</p>
+
+      <h2>Le réflexe sécurité avant de réchauffer</h2>
+      <p>Le air fryer améliore la texture, mais il ne corrige pas une mauvaise conservation. Réfrigérez les plats cuisinés rapidement : l'<a href="https://www.anses.fr/fr/system/files/MIC2000sa0006Fi.pdf" target="_blank" rel="noopener">Anses recommande de ne pas dépasser deux heures avant réfrigération</a> et rappelle qu'un plat ne doit pas passer la nuit à température ambiante. Placez les restes dans une boîte propre et fermée, puis mangez-les rapidement.</p>
+      <p>Pour réduire le gaspillage sans prendre de risque, l'<a href="https://agirpourlatransition.ademe.fr/particuliers/reduire-dechets/eviter-gaspillage/reduire-gaspillage-alimentaire" target="_blank" rel="noopener">ADEME conseille aussi de couvrir les plats avant de les ranger</a> et de garder les aliments à consommer vite bien visibles. En cas de doute sur l'odeur, l'aspect, le temps hors du froid ou la date limite, on ne tente pas de « sauver » le reste avec une cuisson plus forte.</p>
+
+      <aside class="book-dossier-box">
+        <div aria-hidden="true" class="book-dossier-icon">📖</div>
+        <div>
+          <strong>Vous préférez transformer les restes plutôt que seulement les réchauffer ?</strong>
+          <p>Notre livre Air Fryer Anti-Gaspi propose 100 recettes pour cuisiner pain, riz, pâtes, légumes, protéines cuites et fruits mûrs autrement.</p>
+          <a href="/livres/air-fryer-anti-gaspi/" data-book-entry data-placement="dossier_rechauffage_restes" data-page-type="dossier" data-page-id="rechauffer-restes-air-fryer">Découvrir Air Fryer Anti-Gaspi →</a>
+        </div>
+      </aside>
+
+      <h2>Questions fréquentes</h2>
+      <h3>Quelle température pour réchauffer des restes au air fryer ?</h3>
+      <p>Commencez entre 160 et 180 °C. Le poisson est plus à l'aise entre 150 et 160 °C ; frites et légumes rôtis gagnent à être réchauffés vers 180 °C.</p>
+      <h3>Comment éviter que les restes se dessèchent ?</h3>
+      <p>Utilisez une température modérée, une petite portion et un temps court. Vérifiez tôt : il vaut mieux ajouter 1 à 2 minutes que laisser durcir la surface.</p>
+      <h3>Peut-on réchauffer un reste laissé toute la nuit dehors ?</h3>
+      <p>Non. Un plat cuisiné qui a passé la nuit à température ambiante ne doit pas être consommé. La cuisson ne permet pas de garantir sa sécurité.</p>
+
+      <p class="end-cta"><a class="cta" href="/temps-de-cuisson/">🌡️ Trouver le bon temps de cuisson</a></p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .crumb{color:#9a8c7d;font-size:.9rem;margin-bottom:10px}.crumb a,.byline a{color:var(--brand-d);font-weight:700;text-decoration:none}.byline{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px}.book-dossier-box{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:16px;padding:20px 22px;margin:24px 0}.book-dossier-icon{font-size:2rem}.book-dossier-box p{margin:5px 0 7px;color:#5f5147}.book-dossier-box a{color:var(--brand-d);font-weight:800}.end-cta{margin-top:26px}@media(max-width:600px){.book-dossier-box{grid-template-columns:1fr;gap:8px}}
+</style>
