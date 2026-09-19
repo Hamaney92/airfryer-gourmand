@@ -4,6 +4,9 @@ import { SITE, getPublishedRecipes, catInfo } from '../lib/site';
 export const GET: APIRoute = async () => {
   const recipes = await getPublishedRecipes();
   const catSlugs = [...new Set(recipes.map((recipe) => catInfo(recipe.data.category).slug))];
+  const canonicalRecipeSlugs: Record<string, string> = {
+    'poisson-pane-surgele': 'poisson-pane-surgele-air-fryer',
+  };
   const globToPaths = (mods: Record<string, unknown>, base: string) =>
     Object.keys(mods)
       .map((file) => file.split('/').pop()!.replace(/\.astro$/, ''))
@@ -29,8 +32,9 @@ export const GET: APIRoute = async () => {
     const updated = recipe.data.updatedDate;
     const modified = updated && updated >= published && updated.getTime() <= Date.now()
       ? updated : published;
+    const recipeSlug = canonicalRecipeSlugs[recipe.id] ?? recipe.id;
     entries.push({
-      path: '/recettes/' + recipe.id + '/',
+      path: '/recettes/' + recipeSlug + '/',
       lastmod: modified.toISOString().split('T')[0],
     });
   }
