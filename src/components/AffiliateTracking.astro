@@ -57,6 +57,7 @@
             ? 'footer'
             : 'content';
         send('book_page_entry_click', {
+          book_id: bookEntry.dataset.bookId || 'non_renseigne',
           placement: bookEntry.dataset.placement || automaticPlacement,
           page_type: bookEntry.dataset.pageType || document.body.dataset.pageType || 'page',
           page_id: bookEntry.dataset.pageId || window.location.pathname,

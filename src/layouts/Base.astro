@@ -1,12 +1,13 @@
 ---
 import '../styles/global.css';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
+import BooksBanner from '../components/BooksBanner.astro';
 export interface Props { title: string; description: string; pageType?: string; }
 const { title, description, pageType = 'page' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const cats = [
   ['Recettes','/recettes/'],['Viandes','/categorie/viandes/'],['Poissons','/categorie/poissons/'],
-  ['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/'],['Notre livre','/livre/']
+  ['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/'],['Nos livres','/livre/']
 ];
 ---
 <!DOCTYPE html>
@@ -43,6 +44,7 @@ const cats = [
       <button class="icobtn burger" aria-label="Menu">☰</button>
     </div>
   </header>
+  <BooksBanner pageType={pageType} />
   <main>
     <slot />
   </main>

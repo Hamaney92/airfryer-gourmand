@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { SITE, USAGES } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
+import BooksBanner from '../components/BooksBanner.astro';
 
 export interface Props {
   title: string;
@@ -69,7 +70,7 @@ const year = new Date().getFullYear();
           ))}
           <a href="/recettes/">Toutes les recettes</a>
           <a href="/guides/">Guides</a>
-          <a href="/livre/" data-book-entry data-placement="header" data-page-type={pageType}>Notre livre</a>
+          <a href="/livre/" data-book-entry data-placement="header" data-page-type={pageType}>Nos livres</a>
         </nav>
         <button class="icobtn mobile-menu-trigger" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -77,6 +78,7 @@ const year = new Date().getFullYear();
       </div>
     </header>
 
+    {!noindex && <BooksBanner pageType={pageType} />}
     <main>
       <slot />
     </main>
@@ -101,7 +103,7 @@ const year = new Date().getFullYear();
             <a href="/temps-de-cuisson/">Temps de cuisson</a>
             <a href="/recettes/">Toutes les recettes</a>
             <a href="/guides/">Guides</a>
-            <a href="/livre/" data-book-entry data-placement="footer" data-page-type={pageType}>Notre livre</a>
+            <a href="/livre/" data-book-entry data-placement="footer" data-page-type={pageType}>Nos livres</a>
           </div>
           <div>
             <h4>Le site</h4>
