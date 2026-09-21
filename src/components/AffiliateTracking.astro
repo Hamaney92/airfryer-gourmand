@@ -18,6 +18,18 @@
       const target = event.target;
       if (!(target instanceof Element)) return;
 
+      const downloadLink = target.closest('a[download]');
+      if (downloadLink instanceof HTMLAnchorElement) {
+        const url = new URL(downloadLink.href, window.location.href);
+        if (url.origin === window.location.origin && url.pathname === '/tableau-temps-cuisson-air-fryer.pdf') {
+          send('cooking_pdf_download', {
+            placement: downloadLink.dataset.placement || 'content',
+            page_id: window.location.pathname,
+            file_name: 'tableau-temps-cuisson-air-fryer.pdf',
+          });
+        }
+      }
+
       const affiliateLink = target.closest(
         'a[data-affiliate-network], a[href*="amazon.fr/"]'
       );

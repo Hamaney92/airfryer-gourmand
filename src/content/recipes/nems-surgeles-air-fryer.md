@@ -1,7 +1,7 @@
 ---
 title: "Nems surgelés au air fryer : 12 à 15 min à 200 °C"
 metaTitle: "Nems surgelés au air fryer : 12–15 min à 200 °C"
-description: "Nems surgelés croustillants sans friteuse : 12 à 15 min à 200 °C, sans décongélation. Le bon geste pour les dorer partout, du premier coup."
+description: "Quel temps de cuisson pour des nems surgelés au air fryer ? Repère de 12 à 15 min à 200 °C, conseils de placement et contrôle de la garniture."
 category: "Surgelé"
 image: "/img/nems-surgeles-air-fryer.jpg"
 keyword: "nems surgelés air fryer"
@@ -13,7 +13,7 @@ servings: 3
 temp: "200 °C"
 quickAnswer: "Cuis les nems surgelés 12 à 15 min à 200 °C au air fryer, en les retournant à mi-cuisson, sans décongeler. Une pulvérisation d'huile renforce le croustillant."
 ingredients:
-  - "6 à 8 nems surgelés"
+  - "6 à 8 nems surgelés aux légumes ou aux crevettes"
   - "Optionnel : 1 pulvérisation d'huile pour un croustillant maximal"
 steps:
   - "Préchauffe l'air fryer 2-3 min à 200 °C."
@@ -27,7 +27,7 @@ tips:
   - "Retourne-les à mi-cuisson pour une galette de riz dorée sur toutes les faces."
 faq:
   - q: "Combien de temps cuire des nems surgelés au air fryer ?"
-    a: "12 à 15 minutes à 200 °C, en les retournant à mi-cuisson, directement congelés. Certains modèles dorent en 12 minutes : surveillez la couleur."
+    a: "Le repère est de 12 à 15 minutes à 200 °C, avec un retournement à mi-cuisson. Suivez d'abord le paquet, notamment pour la cuisson sans décongélation. Vérifiez la garniture : une enveloppe dorée ne suffit pas."
   - q: "Faut-il décongeler les nems avant ?"
     a: "Non, ils se cuisent directement congelés. Décongelés, la galette de riz ramollit et ne croustille plus."
   - q: "Faut-il de l'huile pour les nems au air fryer ?"
@@ -37,7 +37,7 @@ faq:
   - q: "Peut-on réchauffer des nems déjà cuits au air fryer ?"
     a: "Oui, 3 à 5 minutes à 180 °C leur redonnent tout leur croustillant, bien mieux qu'au micro-ondes qui les ramollit."
 pubDate: 2026-08-01
-updatedDate: 2026-09-13
+updatedDate: 2026-09-21
 ---
 
 Les nems surgelés au air fryer, c'est la révélation pour tous les amateurs de cuisine asiatique : une **galette de riz dorée et croustillante**, un cœur chaud et parfumé, avec le croustillant de la friteuse mais **sans le bain d'huile** ni l'odeur. Compte 12 à 15 minutes de cuisson, directement depuis le congélateur, selon les instructions du paquet.
@@ -75,6 +75,12 @@ Lorsque le paquet prévoit une cuisson sans décongélation, dépose les nems **
 Les mini-nems et les grosses pièces ne chauffent pas à la même vitesse. Commence à contrôler avant la fin du créneau indiqué, sans empiler les pièces. Pour une deuxième fournée dans un appareil déjà chaud, surveille de nouveau la fin de cuisson. Si l'extérieur brunit trop vite, vérifie les réglages du fabricant avant de poursuivre.
 
 Pour d'autres produits, consulte nos [recettes de surgelés au air fryer](/categorie/surgeles/) et le [guide des samoussas surgelés](/recettes/samoussas-surgeles-air-fryer/).
+
+## Pourquoi les nems sont-ils dorés dehors et froids au centre ?
+
+Une enveloppe colorée ne prouve pas que la garniture est cuite. Les grosses pièces, les nems entassés et les produits à garniture crue demandent une attention différente. Consulte les indications du sachet et poursuis la cuisson selon celles-ci ; ne sers pas les nems sur la seule base de leur couleur.
+
+Pour un repas familial, préfère plusieurs fournées espacées à un panier rempli en hauteur. Notre [guide airfryer XXL pour la famille](/guides/air-fryer-xxl-familial/) explique pourquoi la surface d'un tiroir compte autant que son volume.
 
 ## Avec quoi les servir
 

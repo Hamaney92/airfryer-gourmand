@@ -13,7 +13,7 @@ servings: 3
 temp: "180 °C"
 quickAnswer: "Cuis les samoussas surgelés 12 à 15 min à 180 °C au air fryer, en les retournant à mi-cuisson, sans décongeler. Vérifie la garniture à cœur et suis en priorité les indications du paquet."
 ingredients:
-  - "8 à 12 samoussas surgelés"
+  - "8 à 12 samoussas surgelés aux légumes"
   - "Optionnel : 1 pulvérisation d'huile pour un doré parfait"
 steps:
   - "Préchauffe l'air fryer 2-3 min à 180 °C."
@@ -37,14 +37,14 @@ faq:
   - q: "Peut-on cuire des samoussas frais (non surgelés) au air fryer ?"
     a: "Pour notre recette maison avec farce déjà cuite, comptez environ 12 minutes à 180 °C, en retournant à mi-cuisson. Consultez la recette maison pour la farce et le pliage."
 pubDate: 2026-07-31
-updatedDate: 2026-09-13
+updatedDate: 2026-09-21
 ---
 
 Les samoussas surgelés au air fryer, c'est l'entrée ou l'apéro express par excellence : une **feuille de brick dorée et croustillante**, une garniture chaude et parfumée, sans le bain d'huile de la friture et sans four à préchauffer. Le repère de cuisson est de 12 à 15 minutes à 180 °C, selon la taille et les instructions du paquet.
 
 Le secret d'une brick bien croustillante : **ne pas décongeler** et cuire en une seule couche.
 
-## Temps de cuisson
+## Quel temps de cuisson pour des samoussas surgelés au air fryer ?
 
 À 180 °C, en retournant à mi-cuisson. Commence par vérifier les consignes du paquet : elles dépendent du produit et de sa garniture.
 
@@ -61,7 +61,13 @@ La feuille de brick sèche vite et peut rester pâle. Deux gestes : une **légè
 
 ## Directement du congélateur
 
-Comme tous les feuilletés surgelés, les samoussas se cuisent **sans décongélation**. Décongelés, la feuille de brick ramollit, se détrempe et perd son croustillant. Congelés, ils gardent leur tenue. Une seule couche dans le panier, et l'air chaud fait le reste.
+Lorsque le paquet prévoit une cuisson sans décongélation, dispose les samoussas encore congelés dans le panier. Suis les consignes du produit plutôt qu'une règle commune à tous les surgelés. Garde une seule couche et retourne les pièces à mi-cuisson.
+
+## Comment adapter la cuisson à une grande quantité ?
+
+Pour des samoussas surgelés, augmenter la quantité ne consiste pas à doubler le temps. Répartis les pièces en une couche ou prépare plusieurs fournées. Si tu utilises deux tiroirs, respecte les consignes de ton appareil et vérifie la cuisson dans chaque zone avant de servir.
+
+Besoin de choisir un appareil pour ces repas ? Consulte notre [guide airfryer XXL familial](/guides/air-fryer-xxl-familial/) pour comparer grande cuve et double tiroir.
 
 ## Samoussas maison ou produit du commerce ?
 

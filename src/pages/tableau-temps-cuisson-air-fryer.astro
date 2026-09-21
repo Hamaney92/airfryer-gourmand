@@ -107,7 +107,7 @@ const jsonLd = [
       </nav>
       <div class="table-search" hidden>
         <label for="food-search">Rechercher un aliment dans le tableau</label>
-        <input id="food-search" type="search" placeholder="Ex. nems, chipolatas, poivrons…" autocomplete="off" />
+        <input id="food-search" type="search" placeholder="Ex. nems, poulet, poivrons…" autocomplete="off" />
         <p id="food-search-status" role="status" aria-live="polite"></p>
       </div>
     </section>
@@ -133,6 +133,16 @@ const jsonLd = [
         </div>
       </section>
     ))}
+
+    <section aria-labelledby="choisir-outil">
+      <h2 id="choisir-outil">PDF à imprimer ou convertisseur : quel outil utiliser ?</h2>
+      <p>Le PDF gratuit sert de mémo à conserver en cuisine. Le tableau de cette page donne accès aux recettes détaillées, avec leurs quantités et précautions. Pour adapter une durée indiquée dans une recette au four, utilise plutôt le <a href="/temps-de-cuisson/">convertisseur four vers air fryer</a> : son résultat reste un point de départ à contrôler pendant la cuisson.</p>
+      <p>Pour commencer : <a href="/recettes/nems-surgeles-air-fryer/">nems surgelés</a>, <a href="/recettes/samoussas-surgeles-air-fryer/">samoussas surgelés</a>, <a href="/recettes/escalope-de-poulet-air-fryer/">escalopes de poulet</a> et <a href="/recettes/dinde-air-fryer/">dinde</a>.</p>
+    </section>
+    <aside aria-label="Livres de recettes">
+      <h2>Envie d'idées de repas, au-delà des temps de cuisson ?</h2>
+      <p>Le mémo reste gratuit et accessible sans inscription. Pour découvrir nos deux livres et choisir celui qui correspond à ta cuisine, consulte <a href="/livre/" data-book-entry data-placement="cooking_table_after_content" data-page-type="tool">nos livres de recettes au air fryer</a>.</p>
+    </aside>
 
     <h2>Questions fréquentes</h2>
     <h3>Quelle température pour cuire au air fryer ?</h3>
