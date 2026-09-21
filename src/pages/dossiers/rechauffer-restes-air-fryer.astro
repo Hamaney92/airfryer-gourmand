@@ -7,7 +7,7 @@ const description = "Réchauffez les restes au air fryer sans les dessécher : t
 const reheats = [
   ['Frites, potatoes et légumes rôtis', '180 °C', '3 à 6 min', 'Secouer à mi-cuisson ; une seule couche pour retrouver du croustillant.'],
   ['Pizza, quiche et parts de tarte salée', '160–170 °C', '4 à 7 min', 'Réchauffer doucement pour chauffer le cœur sans brûler la pâte.'],
-  ['Poulet rôti, viande cuite et boulettes', '160–170 °C', '5 à 9 min', 'Couvrir très légèrement si la surface brunit avant que le centre soit chaud.'],
+  ['Poulet rôti, viande cuite et boulettes', '160–170 °C', '5 à 9 min', 'Vérifier le centre ; ne pas poser une couverture libre susceptible de toucher la résistance.'],
   ['Poisson déjà cuit', '150–160 °C', '3 à 5 min', 'Petite durée : le poisson se dessèche vite.'],
   ['Pain, croissants et viennoiseries', '160 °C', '2 à 4 min', 'Surveiller dès 2 min : ils colorent très vite.'],
   ['Gratin, lasagnes et plats peu liquides', '160 °C', '8 à 12 min', 'Utiliser un plat compatible ; ne jamais verser une sauce liquide dans le panier.'],
@@ -21,7 +21,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: "L'équipe Airfryer Gourmand", url: 'https://airfryergourmand.fr/a-propos/' },
   publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' },
   datePublished: '2026-09-13',
-  dateModified: '2026-09-13',
+  dateModified: '2026-09-21',
 };
 
 const faqSchema = {
@@ -35,14 +35,16 @@ const faqSchema = {
 };
 ---
 
-<Base title={title} description={description} path="/dossiers/rechauffer-restes-air-fryer/" jsonLd={[articleSchema, faqSchema]} pageType="dossier">
+<Base title={title} description={description} pageType="dossier">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <div class="wrap">
     <article class="article">
       <div class="crumb">
         <a href="/">Accueil</a> › Dossiers › Réchauffer les restes
       </div>
       <h1>Réchauffer les restes au air fryer : tableau, méthode et sécurité</h1>
-      <div class="byline"><span aria-hidden="true">♻️</span><span>Par <a href="/a-propos/">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 septembre 2026</span></div>
+      <div class="byline"><span aria-hidden="true">♻️</span><span>Par <a href="/a-propos/">L'équipe Airfryer Gourmand</a> · Mis à jour le 21 septembre 2026</span></div>
 
       <div class="quick"><b>En bref :</b> le bon réglage pour des restes est rarement le plus chaud. Commencez à 160–180 °C, réchauffez en petite portion et contrôlez tôt. Le air fryer rend du croustillant aux frites, pains et pâtes, mais ne rend pas sûr un aliment mal conservé.</div>
 
@@ -50,20 +52,22 @@ const faqSchema = {
 
       <h2>Tableau : temps et températures pour réchauffer les restes</h2>
       <p>Ces repères s'appliquent à une portion sortie du réfrigérateur et à un appareil déjà chaud. Ils peuvent varier selon l'épaisseur, le remplissage du panier et le modèle : vérifiez toujours le cœur du plat avant de servir.</p>
+      <div class="reheat-table" role="region" aria-label="Tableau de réchauffage, défilement horizontal sur petit écran" tabindex="0">
       <table class="rectable">
         <thead><tr><th>Reste à réchauffer</th><th>Température</th><th>Temps</th><th>Le bon geste</th></tr></thead>
         <tbody>
           {reheats.map(([food, temp, time, tip]) => <tr><td class="t">{food}</td><td>{temp}</td><td>{time}</td><td>{tip}</td></tr>)}
         </tbody>
       </table>
+      </div>
 
-      <h2>La méthode qui marche à tous les coups</h2>
+      <h2>Comment réchauffer sans brûler l'extérieur ?</h2>
       <ol>
         <li><b>Répartissez en une couche.</b> L'air doit passer autour des aliments. Un panier trop plein réchauffe de façon inégale.</li>
         <li><b>Choisissez 160 à 180 °C.</b> Une température maximale recuit et dessèche la surface avant que le centre ne soit chaud.</li>
         <li><b>Commencez par le bas de la fourchette.</b> Ajoutez 1 à 2 minutes si nécessaire plutôt que de dépasser la cuisson.</li>
         <li><b>Retournez, secouez ou mélangez à mi-parcours.</b> C'est surtout utile pour les frites, légumes et petites pièces.</li>
-        <li><b>Servez sans attendre.</b> Le croustillant redescend vite dans une boîte fermée ou sous un couvercle.</li>
+        <li><b>Contrôlez le centre avant de servir.</b> La portion doit être très chaude dans toute son épaisseur, pas seulement dorée en surface. Servez ensuite sans attendre.</li>
       </ol>
 
       <h2>Quel reste réchauffer au air fryer ?</h2>
@@ -73,10 +77,17 @@ const faqSchema = {
       <h3>Les plats denses : plus doux, plus longtemps</h3>
       <p>Lasagnes, gratins, quiches et parts de pizza doivent réchauffer sans brûler le dessus. Préférez 160 à 170 °C dans un petit plat compatible avec votre panier. Si le plat est épais, une portion individuelle chauffe plus régulièrement qu'un grand morceau. Ne versez jamais une sauce ou une soupe liquide directement dans le panier : utilisez un plat stable adapté à la chaleur.</p>
 
-      <h3>Viandes et poissons déjà cuits : ne pas les recuire</h3>
-      <p>Pour le poulet rôti, les boulettes ou une pièce de viande cuite, restez vers 160 à 170 °C et arrêtez dès que le centre est bien chaud. Le poisson appelle encore plus de douceur : 150 à 160 °C, juste le temps nécessaire. Le but est de réchauffer, non de poursuivre la cuisson.</p>
+      <h3>Viandes et poissons déjà cuits : contrôler toute l'épaisseur</h3>
+      <p>Pour le poulet rôti, les boulettes ou une pièce de viande cuite, le réglage indicatif est de 160 à 170 °C ; pour le poisson, de 150 à 160 °C. Une grosse portion peut demander plus de temps que le tableau. Vérifiez que l'ensemble est très chaud jusqu'au centre avant de servir.</p>
+
+      <h2>Réchauffer une pizza ou cuire une pizza surgelée ?</h2>
+      <p>Le tableau ci-dessus concerne des restes déjà cuits, conservés au réfrigérateur. Une pizza surgelée à cuire n'a pas le même état de départ : consultez la <a href="/recettes/pizza-surgelee-air-fryer/">méthode pour la pizza surgelée</a> et les instructions de son emballage. Pour un plat dense, la page <a href="/recettes/hachis-parmentier-air-fryer/">hachis parmentier</a> distingue également gratinage et réchauffage.</p>
+
+      <h2>Quand choisir un autre appareil ?</h2>
+      <p>Une soupe ou une sauce liquide se réchauffe plus facilement dans une casserole adaptée, où l'on peut mélanger. Pour un plat volumineux qui ne tient pas correctement dans le panier, choisissez un appareil et un récipient adaptés plutôt que de bloquer la circulation de l'air. Ne transposez pas les minutes de ce tableau au four ou au micro-ondes.</p>
 
       <h2>Le réflexe sécurité avant de réchauffer</h2>
+      <p>Réchauffez seulement la portion à manger. La <a href="https://www.food.gov.uk/safety-hygiene/cooking-your-food" target="_blank" rel="noopener">Food Standards Agency recommande de ne réchauffer les restes qu'une fois</a>, et de les chauffer complètement. Une odeur normale ne prouve pas à elle seule qu'un aliment a été correctement conservé.</p>
       <p>Le air fryer améliore la texture, mais il ne corrige pas une mauvaise conservation. Réfrigérez les plats cuisinés rapidement : l'<a href="https://www.anses.fr/fr/system/files/MIC2000sa0006Fi.pdf" target="_blank" rel="noopener">Anses recommande de ne pas dépasser deux heures avant réfrigération</a> et rappelle qu'un plat ne doit pas passer la nuit à température ambiante. Placez les restes dans une boîte propre et fermée, puis mangez-les rapidement.</p>
       <p>Pour réduire le gaspillage sans prendre de risque, l'<a href="https://agirpourlatransition.ademe.fr/particuliers/reduire-dechets/eviter-gaspillage/reduire-gaspillage-alimentaire" target="_blank" rel="noopener">ADEME conseille aussi de couvrir les plats avant de les ranger</a> et de garder les aliments à consommer vite bien visibles. En cas de doute sur l'odeur, l'aspect, le temps hors du froid ou la date limite, on ne tente pas de « sauver » le reste avec une cuisson plus forte.</p>
 
@@ -98,10 +109,12 @@ const faqSchema = {
       <p>Non. Un plat cuisiné qui a passé la nuit à température ambiante ne doit pas être consommé. La cuisson ne permet pas de garantir sa sécurité.</p>
 
       <p class="end-cta"><a class="cta" href="/temps-de-cuisson/">🌡️ Trouver le bon temps de cuisson</a></p>
+      <p>Pour transformer une portion de poulet déjà cuit, consultez le <a href="/recettes/wrap-air-fryer/">wrap au air fryer</a>. Pour conserver les repères de cuisson des recettes, le <a href="/tableau-temps-cuisson-air-fryer/">tableau PDF à imprimer</a> est gratuit ; il ne remplace pas les précautions de réchauffage de cette page.</p>
     </article>
   </div>
 </Base>
 
 <style>
+  .reheat-table{max-width:100%;overflow-x:auto}.reheat-table:focus-visible{outline:2px solid var(--brand-d);outline-offset:3px}
   .crumb{color:#9a8c7d;font-size:.9rem;margin-bottom:10px}.crumb a,.byline a{color:var(--brand-d);font-weight:700;text-decoration:none}.byline{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px}.book-dossier-box{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;background:linear-gradient(135deg,#fff3e7,#fffaf5);border:1px solid #ffd6b8;border-radius:16px;padding:20px 22px;margin:24px 0}.book-dossier-icon{font-size:2rem}.book-dossier-box p{margin:5px 0 7px;color:#5f5147}.book-dossier-box a{color:var(--brand-d);font-weight:800}.end-cta{margin-top:26px}@media(max-width:600px){.book-dossier-box{grid-template-columns:1fr;gap:8px}}
 </style>

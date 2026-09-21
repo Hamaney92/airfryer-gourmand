@@ -1,7 +1,7 @@
 ---
-title: "Croque-madame au air fryer : gratiné et œuf coulant"
-metaTitle: "Croque-madame air fryer : temps de cuisson"
-description: "Le temps de cuisson exact du croque-madame au air fryer : 180 °C, 8 à 12 min, pain doré, fromage gratiné et œuf au plat coulant sur le dessus. L'astuce pour l'œuf."
+title: "Croque-madame au air fryer : jambon de dinde et œuf"
+metaTitle: "Croque-madame au air fryer : jambon de dinde et œuf"
+description: "Croque-madame au air fryer : montage au jambon de dinde, cuisson en deux étapes et conseils pour retenir l'œuf sans brûler le pain."
 category: "Plat"
 image: "/img/croque-madame-air-fryer.jpg"
 keyword: "croque madame air fryer"
@@ -11,61 +11,53 @@ prepTime: 8
 cookTime: 10
 servings: 2
 temp: "180 °C"
-quickAnswer: "Cuis un croque-madame au air fryer 8 à 12 min à 180 °C : monte le croque (pain, jambon, fromage, béchamel), cuis-le d'abord ~6 min, puis casse un œuf dessus et poursuis 3-5 min jusqu'à ce que le blanc soit pris et le jaune coulant. Le pain dore et le fromage gratine."
+quickAnswer: "Prépare le croque-madame avec du jambon de dinde. À 180 °C, le repère est d'environ 6 min pour gratiner le sandwich, puis 3 à 5 min après ajout de l'œuf, à ajuster selon l'appareil. Contrôle la cuisson de l'œuf : ces durées ne garantissent pas un jaune coulant."
 ingredients:
   - "4 tranches de pain de mie"
-  - "Jambon, fromage râpé, béchamel"
+  - "2 tranches de jambon de dinde"
+  - "Fromage râpé, béchamel"
   - "2 œufs"
-  - "Beurre, poivre, muscade"
+  - "Poivre, muscade"
 steps:
-  - "Monte les croques : pain, béchamel, jambon, fromage, pain, fromage dessus."
-  - "Cuis 6 min à 180 °C pour dorer et gratiner."
-  - "Casse un œuf sur chaque croque."
-  - "Poursuis 3 à 5 min : le blanc prend, le jaune reste coulant."
-  - "Poivre et sers aussitôt."
+  - "Monte les croques avec pain, béchamel, jambon de dinde et fromage ; termine par du fromage sur le dessus."
+  - "Dispose les croques à plat dans un support compatible avec la notice et capable de retenir un éventuel débordement d'œuf."
+  - "Fais gratiner environ 6 min à 180 °C, en surveillant le pain."
+  - "Casse chaque œuf dans une tasse, puis dépose-le doucement sur le croque en gardant le support stable."
+  - "Poursuis à titre indicatif 3 à 5 min et contrôle que le blanc est pris ; prolonge selon la cuisson souhaitée. Sers immédiatement."
 tips:
-  - "Ajoute l'œuf en 2e partie de cuisson pour garder le jaune coulant."
-  - "Un rebord de fromage retient l'œuf sur le croque."
-  - "Surveille le jaune : quelques minutes suffisent."
+  - "Les durées sont indicatives : contrôle la cuisson avant de servir."
 faq:
-  - q: "Combien de temps cuire un croque-madame au air fryer ?"
-    a: "8 à 12 minutes à 180 °C au total : environ 6 minutes pour dorer et gratiner le croque, puis 3 à 5 minutes après avoir cassé l'œuf dessus, jusqu'à ce que le blanc soit pris et le jaune encore coulant."
-  - q: "Comment garder le jaune d'œuf coulant sur un croque-madame au air fryer ?"
-    a: "Ajoutez l'œuf en deuxième partie de cuisson, une fois le croque déjà doré. Cassez-le sur le dessus et poursuivez seulement 3 à 5 minutes : le blanc prend mais le jaune reste coulant. Surveillez bien, car il fige vite."
-  - q: "Comment empêcher l'œuf de glisser du croque-madame ?"
-    a: "Formez un petit rebord avec le fromage râpé sur le dessus du croque avant de casser l'œuf : ce muret retient le blanc. Choisissez aussi un pain de mie assez large et une surface bien plane."
-  - q: "Peut-on faire un croque-madame sans béchamel au air fryer ?"
-    a: "Oui : remplacez la béchamel par un peu de crème fraîche, de la moutarde ou simplement plus de fromage. La béchamel apporte du moelleux, mais un croque plus simple (jambon-fromage + œuf) fonctionne très bien au air fryer."
-  - q: "Quelle différence entre croque-monsieur et croque-madame ?"
-    a: "Le croque-madame est un croque-monsieur (pain, jambon, fromage, béchamel, gratiné) surmonté d'un œuf au plat. C'est ce jaune coulant sur le dessus qui fait toute la différence et le gourmand du plat."
+  - q: "Combien de temps pour un croque-madame au air fryer ?"
+    a: "Le repère est d'environ 6 minutes à 180 °C pour le croque, puis 3 à 5 minutes après ajout de l'œuf, soit environ 9 à 11 minutes. Adapte à l'appareil et à la cuisson de l'œuf."
+  - q: "Comment éviter que l'œuf coule dans le panier ?"
+    a: "Utilise un support compatible pouvant retenir les débordements. Un rebord de fromage ne garantit pas à lui seul que le blanc restera sur le pain."
+  - q: "Peut-on faire un croque-madame sans béchamel ?"
+    a: "Oui, utilise un peu de crème à la place, sans détremper le pain. Garde le jambon de dinde, le fromage et l'œuf."
+  - q: "Peut-on préparer le croque-madame sans viande ?"
+    a: "Oui, remplace le jambon de dinde par des champignons déjà cuits et égouttés."
 pubDate: 2026-09-09
+updatedDate: 2026-09-21
 ---
 
-Le croque-madame au air fryer, c'est le croque-monsieur en version gourmande : **un pain doré, un fromage gratiné et un œuf au plat coulant** posé sur le dessus. L'air fryer le réussit mieux que l'appareil à croque, avec un vrai gratiné — et l'œuf en bonus.
+Le croque-madame au air fryer se prépare ici avec du jambon de dinde. La cuisson en deux étapes permet de gratiner d'abord le sandwich, puis d'ajouter l'œuf. Le pain, la taille de l'œuf et l'appareil changent le résultat : surveille plutôt que de suivre un minuteur à la seconde.
 
-Le secret d'un jaune coulant : ajouter l'œuf en **deuxième partie** de cuisson.
+## Quel temps de cuisson pour le croque-madame ?
 
-## Temps de cuisson
-
-À 180 °C, en deux temps.
-
-| Étape | Température | Durée |
+| Étape | Réglage indicatif | Ce qu'il faut observer |
 |---|---|---|
-| Croque (dorer/gratiner) | 180 °C | ~6 min |
-| Après l'œuf | 180 °C | 3–5 min |
+| Croque sans œuf | Environ 6 min à 180 °C | Fromage fondu, pain qui commence à dorer |
+| Après ajout de l'œuf | Environ 3–5 min à 180 °C | Blanc pris, cuisson du jaune à contrôler |
 
-Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+Ces repères ne garantissent pas un jaune coulant. Si le pain colore trop vite, adapte le réglage selon la notice. Pour les jeunes enfants, les femmes enceintes, les personnes âgées ou immunodéprimées, préfère un œuf entièrement cuit : l'[Anses déconseille les œufs crus ou peu cuits à ces publics](https://www.anses.fr/fr/system/files/NUT2017SA0141.pdf).
 
-## Le piège à éviter : le jaune trop cuit
+## Comment garder l'œuf sur le croque ?
 
-Casser l'œuf **dès le départ** le fait figer avant que le croque soit doré. La parade : cuis d'abord le croque **~6 minutes** pour le dorer et le gratiner, **puis** casse l'œuf dessus et poursuis seulement **3-5 minutes** — le blanc prend, le jaune reste **coulant**. Astuce : forme un **rebord de fromage** pour retenir l'œuf.
+Choisis un support de cuisson compatible avec l'air fryer, stable et assez grand pour retenir le blanc. Un petit rebord de fromage aide au montage mais peut fondre : il ne remplace pas un support adapté. Ne verse pas l'œuf directement au-dessus des trous du panier.
 
-## Gratiné, façon bistrot
+Casse l'œuf dans une tasse pour vérifier qu'il est intact, puis verse-le doucement sur le croque. Tu peux aussi cuire l'œuf séparément avec une méthode adaptée et le poser sur le sandwich au service.
 
-Monte le croque dans l'ordre : pain, **béchamel**, jambon, fromage, pain, et une couche de **fromage râpé** sur le dessus pour le gratin. L'air fryer dore le pain et gratine le fromage à merveille. Une pointe de **muscade** dans la béchamel, un tour de poivre sur l'œuf, et c'est un déjeuner de bistrot en 10 minutes.
+## Quelle garniture choisir ?
 
-## Pour aller plus loin
+Utilise du jambon de dinde et une couche modérée de béchamel. Trop de sauce ramollit le pain ; des champignons cuits et égouttés permettent une variante sans viande. Sers avec une salade à côté.
 
-- avec une salade verte à la vinaigrette, façon brasserie ;
-- pour la version sans œuf, vois le [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/) ;
-- pour d'autres plats express, vois le [panini](/recettes/panini-air-fryer/) et le [wrap au air fryer](/recettes/wrap-air-fryer/).
+Pour varier les repas, retrouve le [wrap au poulet déjà cuit](/recettes/wrap-air-fryer/) et le [croque-monsieur](/recettes/croque-monsieur-air-fryer/). Le [tableau de cuisson à imprimer](/tableau-temps-cuisson-air-fryer/) complète les recettes détaillées.

@@ -1,7 +1,7 @@
 ---
-title: "Pizza surgelée au air fryer : pâte croustillante"
-metaTitle: "Pizza surgelée air fryer : temps de cuisson"
-description: "Le temps de cuisson exact de la pizza surgelée au air fryer : 180 °C, 6 à 10 min, pâte croustillante et fromage fondu, sans four à préchauffer."
+title: "Pizza surgelée au air fryer : cuisson et taille du panier"
+metaTitle: "Pizza surgelée au air fryer : cuisson et taille du panier"
+description: "Pizza surgelée au air fryer : repères de cuisson, format du panier et contrôle du centre. Les consignes du paquet priment selon la pâte et la garniture."
 category: "Surgelé"
 image: "/img/pizza-surgelee-air-fryer.jpg"
 keyword: "pizza surgelée air fryer"
@@ -11,60 +11,53 @@ prepTime: 1
 cookTime: 8
 servings: 2
 temp: "180 °C"
-quickAnswer: "Cuis la pizza surgelée au air fryer 6 à 10 min à 180 °C, sans décongeler ni préchauffer le four. Vérifie qu'elle rentre dans le panier (coupe-la si besoin). La pâte ressort croustillante et le fromage fondu, plus vite qu'au four."
+quickAnswer: "Pour une petite pizza surgelée adaptée au panier, 6 à 10 min à 180 °C est un repère indicatif, pas une durée universelle. Suis les instructions du paquet et de l'appareil. Vérifie que le centre et la pâte sont cuits : du fromage fondu ne suffit pas."
 ingredients:
-  - "1 pizza surgelée (format adapté au panier)"
-  - "Optionnel : herbes, roquette ou parmesan à la sortie"
+  - "1 pizza surgelée aux légumes ou au fromage, de format adapté au panier"
+  - "Optionnel : roquette à ajouter après cuisson"
 steps:
-  - "Vérifie que la pizza rentre dans le panier ; coupe-la en deux si besoin."
-  - "Pose-la directement, sans décongeler ni préchauffer."
-  - "Cuis 6 à 10 min à 180 °C, selon l'épaisseur de la pâte."
-  - "Surveille les 2 dernières min : le fromage doit être fondu et bouillonnant."
-  - "Sors-la dès que les bords sont dorés et croustillants."
+  - "Vérifie les instructions du paquet et la compatibilité de la pizza avec ton appareil."
+  - "Choisis un format qui tient à plat sans toucher les parois ; n'empile pas les portions."
+  - "Préchauffe ou non selon la notice et les instructions du produit."
+  - "Applique le réglage prévu par le fabricant. Le repère de 6 à 10 min à 180 °C peut varier fortement selon le produit."
+  - "Contrôle le centre, la pâte et la garniture avant de servir ; prolonge si nécessaire en surveillant les bords."
 tips:
-  - "Vérifie les dimensions : une pizza trop grande se coupe en deux pour rentrer."
-  - "Pâte fine = 6-7 min ; pâte épaisse ou américaine = 9-10 min."
-  - "Pas besoin de préchauffer : l'air fryer est prêt en quelques secondes."
+  - "Les durées sont indicatives : contrôle la cuisson avant de servir."
 faq:
   - q: "Combien de temps cuire une pizza surgelée au air fryer ?"
-    a: "6 à 10 minutes à 180 °C, sans décongeler. Une pizza à pâte fine cuit en 6-7 minutes ; une pâte épaisse ou américaine demande 9-10 minutes. Surveillez la fin : le fromage doit être fondu et les bords dorés."
-  - q: "Faut-il décongeler la pizza avant le air fryer ?"
-    a: "Non, cuisez-la directement congelée. Comme au four, la pizza surgelée passe directement du congélateur à la cuisson, mais l'air fryer va plus vite et n'a pas besoin de préchauffage."
-  - q: "Une pizza surgelée rentre-t-elle dans un air fryer ?"
-    a: "Cela dépend de la taille du panier et de la pizza. Vérifiez les dimensions : une petite pizza individuelle rentre entière, une grande se coupe en deux pour cuire en une ou deux fois. Mieux vaut mesurer avant."
-  - q: "Comment avoir une pâte croustillante au air fryer ?"
-    a: "L'air fryer excelle justement pour ça : la circulation d'air chaud rend la pâte plus croustillante qu'au four traditionnel, dessous comme sur les bords. Ne surchargez pas et laissez l'air circuler sous la pizza."
-  - q: "Peut-on cuire une pizza fraîche ou maison au air fryer ?"
-    a: "Oui, une pizza fraîche du rayon frais ou une pâte maison cuit aussi : 8 à 10 minutes à 180 °C environ. Surveillez, car une pâte maison plus épaisse peut demander un peu plus de temps."
+    a: "Le repère de 6 à 10 minutes à 180 °C concerne un petit format adapté au panier. Une pâte épaisse ou une garniture abondante peut demander davantage : les instructions du paquet priment."
+  - q: "Faut-il décongeler ou préchauffer ?"
+    a: "Suis le paquet pour la décongélation et la notice de l'appareil pour le préchauffage. Il n'existe pas de règle unique pour toutes les pizzas et tous les air fryers."
+  - q: "Que faire si la pizza est trop grande ?"
+    a: "Préfère un format plus petit ou le four prévu sur l'emballage. Ne force pas la pizza contre les parois et n'empile pas des morceaux pour gagner de la place."
+  - q: "Peut-on réchauffer une part déjà cuite avec cette méthode ?"
+    a: "Une part cuite et réfrigérée n'est pas une pizza surgelée à cuire. Consulte le guide de réchauffage des restes et vérifie qu'elle chauffe complètement."
 pubDate: 2026-08-29
+updatedDate: 2026-09-21
 ---
 
-La pizza surgelée au air fryer, c'est le repas dépannage transformé : **une pâte plus croustillante qu'au four et un fromage bien fondu**, prêts en moins de 10 minutes, sans préchauffage. La circulation d'air chaud fait des merveilles sur la pâte.
+La pizza surgelée au air fryer demande surtout un format adapté et un contrôle de cuisson au centre. Une pâte fine, une pâte épaisse et une garniture abondante ne cuisent pas de la même façon. Choisis ici une version aux légumes ou au fromage.
 
-Le seul point à vérifier : que la pizza **rentre dans le panier**.
+## Quel temps de cuisson selon la pizza ?
 
-## Temps de cuisson
+Le repère de départ de cette page est de 6 à 10 minutes à 180 °C pour un petit format. Il ne remplace pas les instructions du paquet et ne garantit pas la cuisson de toutes les pizzas.
 
-À 180 °C, sans décongeler. Selon l'épaisseur de la pâte.
+| Situation | Point à vérifier |
+|---|---|
+| Petite pizza à pâte fine | Surveiller tôt les bords et contrôler le centre |
+| Pâte épaisse ou garniture abondante | Ne pas arrêter sur la seule couleur du fromage |
+| Format plus large que le panier | Utiliser un plus petit format ou le four adapté |
+| Pizza maison ou fraîche | Utiliser une méthode dédiée, pas le temps d'un produit surgelé |
+| Part déjà cuite sortie du réfrigérateur | Suivre les repères de réchauffage, pas de cuisson du surgelé |
 
-| Type | Température | Durée |
-|---|---|---|
-| Pâte fine | 180 °C | 6–7 min |
-| Pâte classique | 180 °C | 8 min |
-| Pâte épaisse / américaine | 180 °C | 9–10 min |
+## La pizza doit-elle tenir entière dans le panier ?
 
-Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+Elle doit rester à plat, avec l'espace demandé par la notice pour la circulation de l'air. Vérifie les dimensions utiles avant d'acheter. Ne plie pas la pizza contre les parois et ne superpose pas de portions. Plutôt que de forcer la découpe d'une pizza dure encore congelée, choisis des mini-pizzas ou utilise le four prévu sur l'emballage.
 
-## Le piège à éviter : la pizza trop grande
+## Pourquoi le fromage dore-t-il alors que la pâte reste molle ?
 
-Le vrai obstacle n'est pas la cuisson mais la **taille**. Beaucoup de pizzas surgelées sont plus larges que le panier. **Mesure avant** : une pizza individuelle rentre entière ; une grande se **coupe en deux** pour cuire en une ou deux fournées. Force-la et elle se plie contre les parois et cuit mal.
+La surface peut colorer avant que la pâte et la garniture chauffent au centre. Une pizza épaisse ou un panier encombré accentuent ce décalage. Poursuis selon les instructions du produit avec un réglage adapté, sans laisser brûler le dessus. Ne confonds pas fromage fondu et cuisson complète.
 
-## Plus croustillante qu'au four
+## Pizza maison ou reste de pizza : quelle page consulter ?
 
-C'est le grand atout de l'air fryer : la **circulation d'air chaud** croustille la pâte **dessous comme sur les bords**, souvent mieux qu'au four. Pas besoin de préchauffer (gain de temps), et le fromage fond parfaitement. Surveille les 2 dernières minutes pour éviter que les bords ne brunissent trop.
-
-## Pour aller plus loin
-
-- relevée à la sortie d'un peu de roquette, de parmesan ou d'huile pimentée ;
-- pour une version maison, teste la [pizza au air fryer](/recettes/pizza-air-fryer/) ;
-- en repas express avec d'autres [surgelés au air fryer](/recettes/nuggets-surgeles-air-fryer/).
+Pour préparer la pâte et la garniture, consulte la [pizza maison au air fryer](/recettes/pizza-air-fryer/). Pour une part déjà cuite et correctement conservée, utilise notre [tableau pour réchauffer les restes](/dossiers/rechauffer-restes-air-fryer/). Pour d'autres produits congelés, retrouve les [recettes de surgelés](/categorie/surgeles/) et le [mémo PDF gratuit](/tableau-temps-cuisson-air-fryer/).

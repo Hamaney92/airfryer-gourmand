@@ -1,7 +1,7 @@
 ---
-title: "Wrap au air fryer : chaud et croustillant en 5 minutes"
-metaTitle: "Wrap air fryer : temps de cuisson et astuce"
-description: "Le temps de cuisson exact du wrap au air fryer : 180-200 °C, 4 à 8 min, tortilla croustillante et garniture fondante. Wrap poulet, fromage ou veggie, sans poêle."
+title: "Wrap au air fryer : poulet cuit et tortilla croustillante"
+metaTitle: "Wrap au air fryer : poulet cuit et tortilla croustillante"
+description: "Wrap au air fryer : repère de 4 à 8 min à 190 °C avec du poulet déjà cuit. Pliage et conseils pour éviter une tortilla sèche."
 category: "Plat"
 image: "/img/wrap-air-fryer.jpg"
 keyword: "wrap air fryer"
@@ -11,62 +11,52 @@ prepTime: 8
 cookTime: 6
 servings: 2
 temp: "190 °C"
-quickAnswer: "Cuis un wrap au air fryer 4 à 8 min à 190 °C, en le retournant à mi-cuisson, jusqu'à ce que la tortilla soit dorée et croustillante et la garniture (poulet, fromage) fondante. Ferme bien le wrap et pique-le au cure-dent pour qu'il ne s'ouvre pas."
+quickAnswer: "Pour un wrap garni de poulet déjà cuit, compte à titre indicatif 4 à 8 min à 190 °C. Dépose la fermeture dessous et contrôle que la garniture est très chaude au centre. Ce temps ne convient pas pour cuire du poulet cru."
 ingredients:
-  - "2 tortillas (galettes de blé)"
-  - "Poulet, fromage râpé, crudités"
-  - "Sauce (fromage blanc, barbecue…)"
-  - "Optionnel : pulvérisation d'huile"
+  - "2 tortillas de blé"
+  - "Poulet déjà cuit en petits morceaux, fromage râpé"
+  - "Un peu de sauce au fromage blanc"
+  - "Salade et crudités à servir à côté"
 steps:
-  - "Garnis la tortilla (poulet, fromage, crudités, sauce) sans trop remplir."
-  - "Plie-la en wrap bien serré, replie les extrémités."
-  - "Pique au cure-dent ou dépose la soudure vers le bas."
-  - "Cuis 4 à 8 min à 190 °C, en retournant à mi-cuisson."
-  - "Sers dès que la tortilla est dorée et croustillante."
+  - "Garnis le centre avec le poulet déjà cuit, le fromage et un peu de sauce, en laissant les bords libres."
+  - "Replie les côtés, puis roule en maintenant la garniture à l'intérieur."
+  - "Dépose les wraps fermeture dessous, sans les superposer."
+  - "Cuis à titre indicatif 4 à 8 min à 190 °C en retournant délicatement à mi-cuisson."
+  - "Contrôle que la garniture est très chaude au centre ; prolonge si nécessaire sans laisser brûler la tortilla."
 tips:
-  - "Ne surcharge pas le wrap : trop plein, il s'ouvre à la cuisson."
-  - "Soudure vers le bas (ou cure-dent) pour qu'il reste fermé."
-  - "Une pulvérisation d'huile accentue le croustillant de la tortilla."
+  - "Les durées sont indicatives : contrôle la cuisson avant de servir."
 faq:
-  - q: "Combien de temps cuire un wrap au air fryer ?"
-    a: "4 à 8 minutes à 190 °C, en le retournant à mi-cuisson. La tortilla doit être dorée et croustillante et la garniture bien chaude. Un wrap fin croustille en 4-5 minutes ; un wrap bien garni demande jusqu'à 8 minutes."
-  - q: "Comment éviter que le wrap s'ouvre au air fryer ?"
-    a: "Ne le surchargez pas, pliez-le bien serré en repliant les extrémités, et déposez-le soudure vers le bas dans le panier. Un cure-dent planté au centre le maintient fermé le temps que la tortilla croustille et le scelle."
-  - q: "Peut-on faire un wrap au poulet croustillant au air fryer ?"
-    a: "Oui, c'est l'un des plus populaires : garnissez la tortilla de poulet (déjà cuit ou tenders), de fromage, de crudités et de sauce, puis cuisez 5-7 minutes à 190 °C. La tortilla croustille et le fromage fond : un wrap chaud bien meilleur qu'au micro-ondes."
-  - q: "Faut-il de l'huile pour un wrap au air fryer ?"
-    a: "Ce n'est pas indispensable, mais une légère pulvérisation d'huile sur la tortilla accentue le croustillant et la couleur dorée. Sans huile, le wrap croustille quand même grâce à l'air chaud, mais reste un peu plus pâle."
-  - q: "Peut-on réchauffer un wrap tout prêt au air fryer ?"
-    a: "Oui, c'est même idéal : 3 à 5 minutes à 180 °C redonnent du croustillant à un wrap acheté ou préparé à l'avance, bien mieux que le micro-ondes qui le ramollit. Surveillez que la garniture soit bien chaude à cœur."
+  - q: "Peut-on mettre du poulet cru dans le wrap ?"
+    a: "Pas avec cette méthode : cuis le poulet séparément avant le montage. Le passage court sert à réchauffer la garniture et dorer la tortilla."
+  - q: "Comment éviter que le wrap s'ouvre ?"
+    a: "Ne le remplis pas trop. Replie les côtés puis roule, et dépose la fermeture dessous. Manipule délicatement au retournement."
+  - q: "Peut-on réchauffer un wrap du commerce ?"
+    a: "Vérifie s'il est prévu pour être réchauffé et suis son emballage. Certains wraps se mangent froids."
 pubDate: 2026-08-13
+updatedDate: 2026-09-21
 ---
 
-Le wrap au air fryer, c'est le repas nomade transformé : **une tortilla dorée et croustillante autour d'une garniture chaude et fondante**, en 5 minutes. Fini le wrap mou du micro-ondes — l'air fryer lui donne le croquant d'un panini, sans poêle ni matière grasse.
+Le wrap au air fryer permet de dorer une tortilla autour d'une garniture déjà cuite. Cette méthode ne remplace pas la cuisson d'une viande crue.
 
-Le secret pour qu'il ne **s'ouvre** pas : le plier serré et le **piquer**.
+## Quel temps de cuisson pour un wrap au air fryer ?
 
-## Temps de cuisson
+Le repère est de 4 à 8 minutes à 190 °C. La taille, l'épaisseur et la température de départ font varier la durée : contrôle le centre, pas seulement le doré de la tortilla.
 
-À 190 °C, en retournant à mi-cuisson.
+| Garniture | Méthode |
+|---|---|
+| Poulet déjà cuit | Garnir puis réchauffer complètement |
+| Poulet cru ou tenders encore crus | Cuire séparément avant le montage |
+| Légumes déjà cuits | Égoutter avant de garnir |
+| Wrap du commerce | Suivre l'emballage |
 
-| Type | Température | Durée |
-|---|---|---|
-| Wrap fin | 190 °C | 4–5 min |
-| Wrap bien garni | 190 °C | 6–8 min |
-| Réchauffage (tout prêt) | 180 °C | 3–5 min |
+Pour la garniture, consulte notre [escalope de poulet](/recettes/escalope-de-poulet-air-fryer/). Si tu utilises des restes, applique les [précautions de réchauffage](/dossiers/rechauffer-restes-air-fryer/).
 
-Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
+## Comment plier le wrap sans qu'il s'ouvre ?
 
-## Le piège à éviter : le wrap qui s'ouvre
+Place la garniture au centre en gardant une bordure libre. Replie les côtés, rabats le bord le plus proche de toi et roule en maintenant l'ensemble. Pose la fermeture contre le panier. Une tortilla trop remplie se ferme difficilement : répartis plutôt la garniture dans deux wraps.
 
-Trop garni ou mal plié, le wrap **s'ouvre** et déverse sa garniture. La parade : ne le **surcharge pas**, plie-le **bien serré** (replie les extrémités), et dépose-le **soudure vers le bas** dans le panier. Un **cure-dent** planté au centre le maintient fermé le temps que la tortilla croustille et le scelle naturellement.
+## Pourquoi le wrap devient-il sec ou détrempé ?
 
-## Chaud, croustillant, façon panini
+Une tortilla fine peut durcir avant que le centre chauffe. Contrôle tôt et évite une grosse portion compacte. À l'inverse, trop de sauce ou des légumes très humides détrempent la galette : égoutte les légumes et garde une partie de la sauce pour le service.
 
-Version star : le **wrap au poulet croustillant** (poulet, fromage, crudités, sauce). À 190 °C, la tortilla croustille et le fromage fond — un wrap chaud digne d'un fast-food, sans friture. Une **pulvérisation d'huile** accentue le doré. Et pour un wrap tout prêt, 3-5 minutes suffisent à lui redonner du croquant, bien mieux que le micro-ondes.
-
-## Pour aller plus loin
-
-- au poulet croustillant, façon wrap fast-food maison ;
-- version veggie (houmous, légumes grillés, feta) ;
-- pour d'autres plats express, vois le [croque-monsieur au air fryer](/recettes/croque-monsieur-air-fryer/) et le [burger au air fryer](/recettes/burger-air-fryer/).
+Garde les crudités à côté pour leur croquant. Pour varier, essaie le [croque-madame au jambon de dinde](/recettes/croque-madame-air-fryer/). Le [tableau PDF gratuit](/tableau-temps-cuisson-air-fryer/) permet de conserver les repères en cuisine.
