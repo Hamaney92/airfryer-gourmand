@@ -1,16 +1,24 @@
 ---
-const pages = [
+interface Props { book?: 'petites-portions' | 'anti-gaspi'; }
+const { book = 'petites-portions' } = Astro.props;
+const anti = book === 'anti-gaspi';
+const pages = anti ? [
+  { file:'anti-gaspi-sommaire', title:'Le sommaire', alt:'Sommaire du livre Anti-Gaspi : huit chapitres classés par reste disponible.' },
+  { file:'anti-gaspi-chapitre', title:'Un chapitre illustré', alt:'Ouverture du chapitre Pain, tortillas et viennoiseries, recettes 1 à 12.' },
+  { file:'anti-gaspi-croutons-photo', title:'Une page illustrée', alt:'Page des croûtons ail et herbes avec pain rassis, extraite du livre Anti-Gaspi.' },
+  { file:'anti-gaspi-croutons-recette', title:'La recette complète', alt:'Croûtons ail et herbes : ingrédients, préparation, temps, température et conseils de conservation.' },
+] : [
   { file:'seniors-sommaire', title:'Le sommaire', alt:'Sommaire du livre : six chapitres, du petit-déjeuner au dessert.' },
   { file:'seniors-mode-emploi', title:'Le mode d’emploi', alt:'Mode d’emploi : colonnes pour une ou deux personnes et repères de cuisson.' },
   { file:'seniors-flan-photo', title:'Une page illustrée', alt:'Page illustrée du flan d’avoine pomme-cannelle, extraite du livre.' },
   { file:'seniors-flan-recette', title:'La recette complète', alt:'Flan d’avoine pomme-cannelle : ingrédients pour une et deux personnes et quatre étapes de préparation.' },
 ];
 ---
-<section class="book-preview" id="apercu-petites-portions" aria-labelledby="preview-title">
+<section class="book-preview" id={`apercu-${book}`} aria-labelledby={`preview-title-${book}`}>
   <p class="preview-label">À feuilleter avant de choisir</p>
-  <h2 id="preview-title">Ouvrez le livre pour 1 ou 2 personnes</h2>
-  <p>Quatre pages extraites de l’intérieur du livre de 224 pages. Ouvrez une page pour lire les quantités et les étapes en grand, sans inscription.</p>
-  <div class="preview-grid">{pages.map(page => <figure><a href={`/img/books/previews/${page.file}.webp`} target="_blank" rel="noopener" data-book-preview="petites-portions" data-preview-page={page.file} aria-label={`Agrandir : ${page.title} (nouvel onglet)`}><img src={`/img/books/previews/${page.file}.webp`} alt={page.alt} width="1190" height="1500" loading="lazy" decoding="async" /><span>{page.title} ↗</span></a></figure>)}</div>
+  <h2 id={`preview-title-${book}`}>{anti ? 'Ouvrez le livre Anti-Gaspi' : 'Ouvrez le livre pour 1 ou 2 personnes'}</h2>
+  <p>Quatre pages extraites de l’intérieur du livre de {anti ? 214 : 224} pages. Ouvrez une page pour lire les quantités et les étapes en grand, sans inscription.</p>
+  <div class="preview-grid">{pages.map(page => <figure><a href={`/img/books/previews/${page.file}.webp`} target="_blank" rel="noopener" data-book-preview={book} data-preview-page={page.file} aria-label={`Agrandir : ${page.title} (nouvel onglet)`}><img src={`/img/books/previews/${page.file}.webp`} alt={page.alt} width={anti ? 1200 : 1190} height="1500" loading="lazy" decoding="async" /><span>{page.title} ↗</span></a></figure>)}</div>
   <p class="preview-note">Aperçus fidèles à la mise en page du livre. Les illustrations sont indicatives ; les cuissons restent à adapter à votre appareil.</p>
 </section>
 <style>

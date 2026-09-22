@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BookPreview from '../../components/BookPreview.astro';
 import { SITE, amazonProduct } from '../../lib/site';
 
 const COVER = '/img/books/air-fryer-anti-gaspi.png';
@@ -31,18 +32,12 @@ const bookLd = {
   alternateName: '100 recettes pour transformer les restes',
   author: { '@type': 'Person', name: 'Camille Lefèvre' },
   bookFormat: 'https://schema.org/Paperback',
-  numberOfPages: 114,
+  numberOfPages: 214,
   inLanguage: 'fr',
   image: `${SITE.url}${COVER}`,
   url: `${SITE.url}/livres/air-fryer-anti-gaspi/`,
   publisher: { '@type': 'Organization', name: SITE.name },
-  offers: {
-    '@type': 'Offer',
-    price: '22.90',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: AMAZON_URL,
-  },
+  sameAs: 'https://www.amazon.fr/dp/B0HHZM8TYR',
 };
 
 const breadcrumbLd = {
@@ -88,17 +83,20 @@ const faqLd = {
           <li>100 recettes organisées par reste disponible</li>
           <li>Quantités, température, durée et repère visuel</li>
           <li>Alternatives et conseils de conservation utiles</li>
-          <li>114 pages en couleur, format broché 20,32 × 25,4 cm</li>
+          <li>214 pages en couleur, format broché 20,32 × 25,4 cm</li>
         </ul>
-        <div class="price-line"><strong>22,90 €</strong><span>Livre broché</span></div>
+        <div class="price-line"><span>Livre broché · Prix actuel sur Amazon</span></div>
         <p class="status" role="status">Disponible sur Amazon</p>
         <p class="hero-cta"><a href={AMAZON_URL} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name="Air Fryer Anti-Gaspi" data-product-asin={ASIN} data-product-type="book" data-placement="anti_gaspi_hero" data-page-type="book" data-page-id="air-fryer-anti-gaspi">Voir le prix et commander sur Amazon →</a></p>
         <p class="affiliate-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité à vérifier sur Amazon.</p>
+        <p><a class="preview-shortcut" href="#apercu-anti-gaspi">Feuilleter quatre pages du livre ↓</a></p>
       </div>
       <div class="cover-wrap">
         <img src={COVER} alt="Couverture du livre Air Fryer Anti-Gaspi, 100 recettes pour transformer les restes, par Camille Lefèvre" width="600" height="750" fetchpriority="high" decoding="async" />
       </div>
     </section>
+
+    <BookPreview book="anti-gaspi" />
 
     <article class="article antiwaste-content">
       <section>
@@ -159,7 +157,7 @@ const faqLd = {
   .antiwaste-copy li{position:relative;padding-left:28px;font-weight:650}
   .antiwaste-copy li::before{content:'✓';position:absolute;left:0;color:#b73f16;font-weight:900}
   .price-line{display:flex;align-items:baseline;gap:12px;margin-top:22px}
-  .price-line strong{font-size:1.8rem;color:#173e32}
+  .preview-shortcut{display:inline-block;min-height:44px;padding:12px 0;color:#173e32;font-weight:750;text-decoration:underline}
   .price-line span{font-size:.85rem;color:var(--muted)}
   .status{display:inline-flex;margin:12px 0 0;padding:11px 16px;border-radius:999px;background:#173e32;color:#fff;font-weight:800;font-size:.88rem}
   .hero-cta{margin:18px 0 0}

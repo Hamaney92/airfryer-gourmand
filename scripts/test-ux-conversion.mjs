@@ -49,3 +49,19 @@ test('Preview contains real lightweight pages and contextual book links remain',
   assert.ok(html('recettes/saumon-air-fryer').includes('data-book-id="petites-portions"'));
   assert.ok(html('livres/air-fryer-anti-gaspi').includes('data-product-type="book"'));
 });
+
+test('Anti-Gaspi matches the verified 214-page edition and offers four real previews', () => {
+  const page=html('livres/air-fryer-anti-gaspi');
+  for (const path of ['livre','livres/air-fryer-anti-gaspi']) {
+    assert.match(html(path), /"numberOfPages":214/);
+    assert.doesNotMatch(html(path), /"numberOfPages":114|114 pages/);
+  }
+  assert.doesNotMatch(page, /22,90|22\.90/);
+  assert.match(page, /id="apercu-anti-gaspi"/);
+  assert.equal((page.match(/data-book-preview="anti-gaspi"/g)||[]).length,4);
+  for (const name of ['sommaire','chapitre','croutons-photo','croutons-recette']) {
+    const asset=`img/books/previews/anti-gaspi-${name}.webp`;
+    assert.ok(page.includes(asset));
+    assert.ok(existsSync(new URL(`../public/${asset}`,import.meta.url)));
+  }
+});

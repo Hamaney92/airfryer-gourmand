@@ -22,9 +22,11 @@
 - Vérification responsive à 320 et 390 px puis sur ordinateur. Débordements corrigés sur catalogue et recette saumon ; aucune barre horizontale du document à 320 px après correction.
 - Aucun formulaire réel soumis : livraison MailerLite, double opt-in et conservation de preuve de consentement côté fournisseur restent à contrôler. Cette livraison n'est pas un audit juridique de conformité.
 
-## Point en attente
+## Complément Anti-Gaspi
 
-Le PDF Anti-Gaspi corrigé retrouvé compte 214 pages, mais le site indique 114 pages. L'aperçu et le nombre de pages n'ont pas été modifiés dans l'attente de confirmation de l'édition réellement vendue.
+Vérification directe de la fiche Amazon https://www.amazon.fr/dp/B0HHZM8TYR : édition brochée de 214 pages, ISBN 979-8172282669. Pagination corrigée sur les deux pages livres et dans les données structurées. Aperçus ajoutés depuis les pages 4 à 7 de l'intérieur v4 corrigé de 214 pages : sommaire, chapitre, photo et recette des croûtons. Contrôle visuel de chaque page effectué avant publication.
+
+Le prix figé de 22,90 € contredisait le prix Amazon constaté ; il a été supprimé du texte et des données structurées, avec renvoi vers le prix actuel Amazon. Aucun tarif ou engagement commercial modifié sur Amazon/KDP.
 
 ## Lecture des résultats ultérieurs
 
