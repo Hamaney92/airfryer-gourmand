@@ -1,0 +1,20 @@
+---
+interface Props { kind: 'anti-gaspi' | 'petites-portions'; }
+const { kind } = Astro.props;
+const anti = kind === 'anti-gaspi';
+const href = anti ? '/livres/air-fryer-anti-gaspi/' : '/livre/#apercu-petites-portions';
+const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
+---
+<aside class="book-offer" aria-label={anti ? 'Notre livre Anti-Gaspi' : 'Notre livre pour une ou deux personnes'}>
+  <img src={cover} alt={anti ? 'Couverture du livre Air Fryer Anti-Gaspi' : 'Couverture du livre Air Fryer gourmand pour seniors'} width="90" height="114" loading="lazy" decoding="async" />
+  <div><span class="offer-label">Notre livre</span><h2>{anti ? 'D’autres idées pour transformer les restes ?' : 'Vous cuisinez souvent pour une ou deux personnes ?'}</h2>
+    <p>{anti ? '100 recettes classées par reste disponible : pain, riz, légumes et bien plus.' : '100 recettes avec des quantités pour une et deux portions, dans une mise en page facile à lire.'}</p>
+    <a href={href} data-book-entry data-book-id={kind} data-placement="recipe_contextual_offer" data-page-type="recipe">{anti ? 'Découvrir le livre Anti-Gaspi →' : 'Feuilleter le livre petites portions →'}</a>
+  </div>
+</aside>
+<style>
+  .book-offer{display:grid;grid-template-columns:90px minmax(0,1fr);gap:18px;padding:20px;margin:24px 0;background:#f0f4eb;border:1px solid #cbd6c0;border-radius:14px;align-items:center}
+  .book-offer img{width:90px;height:114px;object-fit:contain;border-radius:3px}.offer-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#45623e;font-weight:700}.book-offer h2{font-size:1.06rem;line-height:1.4;margin:4px 0 8px}.book-offer p{font-size:.9rem;color:#52604b;margin:0 0 8px}.book-offer a{color:#234b36;display:inline-block;font-weight:750;text-decoration:underline;padding:8px 0;min-height:44px}.book-offer a:focus-visible{outline:3px solid #234b36;outline-offset:3px}
+  @media(max-width:440px){.book-offer{grid-template-columns:1fr}.book-offer img{width:72px;height:92px}}
+  @media print{.book-offer{display:none}}
+</style>

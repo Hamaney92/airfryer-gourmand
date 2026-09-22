@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
-import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../../lib/site';
+import { SITE, CATEGORIES, catInfo, getPublishedRecipes, totalTime } from '../../lib/site';
 
 const recipes = await getPublishedRecipes();
 
@@ -16,8 +16,8 @@ const cats = Object.values(CATEGORIES).filter((c) =>
   recipes.some((r) => catInfo(r.data.category).slug === c.slug)
 );
 
-const title = `Toutes les recettes air fryer — ${recipes.length} recettes testées`;
-const description = `Parcourez ${recipes.length} recettes air fryer testées, classées par catégorie : temps de cuisson, température et astuces pour chaque aliment.`;
+const title = `Toutes les recettes air fryer — ${recipes.length} idées à cuisiner`;
+const description = `Trouvez votre recette air fryer par ingrédient, durée totale, portions ou catégorie : ${recipes.length} idées avec temps de cuisson et températures.`;
 const itemListLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -35,16 +35,75 @@ const itemListLd = {
     <section>
       <h1 class="h2" style="font-size:2rem">Toutes les recettes air fryer</h1>
       <p>{recipes.length} recettes avec temps de cuisson et températures, classées par catégorie.</p>
-      <div class="cats" style="flex-wrap:wrap;margin-top:16px">
+      <form id="recipe-filters" class="recipe-filters" role="search" aria-label="Rechercher une recette" hidden>
+        <label class="search-field">Un ingrédient ou une recette
+          <input type="search" name="q" placeholder="Ex. poulet, œuf, courgette…" autocomplete="off" />
+        </label>
+        <label>Catégorie<select name="category"><option value="">Toutes</option>{cats.map(c => <option value={c.slug}>{c.label}</option>)}</select></label>
+        <label>Durée totale<select name="duration"><option value="">Sans limite</option><option value="15">15 min max</option><option value="30">30 min max</option><option value="45">45 min max</option></select></label>
+        <label>Portions prévues<select name="portions"><option value="">Toutes</option><option value="2">1 ou 2</option><option value="3">3 et plus</option></select></label>
+        <button type="reset">Effacer les filtres</button>
+        <p class="filter-help">Durée totale = préparation + cuisson indiquées. Le filtre portions sélectionne des recettes ; il ne recalcule pas les quantités.</p>
+      </form>
+      <p id="recipe-count" role="status" aria-live="polite" aria-atomic="true">{recipes.length} recettes disponibles</p>
+      <details class="browse-categories"><summary>Ou explorer une catégorie</summary><nav class="category-links" aria-label="Explorer les catégories">
         {cats.map((c) => <a href={`/categorie/${c.slug}/`}>{c.label}</a>)}
-      </div>
+      </nav></details>
+      <p id="recipe-empty" hidden>Aucune recette ne correspond. Essayez un seul ingrédient ou élargissez les filtres.</p>
     </section>
 
     {[...groups.entries()].map(([label, list]) => (
-      <section>
-        <div class="row"><div class="h2">{label} <span style="color:var(--muted);font-weight:600;font-size:1rem">({list.length})</span></div></div>
-        <div class="cards">{list.map((r) => <RecipeCard recipe={r} />)}</div>
+      <section data-recipe-group>
+        <div class="row"><h2 class="h2">{label} <span data-group-count style="color:var(--muted);font-weight:600;font-size:1rem">({list.length})</span></h2></div>
+        <div class="cards">{list.map((r) => <div class="recipe-result" data-recipe-result data-search={[r.data.title, r.data.keyword, ...r.data.ingredients].join(' ')} data-category={catInfo(r.data.category).slug} data-minutes={totalTime(r)} data-servings={r.data.servings}><RecipeCard recipe={r} /></div>)}</div>
       </section>
     ))}
   </div>
 </Layout>
+
+<script>
+  import { matchesRecipe } from '../../lib/recipe-search.mjs';
+  const form = document.querySelector<HTMLFormElement>('#recipe-filters');
+  if (form) {
+    const results = [...document.querySelectorAll<HTMLElement>('[data-recipe-result]')];
+    const query = form.elements.namedItem('q') as HTMLInputElement;
+    const category = form.elements.namedItem('category') as HTMLSelectElement;
+    const duration = form.elements.namedItem('duration') as HTMLSelectElement;
+    const portions = form.elements.namedItem('portions') as HTMLSelectElement;
+    query.value = new URLSearchParams(location.search).get('q') || '';
+    const update = () => {
+      let count = 0;
+      for (const item of results) {
+        item.hidden = !matchesRecipe(item.dataset, { query: query.value, category: category.value, duration: duration.value, portions: portions.value });
+        if (!item.hidden) count++;
+      }
+      document.querySelectorAll<HTMLElement>('[data-recipe-group]').forEach(group => {
+        const visible = group.querySelectorAll('[data-recipe-result]:not([hidden])').length;
+        group.hidden = visible === 0;
+        group.querySelector('[data-group-count]')!.textContent = `(${visible})`;
+      });
+      document.getElementById('recipe-count')!.textContent = `${count} recette${count > 1 ? 's' : ''} sur ${results.length}`;
+      document.getElementById('recipe-empty')!.hidden = count !== 0;
+    };
+    form.hidden = false;
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    form.addEventListener('submit', event => { event.preventDefault(); update(); });
+    form.addEventListener('reset', () => { setTimeout(() => { update(); query.focus(); }, 0); });
+    update();
+  }
+</script>
+<style>
+  .recipe-filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:22px 0 14px}
+  .recipe-filters[hidden],[data-recipe-group][hidden],.recipe-result[hidden]{display:none}
+  .recipe-filters label{font-size:.85rem;font-weight:700;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .recipe-filters input,.recipe-filters select{width:100%;min-width:0;min-height:46px;border:1px solid #bba99b;border-radius:8px;padding:10px;background:#fff;color:var(--ink);font:inherit;font-size:1rem}
+  .recipe-filters button{min-height:44px;padding:8px 14px;border:1px solid #bba99b;border-radius:8px;background:var(--cream);color:var(--ink);font:inherit;cursor:pointer}
+  .filter-help{grid-column:2/-1;color:var(--muted);font-size:.82rem;align-self:center}
+  .category-links{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.category-links a{padding:8px 12px;background:var(--cream);border-radius:8px;font-size:.85rem}
+  .browse-categories summary{cursor:pointer;padding:10px 0;font-weight:650;min-height:44px}.browse-categories summary:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+  .recipe-result{min-width:0}.recipe-result :global(.rcard){display:block;height:100%}#recipe-empty{padding:20px;background:var(--cream);border-radius:12px}
+  .recipe-filters :focus-visible,.category-links a:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+  @media(max-width:800px){.recipe-filters{grid-template-columns:1fr 1fr}.search-field,.filter-help{grid-column:1/-1}}
+  @media(max-width:800px){.wrap>section:first-child{padding-top:22px;padding-bottom:12px}.recipe-filters{padding:14px;gap:10px}.recipe-filters button{font-size:.86rem}.recipe-filters select{padding:8px;font-size:.92rem}}
+</style>

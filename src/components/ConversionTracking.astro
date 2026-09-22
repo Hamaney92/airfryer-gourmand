@@ -1,0 +1,21 @@
+<!-- Une soumission n'est ni un abonnement confirmé ni une vente. Aucun email collecté ici. -->
+<script is:inline>
+  (() => {
+    if (window.__afgConversionTracking) return;
+    window.__afgConversionTracking = true;
+    const send = (name, parameters) => {
+      if (location.hostname === 'airfryergourmand.fr' && typeof window.gtag === 'function')
+        window.gtag('event', name, { ...parameters, page_id: location.pathname, transport_type: 'beacon' });
+    };
+    document.addEventListener('click', event => {
+      if (!(event.target instanceof Element)) return;
+      const preview = event.target.closest('a[data-book-preview]');
+      if (preview) send('book_preview_open', { book_id: preview.dataset.bookPreview, preview_page: preview.dataset.previewPage });
+    });
+    document.addEventListener('submit', event => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || form.dataset.leadForm !== 'mailerlite' || !form.checkValidity()) return;
+      send('newsletter_form_submit', { placement: form.dataset.leadSource, consent_version: 'newsletter_2026_09_22' });
+    });
+  })();
+</script>

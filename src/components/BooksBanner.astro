@@ -1,49 +1,16 @@
 ---
-export interface Props { pageType?: string; }
+interface Props { pageType?: string; }
 const { pageType = 'page' } = Astro.props;
-const pathname = Astro.url.pathname;
-const excluded = /^\/(livre|livres|mentions-legales|confidentialite|contact)(\/|$)/.test(pathname);
+// Les pages de contenu proposent une offre contextuelle après la réponse.
+const show = Astro.url.pathname === '/';
 ---
-
-{!excluded && (
-  <aside class="books-banner" aria-label="Découvrir nos livres de cuisine">
-    <div class="wrap books-banner-inner">
-      <div class="books-banner-copy">
-        <span class="books-banner-label">Les livres Airfryer Gourmand</span>
-        <p>Vos idées cuisine, aussi sur papier.</p>
-      </div>
-      <div class="books-banner-links">
-        <a href="/livre/" data-book-entry data-book-id="air-fryer-seniors" data-placement="books_banner" data-page-type={pageType}>
-          <span>Pour 1 ou 2 personnes</span><span aria-hidden="true"> →</span>
-        </a>
-        <a href="/livres/air-fryer-anti-gaspi/" data-book-entry data-book-id="air-fryer-anti-gaspi" data-placement="books_banner" data-page-type={pageType}>
-          <span>Découvrir Anti-Gaspi</span><span aria-hidden="true"> →</span>
-        </a>
-      </div>
-    </div>
-  </aside>
-)}
-
+{show && <aside class="books-banner" aria-label="Nos livres de cuisine"><div class="wrap books-banner-inner">
+  <p>Petites portions ou anti-gaspi : nos idées aussi sur papier.</p>
+  <a href="/livre/" data-book-entry data-placement="books_banner_compact" data-page-type={pageType}>Choisir mon livre →</a>
+</div></aside>}
 <style>
-  .books-banner{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#173e32,#245b47 55%,#173e32);color:#fff;border-bottom:3px solid #e9bb75}
-  .books-banner::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 30%,rgba(246,217,173,.16) 48%,transparent 65%);transform:translateX(-110%);animation:books-light 2.2s ease-in-out 2}
-  .books-banner-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
-  .books-banner-copy{animation:books-reveal .65s ease-out both}
-  .books-banner-label{color:#f6d9ad;font-size:.73rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
-  .books-banner-copy p{margin:3px 0 0;font-size:1rem;font-weight:650;line-height:1.4}
-  .books-banner-links{display:flex;flex-wrap:wrap;gap:10px}
-  .books-banner-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid #97b1a5;border-radius:9px;color:#fff;text-decoration:none;font-size:.88rem;font-weight:750;line-height:1.4;animation:books-reveal .65s .12s ease-out backwards;transition:transform .2s ease,box-shadow .2s ease}
-  .books-banner-links a:nth-child(2){animation-delay:.24s}
-  .books-banner-links a span[aria-hidden]{display:inline-block;transition:transform .2s ease}
-  .books-banner-links a:first-child{background:#f6d9ad;color:#173e32;border-color:#f6d9ad}
-  .books-banner-links a:hover{text-decoration:underline;text-underline-offset:4px}
-  .books-banner-links a:focus-visible{outline:3px solid #fff;outline-offset:4px}
-  .books-banner-links a:focus-visible span[aria-hidden]{transform:translateX(3px)}
-  @media(hover:hover){.books-banner-links a:hover{transform:translateY(-3px);box-shadow:0 7px 18px #08261b55}.books-banner-links a:hover span[aria-hidden]{transform:translateX(3px)}}
-  .books-banner-links a:active{transform:translateY(0)}
-  @keyframes books-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes books-light{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
-  @media(prefers-reduced-motion:reduce){.books-banner::before{animation:none;display:none}.books-banner-copy,.books-banner-links a{animation:none;transition:none}.books-banner-links a span[aria-hidden]{transition:none}.books-banner-links a:hover,.books-banner-links a:focus-visible span[aria-hidden],.books-banner-links a:hover span[aria-hidden]{transform:none}}
-  @media(max-width:700px){.books-banner-inner{align-items:flex-start;flex-direction:column;gap:10px}.books-banner-links{width:100%}.books-banner-links a{flex:1;padding:10px;font-size:.8rem}.books-banner-copy p{font-size:.94rem}}
+  .books-banner{background:#173e32;color:#fff;border-bottom:2px solid #e9bb75}.books-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;padding-top:6px;padding-bottom:6px}.books-banner p{font-size:.85rem;margin:0}.books-banner a{display:inline-flex;align-items:center;min-height:44px;color:#f6d9ad;font-size:.87rem;font-weight:750;white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
+  .books-banner a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media(max-width:600px){.books-banner p{display:none}.books-banner-inner{justify-content:center;padding-top:0;padding-bottom:0}}
   @media print{.books-banner{display:none}}
 </style>

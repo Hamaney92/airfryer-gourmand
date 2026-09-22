@@ -1,0 +1,23 @@
+---
+import { MAILERLITE_FORM_ACTION } from '../lib/site';
+interface Props { title: string; url: string; source: string; }
+const { title, url, source } = Astro.props;
+---
+{MAILERLITE_FORM_ACTION && (
+  <form class="newsletter-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank" rel="noopener" data-lead-form="mailerlite" data-lead-source={source}>
+    <input type="hidden" name="fields[recette]" value={title} />
+    <input type="hidden" name="fields[url_recette]" value={url} />
+    <label class="email-label">Votre adresse email<input type="email" name="fields[email]" required placeholder="vous@exemple.fr" autocomplete="email" /></label>
+    <label class="consent"><input type="checkbox" name="newsletter_consent" value="yes" required /><span>Je souhaite recevoir par email les recettes, conseils et offres de livres d’Airfryer Gourmand. Je peux me désinscrire à tout moment.</span></label>
+    <button type="submit">M’inscrire et recevoir {source === 'recipe' ? 'la recette' : 'le tableau'} →</button>
+    <p class="privacy">Inscription via MailerLite dans un nouvel onglet. Vérifiez votre boîte mail pour la confirmation. <a href="/confidentialite/">Utilisation de vos données</a>.</p>
+  </form>
+)}
+<style>
+  .newsletter-form{display:grid;gap:12px;margin-top:14px}.email-label{display:grid;gap:6px;font-weight:650;font-size:.9rem}
+  input[type=email]{width:100%;min-width:0;min-height:48px;border:1px solid #a9917e;padding:12px;border-radius:9px;font:inherit;background:#fff;color:var(--ink)}
+  .consent{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;line-height:1.6;color:#51453b;cursor:pointer}.consent input{flex-shrink:0;width:20px;height:20px;margin-top:3px;accent-color:var(--brand)}
+  button{background:var(--brand);color:#fff;font-weight:750;border:0;padding:13px 16px;border-radius:10px;cursor:pointer;font-size:1rem;min-height:48px}
+  .privacy{font-size:.8rem!important;color:#61554a!important;margin:0!important}.privacy a{text-decoration:underline}
+  input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--brand-d);outline-offset:3px}
+</style>

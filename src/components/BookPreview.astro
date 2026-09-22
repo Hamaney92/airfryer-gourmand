@@ -1,0 +1,22 @@
+---
+const pages = [
+  { file:'seniors-sommaire', title:'Le sommaire', alt:'Sommaire du livre : six chapitres, du petit-déjeuner au dessert.' },
+  { file:'seniors-mode-emploi', title:'Le mode d’emploi', alt:'Mode d’emploi : colonnes pour une ou deux personnes et repères de cuisson.' },
+  { file:'seniors-flan-photo', title:'Une page illustrée', alt:'Page illustrée du flan d’avoine pomme-cannelle, extraite du livre.' },
+  { file:'seniors-flan-recette', title:'La recette complète', alt:'Flan d’avoine pomme-cannelle : ingrédients pour une et deux personnes et quatre étapes de préparation.' },
+];
+---
+<section class="book-preview" id="apercu-petites-portions" aria-labelledby="preview-title">
+  <p class="preview-label">À feuilleter avant de choisir</p>
+  <h2 id="preview-title">Ouvrez le livre pour 1 ou 2 personnes</h2>
+  <p>Quatre pages extraites de l’intérieur du livre de 224 pages. Ouvrez une page pour lire les quantités et les étapes en grand, sans inscription.</p>
+  <div class="preview-grid">{pages.map(page => <figure><a href={`/img/books/previews/${page.file}.webp`} target="_blank" rel="noopener" data-book-preview="petites-portions" data-preview-page={page.file} aria-label={`Agrandir : ${page.title} (nouvel onglet)`}><img src={`/img/books/previews/${page.file}.webp`} alt={page.alt} width="1190" height="1500" loading="lazy" decoding="async" /><span>{page.title} ↗</span></a></figure>)}</div>
+  <p class="preview-note">Aperçus fidèles à la mise en page du livre. Les illustrations sont indicatives ; les cuissons restent à adapter à votre appareil.</p>
+</section>
+<style>
+  .book-preview{padding:32px 0;scroll-margin-top:90px;border-top:1px solid #d7d9cc}.preview-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:750;color:#7b5939}
+  h2{font-family:Georgia,serif;font-size:1.9rem;line-height:1.2;margin:10px 0}p{max-width:780px;color:#5c675d;font-size:.95rem}
+  .preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:22px 0}.preview-grid figure{margin:0;min-width:0}.preview-grid a{display:block;border:1px solid #d7d9cc;border-radius:10px;overflow:hidden;background:#fff}.preview-grid img{width:100%;height:auto;aspect-ratio:1190/1500;object-fit:contain}.preview-grid span{display:block;padding:12px;font-weight:700;color:#234b36;font-size:.85rem}
+  .preview-grid a:focus-visible{outline:3px solid #a44c2d;outline-offset:4px}.preview-note{font-size:.8rem}
+  @media(max-width:700px){.preview-grid{grid-template-columns:1fr 1fr;gap:12px}h2{font-size:1.6rem}}
+</style>

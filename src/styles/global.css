@@ -47,7 +47,7 @@ section{padding:38px 0}
 .tile{border-radius:14px;overflow:hidden;text-align:center;background:var(--card);border:1px solid var(--line)}
 .tile .ph{height:90px}
 .tile p{font-weight:700;font-size:.86rem;padding:9px 4px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .rcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);position:relative;transition:transform .15s}
 .rcard:hover{transform:translateY(-3px)}
 .rcard .ph{height:150px}
@@ -104,6 +104,7 @@ footer a:hover{color:#fff}
 .article p{margin:12px 0}
 .article ul,.article ol{margin:12px 0 12px 22px}
 .article li{margin:7px 0}
+.article table{display:block;max-width:100%;overflow-x:auto}
 .rectable{width:100%;border-collapse:collapse;font-size:.95rem;margin:16px 0}
 .rectable th,.rectable td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line)}
 .rectable th{font-size:.75rem;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
@@ -134,7 +135,7 @@ footer a:hover{color:#fff}
   .hero{grid-template-columns:1fr}
   .hero .ph{height:230px;order:-1}
   .cattiles{grid-template-columns:repeat(3,1fr)}
-  .cards{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tool,.guide,.lead{grid-template-columns:1fr}
   .tool .ph,.guide .ph{min-height:160px;height:160px}
   .tool .toolimg{min-height:170px;height:170px}
@@ -142,4 +143,7 @@ footer a:hover{color:#fff}
   .lead{text-align:center}.eform{margin:0 auto}
   .author{flex-direction:column;text-align:center}
   .article{padding:28px 18px 38px}
+}
+@media(max-width:420px){
+  .cards{grid-template-columns:minmax(0,1fr)}
 }

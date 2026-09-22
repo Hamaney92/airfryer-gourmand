@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
+import BookOffer from '../../components/BookOffer.astro';
 import { render } from 'astro:content';
 import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, amazonProduct, gearFor, pairingCategories, isMinceur } from '../../lib/site';
 
@@ -199,16 +200,9 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <p class="gear-box__guide"><a href="/guides/accessoires-air-fryer/">Voir tous les accessoires vraiment utiles →</a></p>
     </aside>
 
-    {data.servings <= 2 && (
-      <aside class="book-recipe-box">
-        <div aria-hidden="true" class="book-recipe-icon">📖</div>
-        <div>
-          <strong>Vous cuisinez souvent pour une ou deux personnes ?</strong>
-          <p>Notre livre réunit 100 recettes avec les bonnes quantités, les temps et les températures déjà calculés.</p>
-          <a href="/livre/" data-book-entry data-placement="recipe_after_gear" data-page-type="recipe" data-page-id={recipe.id}>Découvrir le livre →</a>
-        </div>
-      </aside>
-    )}
+    {/(pain-perdu|hachis-parmentier|wrap|rechauffer-)/.test(recipe.id)
+      ? <BookOffer kind="anti-gaspi" />
+      : data.servings <= 2 && <BookOffer kind="petites-portions" />}
 
     {/*
       Chaque question est un H2 à part entière, dans le fil de l'article — et non des H3
@@ -271,8 +265,4 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .cooking-table-link span{font-size:1.1rem;line-height:1.45}.cooking-table-link p{margin:0;color:#40564c;font-size:.93rem}.cooking-table-link a{color:var(--brand-d);font-weight:800}
   .light-recipes-link{display:flex;gap:10px;align-items:flex-start;background:#fff8ed;border-left:4px solid #f0a647;border-radius:10px;padding:12px 15px;margin:14px 0 20px}
   .light-recipes-link span{font-size:1.1rem;line-height:1.45}.light-recipes-link p{margin:0;color:#685438;font-size:.93rem}.light-recipes-link a{color:var(--brand-d);font-weight:800}
-  .book-recipe-box{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--cream);border:1px solid #ffd6b8;border-radius:16px;padding:18px 20px;margin:22px 0}
-  .book-recipe-icon{font-size:1.8rem}
-  .book-recipe-box p{margin:4px 0 7px;color:#5f5147;font-size:.93rem}
-  .book-recipe-box a{color:var(--brand-d);font-weight:800}
 </style>

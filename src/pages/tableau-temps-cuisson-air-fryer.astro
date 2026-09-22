@@ -4,7 +4,8 @@
 // et le premier capteur d'emails. On lui donne sa propre page (au lieu d'un bloc perdu sur
 // /temps-de-cuisson/) pour qu'elle puisse ranker seule et servir d'aimant.
 import Layout from '../layouts/Layout.astro';
-import { SITE, getPublishedRecipes, catInfo, MAILERLITE_FORM_ACTION } from '../lib/site';
+import { SITE, getPublishedRecipes, catInfo } from '../lib/site';
+import NewsletterForm from '../components/NewsletterForm.astro';
 
 const recipes = await getPublishedRecipes();
 const rows = recipes
@@ -25,7 +26,6 @@ const parCat = rows.reduce((acc: Record<string, typeof rows>, r) => {
 }, {});
 
 const categoryId = (label: string) => 'cuisson-' + label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
-const configured = Boolean(MAILERLITE_FORM_ACTION);
 
 const title = 'Tableau des temps de cuisson air fryer à imprimer (PDF gratuit)';
 const description =
@@ -85,19 +85,9 @@ const jsonLd = [
       <div class="magnet-txt">
         <strong>📄 La version à imprimer, gratuite</strong>
         <p>Une seule page, à coller sur la porte du frigo. Plus besoin de toucher ton téléphone avec les mains pleines de farine.</p>
-        {configured ? (
-          <form class="magnet-form" method="post" action={MAILERLITE_FORM_ACTION} target="_blank" data-lead-form="mailerlite" data-lead-source="cooking_times_page" data-lead-magnet="cooking_times">
-            <input type="hidden" name="fields[recette]" value="Tableau des temps de cuisson" />
-            <input type="hidden" name="fields[url_recette]" value={`${SITE.url}/tableau-temps-cuisson-air-fryer.pdf`} />
-            <input type="email" name="fields[email]" required placeholder="ton@email.fr" aria-label="Ton adresse email" />
-            <button type="submit">Recevoir le tableau →</button>
-          </form>
-        ) : (
-          <a href="/tableau-temps-cuisson-air-fryer.pdf" download class="magnet-cta">Télécharger le PDF →</a>
-        )}
-        <p style="margin-top:10px;font-size:.8rem;color:#9a8c7d">
-          Ou <a href="/tableau-temps-cuisson-air-fryer.pdf" download style="color:var(--brand-d);font-weight:700">télécharger directement le PDF</a>, sans email.
-        </p>
+        <a href="/tableau-temps-cuisson-air-fryer.pdf" download class="magnet-cta" data-placement="cooking_times_page">Télécharger le PDF gratuit →</a>
+        <p style="margin:10px 0;color:var(--muted);font-size:.85rem">Sans inscription ni email obligatoire.</p>
+        <details><summary style="cursor:pointer;padding:12px 0;font-weight:700">Recevoir le tableau et m’abonner à la newsletter</summary><NewsletterForm title="Tableau des temps de cuisson" url={`${SITE.url}/tableau-temps-cuisson-air-fryer.pdf`} source="cooking_times_page" /></details>
       </div>
     </aside>
 

@@ -4,6 +4,7 @@ import { SITE, USAGES } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
+import ConversionTracking from '../components/ConversionTracking.astro';
 
 export interface Props {
   title: string;
@@ -36,8 +37,10 @@ const year = new Date().getFullYear();
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J24QNEE9GV');
+      if (location.hostname === 'airfryergourmand.fr') {
+        gtag('js', new Date());
+        gtag('config', 'G-J24QNEE9GV');
+      }
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -81,6 +84,7 @@ const year = new Date().getFullYear();
     {!noindex && <BooksBanner pageType={pageType} />}
     <main>
       <slot />
+      {!noindex && <PdfPopup />}
     </main>
 
     <footer>
@@ -117,8 +121,8 @@ const year = new Date().getFullYear();
         <div class="disc">© {year} {SITE.name} — Les temps de cuisson sont donnés à titre indicatif et varient selon le modèle d'air fryer.</div>
       </div>
     </footer>
-    <PdfPopup />
     <AffiliateTracking />
+    <ConversionTracking />
     <script>
       const menuButton = document.querySelector<HTMLButtonElement>('.mobile-menu-trigger');
       const navigation = document.querySelector<HTMLElement>('#primary-navigation');
