@@ -24,15 +24,15 @@ test('All recipes remain linked in server HTML without JavaScript', () => {
   assert.ok(listing.includes('https://airfryergourmand.fr/recettes/'));
   assert.ok(listing.includes('id="recipe-filters"'));
 });
-test('Automatic popups removed; newsletter consent unchecked and mandatory', () => {
+test('Automatic popups removed; newsletter routes to dedicated consent form', () => {
   for (const path of ['recettes/chataigne-air-fryer','tableau-temps-cuisson-air-fryer']) {
     const page=html(path);
     assert.ok(!page.includes('id="pdfpop"'));
     assert.ok(!page.includes('afg_pdfpop_vu'));
-    assert.ok(page.includes('data-lead-form="mailerlite"'));
-    const consent=page.match(/<input\b[^>]*name="newsletter_consent"[^>]*>/)?.[0];
-    assert.ok(consent?.includes('required'));
-    assert.ok(!/\bchecked\b/.test(consent));
+    assert.ok(page.includes('data-newsletter-signup'));
+    assert.ok(page.includes('https://preview.mailerlite.io/forms/2516614/199341135344174725/share'));
+    assert.ok(!page.includes('194538633598863135/subscribe'));
+    assert.ok(!page.includes('name="fields[email]"'));
     assert.ok(!page.includes('class="books-banner"'));
   }
   assert.ok(html('recettes/chataigne-air-fryer').includes('mailto:'));

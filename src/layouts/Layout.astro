@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, USAGES } from '../lib/site';
+import { SITE, USAGES, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
@@ -114,6 +114,7 @@ const year = new Date().getFullYear();
             <a href="/tableau-temps-cuisson-air-fryer/">Tableau à imprimer</a>
             <a href="/a-propos/">À propos</a>
             <a href="/contact/">Contact</a>
+            <a href={NEWSLETTER_SIGNUP_URL}>Newsletter recettes et offres</a>
             <a href="/mentions-legales/">Mentions légales</a>
             <a href="/confidentialite/">Confidentialité</a>
           </div>

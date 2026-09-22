@@ -33,6 +33,10 @@ export const MAILERLITE_FORM_ACTION =
   'https://assets.mailerlite.com/jsonp/2516614/forms/194538633598863135/subscribe';
 
 // ===== AFFILIATION AMAZON =====
+// Newsletter commerciale séparée du groupe historique de recettes.
+export const NEWSLETTER_SIGNUP_URL =
+  'https://preview.mailerlite.io/forms/2516614/199341135344174725/share';
+
 // Tag Amazon.fr Partenaires actif (compte créé le 16/07/2026). Un seul endroit à
 // modifier pour tout le site. Les liens de recherche restent conformes (pins → site → Amazon).
 export const AMAZON_TAG = 'airfryergourm-21';
