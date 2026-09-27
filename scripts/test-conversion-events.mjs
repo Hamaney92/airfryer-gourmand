@@ -28,9 +28,25 @@ test('Invalid and unrelated forms never send events',()=>{
   assert.equal(s.events.length,0);
 });
 test('Preview event identifies only the book and page',()=>{
-  const s=setup();const target=new s.Element();target.closest=()=>({dataset:{bookPreview:'petites-portions',previewPage:'seniors-sommaire'}});
+  const s=setup();const target=new s.Element();target.closest=selector=>selector==='a[data-book-preview]'?{dataset:{bookPreview:'petites-portions',previewPage:'seniors-sommaire'}}:null;
   s.listeners.click[0]({target});assert.equal(s.events[0][1],'book_preview_open');
   assert.equal(s.events[0][2].book_id,'petites-portions');
+  assert.equal(s.events.length,1);
+});
+test('Hosted newsletter CTA measures an opening, never a confirmed subscription or personal data',()=>{
+  const s=setup();const target=new s.Element();
+  target.closest=selector=>selector==='a[data-newsletter-signup]'?{dataset:{leadSource:'inline_pdf'},href:'https://example.com/?email=private@example.com'}:null;
+  s.listeners.click[0]({target});
+  assert.equal(s.events.length,1);
+  assert.equal(s.events[0][1],'newsletter_signup_click');
+  assert.equal(s.events[0][2].placement,'inline_pdf');
+  assert.ok(!JSON.stringify(s.events).includes('@'));
+});
+test('Newsletter clicks stay silent locally and when analytics is unavailable',()=>{
+  for(const s of [setup('127.0.0.1'),setup('airfryergourmand.fr',false)]) {
+    const target=new s.Element();target.closest=selector=>selector==='a[data-newsletter-signup]'?{dataset:{leadSource:'recipe'}}:null;
+    assert.doesNotThrow(()=>s.listeners.click[0]({target}));assert.equal(s.events.length,0);
+  }
 });
 test('Local testing and unavailable Analytics do not send or block submissions',()=>{
   for(const s of [setup('127.0.0.1'),setup('airfryergourmand.fr',false)]) {
