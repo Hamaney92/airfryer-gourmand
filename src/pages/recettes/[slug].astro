@@ -3,8 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
 import BookOffer from '../../components/BookOffer.astro';
+import ChestnutGear from '../../components/ChestnutGear.astro';
+import ContextualProducts from '../../components/ContextualProducts.astro';
+import { recipeOffers, bookFor } from '../../lib/commerce';
 import { render } from 'astro:content';
-import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, amazonSearch, amazonProduct, gearFor, pairingCategories, isMinceur } from '../../lib/site';
+import { SITE, catInfo, isoDuration, totalTime, fmtDate, getPublishedRecipes, pairingCategories, isMinceur } from '../../lib/site';
 
 export async function getStaticPaths() {
   const recipes = await getPublishedRecipes();
@@ -22,9 +25,6 @@ const cat = catInfo(data.category);
 const lightRecipe = isMinceur(recipe);
 const path = `/recettes/${recipe.id}/`;
 const { Content } = await render(recipe);
-
-const gear = gearFor({ category: data.category, slug: recipe.id, keyword: data.keyword });
-const gearUrl = gear.asin ? amazonProduct(gear.asin) : amazonSearch(gear.query);
 
 const allPublished = await getPublishedRecipes();
 const autres = allPublished.filter((r) => r.id !== recipe.id);
@@ -183,26 +183,11 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
     {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
         affilié et renvoie vers cet encart visible, placé après les ingrédients et la méthode. */}
-    <aside id="materiel" class="gear-box gear-box--primary" aria-label={`Accessoire recommandé : ${gear.nom}`}>
-      <div class="gear-box__eyebrow">{gear.emoji} Accessoire facultatif</div>
-      <div class="gear-box__title">{gear.nom}</div>
-      <p>{gear.util}</p>
-      {gear.href ? (
-        <a href={gear.href} class="gear-box__cta">Voir le comparatif →</a>
-      ) : (
-        <a href={gearUrl} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={gear.model || gear.nom} data-product-asin={gear.asin} data-placement="recipe_primary_gear" data-page-type="recipe" data-page-id={recipe.id} class="gear-box__cta">
-          {gear.model ? `Voir ${gear.model} sur Amazon →` : "Voir l'accessoire recommandé sur Amazon →"}
-        </a>
-      )}
-      {gear.fitNote && <p class="gear-box__fit">À vérifier : {gear.fitNote}</p>}
-      {gear.fitNote && <p class="gear-box__fallback"><a href={amazonSearch(gear.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={gear.nom} data-placement="recipe_primary_gear_fallback" data-page-type="recipe" data-page-id={recipe.id}>Ton panier a une autre taille ? Voir les modèles compatibles →</a></p>}
-      {!gear.href && <p class="gear-box__disclosure">Lien affilié : une commission peut nous être versée, sans surcoût pour vous.</p>}
-      <p class="gear-box__guide"><a href="/guides/accessoires-air-fryer/">Voir tous les accessoires vraiment utiles →</a></p>
-    </aside>
+    {recipe.id === 'chataigne-air-fryer'
+      ? <ChestnutGear />
+      : <ContextualProducts offers={recipeOffers(recipe.id, data.category)} pageId={recipe.id} />}
 
-    {/(pain-perdu|hachis-parmentier|wrap|rechauffer-)/.test(recipe.id)
-      ? <BookOffer kind="anti-gaspi" />
-      : data.servings <= 2 && <BookOffer kind="petites-portions" />}
+    <BookOffer kind={bookFor(recipe.id, data.servings)} pageId={recipe.id} />
 
     {/*
       Chaque question est un H2 à part entière, dans le fil de l'article — et non des H3

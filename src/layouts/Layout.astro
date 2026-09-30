@@ -5,6 +5,10 @@ import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
+import NewsletterBanner from '../components/NewsletterBanner.astro';
+import ContextualProducts from '../components/ContextualProducts.astro';
+import BookOffer from '../components/BookOffer.astro';
+import { isEditorialPage, pageOffers, bookFor } from '../lib/commerce';
 
 export interface Props {
   title: string;
@@ -82,8 +86,13 @@ const year = new Date().getFullYear();
     </header>
 
     {!noindex && <BooksBanner pageType={pageType} />}
+    {!noindex && <NewsletterBanner pageType={pageType} />}
     <main>
       <slot />
+      {!noindex && pageType !== 'recipe' && isEditorialPage(path) && <div class="wrap">
+        <ContextualProducts offers={pageOffers(path)} pageId={path} pageType={pageType} />
+        <BookOffer kind={bookFor(path)} pageId={path} pageType={pageType} />
+      </div>}
       {!noindex && <PdfPopup />}
     </main>
 

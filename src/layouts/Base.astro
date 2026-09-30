@@ -3,6 +3,10 @@ import '../styles/global.css';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
 import { NEWSLETTER_SIGNUP_URL } from '../lib/site';
+import NewsletterBanner from '../components/NewsletterBanner.astro';
+import ContextualProducts from '../components/ContextualProducts.astro';
+import BookOffer from '../components/BookOffer.astro';
+import { isEditorialPage, pageOffers, bookFor } from '../lib/commerce';
 export interface Props { title: string; description: string; pageType?: string; }
 const { title, description, pageType = 'page' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -46,8 +50,13 @@ const cats = [
     </div>
   </header>
   <BooksBanner pageType={pageType} />
+  <NewsletterBanner pageType={pageType} />
   <main>
     <slot />
+    {isEditorialPage(Astro.url.pathname) && <div class="wrap">
+      <ContextualProducts offers={pageOffers(Astro.url.pathname)} pageId={Astro.url.pathname} pageType={pageType} />
+      <BookOffer kind={bookFor(Astro.url.pathname)} pageId={Astro.url.pathname} pageType={pageType} />
+    </div>}
   </main>
   <footer>
     <div class="wrap">

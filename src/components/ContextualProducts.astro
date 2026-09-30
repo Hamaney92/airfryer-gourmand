@@ -1,0 +1,19 @@
+---
+import { amazonSearch } from '../lib/site';
+import type { KitchenOffer } from '../lib/commerce';
+interface Props { offers: KitchenOffer[]; pageId: string; pageType?: string; }
+const { offers, pageId, pageType = 'recipe' } = Astro.props;
+---
+{offers.length > 0 && <aside id="materiel" class="context-products" aria-labelledby="context-products-title">
+  <p class="eyebrow">Sélection de matériel · liens affiliés</p>
+  <h2 id="context-products-title">Du matériel adapté à cette préparation</h2>
+  <p class="intro">Utilise d’abord le matériel que tu possèdes. Voici les usages et les points à vérifier si tu souhaites t’équiper.</p>
+  <div class="products-grid">{offers.map(offer => <section class="product-card">
+    <h3>{offer.name}</h3><p>{offer.reason}</p><p class="check"><strong>Avant de choisir :</strong> {offer.check}</p>
+    <a href={amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.name} data-product-id={offer.id} data-product-type="kitchen" data-placement="contextual_products" data-page-type={pageType} data-page-id={pageId}>Comparer les modèles sur Amazon →</a>
+  </section>)}</div>
+  <p class="disclosure">Ces boutons ouvrent des recherches Amazon, pas des produits testés par notre équipe. Vérifiez le modèle, le prix livré et le vendeur. Une commission peut nous être versée, sans surcoût pour vous.</p>
+</aside>}
+<style>
+  .context-products{margin:28px 0;padding:22px;border:1px solid #e6d9c5;border-radius:18px;background:#fffaf2}.eyebrow{font-size:.75rem;color:#765327;font-weight:750;margin:0}.context-products h2{font-size:1.3rem;margin:7px 0 12px}.intro{font-size:.92rem}.products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product-card{padding:18px;display:flex;flex-direction:column;border:1px solid #e4ddd2;border-radius:12px;background:#fff;min-width:0}.product-card h3{font-size:1.05rem;margin:0 0 9px;line-height:1.4}.product-card p{font-size:.88rem;line-height:1.6}.check{color:#62594e}.product-card a{margin-top:auto;padding:12px;border-radius:9px;background:#173e32;color:#fff;font-weight:750;font-size:.85rem;text-decoration:none;line-height:1.4}.product-card a:hover{background:#265b46}.product-card a:focus-visible{outline:3px solid #bd710c;outline-offset:3px}.disclosure{font-size:.76rem;line-height:1.5;color:#63594b;margin-bottom:0}@media(max-width:640px){.products-grid{grid-template-columns:1fr}.context-products{padding:16px}}@media print{.context-products{display:none}}
+</style>

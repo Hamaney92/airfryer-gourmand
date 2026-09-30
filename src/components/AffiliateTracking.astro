@@ -49,6 +49,9 @@
             affiliateLink.textContent?.trim().replace(/\s+/g, ' ').slice(0, 100) ||
             'non_renseigne',
           product_asin: affiliateLink.dataset.productAsin || 'non_renseigne',
+          product_id: affiliateLink.dataset.productId || 'non_renseigne',
+          product_type: affiliateLink.dataset.productType || 'kitchen',
+          book_id: affiliateLink.dataset.bookId || 'non_renseigne',
           placement: affiliateLink.dataset.placement || 'non_renseigne',
           page_type: affiliateLink.dataset.pageType || document.body.dataset.pageType || 'page',
           page_id: affiliateLink.dataset.pageId || window.location.pathname,

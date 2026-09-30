@@ -1,0 +1,24 @@
+---
+import { amazonSearch } from '../lib/site';
+const offers = [
+  { name: 'Opinel N°07 Châtaigne et Ail', label: 'Pour les fournées de châtaignes', text: 'Une lame courte de 4 cm pour inciser et éplucher les châtaignes. Sert aussi pour l’ail et le dénoyautage. À envisager si tu en prépares régulièrement ; un couteau d’office suffit pour une petite fournée.', query: 'Opinel N07 chataigne ail 002360', cta: 'Chercher le couteau à châtaignes', source: 'https://www.opinel.com/fr-fr/cuisine-nomade/jardin/cueillette/n7-chataigne-ail-et-denoyautage' },
+  { name: 'Opinel Les Essentiels Naturel', label: 'Pour équiper aussi la cuisine du quotidien', text: 'Office, cranté, couteau à légumes et éplucheur : un coffret à examiner si tu dois renouveler plusieurs ustensiles. Pour cette recette seule, acheter un coffret n’est pas nécessaire : privilégie ce que tu possèdes déjà.', query: 'Opinel coffret Les Essentiels Naturel', cta: 'Comparer les offres du coffret', source: 'https://www.opinel.com/fr-fr/couteaux-cuisine/couteaux-office/coffret-les-essentiels-naturel' },
+  { name: 'Boîte hermétique en verre', label: 'Pour garder les châtaignes épluchées', text: 'Une option si tu manques de boîtes pour les restes. Compare la capacité, l’étanchéité et la compatibilité congélateur annoncées par le fabricant. La boîte ne prolonge pas à elle seule la durée de conservation.', query: 'boite conservation verre hermetique cuisine', cta: 'Comparer les boîtes hermétiques' },
+];
+---
+<aside id="materiel" class="chestnut-gear" aria-labelledby="chestnut-gear-title">
+  <p class="eyebrow">Matériel facultatif · sélection pour cette recette</p>
+  <h2 id="chestnut-gear-title">Quels accessoires choisir pour les châtaignes ?</h2>
+  <p>Une planche stable, un petit couteau et un torchon propre suffisent. Si tu souhaites t’équiper, choisis selon ton usage : incision, cuisine quotidienne ou conservation.</p>
+  <p class="disclosure">Liens Amazon affiliés : une commission peut nous être versée, sans surcoût pour vous. Sélection documentaire, sans test produit réalisé par notre équipe. Les boutons ouvrent une recherche Amazon : vérifiez la référence, le vendeur et le prix livré.</p>
+  <div class="offers">
+    {offers.map((offer) => <section class="offer">
+      <p class="label">{offer.label}</p><h3>{offer.name}</h3><p>{offer.text}</p>
+      <a class="cta" href={amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.name} data-placement="chestnut_gear" data-page-type="recipe" data-page-id="chataigne-air-fryer">{offer.cta} sur Amazon →</a>
+      {offer.source && <a class="source" href={offer.source} target="_blank" rel="noopener">Consulter la source fabricant</a>}
+    </section>)}
+  </div>
+</aside>
+<style>
+  .chestnut-gear{margin:28px 0;padding:22px;border:1px solid #ead8bf;border-radius:18px;background:#fffaf1}.chestnut-gear h2{margin:4px 0 12px}.eyebrow{margin:0;color:#735020;font-size:.8rem;font-weight:700}.disclosure{font-size:.8rem;color:#615647;line-height:1.5}.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}.offer{display:flex;flex-direction:column;padding:16px;border:1px solid #e4dfd5;border-radius:12px;background:#fff}.label{font-size:.76rem;color:#735020;margin:0}.offer h3{font-size:1.05rem;line-height:1.3;margin:8px 0}.offer p:not(.label){font-size:.88rem;line-height:1.6}.cta{margin-top:auto;display:block;padding:12px;border-radius:9px;background:#173e32;color:#fff;text-decoration:none;font-size:.84rem;font-weight:700;line-height:1.4}.cta:hover{background:#265743}.cta:focus-visible,.source:focus-visible{outline:3px solid #bd710c;outline-offset:3px}.source{font-size:.75rem;margin-top:12px;color:#475e53}.offer{min-width:0}@media(max-width:760px){.offers{grid-template-columns:1fr}.chestnut-gear{padding:16px}}@media print{.chestnut-gear{display:none}}
+</style>

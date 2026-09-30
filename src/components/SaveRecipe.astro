@@ -1,5 +1,4 @@
 ---
-import NewsletterForm from './NewsletterForm.astro';
 interface Props { titre: string; url: string; }
 const { titre, url } = Astro.props;
 const mail = `mailto:?subject=${encodeURIComponent(titre)}&body=${encodeURIComponent(`Une recette à garder : ${titre}\n${url}`)}`;
@@ -8,11 +7,6 @@ const mail = `mailto:?subject=${encodeURIComponent(titre)}&body=${encodeURICompo
   <h2>Gardez cette recette pour plus tard</h2>
   <p>Sans inscription : envoyez le lien avec votre messagerie. Votre adresse ne nous est pas transmise.</p>
   <a class="save-link" href={mail}>Ouvrir ma messagerie →</a>
-  <details>
-    <summary>Recevoir aussi nos recettes et offres par email</summary>
-    <p>Vous pouvez aussi choisir de vous inscrire séparément à notre newsletter recettes et offres.</p>
-    <NewsletterForm title={titre} url={url} source="recipe" />
-  </details>
 </aside>
 <style>
   .save-box{background:var(--cream);border:1px solid #e8c7a9;border-radius:16px;padding:22px;margin:26px 0}

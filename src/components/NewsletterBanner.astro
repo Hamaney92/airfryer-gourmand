@@ -1,0 +1,30 @@
+---
+import { NEWSLETTER_SIGNUP_URL } from '../lib/site';
+interface Props { pageType?: string; }
+const { pageType = 'page' } = Astro.props;
+---
+
+<aside class="newsletter-banner" aria-label="Newsletter Airfryer Gourmand">
+  <div class="wrap newsletter-banner-inner">
+    <div>
+      <p class="newsletter-kicker">Une idée cuisine par semaine</p>
+      <p class="newsletter-copy">Recettes, conseils, livres et recommandations utiles, directement dans votre boîte mail.</p>
+      <p class="newsletter-microcopy">Inscription facultative · désinscription en un clic · <a href="/confidentialite/">confidentialité</a></p>
+    </div>
+    <a class="newsletter-banner-cta" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source={`banner_${pageType}`}>
+      Je m’inscris →
+    </a>
+  </div>
+</aside>
+
+<style>
+  .newsletter-banner{background:linear-gradient(100deg,#fff0df,#fff9f1);border-bottom:1px solid #f0d3b7}
+  .newsletter-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:12px;padding-bottom:12px}
+  .newsletter-kicker{color:var(--brand-d);font-size:.83rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;margin:0}
+  .newsletter-copy{color:var(--ink);font-size:.98rem;font-weight:650;margin:1px 0 0}
+  .newsletter-microcopy{color:var(--muted);font-size:.76rem;margin:2px 0 0}.newsletter-microcopy a{text-decoration:underline}
+  .newsletter-banner-cta{background:var(--brand);color:#fff;border-radius:10px;box-shadow:var(--shadow);font-weight:800;padding:11px 18px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .newsletter-banner-cta:hover{background:var(--brand-d)}
+  .newsletter-banner-cta:focus-visible{outline:3px solid var(--brand-d);outline-offset:3px}
+  @media(max-width:640px){.newsletter-banner-inner{align-items:flex-start;flex-direction:column;gap:8px}.newsletter-banner-cta{width:100%;justify-content:center}}
+</style>

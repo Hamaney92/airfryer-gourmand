@@ -1,6 +1,5 @@
 ---
 // Invitation dans le flux de lecture : aucun déclenchement automatique ni masque.
-import NewsletterForm from './NewsletterForm.astro';
 import { SITE } from '../lib/site';
 const pathname = Astro.url.pathname;
 const show = pathname === '/' || /^\/(categorie|dossiers)\//.test(pathname);
@@ -11,7 +10,6 @@ const show = pathname === '/' || /^\/(categorie|dossiers)\//.test(pathname);
     <p>Gardez le tableau sur votre téléphone ou imprimez-le pour la cuisine.</p>
     <a class="cta" href="/tableau-temps-cuisson-air-fryer.pdf" download data-placement="inline_pdf_invitation">Télécharger le tableau gratuit →</a>
     <p class="free-note">Sans inscription, sans email obligatoire.</p>
-    <details><summary>M’abonner aussi à la newsletter recettes et offres</summary><NewsletterForm title="Tableau des temps de cuisson" url={`${SITE.url}/tableau-temps-cuisson-air-fryer.pdf`} source="inline_pdf" /></details>
   </div>
 </aside>}
 <style>
