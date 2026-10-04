@@ -1,11 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
 
-const title = "Réchauffer les restes au air fryer : tableau, méthode et sécurité";
-const description = "Réchauffez les restes au air fryer sans les dessécher : tableau de temps et températures, méthode selon l'aliment et réflexes de conservation.";
+const title = "Réchauffer au air fryer : temps et températures par aliment";
+const description = "Frites, pommes de terre rôties, pizza, poulet, lasagnes : trouvez les temps et températures de réchauffage au air fryer et les précautions pour vos restes.";
 
 const reheats = [
-  ['Frites, potatoes et légumes rôtis', '180 °C', '3 à 6 min', 'Secouer à mi-cuisson ; une seule couche pour retrouver du croustillant.'],
+  ['Frites, pommes de terre rôties et légumes rôtis', '180 °C', '3 à 6 min', 'Secouer à mi-cuisson ; une seule couche pour retrouver du croustillant.'],
   ['Pizza, quiche et parts de tarte salée', '160–170 °C', '4 à 7 min', 'Réchauffer doucement pour chauffer le cœur sans brûler la pâte.'],
   ['Poulet rôti, viande cuite et boulettes', '160–170 °C', '5 à 9 min', 'Vérifier le centre ; ne pas poser une couverture libre susceptible de toucher la résistance.'],
   ['Poisson déjà cuit', '150–160 °C', '3 à 5 min', 'Petite durée : le poisson se dessèche vite.'],
@@ -43,14 +43,15 @@ const faqSchema = {
       <div class="crumb">
         <a href="/">Accueil</a> › Dossiers › Réchauffer les restes
       </div>
-      <h1>Réchauffer les restes au air fryer : tableau, méthode et sécurité</h1>
+      <h1>{title}</h1>
       <div class="byline"><span aria-hidden="true">♻️</span><span>Par <a href="/a-propos/">L'équipe Airfryer Gourmand</a> · Mis à jour le 21 septembre 2026</span></div>
 
-      <div class="quick"><b>En bref :</b> le bon réglage pour des restes est rarement le plus chaud. Commencez à 160–180 °C, réchauffez en petite portion et contrôlez tôt. Le air fryer rend du croustillant aux frites, pains et pâtes, mais ne rend pas sûr un aliment mal conservé.</div>
+      <div class="quick"><b>En bref :</b> le bon réglage pour des restes est rarement le plus chaud. Commencez à 160–180 °C, réchauffez en petite portion et contrôlez tôt. Le air fryer rend du croustillant aux frites, au pain et aux pâtes à tarte, mais ne rend pas sûr un aliment mal conservé.</div>
+      <p><a href="#tableau-rechauffage">Voir directement le tableau des temps et températures →</a></p>
 
       <p>Un reste ne mérite pas forcément le micro-ondes. Avec son air chaud circulant, le air fryer est particulièrement utile pour les aliments qui doivent redevenir dorés : frites, légumes rôtis, pizza, quiche, pain ou feuilletés. Le principe est simple : <b>température modérée, temps court, petite quantité</b>. C'est le moyen d'éviter une croûte trop sèche et un centre encore froid.</p>
 
-      <h2>Tableau : temps et températures pour réchauffer les restes</h2>
+      <h2 id="tableau-rechauffage">Tableau : temps et températures pour réchauffer les restes</h2>
       <p>Ces repères s'appliquent à une portion sortie du réfrigérateur et à un appareil déjà chaud. Ils peuvent varier selon l'épaisseur, le remplissage du panier et le modèle : vérifiez toujours le cœur du plat avant de servir.</p>
       <div class="reheat-table" role="region" aria-label="Tableau de réchauffage, défilement horizontal sur petit écran" tabindex="0">
       <table class="rectable">
@@ -71,7 +72,7 @@ const faqSchema = {
       </ol>
 
       <h2>Quel reste réchauffer au air fryer ?</h2>
-      <h3>Les restes croustillants : le meilleur terrain de jeu</h3>
+      <h3>Comment réchauffer des pommes de terre rôties ou des frites déjà cuites ?</h3>
       <p>Frites, pommes de terre rôties, légumes grillés, nuggets, feuilletés et pain retrouvent une surface sèche et dorée au air fryer. Pour les frites, ne tassez pas le panier : quelques minutes à 180 °C avec un secouage à mi-cuisson suffisent souvent. Retrouvez aussi nos repères pour les <a href="/recettes/frites-surgelees-air-fryer/">frites surgelées</a> et nos idées pour <a href="/livres/air-fryer-anti-gaspi/">transformer le pain rassis</a> plutôt que le jeter.</p>
 
       <h3>Les plats denses : plus doux, plus longtemps</h3>
