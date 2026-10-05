@@ -45,10 +45,20 @@ export function initRecipePrompts(root, env = window) {
     const read = env.scrollY >= Math.min(300, (doc.documentElement.scrollHeight - env.innerHeight) * 0.2) && env.scrollY > 0;
     if (!active && elapsed >= 30 && elapsed < 110 && read && !seen.has('newsletter')) show('newsletter');
   };
-  const timer = env.setInterval(tick, 1000);
+  let timer = env.setInterval(tick, 1000);
   // Update the clock boundary when the tab changes visibility (no background time).
   doc.addEventListener('visibilitychange', () => { lastTick = env.performance.now(); });
-  env.addEventListener('pagehide', () => env.clearInterval(timer), { once: true });
+  env.addEventListener('pagehide', () => {
+    env.clearInterval(timer);
+    timer = null;
+  });
+  // A cached page is restored without rerunning its module script.
+  // Resume the timer on browser Back/Forward, excluding time spent away.
+  env.addEventListener('pageshow', event => {
+    if (!event.persisted || timer !== null) return;
+    lastTick = env.performance.now();
+    timer = env.setInterval(tick, 1000);
+  });
   root.querySelectorAll('[data-prompt-close]').forEach(button => button.addEventListener('click', () => {
     send('recipe_prompt_dismiss', { prompt_type: active?.dataset.prompt || 'unknown' }); hide();
   }));

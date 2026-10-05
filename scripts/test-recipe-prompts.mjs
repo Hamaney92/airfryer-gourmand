@@ -11,11 +11,11 @@ function setup(saved = {}) {
   const frame={src:'',dataset:{newsletterUrl:'https://preview.mailerlite.io/forms/test/share'}};
   const nodes={'[data-prompt="newsletter"]':newsletter,'[data-prompt="book"]':book,dialog,iframe:frame,'[data-newsletter-open]':open,'[data-newsletter-close]':close};
   const root={dataset:{},ownerDocument:doc,querySelector:s=>nodes[s],querySelectorAll:()=>[dismiss]};
-  let now=0, tick;const events=[];
-  const env={performance:{now:()=>now},scrollY:400,innerHeight:800,location:{hostname:'127.0.0.1',pathname:'/recettes/test/'},sessionStorage:{getItem:k=>saved[k],setItem:(k,v)=>{saved[k]=v;}},setInterval:f=>{tick=f;return 1;},clearInterval(){},addEventListener(){},gtag:(...args)=>events.push(args)};
+  let now=0, intervalId=0;const intervals=new Map(), events=[], handlers={};
+  const env={performance:{now:()=>now},scrollY:400,innerHeight:800,location:{hostname:'127.0.0.1',pathname:'/recettes/test/'},sessionStorage:{getItem:k=>saved[k],setItem:(k,v)=>{saved[k]=v;}},setInterval:f=>{intervals.set(++intervalId,f);return intervalId;},clearInterval:id=>intervals.delete(id),addEventListener:(n,f)=>{handlers[n]=f;},gtag:(...args)=>events.push(args)};
   initRecipePrompts(root,env);
-  const advance=seconds=>{for(let i=0;i<seconds;i++){now+=1000;tick();}};
-  return {root,doc,env,newsletter,book,dialog,frame,open,close,dismiss,advance,events,saved};
+  const advance=seconds=>{for(let i=0;i<seconds;i++){now+=1000;for(const tick of intervals.values())tick();}};
+  return {root,doc,env,newsletter,book,dialog,frame,open,close,dismiss,advance,events,saved,handlers,intervals};
 }
 
 test('Newsletter waits for reading and books wait for 120 visible seconds',()=>{
@@ -44,4 +44,13 @@ test('Focused controls and active form input are not interrupted',()=>{
 });
 test('Without session storage, prompts still appear once per page',()=>{
   const s=setup();s.env.sessionStorage.setItem=()=>{throw Error('blocked');};s.advance(30);s.dismiss.handlers.click();s.advance(90);s.dismiss.handlers.click();s.advance(200);assert.ok(s.newsletter.hidden&&s.book.hidden);
+});
+test('Returning from the back-forward cache resumes visible reading without counting time away',()=>{
+  const s=setup();s.advance(20);s.handlers.pagehide();s.advance(300);
+  assert.ok(s.newsletter.hidden&&s.book.hidden);assert.equal(s.intervals.size,0);
+  s.handlers.pageshow({persisted:true});s.handlers.pageshow({persisted:true});
+  assert.equal(s.intervals.size,1);s.advance(9);assert.ok(s.newsletter.hidden);
+  s.advance(1);assert.ok(!s.newsletter.hidden);
+  s.handlers.pagehide();s.advance(300);s.handlers.pageshow({persisted:true});
+  s.advance(89);assert.ok(s.book.hidden);s.advance(1);assert.ok(!s.book.hidden);
 });
