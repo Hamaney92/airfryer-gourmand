@@ -8,5 +8,7 @@
 - POST sans email validé : réponse JSON success:false/email required, aucun contact créé. OPTIONS confirme CORS POST autorisé. Ce n’est pas un test de livraison.
 - Tests : build 146 pages, liens internes et SEO OK (107 schémas Recipe), 48 tests existants/nouveau popup réussis avant ajout du test POST simulé. Recette feta : ouverture automatique newsletter et dialog demande de recette vérifiés dans Chrome local.
 - Limite : adresse de test demandée à Youssef ; réception réelle et personnalisation dans un email reçu restent à vérifier, aucune fausse inscription créée. Le mail transmet le titre et le lien, pas l’intégralité des ingrédients/étapes.
+- Réentrée vérifiée après activation : case activée, mais délai par défaut de 1 jour. Le contrôle de sécurité a refusé la pause nécessaire au changement : ne pas contourner. Une autorisation de pause temporaire est nécessaire pour autoriser immédiatement une deuxième demande après sortie du workflow.
+- Publication : commit 5520ef7 envoyé sur main. Test POST simulé supplémentaire réussi (49 tests cumulés). Pages publiques recette feta, guides et newsletter vérifiées après déploiement ; ouverture automatique et formulaire recette vérifiés dans Chrome en production. Captures dans outputs/newsletter-popup-publie-2026-10-05.png et outputs/recette-popup-publie-2026-10-05.png du workspace parent.
 
 Les anciens formulaires/automations et les contacts existants ne sont pas modifiés. Aucun clic n’est traité comme inscription ou livraison confirmée.
