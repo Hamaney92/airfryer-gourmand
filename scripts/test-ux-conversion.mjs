@@ -32,10 +32,14 @@ test('Legacy PDF capture removed; newsletter uses the dedicated consent form', (
     assert.ok(page.includes('data-newsletter-signup'));
     assert.ok(page.includes('https://preview.mailerlite.io/forms/2516614/199341135344174725/share'));
     assert.ok(!page.includes('194538633598863135/subscribe'));
-    assert.ok(!page.includes('name="fields[email]"'));
+    if (path.startsWith('recettes/')) {
+      assert.ok(page.includes('data-recipe-email'));
+      assert.ok(page.includes('200506049966376365/subscribe'));
+      assert.ok(page.includes('name="fields[url_recette]"'));
+    } else assert.ok(!page.includes('name="fields[email]"'));
     assert.ok(!page.includes('class="books-banner"'));
   }
-  assert.ok(html('recettes/chataigne-air-fryer').includes('mailto:'));
+  assert.ok(!html('recettes/chataigne-air-fryer').includes('mailto:'));
   assert.ok(html('tableau-temps-cuisson-air-fryer').includes('download'));
 });
 test('Preview contains real lightweight pages and contextual book links remain', () => {

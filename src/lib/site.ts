@@ -25,16 +25,16 @@ export const CATEGORIES: Record<string, { slug: string; label: string }> = {
 };
 
 // ===== CAPTURE EMAIL =====
-// Formulaire MailerLite « Enregistrer cette recette - pages recette »
-// (compte 2516614, groupe « Recette enregistrée »). Les champs personnalisés
-// {$recette} et {$url_recette} sont remplis par les inputs cachés de SaveRecipe.astro
-// et réutilisés dans l'automatisation pour envoyer LA recette consultée.
+// Formulaire ponctuel, groupe et workflow séparés de la newsletter et des relances historiques.
+// Les champs recette et url_recette personnalisent le seul email demandé.
 export const MAILERLITE_FORM_ACTION =
-  'https://assets.mailerlite.com/jsonp/2516614/forms/194538633598863135/subscribe';
+  'https://dashboard.mailerlite.com/jsonp/2516614/forms/200506049966376365/subscribe';
 
 // ===== AFFILIATION AMAZON =====
 // Newsletter commerciale séparée du groupe historique de recettes.
 export const NEWSLETTER_SIGNUP_URL =
+  '/newsletter/';
+export const NEWSLETTER_FORM_URL =
   'https://preview.mailerlite.io/forms/2516614/199341135344174725/share';
 
 // Tag Amazon.fr Partenaires actif (compte créé le 16/07/2026). Un seul endroit à

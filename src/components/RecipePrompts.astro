@@ -1,5 +1,5 @@
 ---
-import { NEWSLETTER_SIGNUP_URL, amazonProduct } from '../lib/site';
+import { NEWSLETTER_SIGNUP_URL, NEWSLETTER_FORM_URL, amazonProduct } from '../lib/site';
 import { bookFor } from '../lib/commerce';
 interface Props { title: string; category: string; slug: string; servings: number; lightRecipe?: boolean; }
 const { title, category, slug, servings, lightRecipe = false } = Astro.props;
@@ -37,11 +37,12 @@ const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-am
     <a class="prompt-secondary" href="/livre/" data-book-entry data-book-id={kind} data-placement="timed_recipe_books">Feuilleter nos deux livres</a>
     <p class="prompt-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
   </aside>
-  <dialog class="newsletter-dialog" aria-labelledby="newsletter-dialog-title">
-    <div class="dialog-header"><h2 id="newsletter-dialog-title">Votre inscription à la newsletter</h2><button class="prompt-close" type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button></div>
+  <dialog class="newsletter-dialog" data-newsletter-dialog data-auto-newsletter aria-labelledby="newsletter-dialog-title">
+    <div class="dialog-header"><h2 id="newsletter-dialog-title">{theme.heading}</h2><button class="prompt-close" type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button></div>
     <p class="dialog-context">Vous lisez : {title}. Retrouvez nos idées et conseils par email.</p>
-    <iframe title="Formulaire newsletter Airfryer Gourmand" data-newsletter-url={NEWSLETTER_SIGNUP_URL} referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    <a class="dialog-fallback" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source="recipe_popup_fallback">Ouvrir le formulaire dans une page séparée →</a>
+    <p class="dialog-context">Inscription facultative à nos recettes, conseils et offres sur les livres et produits, parfois affiliés. Désinscription à tout moment. Vos données sont traitées via MailerLite. <a href="/confidentialite/">Confidentialité</a>.</p>
+    <iframe title="Formulaire newsletter Airfryer Gourmand" data-newsletter-url={NEWSLETTER_FORM_URL} referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <p class="dialog-context">Le formulaire ne s’affiche pas ? <a href={NEWSLETTER_SIGNUP_URL}>Réessayer sur notre page newsletter</a>.</p>
   </dialog>
 </div>
 <script>

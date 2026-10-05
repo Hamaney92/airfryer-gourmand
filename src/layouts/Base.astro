@@ -5,6 +5,7 @@ import ConversionTracking from '../components/ConversionTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
 import { NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import NewsletterBanner from '../components/NewsletterBanner.astro';
+import NewsletterPopup from '../components/NewsletterPopup.astro';
 import ContextualProducts from '../components/ContextualProducts.astro';
 import BookOffer from '../components/BookOffer.astro';
 import { isEditorialPage, pageOffers, bookFor } from '../lib/commerce';
@@ -75,5 +76,6 @@ const cats = [
   </footer>
   <AffiliateTracking />
   <ConversionTracking />
+  <NewsletterPopup automatic={isEditorialPage(Astro.url.pathname) || Astro.url.pathname === '/'} />
 </body>
 </html>

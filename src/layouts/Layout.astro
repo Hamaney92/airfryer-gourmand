@@ -6,6 +6,7 @@ import AffiliateTracking from '../components/AffiliateTracking.astro';
 import BooksBanner from '../components/BooksBanner.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
 import NewsletterBanner from '../components/NewsletterBanner.astro';
+import NewsletterPopup from '../components/NewsletterPopup.astro';
 import ContextualProducts from '../components/ContextualProducts.astro';
 import BookOffer from '../components/BookOffer.astro';
 import { isEditorialPage, pageOffers, bookFor } from '../lib/commerce';
@@ -133,6 +134,7 @@ const year = new Date().getFullYear();
     </footer>
     <AffiliateTracking />
     <ConversionTracking />
+    {!noindex && path !== '/newsletter/' && <NewsletterPopup renderDialog={pageType !== 'recipe'} automatic={isEditorialPage(path) || path === '/' || pageType === 'recipe'} />}
     <script>
       const menuButton = document.querySelector<HTMLButtonElement>('.mobile-menu-trigger');
       const navigation = document.querySelector<HTMLElement>('#primary-navigation');

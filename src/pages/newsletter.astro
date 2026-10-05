@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { NEWSLETTER_FORM_URL } from '../lib/site';
+---
+<Layout title="La newsletter Airfryer Gourmand" description="Inscrivez-vous volontairement pour recevoir nos recettes, conseils et offres. Désinscription à tout moment." pageType="newsletter" noindex>
+  <section class="wrap newsletter-page">
+    <h1>Vos prochaines idées air fryer, par email</h1>
+    <p>Inscription facultative à nos recettes, conseils et offres sur les livres et produits, parfois affiliés. Désinscription à tout moment. Données traitées via MailerLite. <a href="/confidentialite/">Confidentialité</a>.</p>
+    <iframe src={NEWSLETTER_FORM_URL} title="Formulaire newsletter Airfryer Gourmand" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
+</Layout>
+<style>.newsletter-page{max-width:740px;padding-top:30px;padding-bottom:30px}.newsletter-page iframe{width:100%;height:720px;border:0}.newsletter-page p{color:var(--muted);font-size:.9rem}</style>

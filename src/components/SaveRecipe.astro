@@ -1,18 +1,41 @@
 ---
 interface Props { titre: string; url: string; }
+import { MAILERLITE_FORM_ACTION } from '../lib/site';
 const { titre, url } = Astro.props;
-const mail = `mailto:?subject=${encodeURIComponent(titre)}&body=${encodeURIComponent(`Une recette à garder : ${titre}\n${url}`)}`;
 ---
 <aside class="save-box" aria-label="Garder cette recette">
   <h2>Gardez cette recette pour plus tard</h2>
-  <p>Sans inscription : envoyez le lien avec votre messagerie. Votre adresse ne nous est pas transmise.</p>
-  <a class="save-link" href={mail}>Ouvrir ma messagerie →</a>
+  <p>Recevez le lien de cette recette par email, sans abonnement automatique à la newsletter.</p>
+  <button class="save-link" type="button" data-recipe-email-open>Recevoir cette recette par email →</button>
+  <noscript>Activez JavaScript pour demander l’envoi, ou gardez cette page dans vos favoris.</noscript>
 </aside>
+<dialog class="recipe-email" data-recipe-email aria-labelledby="recipe-email-title">
+  <button type="button" class="close" data-recipe-email-close aria-label="Fermer l’envoi de recette">×</button>
+  <h2 id="recipe-email-title">Votre recette, à portée de main</h2>
+  <p><strong>{titre}</strong></p>
+  <form method="post" action={MAILERLITE_FORM_ACTION}>
+    <label for="recipe-email-address">Votre adresse email</label>
+    <input id="recipe-email-address" type="email" name="fields[email]" autocomplete="email" required maxlength="254" />
+    <input type="hidden" name="fields[recette]" value={titre} />
+    <input type="hidden" name="fields[url_recette]" value={url} />
+    <input type="hidden" name="ml-submit" value="1" />
+    <input type="hidden" name="anticsrf" value="true" />
+    <p class="disclaimer">Un email ponctuel avec le lien de cette recette, sans inscription à la newsletter ni relance commerciale. Votre adresse et la recette demandée sont traitées via MailerLite pour cet envoi. <a href="/confidentialite/">Confidentialité</a>.</p>
+    <button class="send" type="submit">Envoyez-moi cette recette</button>
+    <p role="status" aria-live="polite" data-recipe-email-status></p>
+  </form>
+</dialog>
+<script>
+  import { initRecipeEmail } from '../lib/recipe-email.mjs';
+  initRecipeEmail(document.querySelector('[data-recipe-email]'));
+</script>
 <style>
   .save-box{background:var(--cream);border:1px solid #e8c7a9;border-radius:16px;padding:22px;margin:26px 0}
   .save-box h2{font-size:1.15rem;margin:0 0 8px}.save-box p{font-size:.92rem;color:#5f5147;margin:8px 0}
-  .save-link{display:inline-block;padding:10px 0;color:var(--brand-d);font-weight:750;text-decoration:underline;min-height:44px}
+  .save-link{display:inline-block;padding:10px 0;color:var(--brand-d);font:inherit;font-weight:750;text-decoration:underline;min-height:44px;border:0;background:none;cursor:pointer;text-align:left}
+  .recipe-email{width:min(520px,calc(100vw - 24px));max-height:90dvh;margin:auto;padding:28px;border:0;border-radius:18px;background:#fffaf4;color:var(--ink);box-shadow:0 15px 60px #0005}.recipe-email::backdrop{background:#182c2570}.recipe-email h2{font-size:1.4rem;margin:0 24px 12px 0}.recipe-email p{line-height:1.5}.close{position:absolute;right:8px;top:8px;min-width:44px;min-height:44px;background:none;border:0;font-size:26px;cursor:pointer}
+  label{display:block;font-weight:700;margin-bottom:8px}input[type=email]{width:100%;padding:14px;border:1px solid #8c8278;border-radius:8px;font:inherit}.disclaimer{font-size:.8rem;color:#5f5147}.send{width:100%;padding:14px;background:var(--brand-d);color:white;border:0;border-radius:8px;font:inherit;font-weight:750;cursor:pointer}.send:disabled{opacity:.6;cursor:wait}button:focus-visible,input:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
   details{border-top:1px solid #e8c7a9;padding-top:12px;margin-top:10px}summary{font-weight:700;cursor:pointer;min-height:44px;padding:8px 0}
   a:focus-visible,summary:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
-  @media print{.save-box{display:none}}
+  @media print{.save-box,.recipe-email{display:none!important}}
 </style>

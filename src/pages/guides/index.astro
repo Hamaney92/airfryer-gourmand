@@ -2,11 +2,11 @@
 import Base from '../../layouts/Base.astro';
 
 const guides = [
-  ['🥇', 'Meilleur air fryer 2026', 'Notre comparatif des modèles qui valent vraiment leur prix, pour chaque budget.', '/guides/meilleur-air-fryer-2026/'],
-  ['🍽️', 'Meilleur air fryer double panier', 'Deux tiroirs pour cuire deux plats à la fois : les meilleurs modèles familiaux.', '/guides/meilleur-air-fryer-double-panier/'],
-  ['📦', 'Air fryer XXL & familial', 'Les grandes capacités (7 L et +) pour les familles nombreuses et les grandes tablées.', '/guides/air-fryer-xxl-familial/'],
-  ['🔧', 'Accessoires air fryer indispensables', 'Moules, papiers cuisson perforés, grilles… ce qui change vraiment la donne.', '/guides/accessoires-air-fryer/'],
-  ['⚖️', 'Ninja, Moulinex ou Philips ?', 'On compare les grandes marques pour t\'aider à choisir selon tes besoins.', '/guides/ninja-moulinex-philips/'],
+  ['choisir', 'Meilleur air fryer 2026', 'Notre comparatif des modèles selon vos besoins et votre budget.', '/guides/meilleur-air-fryer-2026/'],
+  ['double-panier', 'Meilleur air fryer double panier', 'Deux tiroirs pour cuire deux plats à la fois : les modèles familiaux et leurs différences.', '/guides/meilleur-air-fryer-double-panier/'],
+  ['familial', 'Air fryer XXL & familial', 'Les grandes capacités pour les familles nombreuses et les grandes tablées.', '/guides/air-fryer-xxl-familial/'],
+  ['accessoires', 'Accessoires air fryer indispensables', 'Moules, papiers cuisson perforés, grilles… les usages et compatibilités à vérifier.', '/guides/accessoires-air-fryer/'],
+  ['marques', 'Ninja, Moulinex ou Philips ?', 'On compare les grandes marques pour vous aider à choisir selon vos besoins.', '/guides/ninja-moulinex-philips/'],
 ];
 ---
 <Base title="Guides d'achat air fryer 2026 — Quel modèle choisir ?" description="Nos guides d'achat air fryer : comment choisir, comparatifs des meilleurs modèles (simple, double panier, XXL) et accessoires indispensables. Pour chaque budget.">
@@ -21,13 +21,13 @@ const guides = [
         la <b>capacité</b> (3–4 L pour 1–2 personnes, 5–6 L pour une famille, 7 L et + pour les grandes tablées),
         la <b>puissance</b> (idéalement 1500 W et plus pour bien croustiller), la <b>facilité de nettoyage</b>
         (panier compatible lave-vaisselle et revêtement anti-adhésif) et les <b>programmes</b> utiles. Nos guides
-        détaillés arrivent — voici ce qu'on prépare.
+        détaillés vous aident à comparer ces critères.
       </p>
 
       <div class="cards">
-        {guides.map(([e, t, d, url]) => (
+        {guides.map(([visual, t, d, url]) => (
           <div class="rcard">
-            <div class="ph" style="height:120px"><span style="font-size:2rem">{e}</span></div>
+            <a href={url} tabindex="-1" aria-hidden="true"><img class="guide-visual" src={`/img/guides/${visual}.svg`} alt="" width="600" height="340" loading="lazy" decoding="async" /></a>
             <div style="padding:14px 16px 18px">
               <span class="rtag">{url ? 'Guide d\'achat' : 'Guide d\'achat · à venir'}</span>
               {url
@@ -51,3 +51,4 @@ const guides = [
     </section>
   </div>
 </Base>
+<style>.guide-visual{display:block;width:100%;height:auto;aspect-ratio:600/340;object-fit:cover}</style>

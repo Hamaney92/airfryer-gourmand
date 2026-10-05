@@ -26,6 +26,15 @@ test('Both layouts attribute footer newsletter clicks separately from banners', 
     const link = footer.match(/<a\b[^>]*>Newsletter recettes et offres<\/a>/)[0];
     assert.match(link, /data-newsletter-signup(?:\s|=|>)/, path);
     assert.match(link, /data-lead-source="footer_[^"]+"/, path);
-    assert.match(link, /https:\/\/preview\.mailerlite\.io\/forms\//, path);
+    assert.match(link, /href="\/newsletter\/"/, path);
   }
+});
+test('Recipe and editorial newsletter links share one on-site dialog and legal pages have no automatic invitation',()=>{
+  for(const path of ['recettes/feta-rotie-air-fryer/','guides/','livre/']) {
+    const page=readFileSync(new URL(`${path}index.html`,root),'utf8');
+    assert.equal((page.match(/<dialog[^>]*data-newsletter-dialog/g)||[]).length,1,path);
+    assert.ok(!/<a[^>]*href="https:\/\/preview\.mailerlite/.test(page),path);
+  }
+  const legal=readFileSync(new URL('confidentialite/index.html',root),'utf8');
+  assert.ok(!/<dialog[^>]*data-auto-newsletter/.test(legal));
 });

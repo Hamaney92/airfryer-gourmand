@@ -51,10 +51,10 @@ export function initRecipePrompts(root, env = window) {
     lastTick = now;
     if (doc.hidden) return;
     elapsed += delta;
-    if (dialog.open || /^(INPUT|TEXTAREA|SELECT)$/.test(doc.activeElement?.tagName || '') || active?.contains(doc.activeElement)) return;
+    if (dialog.open || doc.querySelector('dialog[data-recipe-email][open]')?.open || /^(INPUT|TEXTAREA|SELECT)$/.test(doc.activeElement?.tagName || '') || active?.contains(doc.activeElement)) return;
     if (elapsed >= 120 && !seen.has('book')) { show('book'); return; }
     const read = env.scrollY >= Math.min(300, (doc.documentElement.scrollHeight - env.innerHeight) * 0.2) && env.scrollY > 0;
-    if (!active && elapsed >= 30 && elapsed < 110 && read && !seen.has('newsletter')) show('newsletter');
+    if (!active && elapsed >= 30 && elapsed < 110 && read && !doc.documentElement.dataset?.newsletterHandled && !seen.has('newsletter')) show('newsletter');
   };
   let timer = env.setInterval(tick, 1000);
   // Update the clock boundary when the tab changes visibility (no background time).
