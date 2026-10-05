@@ -5,17 +5,17 @@ import { initRecipePrompts } from '../src/lib/recipe-prompts.mjs';
 function setup(saved = {}) {
   const element = (dataset = {}) => ({ dataset, hidden: true, handlers: {}, addEventListener(n,f){this.handlers[n]=f;}, contains(e){return e === this;}, focus(){doc.activeElement=this;}, setAttribute(){} });
   const doc = { hidden:false, activeElement:null, documentElement:{scrollHeight:3000}, handlers:{}, addEventListener(n,f){this.handlers[n]=f;}, querySelector(){return heading;} };
-  const heading=element(), newsletter=element({prompt:'newsletter'}), book=element({prompt:'book'}), open=element(), close=element(), dismiss=element();
+  const heading=element(), newsletter=element({prompt:'newsletter'}), book=element({prompt:'book'}), open=element(), close=element(), dismiss=element(), bookLink=element();
   open.closest=()=>newsletter.hidden?newsletter:null;
   const dialog=element();dialog.open=false;dialog.showModal=()=>{dialog.open=true;};dialog.close=()=>{dialog.open=false;dialog.handlers.close();};
   const frame={src:'',dataset:{newsletterUrl:'https://preview.mailerlite.io/forms/test/share'}};
   const nodes={'[data-prompt="newsletter"]':newsletter,'[data-prompt="book"]':book,dialog,iframe:frame,'[data-newsletter-open]':open,'[data-newsletter-close]':close};
-  const root={dataset:{},ownerDocument:doc,querySelector:s=>nodes[s],querySelectorAll:()=>[dismiss]};
+  const root={dataset:{},ownerDocument:doc,querySelector:s=>nodes[s],querySelectorAll:s=>s==='[data-prompt-close]'?[dismiss]:[bookLink]};
   let now=0, intervalId=0;const intervals=new Map(), events=[], handlers={};
   const env={performance:{now:()=>now},scrollY:400,innerHeight:800,location:{hostname:'127.0.0.1',pathname:'/recettes/test/'},sessionStorage:{getItem:k=>saved[k],setItem:(k,v)=>{saved[k]=v;}},setInterval:f=>{intervals.set(++intervalId,f);return intervalId;},clearInterval:id=>intervals.delete(id),addEventListener:(n,f)=>{handlers[n]=f;},gtag:(...args)=>events.push(args)};
   initRecipePrompts(root,env);
   const advance=seconds=>{for(let i=0;i<seconds;i++){now+=1000;for(const tick of intervals.values())tick();}};
-  return {root,doc,env,newsletter,book,dialog,frame,open,close,dismiss,advance,events,saved,handlers,intervals};
+  return {root,doc,env,newsletter,book,dialog,frame,open,close,dismiss,bookLink,advance,events,saved,handlers,intervals};
 }
 
 test('Newsletter waits for reading and books wait for 120 visible seconds',()=>{
@@ -53,4 +53,21 @@ test('Returning from the back-forward cache resumes visible reading without coun
   s.advance(1);assert.ok(!s.newsletter.hidden);
   s.handlers.pagehide();s.advance(300);s.handlers.pageshow({persisted:true});
   s.advance(89);assert.ok(s.book.hidden);s.advance(1);assert.ok(!s.book.hidden);
+});
+test('Missed impressions do not suppress a later page and neither card auto-hides',()=>{
+  const saved={};const s=setup(saved);s.advance(100);assert.ok(!s.newsletter.hidden);
+  assert.deepEqual(saved,{});s.advance(20);assert.ok(!s.book.hidden);
+  s.advance(200);assert.ok(!s.book.hidden);assert.deepEqual(saved,{});
+  const next=setup(saved);next.advance(30);assert.ok(!next.newsletter.hidden);
+});
+test('Legacy impression flags no longer suppress invitations',()=>{
+  const s=setup({afg_prompt_v1_newsletter:'1',afg_prompt_v1_book:'1'});
+  s.advance(30);assert.ok(!s.newsletter.hidden);s.advance(90);assert.ok(!s.book.hidden);
+});
+test('Newsletter CTA, book CTA and Escape preserve intentional session suppression',()=>{
+  const saved={};const s=setup(saved);s.advance(30);s.open.handlers.click({currentTarget:s.open});
+  s.close.handlers.click();s.advance(90);s.bookLink.handlers.click();
+  const next=setup(saved);next.advance(120);assert.ok(next.newsletter.hidden&&next.book.hidden);
+  const escaped=setup();escaped.advance(30);escaped.doc.handlers.keydown({key:'Escape'});
+  const afterEscape=setup(escaped.saved);afterEscape.advance(30);assert.ok(afterEscape.newsletter.hidden);
 });
