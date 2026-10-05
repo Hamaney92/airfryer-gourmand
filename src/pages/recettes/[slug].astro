@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
+import RecipePrompts from '../../components/RecipePrompts.astro';
 import BookOffer from '../../components/BookOffer.astro';
 import ChestnutGear from '../../components/ChestnutGear.astro';
 import ContextualProducts from '../../components/ContextualProducts.astro';
@@ -231,6 +232,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       </section>
     )}
   </article>
+  <RecipePrompts title={data.title} category={data.category} slug={recipe.id} servings={data.servings} lightRecipe={lightRecipe} />
 </Layout>
 
 <style>

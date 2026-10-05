@@ -1,0 +1,65 @@
+---
+import { NEWSLETTER_SIGNUP_URL, amazonProduct } from '../lib/site';
+import { bookFor } from '../lib/commerce';
+interface Props { title: string; category: string; slug: string; servings: number; lightRecipe?: boolean; }
+const { title, category, slug, servings, lightRecipe = false } = Astro.props;
+const theme = category === 'Dessert'
+  ? { heading: 'Encore une envie de dessert facile ?', copy: 'Gâteaux, petits desserts et astuces air fryer : recevez des idées pour votre prochaine pause gourmande.' }
+  : /poulet|dinde/.test(slug)
+    ? { heading: lightRecipe ? 'Des idées de poulet pour vos repas légers ?' : 'Une autre idée pour cuisiner le poulet ?', copy: lightRecipe ? 'Poulet, légumes et accompagnements simples : retrouvez nos inspirations et conseils air fryer par email.' : 'Variez vos repas avec des idées de volaille, des accompagnements et des conseils de cuisson au air fryer.' }
+    : category === 'Legume' || category === 'Poisson'
+      ? { heading: 'Des idées pour varier vos repas ?', copy: 'Légumes, poissons et repas simples au air fryer : retrouvez de nouvelles inspirations dans votre boîte mail.' }
+      : { heading: 'Et pour votre prochain repas ?', copy: 'Recevez des idées de recettes faciles et des conseils air fryer pour changer du même menu.' };
+const kind = bookFor(slug, servings);
+const anti = kind === 'anti-gaspi';
+const name = anti ? 'Air Fryer Anti-Gaspi' : 'Air Fryer gourmand pour seniors';
+const asin = anti ? 'B0HHZM8TYR' : 'B0HCSM8ZMD';
+const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
+---
+<div data-recipe-prompts>
+  <aside class="reading-prompt" data-prompt="newsletter" hidden aria-labelledby="reading-newsletter-title">
+    <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’invitation newsletter">×</button>
+    <span class="prompt-eyebrow">La newsletter Airfryer Gourmand</span>
+    <h2 id="reading-newsletter-title">{theme.heading}</h2>
+    <p>{theme.copy}</p>
+    <button class="prompt-cta" type="button" data-newsletter-open>Recevoir ces idées par email →</button>
+    <p class="prompt-note">Recettes, conseils et offres · désinscription à tout moment.</p>
+  </aside>
+  <aside class="reading-prompt book-prompt" data-prompt="book" hidden aria-labelledby="reading-book-title">
+    <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’offre livres">×</button>
+    <span class="prompt-eyebrow">Publicité · les livres de notre équipe</span>
+    <h2 id="reading-book-title">{anti ? 'Transformez vos restes en prochaines idées repas' : 'Votre prochain repas, sans chercher pendant des heures'}</h2>
+    <div class="prompt-book-detail">
+      <img src={cover} alt={`Couverture : ${name}`} width="64" height="84" loading="lazy" decoding="async" />
+      <p>{anti ? '100 recettes classées par reste disponible, pour trouver quoi cuisiner avec ce que vous avez.' : '100 recettes pour une ou deux personnes, avec des quantités adaptées et une mise en page facile à lire.'}</p>
+    </div>
+    <a class="prompt-cta" href={amazonProduct(asin)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-type="book" data-product-name={name} data-product-asin={asin} data-product-id={kind} data-book-id={kind} data-placement="timed_recipe_book" data-page-type="recipe">Découvrir le livre sur Amazon →</a>
+    <a class="prompt-secondary" href="/livre/" data-book-entry data-book-id={kind} data-placement="timed_recipe_books">Feuilleter nos deux livres</a>
+    <p class="prompt-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
+  </aside>
+  <dialog class="newsletter-dialog" aria-labelledby="newsletter-dialog-title">
+    <div class="dialog-header"><h2 id="newsletter-dialog-title">Votre inscription à la newsletter</h2><button class="prompt-close" type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button></div>
+    <p class="dialog-context">Vous lisez : {title}. Retrouvez nos idées et conseils par email.</p>
+    <iframe title="Formulaire newsletter Airfryer Gourmand" data-newsletter-url={NEWSLETTER_SIGNUP_URL} referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <a class="dialog-fallback" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source="recipe_popup_fallback">Ouvrir le formulaire dans une page séparée →</a>
+  </dialog>
+</div>
+<script>
+  import { initRecipePrompts } from '../lib/recipe-prompts.mjs';
+  const root = document.querySelector('[data-recipe-prompts]');
+  if (root) initRecipePrompts(root);
+</script>
+<style>
+  .reading-prompt[hidden]{display:none}
+  .reading-prompt{position:fixed;z-index:60;bottom:20px;right:20px;width:min(370px,calc(100% - 32px));max-height:45dvh;overflow:auto;overscroll-behavior:contain;padding:22px;border:1px solid #e8c7a9;border-radius:18px;background:#fffaf4;box-shadow:0 12px 40px #39221230;color:var(--ink)}
+  .prompt-close{position:absolute;right:8px;top:6px;min-width:44px;min-height:44px;border:0;background:transparent;font-size:26px;cursor:pointer;color:#5f5147}
+  .prompt-eyebrow{display:block;padding-right:30px;color:#805028;text-transform:uppercase;font-size:.68rem;font-weight:800;letter-spacing:.07em}
+  h2{font-size:1.2rem;line-height:1.25;margin:9px 20px 9px 0}p{font-size:.9rem;line-height:1.5;margin:8px 0 12px}
+  .prompt-cta{display:block;width:100%;padding:12px 14px;min-height:44px;text-align:center;background:#173e32;border:0;border-radius:10px;color:#fff;font-size:.9rem;font-weight:800;cursor:pointer;text-decoration:none}
+  .prompt-cta:hover{background:#265b46}.prompt-note{font-size:.7rem;color:#685d51;margin:9px 0 0}.prompt-secondary{display:block;text-align:center;padding:9px;min-height:44px;color:#234b36;font-size:.85rem;font-weight:700;text-decoration:underline}
+  .prompt-book-detail{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;margin:12px 0}.prompt-book-detail img{width:64px;height:84px;object-fit:contain}.prompt-book-detail p{margin:0}
+  .newsletter-dialog{width:min(620px,calc(100vw - 24px));max-height:90dvh;margin:auto;padding:20px;border:0;border-radius:16px;box-shadow:0 15px 60px #0005}.newsletter-dialog::backdrop{background:#182c2570}.dialog-header{position:relative;padding-right:28px}.dialog-header .prompt-close{top:-10px;right:-10px}.dialog-context{font-size:.8rem;color:#685d51}.newsletter-dialog iframe{display:block;width:100%;height:60dvh;min-height:220px;border:0;background:#fff}.dialog-fallback{display:block;font-size:.8rem;color:#234b36;text-decoration:underline;padding:12px 0;min-height:44px}
+  button:focus-visible,a:focus-visible{outline:3px solid #c77728;outline-offset:3px}
+  @media(max-width:640px){.reading-prompt{bottom:12px;right:16px;padding:18px;max-height:40dvh}h2{font-size:1.07rem}.newsletter-dialog{padding:16px}}
+  @media print{.reading-prompt,.newsletter-dialog{display:none!important}}
+</style>

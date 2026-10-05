@@ -24,7 +24,7 @@ test('All recipes remain linked in server HTML without JavaScript', () => {
   assert.ok(listing.includes('https://airfryergourmand.fr/recettes/'));
   assert.ok(listing.includes('id="recipe-filters"'));
 });
-test('Automatic popups removed; newsletter routes to dedicated consent form', () => {
+test('Legacy PDF capture removed; newsletter uses the dedicated consent form', () => {
   for (const path of ['recettes/chataigne-air-fryer','tableau-temps-cuisson-air-fryer']) {
     const page=html(path);
     assert.ok(!page.includes('id="pdfpop"'));
