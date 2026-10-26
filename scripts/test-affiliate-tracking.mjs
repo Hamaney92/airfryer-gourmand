@@ -6,7 +6,7 @@ import { test } from 'node:test';
 const source = readFileSync(new URL('../src/components/AffiliateTracking.astro', import.meta.url), 'utf8');
 const script = source.match(/<script is:inline>([\s\S]*?)<\/script>/)[1];
 
-function setup(hasAnalytics = true) {
+function setup(hasAnalytics = true, hostname = 'airfryergourmand.fr') {
   const events = [];
   const listeners = [];
   class Element {
@@ -19,7 +19,7 @@ function setup(hasAnalytics = true) {
     }
   }
   const window = {
-    location: { href: 'https://airfryergourmand.fr/tableau-temps-cuisson-air-fryer/', origin: 'https://airfryergourmand.fr', pathname: '/tableau-temps-cuisson-air-fryer/' },
+    location: { hostname, href: 'https://airfryergourmand.fr/tableau-temps-cuisson-air-fryer/', origin: 'https://airfryergourmand.fr', pathname: '/tableau-temps-cuisson-air-fryer/' },
     ...(hasAnalytics ? { gtag: (...args) => events.push(args) } : {}),
   };
   const context = vm.createContext({ window, document: { body: { dataset: {} }, addEventListener: (name, fn) => listeners.push(fn) }, Element, HTMLAnchorElement: Anchor, URL });
@@ -44,6 +44,20 @@ test('Book purchase retains affiliate and book events', () => {
   const s = setup();
   s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book', affiliateNetwork: 'amazon' }) });
   assert.deepEqual(s.events.map(e => e[1]), ['affiliate_click', 'book_cta_click']);
+});
+
+test('Local and preview environments never send commercial events to production Analytics', () => {
+  for (const host of ['localhost', '127.0.0.1', 'preview.pages.dev', 'airfryergourmand.fr.example.com']) {
+    const s = setup(true, host);
+    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book' }) });
+    assert.equal(s.events.length, 0, host);
+  }
+});
+
+test('Commercial page identifiers use the canonical pathname, never a legacy recipe slug', () => {
+  const s = setup(true, 'www.airfryergourmand.fr');
+  s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book', pageId: 'legacy-slug' }) });
+  assert.equal(s.events[0][2].page_id, '/tableau-temps-cuisson-air-fryer/');
 });
 test('Internal books CTA preserves its placement', () => {
   const s = setup();

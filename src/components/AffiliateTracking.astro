@@ -9,6 +9,7 @@
     window.__airfryerAffiliateTracking = true;
 
     const send = (name, params) => {
+      if (!/^(www\.)?airfryergourmand\.fr$/.test(window.location.hostname)) return;
       if (typeof window.gtag === 'function') {
         window.gtag('event', name, { ...params, transport_type: 'beacon' });
       }
@@ -54,7 +55,7 @@
           book_id: affiliateLink.dataset.bookId || 'non_renseigne',
           placement: affiliateLink.dataset.placement || 'non_renseigne',
           page_type: affiliateLink.dataset.pageType || document.body.dataset.pageType || 'page',
-          page_id: affiliateLink.dataset.pageId || window.location.pathname,
+          page_id: window.location.pathname,
           link_url: affiliateLink.href,
         };
 
@@ -75,7 +76,7 @@
           book_id: bookEntry.dataset.bookId || 'non_renseigne',
           placement: bookEntry.dataset.placement || automaticPlacement,
           page_type: bookEntry.dataset.pageType || document.body.dataset.pageType || 'page',
-          page_id: bookEntry.dataset.pageId || window.location.pathname,
+          page_id: window.location.pathname,
           link_url: bookEntry.href,
         });
       }

@@ -12,6 +12,8 @@ const theme = category === 'Dessert'
       : { heading: 'Et pour votre prochain repas ?', copy: 'Recevez des idées de recettes faciles et des conseils air fryer pour changer du même menu.' };
 const kind = bookFor(slug, servings);
 const anti = kind === 'anti-gaspi';
+const collection = kind === 'collection';
+const previewHref = collection ? '/livre/' : anti ? '/livres/air-fryer-anti-gaspi/#apercu-anti-gaspi' : '/livre/#apercu-petites-portions';
 const name = anti ? 'Air Fryer Anti-Gaspi' : 'Air Fryer gourmand pour seniors';
 const asin = anti ? 'B0HHZM8TYR' : 'B0HCSM8ZMD';
 const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
@@ -28,14 +30,16 @@ const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-am
   <aside class="reading-prompt book-prompt" data-prompt="book" hidden aria-labelledby="reading-book-title">
     <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’offre livres">×</button>
     <span class="prompt-eyebrow">Publicité · les livres de notre équipe</span>
-    <h2 id="reading-book-title">{anti ? 'Transformez vos restes en prochaines idées repas' : 'Votre prochain repas, sans chercher pendant des heures'}</h2>
+    <h2 id="reading-book-title">{collection ? 'Un livre adapté à votre façon de cuisiner' : anti ? 'Transformez vos restes en prochaines idées repas' : 'Votre prochain repas, sans chercher pendant des heures'}</h2>
     <div class="prompt-book-detail">
-      <img src={cover} alt={`Couverture : ${name}`} width="64" height="84" loading="lazy" decoding="async" />
-      <p>{anti ? '100 recettes classées par reste disponible, pour trouver quoi cuisiner avec ce que vous avez.' : '100 recettes pour une ou deux personnes, avec des quantités adaptées et une mise en page facile à lire.'}</p>
+      {collection ? <div class="prompt-collection-covers" aria-hidden="true"><img src="/img/books/air-fryer-anti-gaspi.png" alt="" width="36" height="84" loading="lazy" decoding="async" /><img src={cover} alt="" width="36" height="84" loading="lazy" decoding="async" /></div> : <img src={cover} alt={`Couverture : ${name}`} width="64" height="84" loading="lazy" decoding="async" />}
+      <p>{collection ? 'Vous cuisinez en solo ou à deux ? Vous cherchez à utiliser vos restes ? Comparez nos deux livres et feuilletez leurs extraits.' : anti ? '100 recettes classées par reste disponible, pour trouver quoi cuisiner avec ce que vous avez.' : '100 recettes pour une ou deux personnes, avec des quantités adaptées et une mise en page facile à lire.'}</p>
     </div>
-    <a class="prompt-cta" href={amazonProduct(asin)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-type="book" data-product-name={name} data-product-asin={asin} data-product-id={kind} data-book-id={kind} data-placement="timed_recipe_book" data-page-type="recipe">Découvrir le livre sur Amazon →</a>
-    <a class="prompt-secondary" href="/livre/" data-book-entry data-book-id={kind} data-placement="timed_recipe_books">Feuilleter nos deux livres</a>
-    <p class="prompt-note">Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
+    {collection ? <a class="prompt-cta" href="/livre/" data-book-entry data-book-id="collection" data-placement="timed_recipe_books">Choisir et feuilleter mon livre →</a> : <>
+      <a class="prompt-cta" href={amazonProduct(asin)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-type="book" data-product-name={name} data-product-asin={asin} data-product-id={kind} data-book-id={kind} data-placement="timed_recipe_book" data-page-type="recipe">Découvrir le livre sur Amazon →</a>
+      <a class="prompt-secondary" href={previewHref} data-book-entry data-book-id={kind} data-placement="timed_recipe_preview">Feuilleter ce livre</a>
+    </>}
+    <p class="prompt-note">Nos livres · liens Amazon affiliés : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
   </aside>
   <dialog class="newsletter-dialog" data-newsletter-dialog data-auto-newsletter aria-labelledby="newsletter-dialog-title">
     <div class="dialog-header"><h2 id="newsletter-dialog-title">{theme.heading}</h2><button class="prompt-close" type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button></div>
@@ -51,6 +55,7 @@ const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-am
   if (root) initRecipePrompts(root);
 </script>
 <style>
+  .prompt-collection-covers{display:flex;align-items:center}.prompt-collection-covers img{width:36px!important;height:76px!important}.prompt-collection-covers img+img{margin-left:-8px}
   .reading-prompt[hidden]{display:none}
   .reading-prompt{position:fixed;z-index:60;bottom:20px;right:20px;width:min(370px,calc(100% - 32px));max-height:45dvh;overflow:auto;overscroll-behavior:contain;padding:22px;border:1px solid #e8c7a9;border-radius:18px;background:#fffaf4;box-shadow:0 12px 40px #39221230;color:var(--ink)}
   .prompt-close{position:absolute;right:8px;top:6px;min-width:44px;min-height:44px;border:0;background:transparent;font-size:26px;cursor:pointer;color:#5f5147}

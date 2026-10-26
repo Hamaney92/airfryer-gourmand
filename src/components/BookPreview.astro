@@ -1,7 +1,10 @@
 ---
+import { amazonProduct } from '../lib/site';
 interface Props { book?: 'petites-portions' | 'anti-gaspi'; }
 const { book = 'petites-portions' } = Astro.props;
 const anti = book === 'anti-gaspi';
+const name = anti ? 'Air Fryer Anti-Gaspi' : 'Air Fryer gourmand pour seniors';
+const asin = anti ? 'B0HHZM8TYR' : 'B0HCSM8ZMD';
 const pages = anti ? [
   { file:'anti-gaspi-sommaire', title:'Le sommaire', alt:'Sommaire du livre Anti-Gaspi : huit chapitres classés par reste disponible.' },
   { file:'anti-gaspi-chapitre', title:'Un chapitre illustré', alt:'Ouverture du chapitre Pain, tortillas et viennoiseries, recettes 1 à 12.' },
@@ -14,17 +17,41 @@ const pages = anti ? [
   { file:'seniors-flan-recette', title:'La recette complète', alt:'Flan d’avoine pomme-cannelle : ingrédients pour une et deux personnes et quatre étapes de préparation.' },
 ];
 ---
-<section class="book-preview" id={`apercu-${book}`} aria-labelledby={`preview-title-${book}`}>
+<section class="book-preview" data-book-preview-root id={`apercu-${book}`} aria-labelledby={`preview-title-${book}`}>
   <p class="preview-label">À feuilleter avant de choisir</p>
   <h2 id={`preview-title-${book}`}>{anti ? 'Ouvrez le livre Anti-Gaspi' : 'Ouvrez le livre pour 1 ou 2 personnes'}</h2>
   <p>Quatre pages extraites de l’intérieur du livre de {anti ? 214 : 224} pages. Ouvrez une page pour lire les quantités et les étapes en grand, sans inscription.</p>
-  <div class="preview-grid">{pages.map(page => <figure><a href={`/img/books/previews/${page.file}.webp`} target="_blank" rel="noopener" data-book-preview={book} data-preview-page={page.file} aria-label={`Agrandir : ${page.title} (nouvel onglet)`}><img src={`/img/books/previews/${page.file}.webp`} alt={page.alt} width={anti ? 1200 : 1190} height="1500" loading="lazy" decoding="async" /><span>{page.title} ↗</span></a></figure>)}</div>
+  <div class="preview-grid">{pages.map(page => <figure><a href={`/img/books/previews/${page.file}.webp`} target="_blank" rel="noopener" data-book-preview={book} data-preview-page={page.file} data-preview-title={page.title} aria-label={`Agrandir : ${page.title}`}><img src={`/img/books/previews/${page.file}.webp`} alt={page.alt} width={anti ? 1200 : 1190} height="1500" loading="lazy" decoding="async" /><span>{page.title} ↗</span></a></figure>)}</div>
   <p class="preview-note">Aperçus fidèles à la mise en page du livre. Les illustrations sont indicatives ; les cuissons restent à adapter à votre appareil.</p>
+  <dialog class="preview-dialog" data-book-preview-dialog aria-labelledby={`book-preview-dialog-${book}`}>
+    <button class="preview-close" type="button" data-preview-close aria-label="Fermer l’aperçu">×</button>
+    <h2 id={`book-preview-dialog-${book}`}>{name}</h2>
+    <div class="preview-reader">
+      <div class="preview-page"><img data-preview-image alt="" width={anti ? 1200 : 1190} height="1500" /></div>
+      <div class="preview-purchase">
+        <p class="preview-position" data-preview-caption role="status" aria-live="polite"></p>
+        <div class="preview-navigation" aria-label="Feuilleter les extraits">
+          <button type="button" data-preview-previous aria-label="Extrait précédent">← Précédent</button>
+          <button type="button" data-preview-next aria-label="Extrait suivant">Suivant →</button>
+        </div>
+        <p>Ces quatre extraits vous permettent de découvrir la mise en page avant de choisir le livre.</p>
+        <a class="preview-amazon" href={amazonProduct(asin)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-type="book" data-product-name={name} data-product-asin={asin} data-product-id={book} data-book-id={book} data-placement="book_preview_purchase">Voir le livre sur Amazon →</a>
+        <p class="preview-note">Publicité · livre de notre équipe. Lien affilié : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
+      </div>
+    </div>
+  </dialog>
 </section>
+<script>
+  import { initBookPreview } from '../lib/book-preview.mjs';
+  document.querySelectorAll('[data-book-preview-root]').forEach(root => initBookPreview(root));
+</script>
 <style>
   .book-preview{padding:32px 0;scroll-margin-top:90px;border-top:1px solid #d7d9cc}.preview-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:750;color:#7b5939}
   h2{font-family:Georgia,serif;font-size:1.9rem;line-height:1.2;margin:10px 0}p{max-width:780px;color:#5c675d;font-size:.95rem}
   .preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:22px 0}.preview-grid figure{margin:0;min-width:0}.preview-grid a{display:block;border:1px solid #d7d9cc;border-radius:10px;overflow:hidden;background:#fff}.preview-grid img{width:100%;height:auto;aspect-ratio:1190/1500;object-fit:contain}.preview-grid span{display:block;padding:12px;font-weight:700;color:#234b36;font-size:.85rem}
   .preview-grid a:focus-visible{outline:3px solid #a44c2d;outline-offset:4px}.preview-note{font-size:.8rem}
+  .preview-dialog{width:min(1100px,calc(100vw - 24px));max-height:92dvh;margin:auto;padding:22px;border:0;border-radius:16px;background:#fffaf4;color:#173e32;overflow:auto;box-shadow:0 16px 60px #0005}.preview-dialog::backdrop{background:#182c2580}.preview-dialog h2{font-size:1.35rem;margin:0 44px 18px 0}.preview-close{position:absolute;right:8px;top:8px;min-width:44px;min-height:44px;background:none;border:0;font-size:28px;cursor:pointer}.preview-reader{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:22px;align-items:start}.preview-page{min-width:0;text-align:center;background:#eee9df}.preview-page img{display:block;width:100%;height:auto;max-height:76dvh;object-fit:contain}.preview-purchase p{font-size:.85rem}.preview-position{font-weight:750}.preview-navigation{display:flex;gap:8px;flex-wrap:wrap}.preview-navigation button{min-height:44px;padding:8px;border:1px solid #a8b6a6;border-radius:8px;background:white;color:#234b36;font:inherit;font-size:.82rem;cursor:pointer}.preview-navigation button:disabled{opacity:.45;cursor:default}.preview-amazon{display:block;padding:14px;border-radius:9px;background:#173e32;color:white;font-weight:750;text-align:center;text-decoration:none}.preview-dialog button:focus-visible,.preview-dialog a:focus-visible{outline:3px solid #a44c2d;outline-offset:3px}
   @media(max-width:700px){.preview-grid{grid-template-columns:1fr 1fr;gap:12px}h2{font-size:1.6rem}}
+  @media(max-width:600px){.preview-dialog{padding:16px}.preview-reader{grid-template-columns:1fr;gap:12px}.preview-page img{max-height:60dvh}.preview-purchase p{margin:8px 0}.preview-amazon{margin-top:12px}}
+  @media print{.preview-dialog{display:none!important}}
 </style>

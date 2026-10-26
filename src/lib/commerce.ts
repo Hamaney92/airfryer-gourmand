@@ -18,6 +18,8 @@ const items: Record<string, KitchenOffer> = {
 const pick = (...ids: string[]) => ids.map(id => items[id]);
 
 export function recipeOffers(slug: string, category: string): KitchenOffer[] {
+  // Un produit déjà préparé ne demande ni pesée de pâte ni dorure maison.
+  if (category === 'Surgelé' || /surgel/.test(slug)) return pick('tongs');
   if (/chips/.test(slug)) return pick('mandoline', 'spray');
   if (/oeuf-cocotte/.test(slug)) return pick('ramekins', 'tongs');
   if (/flan|creme/.test(slug)) return pick('ramekins', 'scale');
@@ -33,7 +35,7 @@ export function recipeOffers(slug: string, category: string): KitchenOffer[] {
   if (category === 'Legume' || category === 'Accompagnement') return pick('chef', 'spray');
   if (category === 'Volaille' || category === 'Viande' || category === 'Charcuterie') return pick('thermo', 'tongs');
   if (category === 'Dessert') return pick('scale', 'brush');
-  if (category === 'Surgelé' || category === 'Apéro') return pick('tongs');
+  if (category === 'Apéro') return pick('tongs');
   return pick('tongs', 'storage');
 }
 
@@ -48,10 +50,10 @@ export function pageOffers(path: string): KitchenOffer[] {
   return [];
 }
 
-export function bookFor(path: string, servings?: number): 'anti-gaspi' | 'petites-portions' {
+export function bookFor(path: string, servings?: number): 'anti-gaspi' | 'petites-portions' | 'collection' {
   if (/anti-gaspi|batch-cooking|lunchbox|rechauffer|pain-perdu|hachis|wrap|croque|panini|quesadilla|legumes|chataigne/.test(path)) return 'anti-gaspi';
   if (servings !== undefined && servings <= 2) return 'petites-portions';
-  return 'petites-portions';
+  return 'collection';
 }
 
 export function isEditorialPage(path: string): boolean {
