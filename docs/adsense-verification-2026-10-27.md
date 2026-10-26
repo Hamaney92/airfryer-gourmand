@@ -21,6 +21,15 @@ La configuration active uniquement la preuve de propriété préparée précéde
 - `check:adsense -- --require-publisher` : `verification_configured_not_approval`, `adDelivery: not_enabled`.
 - Diff circonscrit, sans modification préexistante écrasée.
 
+## Résultat après publication et validation Google
+
+- Version de connexion publiée : `5435f60`, déploiement Cloudflare Pages terminé avec succès.
+- Contrôle public le 27 octobre 2026 à 00 h 33, heure de Paris : accueil, dossier d'automne, recette de frites et collection de livres en HTTP 200, une balise exacte dans chaque en-tête vérifié, aucun script de diffusion publicitaire. `/ads.txt` en HTTP 200 et `text/plain`, ligne identique à celle du compte.
+- Google a affiché « Votre site est validé » après vérification de la balise meta.
+- La demande d'examen a ensuite été envoyée. L'écran de confirmation affiche « Merci d'avoir connecté le site » et « Votre site est en cours d'examen en vue de diffuser des annonces » pour Airfryer Gourmand.
+- Capture de preuve conservée dans le dossier `outputs` du projet parent : `adsense-examen-2026-10-27.png`.
+- Aucune acceptation de conditions, modification des paiements, de l'identité ou d'un autre domaine n'a été effectuée.
+
 ## Étapes distinctes restantes
 
-Vérifier les fichiers réellement servis après déploiement, faire valider la propriété dans l'interface Google, puis demander l'examen si aucune acceptation contractuelle n'est exigée. Une validation de propriété ou un examen demandé n'est pas une approbation. La diffusion reste dépendante de l'approbation réelle, d'une CMP certifiée correctement configurée et de tests de consentement avant chargement publicitaire.
+Un examen demandé n'est pas une approbation. La diffusion reste dépendante de l'approbation réelle, d'une CMP certifiée correctement configurée et de tests de consentement avant chargement publicitaire. Aucun revenu AdSense n'est attesté par cette connexion.
