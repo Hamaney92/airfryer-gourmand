@@ -28,8 +28,10 @@ const cats = [
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-J24QNEE9GV');
+    if (location.hostname === 'airfryergourmand.fr') {
+      gtag('js', new Date());
+      gtag('config', 'G-J24QNEE9GV');
+    }
   </script>
   <title>{title}</title>
   <meta name="description" content={description} />

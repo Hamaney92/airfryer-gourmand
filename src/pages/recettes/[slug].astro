@@ -140,6 +140,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <a href="#ingredients">Ingrédients</a>
       <a href="#etapes">Étapes de préparation</a>
       <a href="#conseils">Conseils et variantes</a>
+      <a href="#materiel">Matériel utile (facultatif)</a>
     </nav>
 
     {data.image ? (
@@ -239,6 +240,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .recipe-shortcuts{display:flex;gap:10px 18px;flex-wrap:wrap;margin:12px 0 22px}
   .recipe-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-weight:700;text-decoration:underline}
   #recette,#ingredients,#etapes,#conseils,[id^="etape-"]{scroll-margin-top:100px}
+  :global(#materiel){scroll-margin-top:100px}
   .gear-box--primary{background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:14px 0 26px;scroll-margin-top:80px;box-shadow:var(--shadow)}
   .gear-box__eyebrow{font-size:.82rem;font-weight:800;color:var(--brand-d);text-transform:uppercase;letter-spacing:.02em}
   .gear-box__title{font-size:1.15rem;font-weight:850;color:var(--ink);margin-top:3px}

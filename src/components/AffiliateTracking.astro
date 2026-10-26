@@ -36,15 +36,24 @@
       );
 
       if (affiliateLink instanceof HTMLAnchorElement) {
-        let host = '';
+        let destination = null;
         try {
-          host = new URL(affiliateLink.href, window.location.href).hostname;
+          destination = new URL(affiliateLink.href, window.location.href);
         } catch (_) {}
+        const amazonDestination = destination &&
+          /^https?:$/.test(destination.protocol) &&
+          (destination.hostname === 'amazon.fr' || destination.hostname.endsWith('.amazon.fr'));
+        // Qualifie le lien réellement ouvert, sans recherche saisie ni nouvel événement.
+        // Une fiche reconnue par son chemin n'est pas une preuve de disponibilité ou d'achat.
+        const linkDestination = !amazonDestination ? 'other'
+          : /^\/s\/?$/.test(destination.pathname) ? 'amazon_search'
+          : /^\/(?:(?:[^/]+\/)?dp|gp\/product)\/[a-z0-9]{10}(?:\/|$)/i.test(destination.pathname)
+            ? 'amazon_product' : 'amazon_other';
 
         const params = {
           affiliate_network:
             affiliateLink.dataset.affiliateNetwork ||
-            (host.endsWith('amazon.fr') ? 'amazon' : 'autre'),
+            (amazonDestination ? 'amazon' : 'autre'),
           product_name:
             affiliateLink.dataset.productName ||
             affiliateLink.textContent?.trim().replace(/\s+/g, ' ').slice(0, 100) ||
@@ -57,6 +66,7 @@
           page_type: affiliateLink.dataset.pageType || document.body.dataset.pageType || 'page',
           page_id: window.location.pathname,
           link_url: affiliateLink.href,
+          link_destination: linkDestination,
         };
 
         send('affiliate_click', params);

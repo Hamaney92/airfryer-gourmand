@@ -1,0 +1,25 @@
+{
+  "checkedOn": "2026-10-26",
+  "references": [
+    {
+      "offerId": "thermometer",
+      "name": "TempPro TP02S (anciennement ThermoPro)",
+      "asin": "B01LXI5HYH",
+      "amazonUrl": "https://www.amazon.fr/dp/B01LXI5HYH/",
+      "manufacturerUrl": "https://temppro.com/products/tp02s-instant-read-meat-thermometer",
+      "observations": {
+        "amazonHttpStatus": 200,
+        "amazonTitleContains": ["TempPro TP02S", "anciennement ThermoPro"],
+        "amazonAvailabilityText": "En stock",
+        "captchaDetected": false,
+        "manufacturerConfirms": ["TP02S", "instant-read probe", "ThermoPro is now TempPro", "not waterproof"]
+      },
+      "limits": [
+        "Stock, seller and price may change; no live availability promise or fixed price displayed on site.",
+        "No hands-on test or owned product photograph claimed.",
+        "Manufacturer page and Amazon listing differ on response time; no numerical speed or accuracy claim used.",
+        "Public pages checked without affiliate tag, login or purchase. Affiliate account and commission eligibility unverified."
+      ]
+    }
+  ]
+}
