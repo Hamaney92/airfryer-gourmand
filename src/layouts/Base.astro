@@ -49,10 +49,12 @@ const cats = [
   <header>
     <div class="wrap bar">
       <a href="/" class="logo">🍟 Airfryer <b>Gourmand</b></a>
-      <nav class="cats">
-        {cats.map(([label, href]) => <a href={href}>{label}</a>)}
+      <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
+        {cats.map(([label, href]) => <a href={href} data-book-entry={href === '/livre/' ? '' : undefined} data-placement={href === '/livre/' ? 'header' : undefined} data-page-type={href === '/livre/' ? pageType : undefined}>{label}</a>)}
       </nav>
-      <button class="icobtn burger" aria-label="Menu">☰</button>
+      <button class="icobtn mobile-menu-trigger" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
   <BooksBanner pageType={pageType} />
@@ -81,5 +83,9 @@ const cats = [
   <AffiliateTracking />
   <ConversionTracking />
   <NewsletterPopup automatic={isEditorialPage(Astro.url.pathname) || Astro.url.pathname === '/'} />
+  <script>
+    import { initSiteNavigation } from '../lib/site-navigation.mjs';
+    initSiteNavigation();
+  </script>
 </body>
 </html>
