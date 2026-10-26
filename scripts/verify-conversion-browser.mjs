@@ -44,7 +44,10 @@ try {
       checks++;
     }
     await page.goto(new URL('/recettes/samoussas-surgeles-air-fryer/', origin).href);
-    assert.deepEqual(await page.locator('#materiel [data-product-id]').evaluateAll(links => links.map(link => link.dataset.productId)), ['tongs']);
+    assert.deepEqual(await page.locator('#materiel [data-placement="contextual_products"]').evaluateAll(links => links.map(link => link.dataset.productId)), ['tongs']);
+    const tongs = page.locator('#materiel [data-placement="contextual_products"]');
+    assert.match(await tongs.getAttribute('href'), /\/dp\/B003L0OYJ4\//);
+    assert.match(await tongs.innerText(), /pince OXO/);
     assert.equal(await page.locator('.book-offer [data-book-id="collection"]').count(), 1);
     assert.equal(await page.locator('.book-offer [data-affiliate-network]').count(), 0);
     await page.locator('.recipe-shortcuts a[href="#materiel"]').click();
@@ -56,11 +59,21 @@ try {
     const referenceUrl = new URL(await reference.getAttribute('href'));
     assert.equal(referenceUrl.pathname.replace(/\/$/, ''), '/dp/B01LXI5HYH');
     assert.equal(referenceUrl.searchParams.get('tag'), 'airfryergourm-21');
-    assert.equal(await page.locator('#materiel [data-placement="contextual_products_alternatives"]').count(), 1);
+    assert.equal(await page.locator('#materiel [data-placement="contextual_products_alternatives"]').count(), 2);
     await page.locator('.recipe-shortcuts a[href="#materiel"]').click();
     await page.waitForFunction(() => { const el = document.querySelector('#materiel'); const y = el.getBoundingClientRect().top; return Math.abs(y - 100) < 3 && y >= document.querySelector('header').getBoundingClientRect().bottom; });
     await page.screenshot({ path: new URL(`../tmp/affiliate-thermometer-${viewport.width}.png`, import.meta.url).pathname.replace(/^\/([A-Z]:)/i, '$1'), fullPage: false });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    checks++;
+    await page.goto(new URL('/recettes/frites-maison-air-fryer/', origin).href);
+    const spray = page.locator('#materiel [data-product-id="oil-spray"][data-placement="contextual_products"]');
+    assert.match(await spray.getAttribute('href'), /\/dp\/B0D5H6GFVJ\//);
+    assert.match(await spray.innerText(), /spray OLIVIA/);
+    assert.equal(await page.locator('#materiel .manufacturer[href$=".pdf"]').count(), 1);
+    await page.locator('.recipe-shortcuts a[href="#materiel"]').click();
+    await page.waitForFunction(() => Math.abs(document.querySelector('#materiel').getBoundingClientRect().top - 100) < 3);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.screenshot({ path: new URL(`../tmp/affiliate-spray-${viewport.width}.png`, import.meta.url).pathname.replace(/^\/([A-Z]:)/i, '$1'), fullPage: false });
     checks++;
     assert.deepEqual(errors, []);
     checks++;

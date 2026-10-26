@@ -20,6 +20,48 @@
         "Manufacturer page and Amazon listing differ on response time; no numerical speed or accuracy claim used.",
         "Public pages checked without affiliate tag, login or purchase. Affiliate account and commission eligibility unverified."
       ]
+    },
+    {
+      "offerId": "tongs",
+      "name": "Pince OXO Good Grips à embouts silicone — réf. 1101880",
+      "asin": "B003L0OYJ4",
+      "amazonUrl": "https://www.amazon.fr/dp/B003L0OYJ4/",
+      "manufacturerUrl": "https://www.oxo.com/9-tongs-with-silicone-heads-623.html",
+      "observations": {
+        "amazonHttpStatus": 200,
+        "amazonTitleContains": ["OXO Good Grips", "embouts en silicone"],
+        "amazonPageModelContains": "1101880",
+        "amazonAvailabilityObserved": "Limited stock indication; not copied to site",
+        "captchaDetected": false,
+        "manufacturerConfirms": ["SKU 1101880", "silicone heads", "stainless steel", "locking for storage"]
+      },
+      "limits": [
+        "Length is described differently across regional sources; do not claim exact dimensions on the site.",
+        "No permanent stock, price, ratings, hands-on test or universal fit promise.",
+        "Public Amazon page checked without affiliate tag, login or purchase."
+      ]
+    },
+    {
+      "offerId": "oil-spray",
+      "name": "FLAIROSOL OLIVIA 200 ml — vert",
+      "asin": "B0D5H6GFVJ",
+      "amazonUrl": "https://www.amazon.fr/dp/B0D5H6GFVJ/",
+      "manufacturerUrl": "https://m.media-amazon.com/images/I/C1e2Zaa%2BedL.pdf",
+      "brandPageUrl": "https://oliviasignature.com/products/olivia-oil-sprayer-olive-green-200ml",
+      "observations": {
+        "amazonHttpStatus": 200,
+        "amazonTitleContains": ["FLAIROSOL OLIVIA", "200ml", "Vert"],
+        "amazonOffersLinkPresent": true,
+        "currentStockConfirmed": false,
+        "captchaDetected": false,
+        "manufacturerConfirms": ["OLIVIA oil sprayer", "cooking oils", "glass bottle", "hand wash", "avoid open flames"]
+      },
+      "limits": [
+        "Availability not confirmed; no claim that it is in stock, cheapest or immediately deliverable.",
+        "No quantified oil saving, performance ranking or review score claimed.",
+        "Manufacturer manual is hosted on Amazon media; source link is explicitly labelled PDF.",
+        "Public Amazon page checked without affiliate tag, login or purchase."
+      ]
     }
   ]
 }

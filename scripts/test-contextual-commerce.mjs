@@ -89,6 +89,44 @@ test('The documented thermometer opens its verified ASIN, while an explicit sear
   assert.ok(!frozen.includes(`data-product-asin="${reference.asin}"`), 'Do not recommend the thermometer on unrelated frozen samoussas');
 });
 
+test('Every direct kitchen reference matches its documented ASIN, name, source and relevant CTA', () => {
+  const root = new URL('../dist/', import.meta.url);
+  const sources = JSON.parse(readFileSync(new URL('../docs/affiliate-references-2026-10-26.json', import.meta.url), 'utf8'));
+  const references = new Map(sources.references.map(reference => [reference.offerId, reference]));
+  const labels = { thermometer: ['TP02S', 'thermomètres'], tongs: ['pince OXO', 'pinces'], 'oil-spray': ['spray OLIVIA', 'sprays'] };
+  const found = new Set();
+  const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, value.replaceAll('&amp;', '&')]));
+  for (const file of readdirSync(root, { recursive: true }).filter(file => file.endsWith('.html'))) {
+    const page = readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8');
+    for (const [card] of page.matchAll(/<section\b[^>]*class="product-card"[^>]*>[\s\S]*?<\/section>/g)) {
+      const primary = card.match(/<a\b[^>]*data-placement="contextual_products"[^>]*>([\s\S]*?)<\/a>/);
+      assert.ok(primary, file);
+      const data = attributes(primary[0]);
+      const reference = references.get(data['data-product-id']);
+      if (!reference) {
+        assert.ok(data.href.includes('amazon.fr/s?k='), file);
+        assert.ok(!data['data-product-asin'], file);
+        continue;
+      }
+      found.add(reference.offerId);
+      const url = new URL(data.href);
+      assert.equal(url.pathname, `/dp/${reference.asin}/`, file);
+      assert.equal(url.searchParams.get('tag'), 'airfryergourm-21', file);
+      assert.equal(data['data-product-asin'], reference.asin, file);
+      assert.equal(data['data-product-name'], reference.name, file);
+      assert.ok(card.includes(reference.manufacturerUrl), file);
+      assert.ok(primary[1].includes(labels[reference.offerId][0]), file);
+      const alternative = card.match(/<a\b[^>]*data-placement="contextual_products_alternatives"[^>]*>([\s\S]*?)<\/a>/);
+      assert.ok(alternative, file);
+      assert.ok(alternative[1].includes(labels[reference.offerId][1]), file);
+      assert.ok(attributes(alternative[0]).href.includes('amazon.fr/s?k='), file);
+      assert.ok(!attributes(alternative[0])['data-product-asin'], file);
+      assert.ok(!/\b(?:garanti|testé par notre équipe|en stock)\b/i.test(card), file);
+    }
+  }
+  assert.deepEqual([...found].sort(), ['oil-spray', 'thermometer', 'tongs']);
+});
+
 test('Book offers preserve contextual anti-waste and small portions without forcing either on larger recipes', () => {
   const expected = {
     'chataigne-air-fryer': 'anti-gaspi',
