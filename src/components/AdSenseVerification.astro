@@ -1,0 +1,6 @@
+---
+import config from '../config/adsense.json';
+import { validateAdSenseConnection } from '../lib/adsense-connection.mjs';
+const { publisherId, connectedForReview } = validateAdSenseConnection(config);
+---
+{connectedForReview && <meta name="google-adsense-account" content={publisherId} />}
