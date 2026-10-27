@@ -68,6 +68,6 @@ Pour des calamars **à la romaine**, pane les anneaux (farine, œuf, chapelure o
 
 ## Pour aller plus loin
 
-- en apéro avec des [beignets de calamars surgelés](/recettes/beignets-calamars-surgeles-air-fryer/) et des [gambas au air fryer](/recettes/gambas-air-fryer/) ;
+- en apéro avec des [gambas au air fryer](/recettes/gambas-air-fryer/) ;
 - avec un aïoli, une sauce tartare et du citron ;
 - sur un lit de roquette pour une entrée fraîche.

@@ -64,5 +64,5 @@ La panure des bâtonnets contient déjà de l'huile : **inutile d'en rajouter**,
 ## Pour aller plus loin
 
 - avec du citron, une sauce tartare et des [frites surgelées au air fryer](/recettes/frites-surgelees-air-fryer/) ;
-- pour d'autres surgelés, vois les [nuggets](/recettes/nuggets-surgeles-air-fryer/) et les [beignets de calamars au air fryer](/recettes/beignets-calamars-surgeles-air-fryer/) ;
+- pour d'autres surgelés, vois les [nuggets au air fryer](/recettes/nuggets-surgeles-air-fryer/) ;
 - en burger de poisson maison, dans un pain avec de la salade.
