@@ -16,10 +16,15 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,250,245,.95);backdro
 .bar{display:flex;align-items:center;justify-content:space-between;height:64px;position:relative}
 .logo{font-weight:800;font-size:1.35rem;letter-spacing:-.5px}
 .logo b{color:var(--brand)}
+.logo{white-space:nowrap}
+.skip-link{position:fixed;top:8px;left:20px;z-index:100;background:var(--ink);color:#fff;padding:12px 18px;border-radius:8px;transform:translateY(-160%)}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,input,select,summary):focus-visible{outline:3px solid var(--brand-d);outline-offset:4px}
+main:focus{outline:none}
 .cats{display:flex;gap:20px}
 .cats a{font-size:.9rem;font-weight:600;color:#5a4e46}
 .cats a:hover{color:var(--brand)}
-.icobtn{width:38px;height:38px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1rem;border:none;cursor:pointer}
+.icobtn{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1rem;border:none;cursor:pointer}
 .burger{display:none}
 .mobile-menu-trigger{display:none;flex-direction:column;gap:4px}
 .mobile-menu-trigger span{display:block;width:17px;height:2px;background:var(--ink);border-radius:2px}
@@ -125,13 +130,15 @@ footer a:hover{color:#fff}
 .author-box .author-name{font-weight:800;color:var(--ink);margin-bottom:4px}
 .author-box p{color:#6b5d52;font-size:.93rem;margin:0}
 .author-box a{color:var(--brand-d);font-weight:700}
-@media(max-width:860px){
+@media(max-width:1100px){
   .cats,.search-txt{display:none}
   .burger{display:flex}
   .mobile-menu-trigger{display:flex}
   .cats.is-open{display:flex;position:absolute;top:58px;left:20px;right:20px;z-index:40;flex-direction:column;gap:0;padding:8px;background:#fffaf5;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 32px rgba(48,31,18,.16)}
   .cats.is-open a{display:block;padding:12px 14px;border-radius:9px;font-size:1rem}
   .cats.is-open a:hover,.cats.is-open a:focus-visible{background:var(--cream);outline:none}
+}
+@media(max-width:860px){
   .hero{grid-template-columns:1fr}
   .hero .ph{height:230px;order:-1}
   .cattiles{grid-template-columns:repeat(3,1fr)}
@@ -147,3 +154,4 @@ footer a:hover{color:#fff}
 @media(max-width:420px){
   .cards{grid-template-columns:minmax(0,1fr)}
 }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rcard{transition:none}.rcard:hover{transform:none}}

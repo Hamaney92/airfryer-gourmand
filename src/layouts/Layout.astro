@@ -74,6 +74,7 @@ const year = new Date().getFullYear();
     )}
   </head>
   <body data-page-type={pageType}>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
     <header>
       <div class="wrap bar">
         <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
@@ -94,7 +95,7 @@ const year = new Date().getFullYear();
     {!noindex && <BooksBanner pageType={pageType} />}
     {!noindex && <NewsletterBanner pageType={pageType} />}
     {!noindex && <ChristmasTheme />}
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
       {!noindex && pageType !== 'recipe' && isEditorialPage(path) && <div class="wrap">
         <ContextualProducts offers={pageOffers(path)} pageId={path} pageType={pageType} />

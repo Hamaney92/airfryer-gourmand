@@ -19,7 +19,7 @@ export function initSiteNavigation(root = document) {
     if (focusInMenu) button.focus();
   });
   // Do not leave an expanded menu behind after rotating/resizing the viewport.
-  const mobile = root.defaultView.matchMedia('(max-width: 860px)');
+  const mobile = root.defaultView.matchMedia('(max-width: 1100px)');
   mobile.addEventListener('change', () => setOpen(false));
   setOpen(false);
 }

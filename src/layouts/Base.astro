@@ -49,9 +49,10 @@ const cats = [
   <slot name="head" />
 </head>
 <body data-page-type={pageType}>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
   <header>
     <div class="wrap bar">
-      <a href="/" class="logo">🍟 Airfryer <b>Gourmand</b></a>
+      <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
       <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
         {cats.map(([label, href]) => <a href={href} data-book-entry={href === '/livre/' ? '' : undefined} data-placement={href === '/livre/' ? 'header' : undefined} data-page-type={href === '/livre/' ? pageType : undefined}>{label}</a>)}
       </nav>
@@ -63,7 +64,7 @@ const cats = [
   <BooksBanner pageType={pageType} />
   <NewsletterBanner pageType={pageType} />
   <ChristmasTheme />
-  <main>
+  <main id="main-content" tabindex="-1">
     <slot />
     {isEditorialPage(Astro.url.pathname) && <div class="wrap">
       <ContextualProducts offers={pageOffers(Astro.url.pathname)} pageId={Astro.url.pathname} pageType={pageType} />
@@ -74,7 +75,7 @@ const cats = [
     <div class="wrap">
       <div class="fgrid">
         <div>
-          <div class="logo" style="color:#fff;margin-bottom:10px">🍟 Airfryer <b style="color:var(--accent)">Gourmand</b></div>
+          <div class="logo" style="color:#fff;margin-bottom:10px">Airfryer <b style="color:var(--accent)">Gourmand</b></div>
           <p style="color:#b6a99d;font-size:.9rem;max-width:280px">Le guide francophone pour tout réussir avec ton air fryer : recettes, temps de cuisson et guides d'achat.</p>
         </div>
         <div><h4>Recettes</h4><a href="/categorie/viandes/">Viandes</a><a href="/categorie/poissons/">Poissons</a><a href="/categorie/surgeles/">Surgelés</a><a href="/categorie/desserts/">Desserts</a></div>
