@@ -20,10 +20,11 @@ try {
     await page.clock.install({ time: new Date('2026-12-10T12:00:00Z') });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    for (const [name, path] of [['accueil', '/'], ['guide', '/guides/'], ['recette', '/recettes/feta-rotie-air-fryer/']]) {
+    for (const [name, path] of [['accueil', '/'], ['guide', '/guides/'], ['recette', '/recettes/feta-rotie-air-fryer/'], ['menu-noel', '/dossiers/menu-noel-air-fryer/']]) {
       await page.goto(new URL(path, origin).href);
       assert.ok(await page.locator('.christmas-welcome').isVisible());
       assert.equal(await page.locator('h1').count(), 1);
+      if (name === 'menu-noel') assert.equal(await page.locator('.seasonal-hero').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(23, 62, 50)');
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${width} ${path}: overflow`);
       const button = page.locator('.christmas-snow-toggle');
       await button.click();

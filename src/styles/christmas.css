@@ -2,8 +2,8 @@
 .christmas-welcome,.christmas-snow{display:none}
 html[data-season="christmas"]{--brand:#963648;--brand-d:#762638;--cream:#f8f0e5;--line:#e7dfd1;--shadow:0 8px 24px rgba(36,73,58,.08)}
 html[data-season="christmas"] body{background-color:#fffbf5}
-html[data-season="christmas"] header{border-bottom:2px solid #b69754;background:rgba(255,251,245,.97)}
-html[data-season="christmas"] header .logo{color:#24493a}
+html[data-season="christmas"] body>header{border-bottom:2px solid #b69754;background:rgba(255,251,245,.97)}
+html[data-season="christmas"] body>header .logo{color:#24493a}
 html[data-season="christmas"] footer{background:#183d31}
 html[data-season="christmas"] .christmas-welcome{display:block;background:#24493a;color:#fff8e9;border-bottom:1px solid #c2a167}
 .christmas-welcome-inner{display:flex;align-items:center;gap:20px;padding-top:17px;padding-bottom:17px}
