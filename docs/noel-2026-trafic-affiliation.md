@@ -6,7 +6,7 @@ Deux nouveaux articles : `/dossiers/menu-noel-air-fryer/` et `/guides/cadeaux-cu
 
 ## Signaux de demande, sans extrapolation
 
-Ubersuggest, compte youssef.hamane.00@gmail.com, free, France (location_suggest ID2250), langue fr, consultation du 28/10/2026 : `cadeau cuisine` volume mensuel estimé1600, difficulté21/100, intention commerciale. Série fournie : juin590, juillet480, août390, septembre1600. Ce n’est ni une prévision des ventes ni la mesure d’une hausse de Noël. `menu noël air fryer` : volume retourné0, série vide ; demande non établie pour cette expression précise. Le menu répond à un besoin éditorial, pas à une tendance chiffrée prouvée.
+Ubersuggest, compte connecté, free, France (location_suggest ID2250), langue fr, consultation du 28/10/2026 : `cadeau cuisine` volume mensuel estimé1600, difficulté21/100, intention commerciale. Série fournie : juin590, juillet480, août390, septembre1600. Ce n’est ni une prévision des ventes ni la mesure d’une hausse de Noël. `menu noël air fryer` : volume retourné0, série vide ; demande non établie pour cette expression précise. Le menu répond à un besoin éditorial, pas à une tendance chiffrée prouvée.
 
 Dernier relevé GSC directement vérifié dans ce chat : 28/09–25/10,922clics,31,9k impressions arrondies,CTR2,9%,position6,3. Indexation du23/10 :136indexées,18exclues,aucune détectée non indexée. GA4 29/09–26/10 :1,6k actifs arrondis,engagement1m31,67sessions attribuées chatgpt.com/ai-assistant. Ne pas présenter ces chiffres comme un nouveau contrôle du28 ni comme des ventes/citations IA démontrées. Les fenêtres précédentes chevauchent ces fenêtres, pas de comparaison causale.
 
@@ -47,6 +47,6 @@ Le build est statique. `npm ci --ignore-scripts` a installé les versions du loc
 - Nouveau menu : réponses en tête de bloc, tableau de courses HTML, auteur Organisation réel, Article JSON-LD, source conservation ministère Agriculture. Pas de Recipe JSON-LD pour une compilation non testée.
 - Nouveau guide cadeaux : tableau d’usage, avertissement affilié, méthode documentaire, CTA et attributs de suivi.
 - Dossier apéro : nombre calculé d’après les liens publiés, retrait d’un témoignage de test familial non documenté, suppression du conseil universel « surgelés3–4min » et de la date de publication future.
-- URL/date de référence : les deux chemins ci-dessus, publication prévue28/10/2026 ; confirmer déploiement et HTTP200 avant de noter « en ligne ».
+- URL/date de référence : les deux chemins ci-dessus, publication28/10/2026 ; commit fe0b4641b66d222e1e61731c5effb73fd185c094, Cloudflare Pages090f74b7-2030-439a-9baa-d7ace12105bf terminé avec succès. Deux URL HTTP200, H1 et boutons affiliation/livres vérifiés en production. Build148HTML,107Recipe,145URLs sitemap ; test Noël et check:seo réussis. Le rendu visuel mobile n’a pas été observé ; les règles responsive et le HTML ont été vérifiés, pas une capture d’écran.
 - Aucun suivi Share-of-Mentions lancé ; aucune hausse de citations attribuée à ces changements. Le signal GA4 des assistants est distinct de la mesure des citations.
 - Application du cadre GEO : blocs autonomes et HTML sémantique, inspirés du skill fondé sur Eugen Ullrich, https://eullrich.com/ (CC BY4.0).
