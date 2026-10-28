@@ -34,10 +34,26 @@ try {
       assert.equal(await button.getAttribute('aria-pressed'), 'false');
       await button.click();
       assert.equal(await button.getAttribute('aria-pressed'), 'true');
+      const flake = page.locator('.christmas-snow span').first();
+      const before = await flake.evaluate(el => el.getBoundingClientRect().top);
+      await page.waitForTimeout(200);
+      const after = await flake.evaluate(el => el.getBoundingClientRect().top);
+      assert.ok(Math.abs(after - before) > 1, `${path}: snow really moves`);
+      assert.equal(await flake.textContent(), '❄︎');
       await page.screenshot({ path: resolve(output, `${name}-${width}.png`) });
       await page.emulateMedia({ reducedMotion: 'reduce' });
+      assert.equal(await page.locator('.christmas-snow').isVisible(), true, 'Explicit user choice is retained');
+      await page.evaluate(() => sessionStorage.removeItem('afg_christmas_snow'));
+      await page.reload();
       assert.equal(await page.locator('.christmas-snow').isVisible(), false);
-      assert.equal(await button.isVisible(), false);
+      assert.equal(await button.isVisible(), true, 'The user can still find the control');
+      assert.equal(await button.getAttribute('aria-pressed'), 'false');
+      assert.equal(await page.locator('#christmas-motion-note').isVisible(), true);
+      await button.click();
+      assert.equal(await page.locator('.christmas-snow').isVisible(), true, 'User can explicitly opt in');
+      await button.click();
+      assert.equal(await page.locator('.christmas-snow').isVisible(), false, 'User can stop snow again');
+      await page.evaluate(() => sessionStorage.removeItem('afg_christmas_snow'));
       await page.emulateMedia({ reducedMotion: 'no-preference' });
       checks++;
     }

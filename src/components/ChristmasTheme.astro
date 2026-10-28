@@ -7,9 +7,11 @@ const { head = false } = Astro.props;
   <script is:inline>
     // Browser dates also retire the theme on already deployed static pages.
     (() => {
-      const today = new Intl.DateTimeFormat('en-CA', {
+      const dateParts = new Intl.DateTimeFormat('en', {
         timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
-      }).format(new Date());
+      }).formatToParts(new Date());
+      const part = (name) => dateParts.find(item => item.type === name)?.value;
+      const today = `${part('year')}-${part('month')}-${part('day')}`;
       if (today >= '2026-10-28' && today < '2027-01-06') {
         document.documentElement.dataset.season = 'christmas';
       }
@@ -28,29 +30,38 @@ const { head = false } = Astro.props;
           <a href="/dossiers/apero-de-noel-air-fryer/">Apéro de Noël <span aria-hidden="true">↗</span></a>
           <a href="/categorie/desserts/">Desserts <span aria-hidden="true">↗</span></a>
         </div>
-        <button type="button" class="christmas-snow-toggle" aria-label="Afficher la neige décorative" aria-pressed="true">Neige : oui</button>
+        <div class="christmas-snow-control">
+          <button type="button" class="christmas-snow-toggle" aria-label="Afficher la neige décorative" aria-describedby="christmas-motion-note" aria-pressed="true">Arrêter la neige</button>
+          <small id="christmas-motion-note" hidden>Animations limitées sur cet appareil. La neige est arrêtée par défaut.</small>
+        </div>
       </div>
     </aside>
     <div class="christmas-snow" aria-hidden="true" inert>
-      {Array.from({ length: 12 }, (_, i) => (
-        <span style={`--flake-x:${[2,8,17,27,37,47,57,67,77,87,93,98][i]}%;--flake-delay:${-i * 1.7}s;--flake-duration:${14 + i % 5 * 2}s`}>✧</span>
+      {Array.from({ length: 18 }, (_, i) => (
+        <span style={`--flake-x:${[2,7,12,18,24,30,36,42,48,54,60,66,72,78,84,90,95,98][i]}%;--flake-delay:${-i * 1.9}s;--flake-duration:${11 + i % 5 * 2}s;--flake-size:${16 + i % 3 * 3}px`}>❄︎</span>
       ))}
     </div>
     <script>
       const toggle = document.querySelector<HTMLButtonElement>('.christmas-snow-toggle');
+      const motionNote = document.querySelector<HTMLElement>('#christmas-motion-note');
       const root = document.documentElement;
-      function setSnow(enabled: boolean) {
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      let choice: string | null = null;
+      try { choice = sessionStorage.getItem('afg_christmas_snow'); } catch {}
+      function renderSnow() {
+        const enabled = choice === 'on' || (choice !== 'off' && !reducedMotion.matches);
+        root.dataset.snowChoice = choice === 'on' ? 'on' : 'default';
         root.dataset.snow = enabled ? 'on' : 'off';
         toggle?.setAttribute('aria-pressed', String(enabled));
-        if (toggle) toggle.textContent = enabled ? 'Neige : oui' : 'Neige : non';
+        if (toggle) toggle.textContent = enabled ? 'Arrêter la neige' : 'Activer la neige';
+        if (motionNote) motionNote.hidden = !reducedMotion.matches || enabled;
       }
-      let enabled = true;
-      try { enabled = sessionStorage.getItem('afg_christmas_snow') !== 'off'; } catch {}
-      setSnow(enabled);
+      renderSnow();
+      reducedMotion.addEventListener('change', renderSnow);
       toggle?.addEventListener('click', () => {
-        const next = root.dataset.snow !== 'on';
-        setSnow(next);
-        try { sessionStorage.setItem('afg_christmas_snow', next ? 'on' : 'off'); } catch {}
+        choice = root.dataset.snow === 'on' ? 'off' : 'on';
+        renderSnow();
+        try { sessionStorage.setItem('afg_christmas_snow', choice); } catch {}
       });
     </script>
   </>
