@@ -20,12 +20,12 @@ const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-am
 ---
 <div data-recipe-prompts>
   <aside class="reading-prompt" data-prompt="newsletter" hidden aria-labelledby="reading-newsletter-title">
-    <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’invitation newsletter">×</button>
-    <span class="prompt-eyebrow">La newsletter Airfryer Gourmand</span>
-    <h2 id="reading-newsletter-title">{theme.heading}</h2>
-    <p>{theme.copy}</p>
-    <button class="prompt-cta" type="button" data-newsletter-open>Recevoir ces idées par email →</button>
-    <p class="prompt-note">Recettes, conseils et offres · désinscription à tout moment.</p>
+    <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’invitation à garder cette recette">×</button>
+    <span class="prompt-eyebrow">Pour votre prochain repas</span>
+    <h2 id="reading-newsletter-title">Envie de retrouver cette recette ?</h2>
+    <p>Recevez le lien de « {title} » dans votre boîte mail pour le retrouver au moment de cuisiner.</p>
+    <button class="prompt-cta" type="button" data-recipe-email-open data-placement="reading_recipe">M’envoyer cette recette →</button>
+    <p class="prompt-note">Un seul email · sans inscription à la newsletter.</p>
   </aside>
   <aside class="reading-prompt book-prompt" data-prompt="book" hidden aria-labelledby="reading-book-title">
     <button class="prompt-close" type="button" data-prompt-close aria-label="Fermer l’offre livres">×</button>
@@ -41,7 +41,7 @@ const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-am
     </>}
     <p class="prompt-note">Nos livres · liens Amazon affiliés : une commission peut nous être versée, sans surcoût pour vous. Prix et disponibilité sur Amazon.</p>
   </aside>
-  <dialog class="newsletter-dialog" data-newsletter-dialog data-auto-newsletter aria-labelledby="newsletter-dialog-title">
+  <dialog class="newsletter-dialog" data-newsletter-dialog aria-labelledby="newsletter-dialog-title">
     <div class="dialog-header"><h2 id="newsletter-dialog-title">{theme.heading}</h2><button class="prompt-close" type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button></div>
     <p class="dialog-context">Vous lisez : {title}. Retrouvez nos idées et conseils par email.</p>
     <p class="dialog-context">Inscription facultative à nos recettes, conseils et offres sur les livres et produits, parfois affiliés. Désinscription à tout moment. Vos données sont traitées via MailerLite. <a href="/confidentialite/">Confidentialité</a>.</p>

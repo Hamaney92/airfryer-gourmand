@@ -1,12 +1,30 @@
-<!-- Une soumission n'est ni un abonnement confirmé ni une vente. Aucun email collecté ici. -->
+<!-- Les clics ne prouvent pas un abonnement confirmé. Aucun email collecté ici. -->
 <script is:inline>
   (() => {
     if (window.__afgConversionTracking) return;
     window.__afgConversionTracking = true;
     const send = (name, parameters) => {
-      if (location.hostname === 'airfryergourmand.fr' && typeof window.gtag === 'function')
+      if (location.hostname !== 'airfryergourmand.fr' || typeof window.gtag !== 'function') return false;
+      try {
         window.gtag('event', name, { ...parameters, page_id: location.pathname, transport_type: 'beacon' });
+        return true;
+      } catch { return false; }
     };
+    // A rendered banner is not necessarily seen. Record half-visible exposure once.
+    // If Analytics is unavailable, no exposure is invented or queued for later consent.
+    const banner = document.querySelector?.('.newsletter-banner');
+    if (banner && typeof window.IntersectionObserver === 'function') {
+      let recorded = false;
+      const observer = new window.IntersectionObserver(entries => {
+        if (recorded || !entries.some(entry => entry.target === banner && entry.isIntersecting && entry.intersectionRatio >= 0.5)) return;
+        const recipeOffer = !!banner.querySelector('[data-recipe-email-open]');
+        if (send('banner_view', { offer_type: recipeOffer ? 'recipe_email' : 'newsletter', placement: recipeOffer ? 'banner_recipe' : 'banner_newsletter' })) {
+          recorded = true;
+          observer.unobserve(banner);
+        }
+      }, { threshold: [0.5] });
+      observer.observe(banner);
+    }
     document.addEventListener('click', event => {
       if (!(event.target instanceof Element)) return;
       const preview = event.target.closest('a[data-book-preview]');
@@ -19,11 +37,6 @@
           consent_version: 'newsletter_2026_09_22',
         });
       }
-    });
-    document.addEventListener('submit', event => {
-      const form = event.target;
-      if (!(form instanceof HTMLFormElement) || form.dataset.leadForm !== 'mailerlite' || !form.checkValidity()) return;
-      send('newsletter_form_submit', { placement: form.dataset.leadSource, consent_version: 'newsletter_2026_09_22' });
     });
   })();
 </script>

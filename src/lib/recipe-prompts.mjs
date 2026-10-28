@@ -6,8 +6,7 @@ export function initRecipePrompts(root, env = window) {
   const newsletter = root.querySelector('[data-prompt="newsletter"]');
   const book = root.querySelector('[data-prompt="book"]');
   const dialog = root.querySelector('dialog');
-  const frame = root.querySelector('iframe');
-  let elapsed = 0, lastTick = env.performance.now(), active = null, opener = null;
+  let elapsed = 0, lastTick = env.performance.now(), active = null;
   const seen = new Set();
   // v1 remembered any display, including invitations missed before auto-hide.
   // v2 remembers an intentional dismissal or CTA, not a mere impression.
@@ -31,7 +30,7 @@ export function initRecipePrompts(root, env = window) {
     active = type === 'book' ? book : newsletter;
     active.hidden = false;
     seen.add(type);
-    send('recipe_prompt_view', { prompt_type: type });
+    send('recipe_prompt_view', { prompt_type: type === 'newsletter' ? 'recipe_email' : type });
   };
   const remember = type => {
     if (!type) return;
@@ -42,7 +41,7 @@ export function initRecipePrompts(root, env = window) {
     if (!active) return;
     const type = active.dataset.prompt;
     remember(type);
-    send('recipe_prompt_dismiss', { prompt_type: type });
+    send('recipe_prompt_dismiss', { prompt_type: type === 'newsletter' ? 'recipe_email' : type });
     hide();
   };
   const tick = () => {
@@ -76,19 +75,14 @@ export function initRecipePrompts(root, env = window) {
     remember('book');
     hide();
   }));
-  root.querySelector('[data-newsletter-open]').addEventListener('click', event => {
-    opener = event.currentTarget;
+  doc.addEventListener('click', event => {
+    if (!event.target.closest?.('[data-recipe-email-open]')) return;
     remember('newsletter');
     hide();
-    if (!frame.src) frame.src = frame.dataset.newsletterUrl;
-    if (typeof dialog.showModal !== 'function') { env.location.assign(frame.dataset.newsletterUrl); return; }
-    dialog.showModal();
-    send('newsletter_signup_click', { placement: 'recipe_popup', consent_version: 'newsletter_2026_09_22' });
   });
   root.querySelector('[data-newsletter-close]').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
-    if (opener && !opener.closest('[hidden]')) opener.focus();
-    else doc.querySelector('h1')?.focus({ preventScroll: true });
+    doc.querySelector('h1')?.focus({ preventScroll: true });
   });
   doc.querySelector('h1')?.setAttribute('tabindex', '-1');
 }

@@ -2,18 +2,22 @@
 import { NEWSLETTER_SIGNUP_URL } from '../lib/site';
 interface Props { pageType?: string; }
 const { pageType = 'page' } = Astro.props;
+const isRecipe = pageType === 'recipe';
 ---
 
-<aside class="newsletter-banner" aria-label="Newsletter Airfryer Gourmand">
+<aside class="newsletter-banner" aria-label={isRecipe ? 'Garder cette recette' : 'Newsletter Airfryer Gourmand'}>
   <div class="wrap newsletter-banner-inner">
     <div>
-      <p class="newsletter-kicker">Une idée cuisine par semaine</p>
-      <p class="newsletter-copy">Recettes, conseils, livres et recommandations utiles, directement dans votre boîte mail.</p>
-      <p class="newsletter-microcopy">Inscription facultative · désinscription en un clic · <a href="/confidentialite/">confidentialité</a></p>
+      <p class="newsletter-kicker">{isRecipe ? 'Gardez cette recette pour plus tard' : 'Et pour le prochain repas ?'}</p>
+      <p class="newsletter-copy">{isRecipe ? 'Retrouvez le lien dans votre boîte mail quand vous voudrez la cuisiner.' : 'Chaque semaine, des recettes et conseils air fryer pour varier vos repas.'}</p>
+      <p class="newsletter-microcopy">{isRecipe ? 'Un envoi ponctuel, sans abonnement à la newsletter.' : 'Aussi nos livres et recommandations parfois affiliées · désinscription à tout moment.'} <a href="/confidentialite/">Confidentialité</a></p>
     </div>
-    <a class="newsletter-banner-cta" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source={`banner_${pageType}`}>
-      Je m’inscris →
-    </a>
+    {isRecipe ? <div class="recipe-banner-action">
+      <button class="newsletter-banner-cta" type="button" data-recipe-email-open data-placement="banner_recipe">Recevoir cette recette par email →</button>
+      <noscript>Activez JavaScript pour demander l’envoi ou gardez cette page dans vos favoris.</noscript>
+    </div> : <a class="newsletter-banner-cta" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source={`banner_${pageType}`}>
+      Recevoir les idées de la semaine →
+    </a>}
   </div>
 </aside>
 
@@ -23,15 +27,17 @@ const { pageType = 'page' } = Astro.props;
   .newsletter-kicker{color:var(--brand-d);font-size:.83rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;margin:0}
   .newsletter-copy{color:var(--ink);font-size:.98rem;font-weight:650;margin:1px 0 0}
   .newsletter-microcopy{color:var(--muted);font-size:.76rem;margin:2px 0 0}.newsletter-microcopy a{text-decoration:underline}
-  .newsletter-banner-cta{background:var(--brand);color:#fff;border-radius:10px;box-shadow:var(--shadow);font-weight:800;padding:11px 18px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .newsletter-banner-cta{background:var(--brand);color:#fff;border:0;border-radius:10px;box-shadow:var(--shadow);font:inherit;font-weight:800;padding:11px 18px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;cursor:pointer}
+  .recipe-banner-action{flex-shrink:0}.recipe-banner-action noscript{display:block;max-width:320px;font-size:.8rem;margin-top:8px}
   .newsletter-banner-cta:hover{background:var(--brand-d)}
   .newsletter-banner-cta:focus-visible{outline:3px solid var(--brand-d);outline-offset:3px}
   @media(max-width:640px){
-    .newsletter-banner-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px}
+    .newsletter-banner-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,45%);gap:4px 14px}
     .newsletter-banner-inner>div{display:contents}
     .newsletter-kicker{grid-column:1/-1;font-size:.72rem}
     .newsletter-copy{grid-column:1;font-size:.85rem;line-height:1.5;font-weight:500}
-    .newsletter-banner-cta{grid-column:2;grid-row:2;padding:10px 12px;font-size:.83rem;justify-content:center}
+    .newsletter-banner-cta{grid-column:2;grid-row:2;padding:10px 12px;font-size:.83rem;justify-content:center;white-space:normal;text-align:center}
     .newsletter-microcopy{grid-column:1/-1;grid-row:3;font-size:.75rem}
+    .recipe-banner-action noscript{grid-column:1/-1;grid-row:4;max-width:none}
   }
 </style>

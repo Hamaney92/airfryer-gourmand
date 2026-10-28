@@ -4,9 +4,9 @@ interface Props { title: string; url: string; source: string; }
 const { source } = Astro.props;
 ---
 <div class="newsletter-form">
-  <p>Un email par semaine : recettes, conseils, nos livres et des recommandations de produits pouvant contenir des liens affiliés.</p>
-  <a class="newsletter-cta" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source={source}>Choisir de m’inscrire à la newsletter →</a>
-  <p class="privacy">Inscription facultative sur un formulaire MailerLite distinct, avec une case d’accord non précochée. Aucun abonnement n’est nécessaire pour garder une recette ou télécharger le tableau. <a href="/confidentialite/">Utilisation de vos données</a>.</p>
+  <p>Que cuisiner la prochaine fois ? Recevez chaque semaine nos idées de recettes et conseils air fryer pour varier vos repas.</p>
+  <a class="newsletter-cta" href={NEWSLETTER_SIGNUP_URL} data-newsletter-signup data-lead-source={source}>Recevoir les idées de la semaine →</a>
+  <p class="privacy">La newsletter présente aussi nos livres et des recommandations de produits, parfois affiliées. Inscription facultative, désinscription à tout moment. Garder une recette ou télécharger le tableau ne vous abonne pas. <a href="/confidentialite/">Utilisation de vos données</a>.</p>
 </div>
 <style>
   .newsletter-form{display:grid;gap:12px;margin-top:14px}.email-label{display:grid;gap:6px;font-weight:650;font-size:.9rem}

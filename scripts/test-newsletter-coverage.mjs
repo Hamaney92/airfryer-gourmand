@@ -38,3 +38,14 @@ test('Recipe and editorial newsletter links share one on-site dialog and legal p
   const legal=readFileSync(new URL('confidentialite/index.html',root),'utf8');
   assert.ok(!/<dialog[^>]*data-auto-newsletter/.test(legal));
 });
+
+test('Recipe capture offers point to one recipe form, while editorial banners retain newsletter choice', () => {
+  const recipe = readFileSync(new URL('recettes/chataigne-air-fryer/index.html', root), 'utf8');
+  assert.match(recipe, /<button[^>]*data-recipe-email-open[^>]*data-placement="banner_recipe"/);
+  assert.match(recipe, /<button[^>]*data-recipe-email-open[^>]*data-placement="reading_recipe"/);
+  assert.equal((recipe.match(/<dialog[^>]*data-recipe-email(?:\s|>)/g) || []).length, 1);
+  assert.ok(!/<dialog[^>]*data-auto-newsletter/.test(recipe));
+  const editorial = readFileSync(new URL('guides/index.html', root), 'utf8');
+  assert.match(editorial, /<a[^>]*data-newsletter-signup[^>]*data-lead-source="banner_/);
+  assert.ok(!/<dialog[^>]*data-auto-newsletter/.test(editorial));
+});

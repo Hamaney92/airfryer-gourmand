@@ -1,37 +1,98 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { initNewsletterPopup } from '../src/lib/newsletter-popup.mjs';
-function setup(saved={}, automatic=true) {
-  const handlers={}, callbacks=new Map(), events=[];let now=0,id=0;
-  const doc={hidden:false,activeElement:null,documentElement:{dataset:{}},handlers:{},addEventListener(n,f){this.handlers[n]=f;},querySelector(s){return s==='dialog[open]'&&dialog.open?dialog:null;}};
-  const frame={src:'',dataset:{newsletterUrl:'https://preview.mailerlite.io/forms/test/share'}};
-  const close={addEventListener(n,f){this[n]=f;}};
-  const dialog={dataset:{},ownerDocument:doc,open:false,handlers:{},hasAttribute(){return automatic;},querySelector(s){return s==='iframe'?frame:close;},showModal(){this.open=true;},close(){this.open=false;this.handlers.close?.();},addEventListener(n,f){this.handlers[n]=f;}};
-  const env={performance:{now:()=>now},location:{hostname:'localhost',pathname:'/recettes/test/'},sessionStorage:{getItem:k=>saved[k],setItem:(k,v)=>saved[k]=v},setInterval:f=>{callbacks.set(++id,f);return id;},clearInterval:i=>callbacks.delete(i),addEventListener:(n,f)=>handlers[n]=f,gtag:(...args)=>events.push(args)};
-  const advance=s=>{for(let i=0;i<s;i++){now+=1000;for(const f of callbacks.values())f();}};
-  initNewsletterPopup(dialog,env);return {doc,dialog,frame,env,advance,saved,handlers,callbacks,events,close};
+
+function setup({ recipeOwner = false } = {}) {
+  const registrations = [];
+  const doc = {
+    documentElement: { dataset: {} }, handlers: {},
+    addEventListener(name, handler) { registrations.push(name); this.handlers[name] = handler; },
+    querySelector(selector) {
+      if (selector === '[data-recipe-prompts]') return recipeOwner ? {} : null;
+      return selector === 'dialog[open]' && dialog.open ? dialog : null;
+    },
+  };
+  const frame = { src: '', dataset: { newsletterUrl: 'https://preview.mailerlite.io/forms/test/share' } };
+  const recipeClose = () => {};
+  const close = { click: recipeOwner ? recipeClose : null, addEventListener(name, handler) { this[name] = handler; } };
+  const dialog = {
+    dataset: {}, ownerDocument: doc, open: false, handlers: {},
+    hasAttribute() { return true; }, // Historical auto-opening markup must be harmless.
+    querySelector(selector) { return selector === 'iframe' ? frame : close; },
+    showModal() { this.open = true; },
+    close() { this.open = false; this.handlers.close?.(); },
+    addEventListener(name, handler) { this.handlers[name] = handler; },
+  };
+  const scheduled = [];
+  const env = {
+    setInterval(handler) { scheduled.push(handler); },
+    setTimeout(handler) { scheduled.push(handler); },
+    addEventListener(name) { registrations.push(name); },
+    get sessionStorage() { throw Error('Storage must not be needed to open a form'); },
+  };
+  initNewsletterPopup(dialog, env);
+  return { doc, dialog, frame, close, env, scheduled, registrations, recipeClose };
 }
-test('The entry popup waits five visible seconds, keeps the visitor on site and opens once per session',()=>{
-  const s=setup();s.advance(4);assert.equal(s.frame.src,'');s.advance(1);assert.ok(s.dialog.open);assert.match(s.frame.src,/preview.mailerlite/);
-  s.dialog.close();s.advance(30);assert.ok(!s.dialog.open);const next=setup(s.saved);next.advance(30);assert.ok(!next.dialog.open);
+
+test('Entry never schedules an interruption or loads the external form', () => {
+  const s = setup();
+  assert.equal(s.scheduled.length, 0);
+  assert.equal(s.frame.src, '');
+  assert.equal(s.dialog.open, false);
+  assert.equal(s.doc.documentElement.dataset.newsletterHandled, undefined);
 });
-test('Background time and focused inputs do not interrupt the visitor',()=>{
-  const s=setup();s.doc.hidden=true;s.advance(100);assert.ok(!s.dialog.open);s.doc.hidden=false;s.doc.activeElement={tagName:'INPUT'};s.advance(5);assert.ok(!s.dialog.open);s.doc.activeElement=null;s.advance(1);assert.ok(s.dialog.open);
+
+test('A newsletter link opens on demand and restores focus after dismissal', () => {
+  const s = setup();
+  let prevented = 0, focused = 0;
+  const trigger = { focus(options) { assert.equal(options.preventScroll, true); focused++; } };
+  const event = { target: { closest: () => trigger }, preventDefault() { prevented++; } };
+  s.doc.handlers.click(event);
+  assert.equal(prevented, 1);
+  assert.equal(s.dialog.open, true);
+  assert.equal(s.frame.src, s.frame.dataset.newsletterUrl);
+  assert.equal(s.doc.documentElement.dataset.newsletterHandled, 'true');
+  s.close.click();
+  assert.equal(focused, 1);
+  assert.equal(s.dialog.open, false);
+  s.doc.handlers.click(event);
+  assert.equal(s.dialog.open, true);
 });
-test('A newsletter link opens the existing dialog without redirecting, even after dismissal',()=>{
-  const s=setup({},false);s.advance(10);assert.ok(!s.dialog.open);let prevented=false,focused=false;
-  const trigger={focus(){focused=true;}};const event={target:{closest:()=>trigger},preventDefault(){prevented=true;}};
-  s.doc.handlers.click(event);assert.ok(prevented&&s.dialog.open);s.close.click();assert.ok(focused);s.doc.handlers.click(event);assert.ok(s.dialog.open);
-});
-test('Modified clicks and unavailable dialogs preserve the internal fallback link',()=>{
-  for(const modify of [e=>e.ctrlKey=true,e=>e.metaKey=true,e=>e.button=1,e=>e.defaultPrevented=true]){
-    const s=setup({},false);const event={target:{closest:()=>({})},preventDefault(){throw Error('redirect prevented');}};modify(event);s.doc.handlers.click(event);assert.ok(!s.dialog.open);
+
+test('Modified clicks and unavailable dialogs preserve the internal fallback link', () => {
+  for (const modify of [e => e.ctrlKey = true, e => e.metaKey = true, e => e.shiftKey = true, e => e.altKey = true, e => e.button = 1, e => e.defaultPrevented = true]) {
+    const s = setup();
+    const event = { target: { closest: () => ({}) }, preventDefault() { throw Error('redirect prevented'); } };
+    modify(event);
+    s.doc.handlers.click(event);
+    assert.equal(s.dialog.open, false);
   }
-  const s=setup({},false);s.dialog.showModal=undefined;s.doc.handlers.click({target:{closest:()=>({})},preventDefault(){throw Error('fallback blocked');}});
+  const s = setup();
+  s.dialog.showModal = undefined;
+  s.doc.handlers.click({ target: { closest: () => ({}) }, preventDefault() { throw Error('fallback blocked'); } });
 });
-test('History restoration restarts only one clock and initialization is idempotent',()=>{
-  const s=setup();s.advance(2);s.handlers.pagehide();s.advance(200);s.handlers.pageshow({persisted:true});s.handlers.pageshow({persisted:true});assert.equal(s.callbacks.size,1);s.advance(3);assert.ok(s.dialog.open);initNewsletterPopup(s.dialog,s.env);assert.equal(s.callbacks.size,1);
+
+test('A different open dialog prevents newsletter overlap without swallowing navigation', () => {
+  const s = setup();
+  s.doc.querySelector = selector => selector === 'dialog[open]' ? {} : null;
+  s.doc.handlers.click({ target: { closest: () => ({}) }, preventDefault() { throw Error('fallback blocked'); } });
+  assert.equal(s.dialog.open, false);
+  assert.equal(s.frame.src, '');
 });
-test('Storage denial does not break the popup and local checks send no analytics',()=>{
-  const s=setup();s.env.sessionStorage.setItem=()=>{throw Error('blocked');};s.advance(5);assert.ok(s.dialog.open);assert.equal(s.events.length,0);
+
+test('Reinitialization after cached navigation retains one manual listener and no clock', () => {
+  const s = setup();
+  const original = s.doc.handlers.click;
+  initNewsletterPopup(s.dialog, s.env);
+  assert.equal(s.doc.handlers.click, original);
+  assert.deepEqual(s.registrations, ['click']);
+  assert.equal(s.scheduled.length, 0);
+  s.doc.handlers.click({ target: { closest: () => ({ focus() {} }) }, preventDefault() {} });
+  assert.equal(s.dialog.open, true);
+});
+
+test('Recipe prompts keep ownership of the shared dialog close behavior', () => {
+  const s = setup({ recipeOwner: true });
+  assert.equal(s.close.click, s.recipeClose);
+  assert.equal(s.dialog.handlers.close, undefined);
 });

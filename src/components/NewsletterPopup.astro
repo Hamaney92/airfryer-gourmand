@@ -1,13 +1,13 @@
 ---
 import { NEWSLETTER_FORM_URL } from '../lib/site';
 interface Props { renderDialog?: boolean; automatic?: boolean; }
-const { renderDialog = true, automatic = false } = Astro.props;
+const { renderDialog = true } = Astro.props;
 ---
-{renderDialog && <dialog class="newsletter-popup" data-newsletter-dialog data-auto-newsletter={automatic ? '' : undefined} aria-labelledby="newsletter-popup-title">
+{renderDialog && <dialog class="newsletter-popup" data-newsletter-dialog aria-labelledby="newsletter-popup-title">
   <button type="button" data-newsletter-close aria-label="Fermer le formulaire newsletter">×</button>
-  <h2 id="newsletter-popup-title">Votre prochaine idée air fryer commence ici</h2>
-  <p>Recevez nos recettes faciles et conseils dans votre boîte mail.</p>
-  <p class="disclaimer">Inscription facultative : recettes, conseils et offres sur nos livres et produits, parfois affiliés. Désinscription à tout moment. Données traitées via MailerLite. <a href="/confidentialite/">Confidentialité</a>.</p>
+  <h2 id="newsletter-popup-title">De nouvelles idées pour vos repas de la semaine</h2>
+  <p>Un email par semaine avec des recettes et conseils air fryer pour varier vos repas.</p>
+  <p class="disclaimer">La newsletter présente aussi nos livres et des recommandations de produits, parfois affiliées. Inscription facultative, désinscription à tout moment. <a href="/confidentialite/">Confidentialité</a>.</p>
   <iframe title="Formulaire newsletter Airfryer Gourmand" data-newsletter-url={NEWSLETTER_FORM_URL} referrerpolicy="strict-origin-when-cross-origin"></iframe>
   <p class="disclaimer">Le formulaire ne s’affiche pas ? <a href="/newsletter/">Réessayer sur notre page newsletter</a>.</p>
 </dialog>}
