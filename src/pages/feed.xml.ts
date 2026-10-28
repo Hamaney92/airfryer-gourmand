@@ -25,13 +25,23 @@ export const GET: APIRoute = async () => {
       + '<description>' + escapeXml(recipe.data.description) + '</description>'
       + '<pubDate>' + date.toUTCString() + '</pubDate></item>';
   }).filter(Boolean);
+  // Les guides publiés rejoignent le flux sans exposer les recettes du backlog.
+  const guides = [
+    { path: '/dossiers/menu-noel-air-fryer/', title: 'Menu de Noël au air fryer : recettes et organisation pour 2 à 6', description: 'Deux menus, les courses et l’ordre des fournées pour recevoir.' },
+    { path: '/guides/cadeaux-cuisine-noel/', title: 'Cadeaux cuisine pour Noël : 8 idées utiles, selon les habitudes', description: 'Choisir un cadeau selon la personne, les dimensions et le matériel déjà présent.' },
+  ].map(guide => {
+    const link = new URL(guide.path, SITE.url).href;
+    return '<item><title>' + escapeXml(guide.title) + '</title><link>' + link + '</link>'
+      + '<guid isPermaLink="true">' + link + '</guid><description>' + escapeXml(guide.description)
+      + '</description><pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate></item>';
+  });
   const body = '<?xml version="1.0" encoding="UTF-8"?>\n'
     + '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
-    + '<title>' + escapeXml(SITE.name) + ' — Recettes</title>'
+    + '<title>' + escapeXml(SITE.name) + ' — Recettes et guides</title>'
     + '<link>' + escapeXml(new URL('/', SITE.url).href) + '</link>'
-    + '<description>Recettes en français pour cuisiner à l’air fryer.</description>'
+    + '<description>Recettes et guides en français pour cuisiner à l’air fryer.</description>'
     + '<language>fr-fr</language><atom:link href="' + escapeXml(new URL('/feed.xml', SITE.url).href)
     + '" rel="self" type="application/rss+xml" />\n'
-    + items.join('\n') + '\n</channel></rss>\n';
+    + guides.concat(items).join('\n') + '\n</channel></rss>\n';
   return new Response(body, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
 };

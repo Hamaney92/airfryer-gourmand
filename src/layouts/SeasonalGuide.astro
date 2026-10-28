@@ -1,0 +1,27 @@
+---
+import Base from './Base.astro';
+interface Props { title: string; description: string; eyebrow: string; }
+const { title, description, eyebrow } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: title, description,
+  mainEntityOfPage: url, datePublished: '2026-10-28', dateModified: '2026-10-28', inLanguage: 'fr-FR',
+  author: { '@type': 'Organization', name: 'L’équipe Airfryer Gourmand', url: 'https://airfryergourmand.fr/a-propos/' },
+  publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' } };
+---
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <div class="wrap seasonal">
+    <article>
+      <header class="seasonal-hero">
+        <nav aria-label="Fil d’Ariane"><a href="/">Accueil</a> / <a href="/guides/">Guides</a> / Noël</nav>
+        <p class="seasonal-eyebrow">{eyebrow}</p><h1>{title}</h1>
+        <p>{description}</p>
+        <p class="seasonal-byline">Par <a href="/a-propos/">l’équipe Airfryer Gourmand</a> · Publié le 28 octobre 2026</p>
+      </header>
+      <div class="seasonal-body"><slot /></div>
+    </article>
+  </div>
+</Base>
+<style is:global>
+  .seasonal{padding-block:24px 40px}.seasonal-hero{background:#173e32;color:#fff7e9;border-radius:22px;padding:clamp(22px,5vw,48px);max-width:100%;overflow-wrap:anywhere}.seasonal-hero h1{color:inherit;font-size:clamp(1.85rem,4.5vw,3rem);line-height:1.12;max-width:950px}.seasonal-hero a{color:inherit;text-decoration:underline}.seasonal-hero nav,.seasonal-byline{font-size:.85rem}.seasonal-hero .seasonal-eyebrow{color:#f6ce91;text-transform:uppercase;letter-spacing:.08em;font-weight:750;font-size:.8rem}.seasonal-body{max-width:920px;margin:28px auto;line-height:1.75}.seasonal-body h2{margin-top:32px;line-height:1.3}.seasonal-body h3{line-height:1.4}.seasonal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.seasonal-card{border:1px solid #dfd6c8;background:#fffdf8;padding:22px;border-radius:16px;min-width:0}.seasonal-card h2,.seasonal-card h3{margin-top:0}.seasonal-card img{width:100%;height:auto;border-radius:10px;aspect-ratio:16/9;object-fit:cover}.seasonal-note{padding:18px 22px;background:#eef3e7;border-left:4px solid #36634a;border-radius:8px}.seasonal-scroll{max-width:100%;overflow-x:auto}.seasonal-scroll table{width:100%;border-collapse:collapse;font-size:.94rem}.seasonal-scroll th,.seasonal-scroll td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #ded6c9}.seasonal-scroll th{background:#edf2e7}.seasonal-cta{display:inline-flex;align-items:center;min-height:44px;border-radius:10px;background:#173e32;color:#fff!important;padding:10px 16px;text-decoration:none;font-weight:750}.seasonal-cta:hover{background:#2c5f49}.seasonal-body a:focus-visible,.seasonal-hero a:focus-visible{outline:3px solid #bd710c;outline-offset:4px}.seasonal-sources{font-size:.86rem;color:#61584d}@media(max-width:640px){.seasonal-grid{grid-template-columns:1fr}.seasonal-card{padding:18px}.seasonal-scroll th,.seasonal-scroll td{padding:9px}.seasonal-cta{width:100%;justify-content:center;box-sizing:border-box}}
+</style>
