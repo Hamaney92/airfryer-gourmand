@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ChristmasTheme from '../components/ChristmasTheme.astro';
 import AdSenseVerification from '../components/AdSenseVerification.astro';
 import { SITE, USAGES, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
@@ -37,6 +38,7 @@ const year = new Date().getFullYear();
     <link rel="alternate" type="application/rss+xml" title="Airfryer Gourmand — Recettes" href="/feed.xml" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ChristmasTheme head />
     <AdSenseVerification />
     <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -91,6 +93,7 @@ const year = new Date().getFullYear();
 
     {!noindex && <BooksBanner pageType={pageType} />}
     {!noindex && <NewsletterBanner pageType={pageType} />}
+    {!noindex && <ChristmasTheme />}
     <main>
       <slot />
       {!noindex && pageType !== 'recipe' && isEditorialPage(path) && <div class="wrap">

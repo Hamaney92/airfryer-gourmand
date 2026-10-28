@@ -1,0 +1,57 @@
+---
+import '../styles/christmas.css';
+interface Props { head?: boolean }
+const { head = false } = Astro.props;
+---
+{head ? (
+  <script is:inline>
+    // Browser dates also retire the theme on already deployed static pages.
+    (() => {
+      const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+      }).format(new Date());
+      if (today >= '2026-10-28' && today < '2027-01-06') {
+        document.documentElement.dataset.season = 'christmas';
+      }
+    })();
+  </script>
+) : (
+  <>
+    <aside class="christmas-welcome" aria-label="Ambiance de Noël">
+      <div class="wrap christmas-welcome-inner">
+        <span class="christmas-ornament" aria-hidden="true">✦</span>
+        <div class="christmas-copy">
+          <span class="christmas-eyebrow">Noël se prépare à table</span>
+          <p>Un air de fête dans votre cuisine</p>
+        </div>
+        <div class="christmas-links">
+          <a href="/dossiers/apero-de-noel-air-fryer/">Apéro de Noël <span aria-hidden="true">↗</span></a>
+          <a href="/categorie/desserts/">Desserts <span aria-hidden="true">↗</span></a>
+        </div>
+        <button type="button" class="christmas-snow-toggle" aria-label="Afficher la neige décorative" aria-pressed="true">Neige : oui</button>
+      </div>
+    </aside>
+    <div class="christmas-snow" aria-hidden="true" inert>
+      {Array.from({ length: 12 }, (_, i) => (
+        <span style={`--flake-x:${[2,8,17,27,37,47,57,67,77,87,93,98][i]}%;--flake-delay:${-i * 1.7}s;--flake-duration:${14 + i % 5 * 2}s`}>✧</span>
+      ))}
+    </div>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.christmas-snow-toggle');
+      const root = document.documentElement;
+      function setSnow(enabled: boolean) {
+        root.dataset.snow = enabled ? 'on' : 'off';
+        toggle?.setAttribute('aria-pressed', String(enabled));
+        if (toggle) toggle.textContent = enabled ? 'Neige : oui' : 'Neige : non';
+      }
+      let enabled = true;
+      try { enabled = sessionStorage.getItem('afg_christmas_snow') !== 'off'; } catch {}
+      setSnow(enabled);
+      toggle?.addEventListener('click', () => {
+        const next = root.dataset.snow !== 'on';
+        setSnow(next);
+        try { sessionStorage.setItem('afg_christmas_snow', next ? 'on' : 'off'); } catch {}
+      });
+    </script>
+  </>
+)}
