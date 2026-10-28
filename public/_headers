@@ -1,4 +1,7 @@
 # Cache long pour les assets immuables (Cloudflare Pages)
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=300
 /img/*
   Cache-Control: public, max-age=31536000, immutable
 /pins/*
