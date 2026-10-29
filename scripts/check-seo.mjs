@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
+import { articleDateErrors } from './article-date-check.mjs';
 
 // Run after build. Validate generated pages, not just source templates.
 const root = resolve('dist');
@@ -26,6 +27,9 @@ for (const file of files) {
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .flatMap((match) => { try { return [JSON.parse(match[1])].flat(); } catch { failures.push(`${path}: invalid JSON-LD`); return []; } });
   const recipe = schemas.find((schema) => schema['@type'] === 'Recipe');
+  for (const schema of schemas) {
+    for (const error of articleDateErrors(schema)) failures.push(`${path}: ${error}`);
+  }
   if (recipe) {
     recipeCount++;
     assert(recipe.url === origin + path, `${path}: Recipe URL mismatch`);
