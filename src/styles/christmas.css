@@ -1,5 +1,5 @@
 /* One seasonal layer: the everyday identity returns when data-season is absent. */
-.christmas-welcome,.christmas-snow{display:none}
+.christmas-welcome,.christmas-snow,.christmas-sleigh{display:none}
 html[data-season="christmas"]{--brand:#963648;--brand-d:#762638;--cream:#f8f0e5;--line:#e7dfd1;--shadow:0 8px 24px rgba(36,73,58,.08)}
 html[data-season="christmas"] body{background-color:#fffbf5}
 html[data-season="christmas"] body>header{border-bottom:2px solid #b69754;background:rgba(255,251,245,.97)}
@@ -23,7 +23,13 @@ html[data-season="christmas"] .christmas-welcome{display:block;background:#24493
 html[data-season="christmas"] .christmas-snow{display:block;position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:31;contain:strict}
 .christmas-snow span{position:absolute;left:var(--flake-x);top:-28px;color:#fff;font-family:Arial,sans-serif;font-size:var(--flake-size);line-height:1;text-shadow:0 0 1px #24493a,0 1px 3px #24493a80;opacity:0;animation:christmas-drift var(--flake-duration) var(--flake-delay) linear infinite;will-change:transform}
 html[data-snow="off"] .christmas-snow{display:none}
+.christmas-snow{opacity:1;transition:opacity 5s ease-out}
+html[data-christmas-arrival="fading"] .christmas-snow{opacity:0}
+.christmas-sleigh{position:fixed;top:24%;left:0;width:clamp(200px,30vw,340px);pointer-events:none;z-index:32;filter:drop-shadow(0 3px 4px #183d3140)}
+.christmas-sleigh svg{display:block;width:100%;height:auto}
+html[data-season="christmas"][data-snow="on"][data-christmas-arrival="flying"] .christmas-sleigh{display:block;animation:christmas-arrival 6s linear both}
+@keyframes christmas-arrival{0%{transform:translateX(100vw) translateY(12px);opacity:0}8%,90%{opacity:1}50%{transform:translateX(calc(50vw - 50%)) translateY(-15px)}100%{transform:translateX(-110%) translateY(8px);opacity:0}}
 @keyframes christmas-drift{0%{transform:translate3d(0,-28px,0) rotate(0deg);opacity:0}10%,80%{opacity:.8}100%{transform:translate3d(18px,calc(100vh + 40px),0) rotate(130deg);opacity:0}}
 @media(max-width:860px){.christmas-welcome-inner{gap:10px 14px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}.christmas-ornament{font-size:1.8rem}.christmas-copy{flex-basis:calc(100% - 50px)}.christmas-copy p{font-size:1.2rem}.christmas-links{flex:1;gap:0 16px}.christmas-links a{font-size:.82rem}.christmas-snow-toggle{font-size:.72rem}.christmas-snow span:nth-child(2n){display:none}}
 @media(prefers-reduced-motion:reduce){html:not([data-snow-choice="on"]) .christmas-snow{display:none}html:not([data-snow-choice="on"]) .christmas-snow span{animation:none}}
-@media print{html[data-season="christmas"] .christmas-welcome,html[data-season="christmas"] .christmas-snow{display:none}}
+@media print{html[data-season="christmas"] .christmas-welcome,html[data-season="christmas"] .christmas-snow,html[data-season="christmas"] .christmas-sleigh{display:none}}

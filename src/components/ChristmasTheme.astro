@@ -41,20 +41,58 @@ const { head = false } = Astro.props;
         <span style={`--flake-x:${[2,7,12,18,24,30,36,42,48,54,60,66,72,78,84,90,95,98][i]}%;--flake-delay:${-i * 1.9}s;--flake-duration:${11 + i % 5 * 2}s;--flake-size:${16 + i % 3 * 3}px`}>❄︎</span>
       ))}
     </div>
+    <div class="christmas-sleigh" aria-hidden="true" inert>
+      <svg viewBox="0 0 360 140" width="300" height="117" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#b69754" stroke-width="4" stroke-linecap="round">
+          <path d="M145 100Q205 65 265 87M166 116H274Q305 116 307 100M178 103L186 116M264 102L270 116"/>
+        </g>
+        <path d="M160 78Q194 83 201 61L220 81H279L289 68Q302 108 267 108H190Q165 106 160 78" fill="#963648" stroke="#ffe0a3" stroke-width="2"/>
+        <path d="M231 76L226 44L246 30L269 45L278 77Z" fill="#24493a"/>
+        <path d="M248 32L244 76M229 51L271 57" stroke="#e2c88c" stroke-width="5"/>
+        <path d="M184 79Q177 49 197 43Q221 45 220 80Z" fill="#c43b45"/>
+        <circle cx="200" cy="33" r="15" fill="#f3c8a4"/>
+        <path d="M185 32Q185 58 202 54Q218 47 215 32L205 39L199 37L194 40Z" fill="#fff8e9"/>
+        <path d="M183 25Q190 -1 210 12L222 22L207 20L210 25Z" fill="#c43b45"/>
+        <path d="M183 26H213" stroke="#fff8e9" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="222" cy="22" r="5" fill="#fff8e9"/>
+        <path d="M190 57L170 44L157 29" fill="none" stroke="#c43b45" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="155" cy="26" r="7" fill="#fff8e9"/>
+        <g fill="none" stroke="#885338" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M103 83L121 61L139 63L148 51L140 42L127 53L118 69L95 66L83 54M114 71L105 93M128 69L139 88M139 43L138 27L130 21M138 32L147 23"/>
+          <path d="M49 72L67 50L85 52L94 40L86 31L73 42L64 58L41 55L29 43M60 60L51 82M74 58L85 77M85 32L84 16L76 10M84 21L93 12"/>
+        </g>
+        <circle cx="97" cy="39" r="3" fill="#c43b45"/>
+      </svg>
+    </div>
     <script>
       const toggle = document.querySelector<HTMLButtonElement>('.christmas-snow-toggle');
       const motionNote = document.querySelector<HTMLElement>('#christmas-motion-note');
       const root = document.documentElement;
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
       let choice: string | null = null;
+      let timers: ReturnType<typeof setTimeout>[] = [];
       try { choice = sessionStorage.getItem('afg_christmas_snow'); } catch {}
       function renderSnow() {
-        const enabled = choice === 'on' || (choice !== 'off' && !reducedMotion.matches);
+        timers.forEach(clearTimeout);
+        timers = [];
+        delete root.dataset.christmasArrival;
+        const enabled = root.dataset.season === 'christmas' && (choice === 'on' || (choice !== 'off' && !reducedMotion.matches));
         root.dataset.snowChoice = choice === 'on' ? 'on' : 'default';
         root.dataset.snow = enabled ? 'on' : 'off';
         toggle?.setAttribute('aria-pressed', String(enabled));
         if (toggle) toggle.textContent = enabled ? 'Arrêter la neige' : 'Activer la neige';
         if (motionNote) motionNote.hidden = !reducedMotion.matches || enabled;
+        if (enabled) {
+          // A brief welcome: Santa at 10s, then a gradual snowfall fade.
+          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'flying'; }, 10000));
+          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'fading'; }, 16000));
+          timers.push(setTimeout(() => {
+            root.dataset.snow = 'off';
+            delete root.dataset.christmasArrival;
+            toggle?.setAttribute('aria-pressed', 'false');
+            if (toggle) toggle.textContent = 'Rejouer la magie de Noël';
+          }, 21500));
+        }
       }
       renderSnow();
       reducedMotion.addEventListener('change', renderSnow);
