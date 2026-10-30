@@ -119,6 +119,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     </nav>
 
     <h1>{data.title}</h1>
+    <a class="recipe-jump" href="#ingredients">Ingrédients et étapes <span aria-hidden="true">↓</span></a>
 
     <div class="byline">
       <span class="by-av">👩‍🍳</span>
@@ -237,6 +238,10 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 </Layout>
 
 <style>
+  .recipe-jump{display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;min-height:44px;padding:9px 15px;margin:0 0 12px;border:1px solid var(--brand-d);border-radius:10px;color:var(--brand-d);font-weight:700;line-height:1.35;text-decoration:none}
+  .recipe-jump:hover{background:var(--cream)}
+  .recipe-jump:focus-visible{outline:3px solid var(--brand-d);outline-offset:4px}
+  @media print{.recipe-jump{display:none}}
   .recipe-shortcuts{display:flex;gap:10px 18px;flex-wrap:wrap;margin:12px 0 22px}
   .recipe-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-weight:700;text-decoration:underline}
   #recette,#ingredients,#etapes,#conseils,[id^="etape-"]{scroll-margin-top:100px}
