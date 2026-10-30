@@ -1,0 +1,126 @@
+// Isolated development Chromium only: no personal profile or third-party access.
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+import { createServer } from 'node:http';
+import { existsSync, statSync, createReadStream } from 'node:fs';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve, join, sep, extname } from 'node:path';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.argv[2] || 'playwright');
+const dist = resolve('dist');
+const output = resolve('../../outputs/cooking-memo-2026-10-30/worker');
+await mkdir(output, { recursive: true });
+const server = createServer((req, res) => {
+  let file = resolve(dist, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
+  if (file !== dist && !file.startsWith(dist + sep)) { res.writeHead(403).end(); return; }
+  if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
+  if (!existsSync(file)) { res.writeHead(404).end(); return; }
+  res.setHeader('Content-Type', ({ '.html': 'text/html; charset=utf-8', '.js': 'application/javascript', '.css': 'text/css', '.webp': 'image/webp', '.svg': 'image/svg+xml' })[extname(file)] || 'application/octet-stream');
+  createReadStream(file).pipe(res);
+});
+await new Promise(done => server.listen(0, '127.0.0.1', done));
+const origin = `http://127.0.0.1:${server.address().port}`;
+const browser = await chromium.launch({ headless: true, ...(process.argv[3] ? { executablePath: process.argv[3] } : {}) });
+const observations = [];
+const pagePath = '/tableau-temps-cuisson-air-fryer/';
+try {
+  for (const width of [390, 768, 1440]) {
+    const context = await browser.newContext({ viewport: { width, height: 844 }, reducedMotion: 'reduce' });
+    await context.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
+    const page = await context.newPage();
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.goto(origin + pagePath, { waitUntil: 'networkidle' });
+    await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.print = () => { window.__printRequests = (window.__printRequests || 0) + 1; }; });
+    const choices = page.locator('[data-memo-choice]');
+    const total = await choices.count();
+    assert.ok(total > 50);
+    const print = page.locator('#memo-print');
+    assert.equal(await print.isDisabled(), true);
+    assert.equal(await page.locator('#memo-clear').isDisabled(), true);
+    assert.ok(await page.locator('.memo-controls').isVisible());
+    assert.equal(await page.locator('a[download][href="/tableau-temps-cuisson-air-fryer.pdf"]').count(), 1);
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://airfryergourmand.fr' + pagePath);
+    const labelNames = await choices.evaluateAll(nodes => nodes.map(node => node.labels[0].textContent.trim()));
+    assert.equal(new Set(labelNames).size, total, 'Unique labels');
+    await choices.first().focus();
+    assert.ok(await choices.first().evaluate(el => parseFloat(getComputedStyle(el.closest('label')).outlineWidth) >= 2));
+    await page.keyboard.press('Space');
+    assert.equal(await choices.first().isChecked(), true);
+    const firstName = await choices.first().evaluate(el => el.closest('tr').dataset.food);
+    await choices.last().check();
+    assert.match(await page.locator('#memo-status').innerText(), /^2 préparations sélectionnées/);
+    await page.locator('#food-search').fill(firstName);
+    assert.equal(await choices.last().isVisible(), false, 'Selection can be hidden by search');
+    await page.locator('#food-search').fill('aucun-resultat-xyz');
+    assert.match(await page.locator('#food-search-status').innerText(), /Aucun aliment/);
+    assert.equal(await print.isDisabled(), false);
+    await page.locator('.memo-controls').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: join(output, `memo-controls-${width}.png`) });
+    await print.click();
+    assert.equal(await page.evaluate(() => window.__printRequests), 1);
+    assert.equal(await page.locator('#memo-print-rows tr').count(), 2);
+    assert.equal(await page.locator('#memo-print-rows input').count(), 0);
+    const expected = await choices.evaluateAll(nodes => nodes.filter(node => node.checked).map(node => [...node.closest('tr').cells].map((cell, index) => index ? cell.textContent.trim() : cell.querySelector(':scope > span').textContent.trim())));
+    const actual = await page.locator('#memo-print-rows tr').evaluateAll(nodes => nodes.map(node => [...node.cells].map(cell => cell.textContent.trim())));
+    assert.deepEqual(actual, expected, 'Print values and links preserve source rows even outside search');
+    await page.emulateMedia({ media: 'print' });
+    assert.ok(await page.locator('.memo-print').isVisible());
+    assert.equal(await page.locator('body > header').isVisible(), false);
+    assert.equal(await page.locator('body > footer').isVisible(), false);
+    assert.equal(await page.locator('.magnet').isVisible(), false);
+    assert.equal(await page.locator('.memo-controls').isVisible(), false);
+    assert.match(await page.locator('.memo-print').innerText(), /Valeurs indicatives/);
+    await page.screenshot({ path: join(output, `memo-print-${width}.png`), fullPage: true });
+    await page.pdf({ path: join(output, `memo-print-${width}.pdf`), format: 'A4', printBackground: true, margin: { top: '12mm', bottom: '12mm', left: '12mm', right: '12mm' } });
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    assert.equal(await page.locator('body').evaluate(el => el.classList.contains('printing-cooking-memo')), false);
+    assert.equal(await page.locator('.memo-print').isVisible(), false, 'Ordinary browser printing does not print a stale selection');
+    await page.emulateMedia({ media: 'screen' });
+    assert.equal(await page.locator('#food-search').inputValue(), 'aucun-resultat-xyz');
+    assert.equal(await choices.first().isChecked(), true);
+    assert.equal(await choices.last().isChecked(), true);
+    await page.locator('#memo-clear').click();
+    assert.equal(await page.locator('[data-memo-choice]:checked').count(), 0);
+    assert.equal(await print.isDisabled(), true);
+    assert.equal(await page.locator('#food-search').inputValue(), 'aucun-resultat-xyz');
+    await page.locator('#food-search').fill('');
+    await choices.last().check();
+    await print.click();
+    assert.equal(await page.locator('#memo-print-rows tr').count(), 1, 'Second print replaces first selection');
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    await page.evaluate(() => { window.print = () => { throw new Error('simulated printer unavailable'); }; });
+    await print.click();
+    assert.equal(await page.locator('body').evaluate(el => el.classList.contains('printing-cooking-memo')), false);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'No page overflow');
+    const touchTargets = await page.locator('.memo-select').evaluateAll(nodes => nodes.map(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height })));
+    assert.ok(touchTargets.every(box => box.width >= 44 && box.height >= 44));
+    assert.deepEqual(errors, []);
+    observations.push({ width, totalRows: total, printRowsVerified: 2, secondPrintRows: 1, errors });
+    await context.close();
+  }
+  for (const width of [390, 1440]) {
+    const context = await browser.newContext({ viewport: { width, height: 844 }, javaScriptEnabled: false });
+    await context.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
+    const page = await context.newPage();
+    await page.goto(origin + pagePath);
+    assert.equal(await page.locator('.memo-controls').isVisible(), false);
+    assert.equal(await page.locator('.memo-select').first().isVisible(), false);
+    assert.equal(await page.locator('.table-search').isVisible(), false);
+    assert.ok(await page.locator('tr[data-food]').count() > 50);
+    assert.ok(await page.locator('a[download]').isVisible());
+    await page.locator('.table-navigation nav a').first().click();
+    assert.match(new URL(page.url()).hash, /^#cuisson-/);
+    assert.ok(await page.locator('tr[data-food] a').first().getAttribute('href'));
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.screenshot({ path: join(output, `memo-nojs-${width}.png`) });
+    observations.push({ width, javaScript: false, tableAndPdfAccessible: true });
+    await context.close();
+  }
+  const result = { result: 'PASS', journeys: observations.length, observations, limits: 'Local isolated Chromium. Native print calls intercepted; PDFs and print media verified, no physical printer, Safari, screen reader or real adoption measurement.' };
+  await writeFile(join(output, 'verification.json'), JSON.stringify(result, null, 2));
+  console.log(JSON.stringify(result));
+} finally {
+  await browser.close();
+  await new Promise(done => server.close(done));
+}

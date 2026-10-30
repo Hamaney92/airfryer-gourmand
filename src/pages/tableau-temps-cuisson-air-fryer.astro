@@ -72,7 +72,7 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} path="/tableau-temps-cuisson-air-fryer/" jsonLd={jsonLd}>
-  <div class="wrap article">
+  <div class="wrap article cooking-table-page">
     <h1>Tableau de cuisson air fryer à imprimer : PDF gratuit</h1>
     <p>
       Retrouvez {rows.length} préparations avec leur température, leur temps de cuisson indicatif et le lien vers la recette.
@@ -100,6 +100,16 @@ const jsonLd = [
       </div>
     </section>
 
+    <section class="memo-controls" hidden aria-labelledby="memo-title">
+      <h2 id="memo-title">Ton mémo de cuisson, à la carte</h2>
+      <p>Coche les préparations à garder, puis imprime seulement ta sélection. Tes choix restent sélectionnés quand tu recherches un autre aliment. Ils ne sont pas enregistrés après cette visite.</p>
+      <p id="memo-status" role="status" aria-live="polite">Aucune préparation sélectionnée. Coche une case dans le tableau.</p>
+      <div class="memo-actions">
+        <button id="memo-print" type="button" disabled>Imprimer ma sélection</button>
+        <button id="memo-clear" type="button" disabled>Tout effacer</button>
+      </div>
+    </section>
+
     {Object.entries(parCat).map(([cat, list]) => (
       <section data-cooking-category>
         <h2 id={categoryId(cat)}>{cat}</h2>
@@ -109,7 +119,7 @@ const jsonLd = [
             <tbody>
               {list.map((r) => (
                 <tr data-food={r.nom}>
-                  <td>{r.nom}</td>
+                  <td><label class="memo-select" hidden><input type="checkbox" data-memo-choice /><span class="memo-sr-only">Ajouter {r.nom} à mon mémo</span></label><span>{r.nom}</span></td>
                   <td>{r.servings ? `${r.servings} pers.` : '—'}</td>
                   <td class="t">{r.temp}</td>
                   <td style="font-weight:700;white-space:nowrap">{r.cook} min</td>
@@ -121,6 +131,16 @@ const jsonLd = [
         </div>
       </section>
     ))}
+
+    <section class="memo-print" aria-labelledby="memo-print-title">
+      <h2 id="memo-print-title">Mon mémo de cuisson au air fryer</h2>
+      <p>airfryergourmand.fr/tableau-temps-cuisson-air-fryer/</p>
+      <p>Portions et réglages des recettes d'origine, sans recalcul. Valeurs indicatives selon le modèle, la quantité et l'épaisseur des morceaux. Suis la notice de ton appareil et vérifie la cuisson avant de servir. Consulte les recettes pour les ingrédients et les étapes complètes.</p>
+      <table class="rectable">
+        <thead><tr><th>Aliment</th><th>Portions</th><th>Température</th><th>Temps</th><th>Recette</th></tr></thead>
+        <tbody id="memo-print-rows"></tbody>
+      </table>
+    </section>
 
     <section aria-labelledby="choisir-outil">
       <h2 id="choisir-outil">PDF à imprimer ou convertisseur : quel outil utiliser ?</h2>
@@ -151,6 +171,12 @@ const jsonLd = [
   const searchBox = document.querySelector<HTMLElement>('.table-search');
   const status = document.querySelector<HTMLElement>('#food-search-status');
   const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-cooking-category]'));
+  const memoControls = document.querySelector<HTMLElement>('.memo-controls');
+  const memoStatus = document.querySelector<HTMLElement>('#memo-status');
+  const printButton = document.querySelector<HTMLButtonElement>('#memo-print');
+  const clearButton = document.querySelector<HTMLButtonElement>('#memo-clear');
+  const printRows = document.querySelector<HTMLTableSectionElement>('#memo-print-rows');
+  const choices = Array.from(document.querySelectorAll<HTMLInputElement>('[data-memo-choice]'));
   const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   if (search && searchBox && status) {
     searchBox.hidden = false;
@@ -170,6 +196,50 @@ const jsonLd = [
       status.textContent = query ? (count ? count + ' préparation(s) trouvée(s).' : 'Aucun aliment trouvé. Essayez un nom plus court.') : '';
     });
   }
+  if (memoControls && memoStatus && printButton && clearButton && printRows) {
+    const selected = () => choices.filter(choice => choice.checked);
+    const updateSelection = () => {
+      const count = selected().length;
+      memoStatus.textContent = count
+        ? `${count} préparation${count > 1 ? 's' : ''} sélectionnée${count > 1 ? 's' : ''}, y compris celles masquées par la recherche.`
+        : 'Aucune préparation sélectionnée. Coche une case dans le tableau.';
+      printButton.disabled = count === 0;
+      clearButton.disabled = count === 0;
+    };
+    choices.forEach(choice => {
+      choice.closest<HTMLElement>('.memo-select')!.hidden = false;
+      choice.addEventListener('change', updateSelection);
+    });
+    memoControls.hidden = false;
+    clearButton.addEventListener('click', () => {
+      choices.forEach(choice => { choice.checked = false; });
+      updateSelection();
+    });
+    const finishPrinting = () => document.body.classList.remove('printing-cooking-memo');
+    window.addEventListener('afterprint', finishPrinting);
+    window.matchMedia('print').addEventListener('change', event => {
+      if (!event.matches) finishPrinting();
+    });
+    printButton.addEventListener('click', () => {
+      const selection = selected();
+      if (!selection.length) return;
+      printRows.replaceChildren();
+      selection.forEach(choice => {
+        const original = choice.closest<HTMLTableRowElement>('tr')!;
+        const copy = original.cloneNode(true) as HTMLTableRowElement;
+        copy.hidden = false;
+        copy.removeAttribute('data-food');
+        copy.querySelector('.memo-select')?.remove();
+        printRows.append(copy);
+      });
+      document.body.classList.add('printing-cooking-memo');
+      // Keep the print-only view until the native dialog closes, including
+      // browsers whose print() returns before it closes. Screen state is untouched.
+      try { window.print(); }
+      catch { finishPrinting(); }
+    });
+    updateSelection();
+  }
 </script>
 
 <style>
@@ -178,6 +248,33 @@ const jsonLd = [
   .table-search label{display:block;font-weight:700;margin-bottom:8px}
   .table-search input{width:100%;max-width:480px;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}
   [data-cooking-category] h2{scroll-margin-top:100px}
+  .memo-controls{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--cream);margin:20px 0}
+  .memo-controls h2{margin-top:0}
+  .memo-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .memo-actions button{min-height:44px;padding:10px 16px;border:1px solid var(--brand-d);border-radius:10px;font:inherit;font-weight:700;cursor:pointer}
+  #memo-print{background:var(--brand);color:#fff}
+  #memo-clear{background:#fff;color:var(--brand-d)}
+  .memo-actions button:disabled{opacity:.55;cursor:default}
+  .memo-select:not([hidden]){display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;vertical-align:middle;margin-right:4px;cursor:pointer}
+  .memo-select input{width:20px;height:20px;accent-color:var(--brand)}
+  .memo-select:focus-within{outline:3px solid var(--brand-d);outline-offset:2px;border-radius:6px}
+  .memo-sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .memo-print{display:none}
+  @media print{
+    .memo-controls,.memo-select{display:none!important}
+    :global(body.printing-cooking-memo){background:#fff;color:#000}
+    :global(body.printing-cooking-memo > :not(main)){display:none!important}
+    :global(body.printing-cooking-memo main > :not(.cooking-table-page)){display:none!important}
+    :global(body.printing-cooking-memo .cooking-table-page > :not(.memo-print)){display:none!important}
+    :global(body.printing-cooking-memo .cooking-table-page){max-width:none;padding:0}
+    :global(body.printing-cooking-memo .memo-print){display:block;padding:0}
+    :global(body.printing-cooking-memo .memo-print h2){margin-top:0}
+    :global(body.printing-cooking-memo .memo-print p){font-size:10pt;line-height:1.4}
+    :global(body.printing-cooking-memo .memo-print table){display:table;width:100%;overflow:visible;font-size:10pt}
+    :global(body.printing-cooking-memo .memo-print th),:global(body.printing-cooking-memo .memo-print td){padding:8px 5px;color:#000;white-space:normal!important}
+    :global(body.printing-cooking-memo .memo-print tr){break-inside:avoid}
+    :global(body.printing-cooking-memo .memo-print thead){display:table-header-group}
+  }
   @media print{.table-navigation{display:none}}
   .magnet-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
   .magnet-form input{flex:1;min-width:200px;border:1px solid var(--line);padding:12px 14px;border-radius:10px;font-size:1rem}
