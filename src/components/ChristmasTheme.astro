@@ -34,6 +34,8 @@ const { head = false } = Astro.props;
           <button type="button" class="christmas-snow-toggle" aria-label="Afficher la neige décorative" aria-describedby="christmas-motion-note" aria-pressed="true">Arrêter la neige</button>
           <small id="christmas-motion-note" hidden>Animations limitées sur cet appareil. La neige est arrêtée par défaut.</small>
         </div>
+        <button type="button" class="christmas-sound-toggle" aria-pressed="false" aria-describedby="christmas-sound-note">Activer le son</button>
+        <span id="christmas-sound-note" class="christmas-sound-note" role="status">Son facultatif : bref aperçu à l’activation, puis clochettes au passage du Père Noël.</span>
       </div>
     </aside>
     <div class="christmas-snow" aria-hidden="true" inert>
@@ -66,11 +68,33 @@ const { head = false } = Astro.props;
       </svg>
     </div>
     <script>
+      import { createChristmasSound } from '../scripts/christmas-sound';
+      const soundToggle = document.querySelector<HTMLButtonElement>('.christmas-sound-toggle');
+      const soundNote = document.querySelector<HTMLElement>('#christmas-sound-note');
       const toggle = document.querySelector<HTMLButtonElement>('.christmas-snow-toggle');
       const motionNote = document.querySelector<HTMLElement>('#christmas-motion-note');
       const sleigh = document.querySelector<HTMLElement>('.christmas-sleigh');
       const sleighPhoto = document.querySelector<HTMLImageElement>('.christmas-sleigh-photo');
       const root = document.documentElement;
+      const sound = createChristmasSound({
+        factory: () => {
+          const Audio = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+          if (!Audio) throw new Error('Web Audio unavailable');
+          return new Audio();
+        },
+        available: () => root.dataset.season === 'christmas' && !document.hidden,
+        changed: (enabled, failed) => {
+          soundToggle?.setAttribute('aria-pressed', String(enabled));
+          if (soundToggle) soundToggle.textContent = enabled ? 'Couper le son' : 'Activer le son';
+          if (soundNote) soundNote.textContent = failed ? 'Le son est indisponible sur ce navigateur. Vous pouvez réessayer.' : 'Son facultatif : bref aperçu à l’activation, puis clochettes au passage du Père Noël.';
+        },
+      });
+      soundToggle?.addEventListener('click', () => {
+        if (sound.isEnabled()) sound.mute(); else void sound.activate();
+      });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) sound.mute(); });
+      window.addEventListener('pagehide', () => sound.mute());
+      window.addEventListener('beforeprint', () => sound.mute());
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
       let choice: string | null = null;
       let timers: ReturnType<typeof setTimeout>[] = [];
@@ -87,6 +111,7 @@ const { head = false } = Astro.props;
         sleighPhoto.src = sleighPhoto.dataset.seasonalSrc!;
       }
       function renderSnow() {
+        sound.stop();
         timers.forEach(clearTimeout);
         timers = [];
         delete root.dataset.christmasArrival;
@@ -96,11 +121,12 @@ const { head = false } = Astro.props;
         toggle?.setAttribute('aria-pressed', String(enabled));
         if (toggle) toggle.textContent = enabled ? 'Arrêter la neige' : 'Activer la neige';
         if (motionNote) motionNote.hidden = !reducedMotion.matches || enabled;
+        if (!enabled) sound.mute();
         if (enabled) {
           prepareSleighPhoto();
           // A brief welcome: Santa at 10s, then a gradual snowfall fade.
-          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'flying'; }, 10000));
-          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'fading'; }, 16000));
+          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'flying'; sound.flight(); }, 10000));
+          timers.push(setTimeout(() => { root.dataset.christmasArrival = 'fading'; sound.stop(); }, 16000));
           timers.push(setTimeout(() => {
             root.dataset.snow = 'off';
             delete root.dataset.christmasArrival;

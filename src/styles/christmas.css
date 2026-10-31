@@ -14,8 +14,8 @@ html[data-season="christmas"] .christmas-welcome{display:block;background:#24493
 .christmas-links{display:flex;gap:20px;flex-wrap:wrap}
 .christmas-links a{font-size:.9rem;font-weight:600;text-underline-offset:5px;text-decoration:underline;text-decoration-color:#c2a167;min-height:44px;display:inline-flex;align-items:center;gap:8px}
 .christmas-links a:hover{color:#e2c88c}
-.christmas-snow-toggle{font:inherit;font-size:.75rem;color:#fff8e9;background:transparent;border:1px solid #829a86;border-radius:8px;padding:9px 12px;min-height:44px;cursor:pointer;flex-shrink:0}
-.christmas-snow-toggle:hover{background:#365c49}
+.christmas-snow-toggle,.christmas-sound-toggle{font:inherit;font-size:.75rem;color:#fff8e9;background:transparent;border:1px solid #829a86;border-radius:8px;padding:9px 12px;min-height:44px;cursor:pointer;flex-shrink:0}
+.christmas-snow-toggle:hover,.christmas-sound-toggle:hover{background:#365c49}
 .christmas-snow-control{flex-shrink:0;max-width:180px}
 .christmas-snow-control small{font-size:.72rem;line-height:1.4;color:#e2c88c;margin-top:6px}
 .christmas-snow-control small:not([hidden]){display:block}
@@ -47,3 +47,6 @@ html[data-season="christmas"][data-snow="on"][data-christmas-arrival="flying"] .
 }
 @media(prefers-reduced-motion:reduce){html:not([data-snow-choice="on"]) .christmas-snow{display:none}html:not([data-snow-choice="on"]) .christmas-snow span{animation:none}}
 @media print{html[data-season="christmas"] .christmas-welcome,html[data-season="christmas"] .christmas-snow,html[data-season="christmas"] .christmas-sleigh{display:none!important}}
+
+.christmas-sound-note{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:640px){.christmas-copy{grid-column:1;grid-row:1}.christmas-sound-toggle{grid-column:2;grid-row:1;font-size:.72rem}}
