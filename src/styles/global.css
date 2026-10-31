@@ -157,5 +157,6 @@ footer a:hover{color:#fff}
 }
 @media(max-width:420px){
   .cards{grid-template-columns:minmax(0,1fr)}
+  .fgrid>div:first-child{grid-column:1/-1}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rcard{transition:none}.rcard:hover{transform:none}}
