@@ -42,6 +42,7 @@ const { head = false } = Astro.props;
       ))}
     </div>
     <div class="christmas-sleigh" aria-hidden="true" inert>
+      <img class="christmas-sleigh-photo" data-seasonal-src="/img/seasonal/santa-airfryer-gift-2026.webp" width="960" height="491" alt="" decoding="async" fetchpriority="low" />
       <svg viewBox="0 0 360 140" width="300" height="117" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" stroke="#b69754" stroke-width="4" stroke-linecap="round">
           <path d="M145 100Q205 65 265 87M166 116H274Q305 116 307 100M178 103L186 116M264 102L270 116"/>
@@ -67,11 +68,24 @@ const { head = false } = Astro.props;
     <script>
       const toggle = document.querySelector<HTMLButtonElement>('.christmas-snow-toggle');
       const motionNote = document.querySelector<HTMLElement>('#christmas-motion-note');
+      const sleigh = document.querySelector<HTMLElement>('.christmas-sleigh');
+      const sleighPhoto = document.querySelector<HTMLImageElement>('.christmas-sleigh-photo');
       const root = document.documentElement;
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
       let choice: string | null = null;
       let timers: ReturnType<typeof setTimeout>[] = [];
+      let photoRequested = false;
       try { choice = sessionStorage.getItem('afg_christmas_snow'); } catch {}
+      function prepareSleighPhoto() {
+        if (photoRequested || !sleighPhoto || !sleigh) return;
+        photoRequested = true;
+        sleighPhoto.addEventListener('load', () => {
+          if (sleighPhoto.naturalWidth > 0) sleigh.dataset.photoReady = 'true';
+        }, { once: true });
+        sleighPhoto.addEventListener('error', () => { delete sleigh.dataset.photoReady; }, { once: true });
+        // No src before an in-season animation is enabled: no off-season download.
+        sleighPhoto.src = sleighPhoto.dataset.seasonalSrc!;
+      }
       function renderSnow() {
         timers.forEach(clearTimeout);
         timers = [];
@@ -83,6 +97,7 @@ const { head = false } = Astro.props;
         if (toggle) toggle.textContent = enabled ? 'Arrêter la neige' : 'Activer la neige';
         if (motionNote) motionNote.hidden = !reducedMotion.matches || enabled;
         if (enabled) {
+          prepareSleighPhoto();
           // A brief welcome: Santa at 10s, then a gradual snowfall fade.
           timers.push(setTimeout(() => { root.dataset.christmasArrival = 'flying'; }, 10000));
           timers.push(setTimeout(() => { root.dataset.christmasArrival = 'fading'; }, 16000));
