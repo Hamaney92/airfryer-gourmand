@@ -5,9 +5,6 @@ import { getCollection } from 'astro:content';
 const pub = new Set((await getCollection('recipes')).filter((r) => r.data.pubDate.getTime() <= Date.now()).map((r) => r.id));
 const isLive = (url) => pub.has(url.split('/').filter(Boolean).pop());
 
-const title = "Air fryer pour 2 : 12 recettes bien portionnées (+ quelle taille choisir)";
-const description = "12 recettes à l'air fryer pour 2 personnes : dîners complets, portions justes, rapides et sans gaspillage. Plus nos conseils pour choisir la bonne capacité d'air fryer à deux.";
-
 const familles = [
   {
     titre: "Dîners complets pour 2",
@@ -35,6 +32,13 @@ const familles = [
   },
 ];
 
+const famillesPubliees = familles
+  .map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) }))
+  .filter((f) => f.items.length);
+const nombreRecettes = famillesPubliees.reduce((total, f) => total + f.items.length, 0);
+const title = `Air fryer pour 2 : ${nombreRecettes} recettes bien portionnées (+ quelle taille choisir)`;
+const description = `${nombreRecettes} recettes à l'air fryer pour 2 personnes : dîners complets, portions justes, rapides et sans gaspillage. Plus nos conseils pour choisir la bonne capacité d'air fryer à deux.`;
+
 const articleSchema = {
   "@context": "https://schema.org", "@type": "Article",
   "headline": title, "description": description,
@@ -56,13 +60,13 @@ const faqSchema = {
       <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
         <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> › Dossiers › Air fryer pour 2
       </div>
-      <h1>Air fryer pour 2 : 12 recettes bien portionnées</h1>
+      <h1>Air fryer pour 2 : {nombreRecettes} recettes bien portionnées</h1>
       <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
         <span aria-hidden="true">🍟</span>
         <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
       </div>
 
-      <div class="quick"><b>En bref :</b> l'air fryer est parfait à deux — portions justes, zéro gaspillage, et un dîner complet en 15 minutes. Voici 12 recettes bien dosées pour 2, et le conseil clé pour choisir la bonne capacité (3-4 L).</div>
+      <div class="quick"><b>En bref :</b> l'air fryer est parfait à deux — portions justes, zéro gaspillage, et un dîner complet en 15 minutes. Voici {nombreRecettes} recettes bien dosées pour 2, et le conseil clé pour choisir la bonne capacité (3-4 L).</div>
 
       <p>Cuisiner à deux, c'est l'écueil du gaspillage : on prépare trop, ou on jongle avec des restes. L'air fryer règle le problème — il cuit <b>juste ce qu'il faut</b>, vite et sans huile. Voici nos recettes préférées pour deux, des dîners complets aux desserts, plus nos conseils si tu hésites encore sur la taille de l'appareil.</p>
 
@@ -78,7 +82,7 @@ const faqSchema = {
       <h2>Quelle taille d'air fryer pour 2 personnes ?</h2>
       <p>Pour deux, vise une capacité de <b>3 à 4 litres</b> : assez pour cuire une protéine et son accompagnement, sans monopoliser tout le plan de travail. En dessous de 3 L, tu seras vite à l'étroit pour un repas complet ; au-dessus de 5 L, c'est surdimensionné pour un couple (mais pratique si tu reçois). Regarde aussi la <b>puissance</b> (1500 W et plus pour bien croustiller) et le <b>panier compatible lave-vaisselle</b>. Notre <a href="/guides/" style="color:var(--accent)">guide d'achat</a> détaille les modèles.</p>
 
-      {familles.map((f) => ({ ...f, items: f.items.filter((it) => isLive(it[2])) })).filter((f) => f.items.length).map((f) => (
+      {famillesPubliees.map((f) => (
         <>
           <h2>{f.titre}</h2>
           <div class="cards" style="margin-top:12px">

@@ -17,6 +17,9 @@ const recettes = [
   ['🥔', 'Pommes de terre', '/recettes/pommes-de-terre-sautees-air-fryer/', '200 °C', '15 min', "L'accompagnement qui cale tout le monde."],
 ];
 
+const recettesPubliees = recettes.filter(([,,url]) => isLive(url));
+const nombreRecettes = recettesPubliees.length;
+
 const articleSchema = {
   "@context": "https://schema.org", "@type": "Article",
   "headline": title, "description": description,
@@ -60,9 +63,9 @@ const faqSchema = {
       <h2>Le plan de session en 1h30</h2>
       <p>La clé, c'est l'<b>ordre de cuisson</b> : on lance les protéines qui prennent le plus de temps, on enchaîne avec les féculents, et on termine par les légumes (cuisson la plus courte). Comme ça, tout est prêt à peu près en même temps.</p>
 
-      <h2>Les 6 recettes de la session</h2>
+      <h2>Les {nombreRecettes} recettes de la session</h2>
       <div class="cards" style="margin-top:14px">
-        {recettes.filter(([,,url]) => isLive(url)).map(([e, nom, url, temp, temps, note]) => (
+        {recettesPubliees.map(([e, nom, url, temp, temps, note]) => (
           <div class="rcard" style="cursor:default">
             <div class="ph" style="height:96px"><span style="font-size:1.8rem">{e}</span></div>
             <div style="padding:12px 15px 16px">
