@@ -33,7 +33,6 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
       </div>
       <figure class="season-photo">
         <img src={season.image.src} alt={season.image.alt} width="960" height="640" loading="lazy" decoding="async" />
-        <figcaption>Scène de Noël illustrée par IA</figcaption>
       </figure>
     </div>
     <ul>
@@ -81,7 +80,6 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
   .season-feature a:focus-visible { outline-color: #f6ce91; }
   .season-photo { margin: 0; }
   .season-photo img { display: block; width: 100%; height: auto; border-radius: 11px; }
-  .season-photo figcaption { margin-top: 4px; font-size: .75rem; color: #f6e2c2; }
   @media (max-width: 700px) {
     .season-feature { grid-template-columns: 1fr; }
   }
