@@ -1,10 +1,11 @@
 ---
 import Base from './Base.astro';
-interface Props { title: string; description: string; eyebrow: string; }
-const { title, description, eyebrow } = Astro.props;
+interface Props { title: string; description: string; eyebrow: string; publishedAt?: string; }
+const { title, description, eyebrow, publishedAt = '2026-10-28' } = Astro.props;
+const publishedLabel = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(publishedAt));
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: title, description,
-  mainEntityOfPage: url, datePublished: '2026-10-28', dateModified: '2026-10-28', inLanguage: 'fr-FR',
+  mainEntityOfPage: url, datePublished: publishedAt, inLanguage: 'fr-FR',
   author: { '@type': 'Organization', name: 'L’équipe Airfryer Gourmand', url: 'https://airfryergourmand.fr/a-propos/' },
   publisher: { '@type': 'Organization', name: 'Airfryer Gourmand', url: 'https://airfryergourmand.fr/' } };
 ---
@@ -16,7 +17,7 @@ const schema = { '@context': 'https://schema.org', '@type': 'Article', headline:
         <nav aria-label="Fil d’Ariane"><a href="/">Accueil</a> / <a href="/guides/">Guides</a> / Noël</nav>
         <p class="seasonal-eyebrow">{eyebrow}</p><h1>{title}</h1>
         <p>{description}</p>
-        <p class="seasonal-byline">Par <a href="/a-propos/">l’équipe Airfryer Gourmand</a> · Publié le 28 octobre 2026</p>
+        <p class="seasonal-byline">Par <a href="/a-propos/">l’équipe Airfryer Gourmand</a> · Publié le <time datetime={publishedAt}>{publishedLabel}</time></p>
       </header>
       <div class="seasonal-body"><slot /></div>
     </article>

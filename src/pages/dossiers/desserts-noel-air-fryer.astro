@@ -1,0 +1,36 @@
+---
+import SeasonalGuide from '../../layouts/SeasonalGuide.astro';
+
+const title = 'Desserts de Noël à l’air fryer : 4 idées et leurs fournées';
+const description = 'Pommes à la cannelle, chaussons, tarte ou cookies : choisis un dessert de Noël selon la taille du panier et le moment du service.';
+const desserts = [
+  { name: 'Pommes fondantes à la cannelle', slug: 'pomme-au-four-air-fryer', detail: 'Pour un dessert à servir à l’assiette après un repas copieux. Compte la place que prennent les pommes entières et ouvre la fiche pour adapter les quantités.' },
+  { name: 'Chaussons aux pommes', slug: 'chausson-aux-pommes-air-fryer', detail: 'Pour servir des portions individuelles. Laisse de la place entre les chaussons et prévois plusieurs fournées si le panier est étroit.' },
+  { name: 'Tarte aux pommes', slug: 'tarte-aux-pommes-air-fryer', detail: 'Pour apporter un dessert à partager à table. Vérifie que le moule entre dans le panier, poignées comprises, avant de préparer la pâte.' },
+  { name: 'Cookies moelleux', slug: 'cookies-air-fryer', detail: 'Pour un café gourmand ou une petite assiette à partager. Choisis la taille des portions avant de compter les fournées et espace les cookies selon la fiche.' },
+];
+---
+<SeasonalGuide title={title} description={description} eyebrow="Noël 2026 · Le dessert" publishedAt="2026-11-04">
+  <p class="seasonal-note"><strong>Le choix rapide :</strong> prends les pommes ou les chaussons pour des portions individuelles, la tarte si ton moule tient dans le panier, ou les cookies pour accompagner le café.</p>
+  <h2>Quel dessert servir à Noël ?</h2>
+  <div class="seasonal-grid">
+    {desserts.map(({ name, slug, detail }) => (
+      <section class="seasonal-card">
+        <img src={`/img/${slug}.jpg`} alt="" width="720" height="405" loading="lazy" />
+        <h3>{name}</h3>
+        <p>{detail}</p>
+        <a href={`/recettes/${slug}/`}>Voir la recette : {name}</a>
+      </section>
+    ))}
+  </div>
+  <h2>Comment garder le panier disponible pour le dessert ?</h2>
+  <ol>
+    <li>Avant le repas, repère la recette, le contenant et le nombre de portions que ton panier accepte en une couche.</li>
+    <li>Si l’air fryer sert aussi pour le plat, réserve une fournée distincte au dessert. Après le salé, nettoie le panier et les accessoires selon la notice.</li>
+    <li>Prévois le dessert au moment où tu veux le servir. Pour une grande tablée, un dessert à partager ou le four traditionnel peut éviter plusieurs services successifs.</li>
+  </ol>
+  <p>Retrouve les courses et l’ordre des préparations dans le <a href="/dossiers/menu-noel-air-fryer/">menu de Noël pour 2 à 6 personnes</a>. Les réglages et quantités détaillés figurent sur les fiches de recettes.</p>
+  <h2>Qu’offrir à quelqu’un qui aime faire des desserts ?</h2>
+  <p>Une balance avec tare aide à peser les ingrédients dans le même saladier. Un petit moule est aussi une option si tu connais les dimensions du panier. Pour un cadeau simple, glisse la fiche d’un dessert dans l’emballage.</p>
+  <p><a class="seasonal-cta" href="/guides/cadeaux-cuisine-noel/">Voir les 8 idées de cadeaux cuisine →</a></p>
+</SeasonalGuide>
