@@ -1,0 +1,66 @@
+---
+// Les créneaux sont éditoriaux. Seules les pages déjà publiées entrent dans la sélection.
+const seasons = [
+  {
+    from: '2026-11-04',
+    until: '2026-12-26',
+    label: 'En ce moment · Noël',
+    title: 'Préparer Noël à l’air fryer',
+    description: 'Compose ton repas, organise les fournées et trouve un cadeau qui servira vraiment.',
+    articles: [
+      { title: 'Menu de Noël pour 2 à 6', href: '/dossiers/menu-noel-air-fryer/', summary: 'Deux menus, la liste de courses et l’ordre des cuissons.' },
+      { title: 'Apéro de Noël', href: '/dossiers/apero-de-noel-air-fryer/', summary: 'Neuf idées à partager et des conseils pour les servir.' },
+      { title: 'Desserts de Noël', href: '/dossiers/desserts-noel-air-fryer/', summary: 'Quatre desserts et des repères pour les fournées.' },
+      { title: '8 idées de cadeaux cuisine', href: '/guides/cadeaux-cuisine-noel/', summary: 'Accessoires et livres à choisir selon les habitudes de la personne.' },
+    ],
+  },
+];
+const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Paris', dateStyle: 'short' }).format(new Date());
+const season = seasons.find(({ from, until }) => from <= today && today < until);
+---
+{season && (
+  <section class="seasonal-spotlight" aria-labelledby="seasonal-spotlight-title">
+    <p class="season-label">{season.label}</p>
+    <h2 id="seasonal-spotlight-title">{season.title}</h2>
+    <p>{season.description}</p>
+    <ul>
+      {season.articles.map(({ title, href, summary }) => (
+        <li><a href={href}><strong>{title} <span aria-hidden="true">→</span></strong><span>{summary}</span></a></li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .seasonal-spotlight {
+    margin-top: 24px;
+    padding: clamp(16px, 3vw, 28px);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+  }
+  .season-label { margin: 0 0 4px; color: #285943; font-weight: 750; font-size: .9rem; }
+  h2 { margin: 0; }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: 12px;
+  }
+  li { min-width: 0; display: flex; }
+  a {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #c9d9cb;
+    border-radius: 12px;
+    background: #f0f6ee;
+    color: #173e32;
+    overflow-wrap: anywhere;
+  }
+  a > span { display: block; margin-top: 4px; font-size: .92rem; }
+  a:hover strong { text-decoration: underline; }
+  a:focus-visible { outline: 3px solid #285943; outline-offset: 3px; }
+</style>
