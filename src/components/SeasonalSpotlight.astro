@@ -5,8 +5,11 @@ const seasons = [
     from: '2026-11-04',
     until: '2026-12-26',
     label: 'En ce moment · Noël',
-    title: 'Préparer Noël à l’air fryer',
-    description: 'Compose ton repas, organise les fournées et trouve un cadeau qui servira vraiment.',
+    title: 'À Noël, cuisinez pour ceux que vous aimez',
+    description: 'Un apéro croustillant, un plat à partager et un dessert encore tiède : préparez votre repas de Noël à l’air fryer, de 2 à 6 personnes.',
+    image: { src: '/img/seasonal/noel-cuisine-en-famille.webp', alt: 'Le Père Noël prépare un repas avec ses proches, à côté d’un air fryer orné d’un ruban.' },
+    primary: { title: 'Préparer mon menu de Noël', href: '/dossiers/menu-noel-air-fryer/' },
+    secondary: { title: 'Comparer les air fryers', href: '/guides/meilleur-air-fryer-2026/' },
     articles: [
       { title: 'Menu de Noël pour 2 à 6', href: '/dossiers/menu-noel-air-fryer/', summary: 'Deux menus, la liste de courses et l’ordre des cuissons.' },
       { title: 'Apéro de Noël', href: '/dossiers/apero-de-noel-air-fryer/', summary: 'Neuf idées à partager et des conseils pour les servir.' },
@@ -20,12 +23,22 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
 ---
 {season && (
   <section class="seasonal-spotlight" aria-labelledby="seasonal-spotlight-title">
-    <p class="season-label">{season.label}</p>
-    <h2 id="seasonal-spotlight-title">{season.title}</h2>
-    <p>{season.description}</p>
+    <div class="season-feature">
+      <div class="season-copy">
+        <p class="season-label">{season.label}</p>
+        <h2 id="seasonal-spotlight-title">{season.title}</h2>
+        <p>{season.description}</p>
+        <a class="season-main-action" href={season.primary.href}>{season.primary.title} <span aria-hidden="true">→</span></a>
+        <p class="season-shopping">Vous voulez vous équiper ou en offrir un ? <a href={season.secondary.href}>{season.secondary.title}</a></p>
+      </div>
+      <figure class="season-photo">
+        <img src={season.image.src} alt={season.image.alt} width="960" height="640" loading="lazy" decoding="async" />
+        <figcaption>Scène de Noël illustrée par IA</figcaption>
+      </figure>
+    </div>
     <ul>
       {season.articles.map(({ title, href, summary }) => (
-        <li><a href={href}><strong>{title} <span aria-hidden="true">→</span></strong><span>{summary}</span></a></li>
+        <li><a href={href}><strong>{title}</strong><span>{summary}</span></a></li>
       ))}
     </ul>
   </section>
@@ -39,8 +52,39 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
     border-radius: 18px;
     background: var(--card);
   }
-  .season-label { margin: 0 0 4px; color: #285943; font-weight: 750; font-size: .9rem; }
-  h2 { margin: 0; }
+  .season-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+    padding: clamp(16px, 3vw, 30px);
+    border-radius: 15px;
+    background: #173e32;
+    color: #fff7ea;
+  }
+  .season-label { margin: 0 0 8px; color: #f6ce91; font-weight: 750; font-size: .9rem; }
+  h2 { margin: 0; color: inherit; font-size: clamp(1.65rem, 3.1vw, 2.65rem); line-height: 1.12; }
+  .season-copy > p:not(.season-label) { margin: 12px 0; }
+  .season-main-action {
+    display: inline-flex;
+    align-items: center;
+    gap: .45em;
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    color: #2d190e;
+    background: #f6ce91;
+    font-weight: 750;
+  }
+  .season-shopping { font-size: .95rem; }
+  .season-shopping a { color: inherit; font-weight: 700; text-decoration: underline; }
+  .season-feature a:focus-visible { outline-color: #f6ce91; }
+  .season-photo { margin: 0; }
+  .season-photo img { display: block; width: 100%; height: auto; border-radius: 11px; }
+  .season-photo figcaption { margin-top: 4px; font-size: .75rem; color: #f6e2c2; }
+  @media (max-width: 700px) {
+    .season-feature { grid-template-columns: 1fr; }
+  }
   ul {
     list-style: none;
     padding: 0;
@@ -50,7 +94,7 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
     gap: 12px;
   }
   li { min-width: 0; display: flex; }
-  a {
+  li a {
     display: block;
     width: 100%;
     padding: 14px;
@@ -60,7 +104,7 @@ const season = seasons.find(({ from, until }) => from <= today && today < until)
     color: #173e32;
     overflow-wrap: anywhere;
   }
-  a > span { display: block; margin-top: 4px; font-size: .92rem; }
-  a:hover strong { text-decoration: underline; }
+  li a > span { display: block; margin-top: 4px; font-size: .92rem; }
+  li a:hover strong, .season-main-action:hover { text-decoration: underline; }
   a:focus-visible { outline: 3px solid #285943; outline-offset: 3px; }
 </style>
