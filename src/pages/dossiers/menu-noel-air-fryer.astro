@@ -6,7 +6,7 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
 <SeasonalGuide title={title} description={description} eyebrow="Noël 2026 · Préparer son repas">
   <p class="seasonal-note"><strong>Le bon rôle de l’air fryer à Noël :</strong> cuire un accompagnement ou quelques portions à la fois. Pour 2 personnes, un petit menu peut s’organiser autour du panier ; pour 4 à 6, prévois plusieurs fournées et une entrée froide. Les quantités et réglages détaillés restent sur chaque recette.</p>
   <p>Une grande tablée n’oblige pas à acheter un appareil plus grand. Commence par choisir ce qui doit arriver chaud sur la table, puis réserve le panier à cette préparation. Les deux menus ci-dessous assemblent des recettes déjà disponibles sur le site ; il ne s’agit pas d’un essai de cuisson simultanée ni d’une promesse de repas prêt en un temps fixe.</p>
-  <nav aria-label="Dans ce guide"><a href="#menus">Choisir un menu</a> · <a href="#courses">Courses</a> · <a href="#organisation">Ordre des fournées</a> · <a href="#restes">Gérer les restes</a></nav>
+  <nav aria-label="Dans ce guide"><a href="#menus">Choisir un menu</a> · <a href="#courses">Courses</a> · <a href="#organisation">Ordre des fournées</a> · <a href="#planning-noel">Planning imprimable</a> · <a href="#restes">Gérer les restes</a></nav>
   <h2 id="menus">Quel menu de Noël préparer avec un air fryer ?</h2>
   <div class="seasonal-grid">
     <section class="seasonal-card"><h3>Menu légumes et fromage, pour un dîner à deux</h3>
@@ -30,6 +30,31 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
   <h2 id="organisation">Dans quel ordre utiliser le panier le jour de Noël ?</h2>
   <ol><li><strong>Avant l’arrivée :</strong> rassemble les ingrédients et les plats. Garde les produits périssables au réfrigérateur ; ne les aligne pas longtemps sur le plan de travail pour une photo.</li><li><strong>Pendant l’entrée froide :</strong> lance le plat ou l’accompagnement retenu pour l’air fryer, selon sa fiche. Prévois une seule couche et l’espace nécessaire à la circulation de l’air.</li><li><strong>Au service :</strong> sers la préparation dès qu’elle est cuite. Si le panier est trop petit, passe une partie du menu au four plutôt que de laisser les premières portions tiédir pendant plusieurs fournées.</li><li><strong>Après le plat :</strong> nettoie le matériel selon la notice avant le dessert, notamment après un poisson ou des crustacés. Le dessert peut alors cuire pendant la pause du repas.</li></ol>
   <p>Un essai avant les fêtes permet de vérifier la taille des plats, la place réelle dans le panier et le nombre de fournées. Note ces éléments sur ton menu : ce sont eux qui déterminent l’organisation, pas seulement la capacité en litres inscrite sur l’appareil.</p>
+  <section class="christmas-plan" aria-labelledby="planning-noel">
+    <h2 id="planning-noel">Planning de Noël imprimable pour un seul panier</h2>
+    <p>Choisis le scénario qui correspond à ton repas, puis reporte les durées de tes fiches. Si deux préparations doivent arriver chaudes ensemble, réserve le panier à l’une et utilise le four pour l’autre.</p>
+    <div class="seasonal-grid">
+      <section class="seasonal-card">
+        <h3>À deux : butternut, feta et pommes</h3>
+        <ol>
+          <li>Prépare l’entrée froide avant de lancer le panier.</li>
+          <li>Pendant l’entrée, cuis le butternut. Prévois une fournée séparée pour la feta, selon sa fiche.</li>
+          <li>Après le plat, libère le panier pour les pommes à la cannelle.</li>
+        </ol>
+      </section>
+      <section class="seasonal-card">
+        <h3>À quatre ou six : gambas et grenailles</h3>
+        <ol>
+          <li>Prépare l’entrée froide et vérifie combien de gambas tiennent en une seule couche.</li>
+          <li>Si tu veux servir tout le plat en même temps, cuis les grenailles au four et réserve le panier aux gambas. Sinon, organise un service en petites assiettes.</li>
+          <li>Après le plat, nettoie le panier et les accessoires selon la notice avant de cuire les chaussons.</li>
+        </ol>
+      </section>
+    </div>
+    <p class="planning-notes">Heure du plat : __________ · Nombre de fournées : __________</p>
+    <p class="planning-notes">À réserver au four : __________________________________</p>
+    <button type="button" class="seasonal-cta" id="print-christmas-plan" hidden>Imprimer le planning</button>
+  </section>
   <h2 id="restes">Comment éviter de gaspiller après le repas ?</h2>
   <p>Présente de petites quantités et garde les réserves au froid. Les recommandations françaises prévoient de ne pas laisser les préparations plus de 2 heures à température ambiante avant réfrigération. Répartis les plats chauds en petites portions peu épaisses pour faciliter leur refroidissement ; respecte les consignes de conservation des ingrédients.</p>
   <p>Le lendemain, utilise les légumes conservés correctement dans une salade ou une garniture de tartine. Ne tente pas de « récupérer » un aliment resté trop longtemps à table par une nouvelle cuisson. Notre <a href="/livres/air-fryer-anti-gaspi/">livre Air Fryer Anti-Gaspi</a> présente des idées pour cuisiner les restes ; aucun livre ni contenant ne remplace les règles de conservation.</p>
@@ -43,3 +68,33 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
   <p>Pour finir le repas, retrouve <a href="/dossiers/desserts-noel-air-fryer/">quatre idées de desserts de Noël et comment organiser leur cuisson</a>.</p>
   <aside class="seasonal-sources"><h2>Source et méthode</h2><p>Sélection éditoriale du 28 octobre 2026 à partir des recettes publiées d’Airfryer Gourmand. Conseils de conservation : <a href="https://agriculture.gouv.fr/cuisiner-fait-maison-comment-eviter-les-intoxications-alimentaires" rel="noopener" target="_blank">ministère de l’Agriculture, cuisiner fait maison</a>. Vérifie les fiches et les notices de ton appareil avant de cuisiner.</p></aside>
 </SeasonalGuide>
+
+<script>
+  const printButton = document.querySelector<HTMLButtonElement>('#print-christmas-plan');
+  if (printButton) {
+    printButton.hidden = false;
+    printButton.addEventListener('click', () => window.print());
+  }
+</script>
+
+<style>
+  .christmas-plan { padding: clamp(16px, 3vw, 24px); border: 1px solid #dfd6c8; border-radius: 16px; }
+  .christmas-plan h2 { margin-top: 0; }
+  .christmas-plan .seasonal-grid { margin-block: 16px; }
+  .christmas-plan ol { padding-inline-start: 1.25em; }
+  .planning-notes { margin-block: 8px; overflow-wrap: anywhere; }
+  button { border: 0; cursor: pointer; font: inherit; font-weight: 750; }
+  button[hidden] { display: none; }
+</style>
+
+<style is:global>
+  @media print {
+    body:has(.christmas-plan) > :not(main),
+    main:has(.christmas-plan) > :not(.seasonal),
+    .seasonal:has(.christmas-plan) .seasonal-hero,
+    .seasonal-body:has(.christmas-plan) > :not(.christmas-plan),
+    #print-christmas-plan { display: none !important; }
+    .seasonal:has(.christmas-plan), .seasonal-body:has(.christmas-plan) { margin: 0; padding: 0; }
+    .christmas-plan .seasonal-card { break-inside: avoid; }
+  }
+</style>
