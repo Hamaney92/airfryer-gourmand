@@ -6,7 +6,7 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
 <SeasonalGuide title={title} description={description} eyebrow="Noël 2026 · Préparer son repas">
   <p class="seasonal-note"><strong>Le bon rôle de l’air fryer à Noël :</strong> cuire un accompagnement ou quelques portions à la fois. Pour 2 personnes, un petit menu peut s’organiser autour du panier ; pour 4 à 6, prévois plusieurs fournées et une entrée froide. Les quantités et réglages détaillés restent sur chaque recette.</p>
   <p>Une grande tablée n’oblige pas à acheter un appareil plus grand. Commence par choisir ce qui doit arriver chaud sur la table, puis réserve le panier à cette préparation. Les deux menus ci-dessous assemblent des recettes déjà disponibles sur le site ; il ne s’agit pas d’un essai de cuisson simultanée ni d’une promesse de repas prêt en un temps fixe.</p>
-  <nav aria-label="Dans ce guide"><a href="#menus">Choisir un menu</a> · <a href="#courses">Courses</a> · <a href="#organisation">Ordre des fournées</a> · <a href="#planning-noel">Planning imprimable</a> · <a href="#restes">Gérer les restes</a></nav>
+  <nav aria-label="Dans ce guide"><a href="#menus">Choisir un menu</a> · <a href="#accompagnements">Choisir un accompagnement</a> · <a href="#courses">Courses</a> · <a href="#organisation">Ordre des fournées</a> · <a href="#planning-noel">Planning imprimable</a> · <a href="#restes">Gérer les restes</a></nav>
   <h2 id="menus">Quel menu de Noël préparer avec un air fryer ?</h2>
   <div class="seasonal-grid">
     <section class="seasonal-card"><h3>Menu légumes et fromage, pour un dîner à deux</h3>
@@ -20,6 +20,32 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
       <p>Pour 6 personnes, fais cuire l’accompagnement au four traditionnel si tu veux servir tout le plat ensemble. Sinon, annonce un service en petites assiettes successives. Évite d’entasser les gambas pour gagner du temps.</p>
     </section>
   </div>
+  <section aria-labelledby="accompagnements">
+    <h2 id="accompagnements">Quel accompagnement choisir pour le repas de Noël ?</h2>
+    <p>Choisis une garniture selon ton plat et la place disponible. Les quatre idées ci-dessous sont des options : ouvre la recette retenue pour ajuster ses quantités. Si ton panier est réservé au plat principal et que tu veux servir tout le monde ensemble, prévois l’accompagnement au four avec une recette adaptée.</p>
+    <div class="seasonal-grid">
+      <section class="seasonal-card">
+        <h3>Pommes de terre grenaille avec les gambas</h3>
+        <p>Pour le menu gambas, réserve le panier aux crustacés si tu souhaites les servir dès leur cuisson. Prévois alors les grenailles au four, ou annonce un service en petites assiettes successives.</p>
+        <a href="/recettes/pommes-de-terre-grenaille-air-fryer/">Voir la recette des pommes de terre grenaille</a>
+      </section>
+      <section class="seasonal-card">
+        <h3>Butternut avec le menu légumes et fromage</h3>
+        <p>Le butternut fait déjà partie du menu à deux. Garde une fournée distincte pour la feta et vérifie la place réelle dans le panier avant de préparer les portions.</p>
+        <a href="/recettes/butternut-air-fryer/">Voir la recette du butternut</a>
+      </section>
+      <section class="seasonal-card">
+        <h3>Carottes pour varier le légume</h3>
+        <p>Choisis les carottes à la place du butternut si tu préfères cette garniture. Prévois une seule couche de morceaux réguliers, selon la fiche, et réserve cette fournée avant de lancer l’autre préparation.</p>
+        <a href="/recettes/carotte-air-fryer/">Voir la recette des carottes</a>
+      </section>
+      <section class="seasonal-card">
+        <h3>Haricots verts pour une garniture différente</h3>
+        <p>Les haricots verts sont une autre option pour accompagner le plat. Vérifie les consignes de la fiche et de l’emballage pour les produits surgelés. Si tu ajoutes les amandes facultatives, signale cet allergène à tes convives.</p>
+        <a href="/recettes/haricots-verts-air-fryer/">Voir la recette des haricots verts</a>
+      </section>
+    </div>
+  </section>
   <h2 id="courses">Que mettre sur la liste de courses ?</h2>
   <p>Ouvre d’abord les recettes choisies et ajuste leurs portions au nombre de convives. Additionne les quantités indiquées, puis retire ce que tu possèdes déjà. Doubler une recette double ses ingrédients, pas nécessairement le temps d’une fournée ; cela peut imposer une fournée supplémentaire.</p>
   <div class="seasonal-scroll" tabindex="0" role="region" aria-label="Liste de courses selon le menu"><table><caption>Les familles d’achats, à compléter avec les quantités des fiches</caption><thead><tr><th scope="col">Menu</th><th scope="col">À acheter selon les portions</th><th scope="col">Placard et contrôles</th></tr></thead><tbody>
@@ -78,6 +104,7 @@ const description = 'Deux idées de menu de Noël au air fryer, avec recettes, l
 </script>
 
 <style>
+  #accompagnements { scroll-margin-top: 80px; }
   .christmas-plan { padding: clamp(16px, 3vw, 24px); border: 1px solid #dfd6c8; border-radius: 16px; }
   .christmas-plan h2 { margin-top: 0; }
   .christmas-plan .seasonal-grid { margin-block: 16px; }
