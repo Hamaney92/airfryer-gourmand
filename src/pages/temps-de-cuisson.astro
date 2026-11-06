@@ -44,16 +44,22 @@ const jsonLd = {
 
     <div class="card-box">
       <h2 style="margin-top:0">Convertisseur four → air fryer</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
-        <label style="font-weight:700">Température four (°C)<br />
-          <input id="ovenTemp" type="number" value="200" min="80" max="280" step="5" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
-        </label>
-        <label style="font-weight:700">Temps four (min)<br />
-          <input id="ovenTime" type="number" value="30" min="1" max="240" step="1" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
-        </label>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+        <div style="flex:0 1 280px;min-width:0">
+          <label for="ovenTemp" style="font-weight:700">Température four (°C)</label><br />
+          <input id="ovenTemp" type="number" value="200" min="80" max="280" step="5" aria-describedby="ovenTemp-help ovenTemp-error" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
+          <p id="ovenTemp-help" style="margin:6px 0 0">De 80 à 280 °C.</p>
+          <p id="ovenTemp-error" hidden style="margin:6px 0 0"></p>
+        </div>
+        <div style="flex:0 1 280px;min-width:0">
+          <label for="ovenTime" style="font-weight:700">Temps four (min)</label><br />
+          <input id="ovenTime" type="number" value="30" min="1" max="240" step="1" aria-describedby="ovenTime-help ovenTime-error" style="margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;width:130px;font-size:1rem" />
+          <p id="ovenTime-help" style="margin:6px 0 0">De 1 à 240 min.</p>
+          <p id="ovenTime-error" hidden style="margin:6px 0 0"></p>
+        </div>
       </div>
       <div class="quick" style="margin-top:18px">
-        <b>Au air fryer :</b> <span id="result">180 °C pendant 24 min</span>
+        <b>Au air fryer :</b> <span id="result" aria-live="polite" aria-atomic="true">180 °C pendant 24 min</span>
       </div>
       <p class="note">Indicatif — vérifiez la cuisson et adaptez selon votre modèle. Préchauffez 2-3 min pour les résultats croustillants.</p>
     </div>
@@ -82,16 +88,49 @@ const jsonLd = {
       const t = document.getElementById('ovenTemp');
       const m = document.getElementById('ovenTime');
       const out = document.getElementById('result');
+      if (!t || !m || !out) return;
+      const fields = [
+        { input: t, error: document.getElementById('ovenTemp-error'), min: 80, max: 280, visited: false,
+          missing: 'Saisis une température de four entre 80 et 280 °C.', range: 'La température du four doit être comprise entre 80 et 280 °C.' },
+        { input: m, error: document.getElementById('ovenTime-error'), min: 1, max: 240, visited: false,
+          missing: 'Saisis un temps de four entre 1 et 240 min.', range: 'Le temps du four doit être compris entre 1 et 240 min.' },
+      ];
       function round5(n) { return Math.round(n / 5) * 5; }
-      function calc() {
-        const temp = Math.max(80, Math.min(280, Number(t.value) || 0));
-        const time = Math.max(1, Number(m.value) || 0);
-        const afTemp = round5(temp - 20);
-        const afTime = Math.max(1, Math.round(time * 0.8));
-        out.textContent = `${afTemp} °C pendant ${afTime} min`;
+      function read(field) {
+        const raw = field.input.value.trim();
+        const value = Number(raw);
+        if (!raw || !Number.isFinite(value)) return { issue: 'missing' };
+        if (value < field.min || value > field.max) return { issue: 'range' };
+        return { value };
       }
-      t.addEventListener('input', calc);
-      m.addEventListener('input', calc);
+      function calc() {
+        const values = fields.map(read);
+        fields.forEach((field, index) => {
+          const issue = values[index].issue;
+          const message = field.visited && issue ? field[issue] : '';
+          if (field.error) {
+            field.error.textContent = message;
+            field.error.hidden = !message;
+          }
+          if (message) field.input.setAttribute('aria-invalid', 'true');
+          else field.input.removeAttribute('aria-invalid');
+        });
+        let result;
+        if (values.some(value => value.issue === 'missing')) {
+          result = 'Complète les deux valeurs du four pour afficher le résultat.';
+        } else if (values.some(value => value.issue)) {
+          result = 'Corrige les valeurs indiquées pour afficher le résultat.';
+        } else {
+          const afTemp = round5(values[0].value - 20);
+          const afTime = Math.max(1, Math.round(values[1].value * 0.8));
+          result = `${afTemp} °C pendant ${afTime} min`;
+        }
+        if (out.textContent !== result) out.textContent = result;
+      }
+      fields.forEach(field => {
+        field.input.addEventListener('input', calc);
+        field.input.addEventListener('blur', () => { field.visited = true; calc(); });
+      });
       calc();
     })();
   </script>
