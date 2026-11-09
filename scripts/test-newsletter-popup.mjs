@@ -50,7 +50,7 @@ test('A newsletter link opens on demand and restores focus after dismissal', () 
   s.doc.handlers.click(event);
   assert.equal(prevented, 1);
   assert.equal(s.dialog.open, true);
-  assert.equal(s.frame.src, s.frame.dataset.newsletterUrl);
+  assert.equal(s.frame.src, '');
   assert.equal(s.doc.documentElement.dataset.newsletterHandled, 'true');
   s.close.click();
   assert.equal(focused, 1);

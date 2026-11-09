@@ -30,13 +30,16 @@ test('Legacy PDF capture removed; newsletter uses the dedicated consent form', (
     assert.ok(!page.includes('id="pdfpop"'));
     assert.ok(!page.includes('afg_pdfpop_vu'));
     assert.ok(page.includes('data-newsletter-signup'));
-    assert.ok(page.includes('https://preview.mailerlite.io/forms/2516614/199341135344174725/share'));
+    const signup = page.match(/<form\b[^>]*data-newsletter-form[^>]*>[\s\S]*?<\/form>/)?.[0];
+    assert.ok(signup?.includes('https://assets.mailerlite.com/jsonp/2516614/forms/199341135344174725/subscribe'));
+    assert.equal((signup.match(/type="email"/g) || []).length, 1);
+    assert.doesNotMatch(signup, /type="checkbox"|<iframe/);
     assert.ok(!page.includes('194538633598863135/subscribe'));
     if (path.startsWith('recettes/')) {
       assert.ok(page.includes('data-recipe-email'));
       assert.ok(page.includes('200506049966376365/subscribe'));
       assert.ok(page.includes('name="fields[url_recette]"'));
-    } else assert.ok(!page.includes('name="fields[email]"'));
+    } else assert.ok(!page.includes('200506049966376365/subscribe'));
     assert.ok(!page.includes('class="books-banner"'));
   }
   assert.ok(!html('recettes/chataigne-air-fryer').includes('mailto:'));

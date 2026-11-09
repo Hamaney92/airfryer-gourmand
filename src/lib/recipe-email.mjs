@@ -1,4 +1,4 @@
-export async function requestRecipeEmail(form, fetcher = fetch, signal) {
+export async function requestMailerLiteSignup(form, fetcher = fetch, signal) {
   const body = new URLSearchParams(new FormData(form));
   body.set('ajax', '1');
   const response = await fetcher(form.action, { method: 'POST', body, signal, credentials: 'omit' });
@@ -7,6 +7,7 @@ export async function requestRecipeEmail(form, fetcher = fetch, signal) {
   if (result.success !== true) throw new Error('rejected');
   return true;
 }
+export { requestMailerLiteSignup as requestRecipeEmail };
 export function initRecipeEmail(dialog, env = window) {
   if (!dialog || dialog.dataset.initialized) return;
   dialog.dataset.initialized = 'true';
@@ -58,7 +59,7 @@ export function initRecipeEmail(dialog, env = window) {
     const controller = new AbortController();
     const timeout = env.setTimeout(() => controller.abort(), 20000);
     try {
-      await requestRecipeEmail(form, env.fetch.bind(env), controller.signal);
+      await requestMailerLiteSignup(form, env.fetch.bind(env), controller.signal);
       track('recipe_email_request_accepted');
       status.textContent = 'Demande enregistrée. Le lien sera envoyé par email ; pensez à vérifier vos courriers indésirables.';
       form.reset();

@@ -2,12 +2,10 @@ export function initNewsletterPopup(dialog) {
   if (!dialog || dialog.dataset.popupInitialized) return;
   dialog.dataset.popupInitialized = 'true';
   const doc = dialog.ownerDocument;
-  const frame = dialog.querySelector('iframe');
   let opener = null;
   const open = trigger => {
     if (dialog.open || typeof dialog.showModal !== 'function' || doc.querySelector('dialog[open]')) return false;
     opener = trigger;
-    if (!frame.src) frame.src = frame.dataset.newsletterUrl;
     dialog.showModal();
     doc.documentElement.dataset.newsletterHandled = 'true';
     return true;

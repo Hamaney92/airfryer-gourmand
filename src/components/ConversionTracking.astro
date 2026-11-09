@@ -29,12 +29,12 @@
       if (!(event.target instanceof Element)) return;
       const preview = event.target.closest('a[data-book-preview]');
       if (preview) send('book_preview_open', { book_id: preview.dataset.bookPreview, preview_page: preview.dataset.previewPage });
-      // Le formulaire est hébergé ailleurs : ce clic mesure uniquement son ouverture.
+      // Ce clic mesure l’ouverture du formulaire ou l’accès à la page newsletter.
       const newsletter = event.target.closest('a[data-newsletter-signup]');
       if (newsletter) {
         send('newsletter_signup_click', {
           placement: newsletter.dataset.leadSource || 'banner',
-          consent_version: 'newsletter_2026_09_22',
+          consent_version: 'newsletter_2026_11_09',
         });
       }
     });
