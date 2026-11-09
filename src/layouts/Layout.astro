@@ -5,7 +5,6 @@ import AdSenseVerification from '../components/AdSenseVerification.astro';
 import { SITE, USAGES, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
-import BooksBanner from '../components/BooksBanner.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
 import NewsletterBanner from '../components/NewsletterBanner.astro';
 import NewsletterPopup from '../components/NewsletterPopup.astro';
@@ -92,7 +91,6 @@ const year = new Date().getFullYear();
       </div>
     </header>
 
-    {!noindex && <BooksBanner pageType={pageType} />}
     {!noindex && <NewsletterBanner pageType={pageType} />}
     {!noindex && <ChristmasTheme />}
     <main id="main-content" tabindex="-1">
