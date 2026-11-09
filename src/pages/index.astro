@@ -64,6 +64,9 @@ const jsonLd = {
           <input id="home-recipe-search" name="q" type="search" placeholder="Un ingrédient : poulet, courgette…" style="min-width:0;flex:1 1 220px;padding:12px;border:1px solid #bba99b;border-radius:10px;font:inherit" />
           <button type="submit" class="cta" style="padding:12px 16px">Rechercher</button>
         </form>
+        {latest.length > 0 && (
+          <p class="hero-latest"><a href="#dernieres-recettes">Découvrir les dernières recettes ↓</a></p>
+        )}
       </div>
       <figure class="hero-dish">
         <a href="/recettes/feta-rotie-air-fryer/" aria-label="Découvrir la recette de feta rôtie au air fryer">
@@ -103,9 +106,9 @@ const jsonLd = {
       </div>
     </section>
 
-    <section>
+    <section aria-labelledby="dernieres-recettes">
       <div class="row">
-        <h2 class="h2">Dernières recettes<small>Les nouvelles recettes publiées sur le site</small></h2>
+        <h2 class="h2" id="dernieres-recettes">Dernières recettes<small>Les nouvelles recettes publiées sur le site</small></h2>
         <a href="/recettes/" class="seeall">Tout voir →</a>
       </div>
       <div class="cards">
@@ -159,6 +162,9 @@ const jsonLd = {
 </Layout>
 
 <style>
+  .hero-latest{margin:14px 0 0;font-size:.95rem}
+  .hero-latest a{display:inline-block;padding:8px 0;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+  #dernieres-recettes{scroll-margin-top:80px}
   .hero-dish{min-width:0;margin:0}
   .hero-dish>a{display:block;border-radius:18px;overflow:hidden}
   .hero-dish img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
