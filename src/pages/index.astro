@@ -32,7 +32,7 @@ const tiles = ['Volaille', 'Viande', 'Legume', 'Poisson', 'Dessert', 'Surgelé']
 const BOOK_COVER = 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
 
 const title = `${SITE.name} — Recettes & temps de cuisson air fryer`;
-const description = SITE.description;
+const description = `${recipes.length} recettes à l’air fryer avec temps et températures, un convertisseur four → air fryer et un tableau de cuisson PDF gratuit.`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -57,7 +57,7 @@ const jsonLd = {
         <p>Temps de cuisson, températures et astuces pratiques réunis au même endroit. Moins de devinettes, plus de résultats croustillants.</p>
         <div>
           <a href="/recettes/" class="cta">Voir les recettes →</a>
-          <a href="/temps-de-cuisson/" class="cta ghost">Temps de cuisson</a>
+          <a href="/temps-de-cuisson/" class="cta ghost">Convertisseur four → air fryer</a>
         </div>
         <form action="/recettes/" method="get" role="search" aria-label="Trouver une recette" style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
           <label for="home-recipe-search" style="width:100%;font-size:.9rem;font-weight:700">Qu’avez-vous envie de cuisiner ?</label>
@@ -69,13 +69,13 @@ const jsonLd = {
         )}
       </div>
       <figure class="hero-dish">
-        <a href="/recettes/feta-rotie-air-fryer/" aria-label="Découvrir la recette de feta rôtie au air fryer">
+        <a href="/recettes/feta-rotie-air-fryer/" aria-label="Découvrir la recette de feta rôtie à l’air fryer">
           <picture>
             <source type="image/webp" srcset="/img/w/feta-rotie-air-fryer-380.webp 380w, /img/w/feta-rotie-air-fryer-760.webp 760w" sizes="(max-width: 860px) calc(100vw - 40px), 510px" />
             <img src="/img/feta-rotie-air-fryer.jpg" alt="Feta dorée, tomates rôties et olives dans un plat" width="760" height="760" fetchpriority="high" decoding="async" />
           </picture>
         </a>
-        <figcaption><span>À partager</span><a href="/recettes/feta-rotie-air-fryer/">Feta rôtie au air fryer <span aria-hidden="true">↗</span></a></figcaption>
+        <figcaption><span>À partager</span><a href="/recettes/feta-rotie-air-fryer/">Feta rôtie à l’air fryer <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
     </section>
 
@@ -120,8 +120,9 @@ const jsonLd = {
       <div class="tool">
         <div class="txt">
           <h3>Convertisseur four → air fryer</h3>
-          <p>Une recette pensée pour le four ? Obtenez la température et le temps ajustés pour l'air fryer en un clic, plus le tableau des temps par aliment.</p>
+          <p>Une recette pensée pour le four ? Ajustez sa température et son temps de cuisson pour l’air fryer.</p>
           <a href="/temps-de-cuisson/" class="cta">Ouvrir l'outil →</a>
+          <p><a class="tool-table-link" href="/tableau-temps-cuisson-air-fryer/">Voir le tableau par aliment et son PDF gratuit →</a></p>
         </div>
         <img src="/img/outil-convertisseur.jpg" alt="Air fryer posé sur un plan de travail à côté d'un vieux carnet de recettes et d'un minuteur" width="1400" height="933" loading="lazy" decoding="async" class="toolimg" />
       </div>
@@ -165,6 +166,7 @@ const jsonLd = {
   .hero-latest{margin:14px 0 0;font-size:.95rem}
   .hero-latest a{display:inline-block;padding:8px 0;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
   #dernieres-recettes{scroll-margin-top:80px}
+  .tool-table-link{display:inline-block;margin-top:12px;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
   .hero-dish{min-width:0;margin:0}
   .hero-dish>a{display:block;border-radius:18px;overflow:hidden}
   .hero-dish img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}

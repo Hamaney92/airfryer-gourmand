@@ -1,5 +1,5 @@
 ---
-title: "Butternut au air fryer : fondant et caramélisé"
+title: "Butternut à l'air fryer : fondant et caramélisé"
 metaTitle: "Butternut air fryer : temps de cuisson et température"
 description: "Le temps de cuisson exact de la butternut au air fryer : 200 °C, 15 à 20 min, fondante et caramélisée. En cubes, en frites ou rôtie, avec miel et épices."
 category: "Legume"

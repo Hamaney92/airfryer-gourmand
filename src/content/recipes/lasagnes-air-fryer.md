@@ -1,5 +1,5 @@
 ---
-title: "Lasagnes au air fryer : gratinées en portions"
+title: "Lasagnes à l'air fryer : gratinées en portions"
 metaTitle: "Lasagnes air fryer : temps de cuisson et astuce"
 description: "Le temps de cuisson exact des lasagnes au air fryer : 160-180 °C, 15 à 25 min, gratinées et fondantes. En portions individuelles, maison ou pour réchauffer."
 category: "Plat"
