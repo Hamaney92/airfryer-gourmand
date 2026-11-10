@@ -7,10 +7,10 @@ const description = "Les accessoires air fryer qui changent vraiment la donne : 
 
 const accessoires = [
   { emoji: "📄", nom: "Papier cuisson perforé", util: "Évite que les aliments collent et facilite le nettoyage, sans bloquer la circulation d'air (grâce aux perforations).", note: "Indispensable pour les pâtes, poissons, fromages. Ne jamais utiliser un papier non perforé qui s'envole.", lien: "papier cuisson perforé air fryer" },
-  { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, gâteaux, œufs cocotte, gratins individuels. Passent au lave-vaisselle.", note: "Très utile pour les desserts et tout ce qui est liquide au départ. Choisis un modèle avec anses pour sortir les moules chauds sans te brûler.", lien: "moule silicone air fryer avec anses" },
+  { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon" },
   { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un deuxième niveau pour cuire plus en une fournée, ou surélève les aliments pour un air qui circule dessous.", note: "Pratique dans les paniers profonds pour doubler la capacité d'un repas de famille.", lien: "grille étagée air fryer rack" },
   { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
-  { emoji: "🌡️", nom: "Thermomètre à viande", util: "Le seul moyen fiable de cuire viandes et volailles à la bonne température à cœur (juteuses, jamais sèches).", note: "Le meilleur investissement à ~10 € pour ne plus rater un poulet ou un agneau.", lien: "thermomètre cuisson viande" },
+  { emoji: "🌡️", nom: "Thermomètre à viande", util: "Pour vérifier la température au centre d’un morceau de viande ou de volaille.", note: "Pour un contrôle ponctuel, choisis un modèle à lecture instantanée affichant les degrés Celsius, avec une sonde assez longue pour atteindre le centre de tes morceaux. Mesure dans la partie la plus épaisse sans toucher l’os, puis retire la sonde avant de remettre le panier.", lien: "thermomètre cuisine lecture instantanée sonde", label: "Comparer les thermomètres sur Amazon" },
   { emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve.", lien: "éponge non abrasive nettoyage" },
 ];
 
@@ -54,7 +54,7 @@ const faqSchema = {
           <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
           <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
           <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
-          <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">Voir sur Amazon →</a>
+          <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Voir sur Amazon"} →</a>
         </div>
       ))}
 
@@ -67,7 +67,7 @@ const faqSchema = {
 
       <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">
         <div style="font-weight:800;color:var(--brand-d);margin-bottom:6px">💬 Le mot de la rédaction</div>
-        <p style="color:#5f5147;margin:0">Si on ne devait en garder qu'un : le <b>thermomètre à viande</b>. À 10 €, il transforme les poulets et rôtis ratés en viandes juteuses à tous les coups. Le papier perforé et le spray à huile suivent de près. Le reste est sympa, mais pas vital.</p>
+        <p style="color:#5f5147;margin:0">Si tu cuisines souvent des morceaux épais de viande ou de volaille, commence par un <b>thermomètre à viande</b>. Si tu prépares surtout des portions individuelles, mesure d’abord ton panier pour choisir un moule adapté.</p>
       </div>
 
       <h2>Questions fréquentes</h2>
