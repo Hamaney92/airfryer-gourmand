@@ -3,9 +3,17 @@ import { amazonProduct, amazonSearch } from '../lib/site';
 import type { KitchenOffer } from '../lib/commerce';
 interface Props { offers: KitchenOffer[]; pageId: string; pageType?: string; }
 const { offers, pageId, pageType = 'recipe' } = Astro.props;
-const illustrations: Record<string, { src: string; alt: string }> = {
-  'baking-dish': { src: '/img/context-baking-dish.webp', alt: 'Petit plat en céramique contenant un gratin' },
-  storage: { src: '/img/context-storage.webp', alt: 'Boîtes en verre pour conserver des légumes rôtis' },
+const photos: Record<string, { src: string; alt: string; height: number; credit: string; source: string; license: string; licenseUrl: string }> = {
+  'baking-dish': {
+    src: '/img/context-baking-dish-photo.webp', alt: 'Plat de cuisson en céramique avec poignées', height: 429,
+    credit: 'Jim Heaphy (Cullen328)', source: 'https://commons.wikimedia.org/wiki/File:Emile_Henry_ceramic_casserole_dish.jpg',
+    license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  },
+  storage: {
+    src: '/img/context-storage-photo.webp', alt: 'Boîtes de conservation en verre avec couvercles', height: 495,
+    credit: 'Rubbermaid Products', source: 'https://commons.wikimedia.org/wiki/File:Glass_food_storage_container_with_Easy_Find_Lids.jpg',
+    license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/',
+  },
 };
 ---
 {offers.length > 0 && <aside id="materiel" class="context-products" aria-labelledby="context-products-title">
@@ -13,12 +21,12 @@ const illustrations: Record<string, { src: string; alt: string }> = {
   <h2 id="context-products-title">Du matériel adapté à cette préparation</h2>
   <p class="intro">Utilise d’abord le matériel que tu possèdes. Voici les usages et les points à vérifier si tu souhaites t’équiper.</p>
   <div class="products-grid">{offers.map(offer => {
-    const illustration = offer.product ? undefined : illustrations[offer.id];
+    const photo = offer.product ? undefined : photos[offer.id];
     return <section class="product-card">
     <h3>{offer.name}</h3>
-    {illustration && <figure class="product-illustration">
-      <img src={illustration.src} alt={illustration.alt} width="660" height="440" loading="lazy" decoding="async" />
-      <figcaption>Illustration</figcaption>
+    {photo && <figure class="product-illustration">
+      <img src={photo.src} alt={photo.alt} width="660" height={photo.height} loading="lazy" decoding="async" />
+      <figcaption>Exemple photographié. <a href={photo.source}>{photo.credit}</a> · <a href={photo.licenseUrl}>{photo.license}</a> · Image redimensionnée.</figcaption>
     </figure>}
     <p>{offer.reason}</p><p class="check"><strong>Avant de choisir :</strong> {offer.check}</p>
     {offer.product && <p class="reference"><strong>Une référence à examiner :</strong> {offer.product.name}. <a class="manufacturer" href={offer.product.source} target="_blank" rel="noopener">Documentation fabricant{offer.product.source.endsWith('.pdf') ? ' (PDF)' : ''}</a></p>}
@@ -30,8 +38,9 @@ const illustrations: Record<string, { src: string; alt: string }> = {
 </aside>}
 <style>
   .product-illustration{margin:0 0 6px}
-  .product-illustration img{display:block;width:100%;height:auto;border-radius:8px}
+  .product-illustration img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:#f7f4ee;border-radius:8px}
   .product-illustration figcaption{color:#63594b;font-size:.75rem;margin-top:4px}
+  .product-card .product-illustration a,.product-card .product-illustration a:hover{background:transparent;color:inherit;font:inherit;padding:0;text-decoration:underline}
   .product-card .manufacturer,.product-card .other-models{background:transparent;color:#234b36;text-decoration:underline;font-weight:650;margin-top:0;padding:10px 0;min-height:44px}.product-card .manufacturer{display:inline-block;font-size:.78rem}.product-card .manufacturer:hover,.product-card .other-models:hover{background:transparent;color:#173e32}.product-card .reference{margin:0 0 12px}.product-card .product-cta{display:block;min-height:44px}
   .context-products{margin:28px 0;padding:22px;border:1px solid #e6d9c5;border-radius:18px;background:#fffaf2}.eyebrow{font-size:.75rem;color:#765327;font-weight:750;margin:0}.context-products h2{font-size:1.3rem;margin:7px 0 12px}.intro{font-size:.92rem}.products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product-card{padding:18px;display:flex;flex-direction:column;border:1px solid #e4ddd2;border-radius:12px;background:#fff;min-width:0}.product-card h3{font-size:1.05rem;margin:0 0 9px;line-height:1.4}.product-card p{font-size:.88rem;line-height:1.6}.check{color:#62594e}.product-card a{margin-top:auto;padding:12px;border-radius:9px;background:#173e32;color:#fff;font-weight:750;font-size:.85rem;text-decoration:none;line-height:1.4}.product-card a:hover{background:#265b46}.product-card a:focus-visible{outline:3px solid #bd710c;outline-offset:3px}.disclosure{font-size:.76rem;line-height:1.5;color:#63594b;margin-bottom:0}@media(max-width:640px){.products-grid{grid-template-columns:1fr}.context-products{padding:16px}}@media print{.context-products{display:none}}
 </style>
