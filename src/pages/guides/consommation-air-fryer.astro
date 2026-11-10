@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Consommation d’un air fryer : calcule le coût par cuisson';
+const description = 'Estime la consommation de ton air fryer en kWh et en euros, ou saisis une mesure au wattmètre. Compare le coût avec le four électrique.';
+---
+<Base title={title} description={description}>
+  <div class="wrap">
+    <article class="article">
+      <p><a href="/guides/">Guides air fryer</a></p>
+      <h1>Combien consomme un air fryer ?</h1>
+      <p>La puissance indiquée en watts décrit l’appareil. L’énergie facturée se mesure en kilowattheures (kWh) sur l’ensemble de la cuisson. Un air fryer de 1 500 W qui fonctionnerait à cette puissance pendant 20 minutes utiliserait 0,50 kWh. Si la résistance s’arrête par intermittence, la consommation réelle peut être inférieure.</p>
+
+      <h2>Calculer les kWh et le coût d’une cuisson</h2>
+      <p>Le coût variable s’obtient en multipliant les kWh par ton prix du kWh. Utilise le tarif de ton contrat pour l’heure de cuisson. L’abonnement n’entre pas dans ce calcul.</p>
+      <form id="energy-form" class="card-box" hidden>
+        <label for="energy-mode">Comment connais-tu la consommation ?</label>
+        <select id="energy-mode" name="mode">
+          <option value="estimate">J’ai la puissance et la durée</option>
+          <option value="measure">J’ai une mesure au wattmètre</option>
+        </select>
+        <fieldset id="energy-estimate">
+          <legend>Estimation à puissance constante</legend>
+          <label for="energy-watts">Puissance de l’appareil (W)</label>
+          <input id="energy-watts" name="watts" type="number" min="1" step="any" required />
+          <label for="energy-minutes">Durée totale, préchauffage inclus (min)</label>
+          <input id="energy-minutes" name="minutes" type="number" min="0.01" step="any" required />
+        </fieldset>
+        <fieldset id="energy-measure" hidden disabled>
+          <legend>Mesure du cycle complet</legend>
+          <label for="energy-kwh">Énergie affichée par le wattmètre (kWh)</label>
+          <input id="energy-kwh" name="kwh" type="number" min="0" step="any" required />
+        </fieldset>
+        <label for="energy-rate">Prix variable de l’électricité (€/kWh)</label>
+        <input id="energy-rate" name="rate" type="number" min="0" step="any" required />
+        <button class="cta" type="submit">Calculer</button>
+        <output id="energy-result" aria-live="polite"></output>
+      </form>
+      <noscript><p>Pour calculer sans l’outil, multiplie les watts par les minutes et divise par 60 000. Multiplie ensuite les kWh obtenus par ton tarif.</p></noscript>
+
+      <h2>Air fryer ou four électrique ?</h2>
+      <p>Pour 320 g de frites surgelées, Which? a relevé 0,287 kWh dans son air fryer et 0,863 kWh dans son four. Le préchauffage était inclus lorsque nécessaire. C’est une comparaison de deux appareils sur une quantité précise. Pour un repas plus grand, additionne l’énergie de toutes les fournées avant de comparer avec le four. <a href="https://www.which.co.uk/reviews/air-fryers/article/air-fryer-vs-oven-energy-cost-cooking-results-compared-aPpAt8D1Agy5">Essais et protocole de Which?</a></p>
+      <p>Les chiffres annuels de l’ADEME pour les fours électriques donnent un repère à l’échelle du foyer. Pour choisir un appareil pour un repas donné, compare plutôt les kWh pour la même quantité cuite. <a href="https://agirpourlatransition.ademe.fr/particuliers/economiser/energie/consommation-appareils-menagers">Repères de consommation de l’ADEME</a></p>
+
+      <h2>Comment mesurer ta propre consommation ?</h2>
+      <ol>
+        <li>Utilise un wattmètre adapté à la puissance de l’appareil et suis sa notice.</li>
+        <li>Mesure les kWh depuis le début du préchauffage éventuel jusqu’à la fin de la dernière fournée. Note le poids, le nombre de portions et le résultat de cuisson.</li>
+        <li>Pour comparer deux appareils, cuis la même quantité avec un résultat comparable. Divise le coût total par le nombre de portions pour obtenir le coût par portion.</li>
+      </ol>
+      <p>Tu cuisines pour plusieurs jours ? Notre <a href="/dossiers/batch-cooking-air-fryer/">planning batch cooking</a> montre comment organiser les fournées. Le <a href="/temps-de-cuisson/">convertisseur four → air fryer</a> aide à choisir un premier réglage de cuisson.</p>
+    </article>
+  </div>
+</Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#energy-form');
+  const mode = document.querySelector<HTMLSelectElement>('#energy-mode');
+  const estimate = document.querySelector<HTMLFieldSetElement>('#energy-estimate');
+  const measure = document.querySelector<HTMLFieldSetElement>('#energy-measure');
+  const result = document.querySelector<HTMLOutputElement>('#energy-result');
+
+  if (form && mode && estimate && measure && result) {
+    const energyFormat = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 3 });
+    const costFormat = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 3 });
+    mode.addEventListener('change', () => {
+      const measured = mode.value === 'measure';
+      estimate.disabled = estimate.hidden = measured;
+      measure.disabled = measure.hidden = !measured;
+    });
+    form.addEventListener('input', () => { result.value = ''; });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const fields = new FormData(form);
+      const measured = mode.value === 'measure';
+      const kwh = measured ? Number(fields.get('kwh')) : Number(fields.get('watts')) * Number(fields.get('minutes')) / 60_000;
+      const cost = kwh * Number(fields.get('rate'));
+      if (!Number.isFinite(kwh) || !Number.isFinite(cost)) {
+        result.value = 'Vérifie les valeurs saisies.';
+        return;
+      }
+      result.value = `${measured ? 'Mesure saisie' : 'Estimation à puissance constante'} : ${energyFormat.format(kwh)} kWh, soit ${costFormat.format(cost)} pour ce cycle.`;
+    });
+    form.hidden = false;
+  }
+</script>
+
+<style>
+  form { max-width: 36rem; padding: 18px; }
+  label, output { display: block; margin: 10px 0 4px; font-weight: 650; }
+  input, select { display: block; width: 100%; min-width: 0; box-sizing: border-box; min-height: 44px; padding: 8px; font: inherit; }
+  fieldset { min-width: 0; margin: 14px 0; padding: 10px 12px 14px; }
+  button { margin-top: 14px; }
+</style>

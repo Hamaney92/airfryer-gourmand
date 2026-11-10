@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const types = [
+  ['Panier simple', 'Pour une préparation à la fois, par exemple des légumes pour deux.', 'Mesure la surface du fond. Deux cuves de même volume peuvent avoir des formes différentes.'],
+  ['Deux paniers indépendants', 'Pour cuire un plat et un accompagnement à des réglages différents.', 'Vérifie le volume de chaque panier et si le modèle peut synchroniser les fins de cuisson.'],
+  ['Tiroir modulable', 'Pour alterner entre deux zones et un grand espace, selon le séparateur fourni.', 'Vérifie les modes disponibles avec et sans séparateur.'],
+  ['Four air fryer à niveaux', 'Pour des préparations à plat ou sur plusieurs niveaux selon la notice.', 'Vérifie quels niveaux le fabricant autorise en mode air fryer et la taille des plaques.'],
+  ['Cuve en verre dédiée', 'Pour voir les aliments à travers le récipient et utiliser le format prévu par le système.', 'Utilise les récipients autorisés par le fabricant. Le verre de conservation ordinaire ne les remplace pas.'],
+];
+---
+<Base title="Types d’air fryers : simple, double panier, four ou verre ?" description="Compare les formats d’air fryers et les points à vérifier selon tes portions, ton plan de travail et les plats que tu cuisines.">
+  <div class="wrap">
+    <article class="article">
+      <p><a href="/guides/">Guides air fryer</a></p>
+      <h1>Quels sont les différents types d’air fryers ?</h1>
+      <p>Pars de ce que tu cuisines le plus souvent. Pour choisir, compare la surface où tu peux étaler les aliments, les réglages disponibles par zone et la place nécessaire pour ouvrir le tiroir.</p>
+      <h2>Cinq formats et leurs usages</h2>
+      <dl>
+        {types.map(([type, usage, check]) => (
+          <>
+            <dt><strong>{type}</strong></dt>
+            <dd style="margin:0 0 16px">{usage} {check}</dd>
+          </>
+        ))}
+      </dl>
+      <h2>La vapeur et la fenêtre changent-elles le type d’appareil ?</h2>
+      <p>Ce sont des fonctions qui peuvent s’ajouter à plusieurs formats. Une fenêtre permet de regarder sans ouvrir. Pour la vapeur, distingue les programmes qui cuisent à la vapeur des cycles qui servent à nettoyer l’appareil. <a href="/guides/nouveautes-air-fryer/">Voir des modèles et fonctions documentés</a>.</p>
+      <h2>Trois mesures avant de choisir</h2>
+      <ol>
+        <li>Largeur et profondeur du fond utile de chaque panier, à comparer au plat avec ses anses.</li>
+        <li>Hauteur disponible au-dessus du plat, selon les consignes de la notice.</li>
+        <li>Place autour de l’appareil et devant le tiroir, en suivant la notice.</li>
+      </ol>
+      <p><a href="/guides/meilleur-air-fryer-double-panier/">Comparer les doubles paniers</a> · <a href="/guides/air-fryer-xxl-familial/">Explorer les grands formats</a> · <a href="/dossiers/batch-cooking-air-fryer/">Organiser les fournées de la semaine</a></p>
+      <p>Exemples de formats et modes dans les <a href="https://www.moulinex.fr/easy-fry-buying-guide">fiches Moulinex</a> et les <a href="https://support.ninjakitchen.fr/hc/article_attachments/25653549055132">instructions Ninja CRISPi</a>.</p>
+    </article>
+  </div>
+</Base>
