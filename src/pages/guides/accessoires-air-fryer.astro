@@ -7,10 +7,10 @@ const description = "Les accessoires air fryer qui changent vraiment la donne : 
 
 const accessoires = [
   { emoji: "📄", nom: "Papier cuisson perforé", util: "Évite que les aliments collent et facilite le nettoyage, sans bloquer la circulation d'air (grâce aux perforations).", note: "Indispensable pour les pâtes, poissons, fromages. Ne jamais utiliser un papier non perforé qui s'envole.", lien: "papier cuisson perforé air fryer" },
-  { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon" },
+  { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon", image: { src: "/img/guide-moule-silicone-panier.webp", alt: "Moule rectangulaire en silicone avec deux anses posé dans un panier ouvert", caption: "Exemple de placement. Mesure ton panier et compte les anses dans la largeur du moule." } },
   { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un deuxième niveau pour cuire plus en une fournée, ou surélève les aliments pour un air qui circule dessous.", note: "Pratique dans les paniers profonds pour doubler la capacité d'un repas de famille.", lien: "grille étagée air fryer rack" },
   { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
-  { emoji: "🌡️", nom: "Thermomètre à viande", util: "Pour vérifier la température au centre d’un morceau de viande ou de volaille.", note: "Pour un contrôle ponctuel, choisis un modèle à lecture instantanée affichant les degrés Celsius, avec une sonde assez longue pour atteindre le centre de tes morceaux. Mesure dans la partie la plus épaisse sans toucher l’os, puis retire la sonde avant de remettre le panier.", lien: "thermomètre cuisine lecture instantanée sonde", label: "Comparer les thermomètres sur Amazon" },
+  { emoji: "🌡️", nom: "Thermomètre à viande", util: "Pour vérifier la température au centre d’un morceau de viande ou de volaille.", note: "Pour un contrôle ponctuel, choisis un modèle à lecture instantanée affichant les degrés Celsius, avec une sonde assez longue pour atteindre le centre de tes morceaux. Mesure dans la partie la plus épaisse sans toucher l’os, puis retire la sonde avant de remettre le panier.", lien: "thermomètre cuisine lecture instantanée sonde", label: "Comparer les thermomètres sur Amazon", image: { src: "/img/guide-thermometre-sonde.webp", alt: "Sonde d’un thermomètre instantané insérée dans un morceau de poulet posé sur une assiette", caption: "Exemple d’utilisation d’une sonde instantanée pour un contrôle ponctuel." } },
   { emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve.", lien: "éponge non abrasive nettoyage" },
 ];
 
@@ -52,6 +52,12 @@ const faqSchema = {
       {accessoires.map((a) => (
         <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
+          {a.image && (
+            <figure class="accessory-figure">
+              <img src={a.image.src} alt={a.image.alt} width="768" height="512" loading="lazy" decoding="async" />
+              <figcaption>{a.image.caption}</figcaption>
+            </figure>
+          )}
           <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
           <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
           <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Voir sur Amazon"} →</a>
@@ -80,3 +86,9 @@ const faqSchema = {
     </article>
   </div>
 </Base>
+
+<style>
+  .accessory-figure { max-width: 440px; margin: 12px 0; }
+  .accessory-figure img { width: 100%; height: auto; border-radius: 10px; }
+  .accessory-figure figcaption { margin-top: 6px; color: var(--muted); font-size: .88rem; }
+</style>
