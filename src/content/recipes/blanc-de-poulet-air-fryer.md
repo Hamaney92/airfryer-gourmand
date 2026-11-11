@@ -33,12 +33,12 @@ faq:
   - q: "Comment éviter que le blanc de poulet soit sec ?"
     a: "Trois clés : préchauffer l'air fryer, enrober d'un peu d'huile + épices, et surtout sortir la viande à 74 °C à cœur puis la laisser reposer 5 minutes sous alu avant de trancher."
   - q: "À quelle température à cœur le blanc de poulet est-il cuit ?"
-    a: "La volaille est sûre à 74 °C à cœur. À défaut de thermomètre, la chair ne doit plus être rosée et les jus doivent être clairs."
+    a: "Vérifie avec une sonde que chaque blanc atteint 74 °C dans sa partie la plus épaisse. La couleur seule ne permet pas de confirmer la cuisson à cœur."
   - q: "Faut-il retourner le blanc de poulet ?"
     a: "Oui, à mi-cuisson, pour dorer les deux faces uniformément et cuire à cœur sans dessécher."
   - q: "Peut-on cuire un blanc de poulet surgelé au air fryer ?"
     a: "Oui, sans décongeler : comptez 18 à 22 minutes à 200 °C selon la taille, en retournant à mi-cuisson, jusqu'à 74 °C à cœur."
-note: "Le blanc de poulet sec, c'est LA hantise de l'air fryer. Notre parade : ne dépasse jamais 75 °C à cœur (un thermomètre coûte 10 € et change tout), et laisse reposer 3 minutes sous une feuille d'alu avant de trancher. Un blanc de taille moyenne est parfait en 12 min à 180 °C."
+note: "Si tes blancs sont de tailles différentes, contrôle le plus petit en premier et retire chaque morceau quand il atteint 74 °C à cœur. Laisse reposer 5 minutes avant de trancher."
 updatedDate: 2026-07-12
 pubDate: 2026-07-11
 ---
@@ -61,6 +61,8 @@ Deux réflexes changent tout : **sortir la viande à la bonne température** et 
 Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
 
 ## L'astuce anti-poulet sec
+
+Commence à vérifier vers le bas de la fourchette indiquée pour la taille de tes morceaux. Insère la sonde par le côté jusqu’au centre de la partie la plus épaisse. Si le blanc est encore sous 74 °C, poursuis la cuisson et mesure de nouveau. [Repères de Santé Canada pour les morceaux de volaille](https://www.canada.ca/fr/sante-canada/services/conseils-generaux-salubrite/temperatures-securitaires-cuisson-interne.html).
 
 C'est LE point qui fait la différence. Le blanc de poulet passe vite de juteux à sec parce qu'on le cuit **par habitude, pas au thermomètre**. Sors-le dès **74 °C à cœur** (la volaille est sûre à cette température), puis **couvre-le d'aluminium et laisse-le reposer 5 minutes**. Ce repos redistribue le jus dans toute la chair : résultat, un blanc moelleux au lieu d'un blanc filandreux.
 
