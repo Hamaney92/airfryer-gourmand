@@ -16,7 +16,8 @@ const { title, description, pageType = 'page' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const cats = [
   ['Recettes','/recettes/'],['Viandes','/categorie/viandes/'],['Poissons','/categorie/poissons/'],
-  ['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/'],['Nos livres','/livre/']
+  ['Surgelés','/categorie/surgeles/'],['Desserts','/categorie/desserts/'],['Guides d\'achat','/guides/'],
+  ['Innovations','/guides/innovations-air-fryer/'],['Nos livres','/livre/']
 ];
 ---
 <!DOCTYPE html>

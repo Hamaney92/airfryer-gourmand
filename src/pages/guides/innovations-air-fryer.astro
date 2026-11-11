@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const guides = [
+  {
+    title: 'Comprendre les innovations',
+    href: '/guides/nouveautes-air-fryer/',
+    description: 'Vapeur, cuve en verre, infrarouge et tiroirs superposés. Ce que chaque fonction change en cuisine et les points à vérifier avant de choisir.',
+  },
+  {
+    title: 'Comparer les gammes par marque',
+    href: '/guides/ninja-moulinex-philips/',
+    description: 'Repère les paniers simples, doubles bacs et tiroirs modulables chez Ninja, Moulinex, Philips et Cosori.',
+  },
+  {
+    title: 'Bien utiliser ton air fryer',
+    href: '/guides/utiliser-air-fryer/',
+    description: 'De la première cuisson au nettoyage, avec les bons gestes pour le préchauffage, la circulation de l’air et les cuissons sur deux zones.',
+  },
+];
+---
+<Base title="Innovations air fryer, gammes et conseils d’utilisation" description="Découvre les fonctions des air fryers, compare les gammes Ninja, Moulinex, Philips et Cosori et apprends à utiliser ton modèle.">
+  <div class="wrap">
+    <article class="article">
+      <p><a href="/guides/">Tous les guides air fryer</a></p>
+      <h1>Innovations et usage de l’air fryer</h1>
+      <p>Tu hésites entre deux appareils ou tu veux mieux utiliser celui que tu as déjà ? Pars de ton besoin pour trouver le bon guide.</p>
+      {guides.map(({ title, href, description }) => (
+        <section class="edito-note">
+          <h2 class="edito-head"><a href={href}>{title}</a></h2>
+          <p>{description}</p>
+        </section>
+      ))}
+      <p><a href="/guides/types-air-fryer/">Voir les formats de panier et leurs usages</a> · <a href="/tableau-temps-cuisson-air-fryer/">Consulter le tableau de cuisson</a></p>
+    </article>
+  </div>
+</Base>
