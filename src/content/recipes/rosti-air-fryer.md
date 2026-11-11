@@ -1,7 +1,7 @@
 ---
 title: "Rösti à l'air fryer : galette de pomme de terre croustillante"
-metaTitle: "Rösti air fryer : temps de cuisson et astuce"
-description: "Le temps de cuisson exact du rösti au air fryer : 190-200 °C, 15 à 20 min, galette de pomme de terre dorée et croustillante. L'astuce pour bien essorer les pommes de terre."
+metaTitle: "Rösti croustillant à l’air fryer : 15 à 20 min"
+description: "Rösti de pommes de terre à l’air fryer à 195 °C. Compte 15 à 20 min pour une grande galette et 12 à 15 min pour des röstis individuels."
 category: "Accompagnement"
 image: "/img/rosti-air-fryer.jpg"
 keyword: "rosti air fryer"
@@ -11,16 +11,15 @@ prepTime: 15
 cookTime: 18
 servings: 4
 temp: "195 °C"
-quickAnswer: "Cuis un rösti au air fryer 15 à 20 min à 195 °C, en le retournant à mi-cuisson. Essore soigneusement les pommes de terre râpées (l'excès d'eau empêche le croustillant). La galette ressort dorée et croustillante dehors, moelleuse dedans, sans bain d'huile."
+quickAnswer: "À 195 °C, compte 15 à 20 min pour une grande galette et 12 à 15 min pour des röstis individuels. Essore bien les pommes de terre râpées, forme une galette fine et retourne-la à mi-cuisson. Vérifie qu’elle est dorée sur les deux faces et tendre au centre."
 ingredients:
   - "600 g de pommes de terre"
   - "1 oignon (optionnel), sel, poivre"
   - "1 c. à s. d'huile"
-  - "Papier cuisson (pour la forme)"
 steps:
   - "Râpe les pommes de terre (et l'oignon), sale."
   - "Essore-les très bien dans un torchon (retire un maximum d'eau)."
-  - "Mélange avec l'huile, forme une galette sur du papier cuisson."
+  - "Mélange avec l’huile. Forme une galette fine sur une assiette et fais-la glisser sur la plaque de cuisson prévue pour ton panier."
   - "Cuis 15 à 20 min à 195 °C, en retournant à mi-cuisson."
   - "Elle est dorée et croustillante des deux côtés."
 tips:
@@ -28,20 +27,21 @@ tips:
   - "Une galette pas trop épaisse cuit à cœur sans rester crue."
   - "Retourne délicatement à mi-cuisson (avec une assiette)."
 faq:
-  - q: "Combien de temps cuire un rösti au air fryer ?"
+  - q: "Combien de temps cuire un rösti à l’air fryer ?"
     a: "15 à 20 minutes à 195 °C, en le retournant à mi-cuisson. La galette doit être dorée et croustillante des deux côtés et cuite à cœur. Un rösti épais demande plus de temps ; ne le faites pas trop épais pour éviter un centre cru."
-  - q: "Comment rendre le rösti croustillant au air fryer ?"
+  - q: "Comment rendre le rösti croustillant à l’air fryer ?"
     a: "Le secret est d'essorer soigneusement les pommes de terre râpées dans un torchon : l'excès d'eau empêche le croustillant. Ajoutez un peu d'huile, formez une galette pas trop épaisse, et retournez à mi-cuisson pour dorer les deux faces."
   - q: "Faut-il précuire les pommes de terre pour le rösti ?"
-    a: "Traditionnellement, on utilise des pommes de terre crues râpées. Certains les précuisent à moitié (pommes de terre de la veille) pour une texture plus fondante. Les deux marchent au air fryer ; l'essorage reste dans tous les cas la clé du croustillant."
+    a: "Cette recette utilise des pommes de terre crues râpées. Essore-les bien, puis forme une galette fine pour que le centre cuise pendant que les faces dorent."
   - q: "Comment retourner le rösti sans le casser ?"
     a: "Glissez le rösti sur une assiette, posez une seconde assiette dessus, retournez l'ensemble, puis faites-le reglisser dans le panier. Une galette pas trop épaisse et bien compacte se retourne plus facilement sans se briser."
-  - q: "Peut-on faire des röstis individuels au air fryer ?"
+  - q: "Peut-on faire des röstis individuels à l’air fryer ?"
     a: "Oui, et c'est même plus pratique : formez de petites galettes individuelles, plus faciles à retourner et à cuire uniformément. Comptez 12 à 15 minutes à 195 °C. Parfaites en accompagnement ou avec un œuf au plat dessus."
 pubDate: 2026-09-19
+updatedDate: 2026-11-11
 ---
 
-Le rösti au air fryer, c'est la spécialité suisse réussie sans poêle grasse : **une galette de pommes de terre râpées, dorée et croustillante dehors, moelleuse dedans**, sans bain d'huile. En grande galette à partager ou en versions individuelles, l'air fryer la croustille à merveille.
+Pour un rösti croustillant à l’air fryer, essore les pommes de terre râpées avant de former la galette. Le format individuel est plus facile à retourner. Une grande galette donne une portion à partager.
 
 Le secret d'un rösti croustillant : **essorer** un maximum les pommes de terre.
 
@@ -62,10 +62,10 @@ L'ennemi du croustillant, c'est l'**eau**. Les pommes de terre râpées en rende
 
 ## Croustillant dehors, fondant dedans
 
-Râpe les pommes de terre (et un **oignon** pour le goût), essore, mélange avec un peu d'**huile**, et forme la galette sur du **papier cuisson**. Retourne délicatement à mi-cuisson (avec une assiette) pour dorer les **deux faces**. En version **individuelle**, c'est plus facile à retourner — et parfait avec un œuf au plat dessus.
+Râpe les pommes de terre et l’oignon, puis essore-les avant d’ajouter l’huile. Tasse la galette sur une assiette et fais-la glisser dans le panier. Retourne-la quand la première face se tient. Si la galette occupe presque toute la largeur du panier, préfère plusieurs petits röstis pour les soulever plus facilement.
 
 ## Pour aller plus loin
 
 - avec un œuf au plat et du saumon fumé, façon brunch ;
 - en accompagnement d'une viande ou d'un poisson ;
-- pour d'autres pommes de terre, vois les [pommes de terre au four](/recettes/pomme-de-terre-au-four-air-fryer/) et les [potato wedges au air fryer](/recettes/potato-wedges-air-fryer/).
+- pour d'autres pommes de terre, vois les [pommes de terre au four](/recettes/pomme-de-terre-au-four-air-fryer/) et les [potato wedges à l’air fryer](/recettes/potato-wedges-air-fryer/).
