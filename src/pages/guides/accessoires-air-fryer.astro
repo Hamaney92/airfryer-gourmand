@@ -4,9 +4,10 @@ import { amazonSearch } from '../../lib/site';
 
 const title = "Accessoires air fryer indispensables : le vrai utile (2026)";
 const description = "Les accessoires air fryer qui changent vraiment la donne : papier cuisson perforé, moules silicone, grille étagée, spray à huile, thermomètre… Ce qui sert, ce qui est gadget.";
+const papierAnswer = "Cela dépend de ton modèle. Philips déconseille le papier sulfurisé pour les Airfryers couverts par sa fiche d’assistance. Si la notice de ton appareil autorise le papier, pose les aliments dessus avant de démarrer et respecte les consignes sur les dimensions et la température.";
 
 const accessoires = [
-  { emoji: "📄", nom: "Papier cuisson perforé", util: "Évite que les aliments collent et facilite le nettoyage, sans bloquer la circulation d'air (grâce aux perforations).", note: "Indispensable pour les pâtes, poissons, fromages. Ne jamais utiliser un papier non perforé qui s'envole.", lien: "papier cuisson perforé air fryer" },
+  { emoji: "📄", nom: "Papier cuisson perforé", util: "Peut faciliter le retrait des aliments fragiles sur les modèles qui l’autorisent.", note: "Consulte d’abord la notice de ton modèle. Même perforée, une feuille libre peut être soulevée par le ventilateur.", lien: "papier cuisson perforé air fryer" },
   { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon", image: { src: "/img/guide-moule-silicone-panier.webp", alt: "Moule rectangulaire en silicone avec deux anses posé dans un panier ouvert", caption: "Exemple de placement. Mesure ton panier et compte les anses dans la largeur du moule." } },
   { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un deuxième niveau pour cuire plus en une fournée, ou surélève les aliments pour un air qui circule dessous.", note: "Pratique dans les paniers profonds pour doubler la capacité d'un repas de famille.", lien: "grille étagée air fryer rack" },
   { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
@@ -27,8 +28,8 @@ const articleSchema = {
 const faqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Peut-on mettre du papier cuisson dans un air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, mais uniquement du papier cuisson PERFORÉ, conçu pour l'air fryer, et toujours lesté par des aliments. Un papier plein ou libre s'envole dans le flux d'air et peut toucher la résistance." } },
-    { "@type": "Question", "name": "Quels accessoires air fryer sont vraiment utiles ?", "acceptedAnswer": { "@type": "Answer", "text": "Les plus utiles : le papier cuisson perforé, les moules en silicone (desserts, œufs), un spray à huile et un thermomètre à viande. Le reste (grilles étagées, pinces) est un confort selon les usages." } },
+    { "@type": "Question", "name": "Peut-on mettre du papier cuisson dans un air fryer ?", "acceptedAnswer": { "@type": "Answer", "text": papierAnswer } },
+    { "@type": "Question", "name": "Quels accessoires air fryer sont vraiment utiles ?", "acceptedAnswer": { "@type": "Answer", "text": "Un moule aux bonnes dimensions pour les portions individuelles, une sonde pour vérifier la cuisson à cœur et une éponge non abrasive pour l’entretien." } },
   ],
 };
 ---
@@ -46,7 +47,7 @@ const faqSchema = {
         <span aria-hidden="true">🍟</span>
         <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
       </div>
-      <div class="quick"><b>En bref :</b> pas besoin de tout acheter. Les 4 accessoires vraiment utiles : <b>papier cuisson perforé</b>, <b>moules en silicone</b>, <b>spray à huile</b> et <b>thermomètre à viande</b>. Le reste est du confort.</div>
+      <div class="quick"><b>En bref.</b> Mesure ton panier pour choisir un moule, prévois une sonde pour contrôler la cuisson à cœur et vérifie la notice avant d’utiliser du papier cuisson.</div>
       <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b> — si tu achètes via un de nos liens, nous touchons une petite commission, <b>sans surcoût pour toi</b>. Le guide présente les usages de chaque type d’accessoire.</p>
 
       {accessoires.map((a) => (
@@ -77,10 +78,11 @@ const faqSchema = {
       </div>
 
       <h2>Questions fréquentes</h2>
-      <h3>Peut-on mettre du papier cuisson dans un air fryer ?</h3>
-      <p>Oui, mais uniquement du papier <b>perforé</b> conçu pour l'air fryer, et toujours lesté par des aliments — sinon il s'envole dans le flux d'air.</p>
+      <h3 id="papier-cuisson">Peut-on mettre du papier cuisson dans un air fryer ?</h3>
+      <p>{papierAnswer} <a href="https://dev.philips.fr/c-f/XC000003625/puis-je-utiliser-du-papier-de-cuisson-aluminium-dans-mon-airfryer-philips">Consulter la liste des références Philips concernées</a>.</p>
+      <p>Pendant un préchauffage à vide, laisse le panier libre. Une feuille peut être aspirée vers la résistance. Pour une pâte molle ou une préparation qui coule, utilise un moule autorisé par la notice et adapté aux dimensions du panier.</p>
       <h3>Quels accessoires sont vraiment utiles ?</h3>
-      <p>Le papier perforé, les moules en silicone, un spray à huile et un thermomètre à viande. Le reste est un confort selon tes usages.</p>
+      <p>Un moule aux bonnes dimensions pour les portions individuelles, une sonde pour vérifier la cuisson à cœur et une éponge non abrasive pour l’entretien.</p>
 
       <p style="margin-top:26px"><a class="cta" href="/guides/meilleur-air-fryer-2026/">→ Voir notre comparatif air fryer 2026</a></p>
     </article>
@@ -88,6 +90,7 @@ const faqSchema = {
 </Base>
 
 <style>
+  #papier-cuisson { scroll-margin-top: 84px; }
   .accessory-figure { max-width: 440px; margin: 12px 0; }
   .accessory-figure img { width: 100%; height: auto; border-radius: 10px; }
   .accessory-figure figcaption { margin-top: 6px; color: var(--muted); font-size: .88rem; }
