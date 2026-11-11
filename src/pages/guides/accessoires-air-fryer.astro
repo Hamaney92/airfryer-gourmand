@@ -9,7 +9,7 @@ const papierAnswer = "Cela dépend de ton modèle. Philips déconseille le papie
 const accessoires = [
   { emoji: "📄", nom: "Papier cuisson perforé", util: "Peut faciliter le retrait des aliments fragiles sur les modèles qui l’autorisent.", note: "Consulte d’abord la notice de ton modèle. Même perforée, une feuille libre peut être soulevée par le ventilateur.", lien: "papier cuisson perforé air fryer" },
   { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon", image: { src: "/img/guide-moule-silicone-panier.webp", alt: "Moule rectangulaire en silicone avec deux anses posé dans un panier ouvert", caption: "Exemple de placement. Mesure ton panier et compte les anses dans la largeur du moule." } },
-  { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un deuxième niveau pour cuire plus en une fournée, ou surélève les aliments pour un air qui circule dessous.", note: "Pratique dans les paniers profonds pour doubler la capacité d'un repas de famille.", lien: "grille étagée air fryer rack" },
+  { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un niveau dans les modèles compatibles ou surélève les aliments.", note: "Vérifie la hauteur disponible une fois la grille en place. Garde de l’espace entre les deux niveaux et contrôle la cuisson sur chacun.", lien: "grille étagée air fryer rack" },
   { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
   { emoji: "🌡️", nom: "Thermomètre à viande", util: "Pour vérifier la température au centre d’un morceau de viande ou de volaille.", note: "Pour un contrôle ponctuel, choisis un modèle à lecture instantanée affichant les degrés Celsius, avec une sonde assez longue pour atteindre le centre de tes morceaux. Mesure dans la partie la plus épaisse sans toucher l’os, puis retire la sonde avant de remettre le panier.", lien: "thermomètre cuisine lecture instantanée sonde", label: "Comparer les thermomètres sur Amazon", image: { src: "/img/guide-thermometre-sonde.webp", alt: "Sonde d’un thermomètre instantané insérée dans un morceau de poulet posé sur une assiette", caption: "Exemple d’utilisation d’une sonde instantanée pour un contrôle ponctuel." } },
   { emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve.", lien: "éponge non abrasive nettoyage" },
@@ -77,6 +77,17 @@ const faqSchema = {
         <p style="color:#5f5147;margin:0">Si tu cuisines souvent des morceaux épais de viande ou de volaille, commence par un <b>thermomètre à viande</b>. Si tu prépares surtout des portions individuelles, mesure d’abord ton panier pour choisir un moule adapté.</p>
       </div>
 
+      <h2 id="mesurer-panier">Mesurer ton panier avant d’acheter un moule</h2>
+      <ol>
+        <li>À froid, mesure le fond à l’endroit où reposera le moule, puis la largeur à la hauteur des anses.</li>
+        <li>Compare ces mesures aux dimensions extérieures du moule. Tiens compte des coins arrondis, de la hauteur utile et du dégagement demandé par la notice.</li>
+        <li>Vérifie que tu pourras sortir le moule avec des maniques sans l’incliner. Si le fabricant de l’accessoire donne une liste de modèles compatibles, compare le code complet de l’appareil.</li>
+      </ol>
+      <h2 id="separateur-panier">Séparer deux aliments dans un panier</h2>
+      <p>Un séparateur d’aliments organise l’espace à température commune. Pour le kit HD9950/00, Philips indique notamment les familles HD963X, HD965X, HD975X, HD976X et HD986X. Vérifie ton code dans son catalogue avant l’achat. Sur un FlexDrawer AF500EU, les deux zones disposent de réglages séparés lorsque le séparateur prévu par Ninja est en place. <a href="https://acc.philips.fr/c-e/ho/airfryer-accessories">Compatibilité Philips</a> · <a href="/guides/utiliser-air-fryer/">Régler deux cuissons</a>.</p>
+      <h2 id="plaque-rechange">Retrouver la plaque croustillante de rechange</h2>
+      <p>Relève le code complet inscrit sur l’appareil. Dans le catalogue du fabricant, distingue la plaque qui repose au fond du tiroir, la grille étagée et le tiroir complet. Sur un appareil à deux paniers, vérifie le côté. Moulinex distingue par exemple une <a href="https://www.moulinex.fr/boutique-accessoires/grille-large-gauche-ss-9100052688/csp/9100052688">grille gauche SS-9100052688</a> et une <a href="https://www.moulinex.fr/boutique-accessoires/grille-droite-ss-9100056098/a/9100056098">grille droite SS-9100056098</a>. Vérifie la liste de compatibilité de la pièce qui correspond à ton code.</p>
+      <p><a href="/guides/nettoyer-air-fryer/">Nettoyer le panier et la plaque d’origine</a>.</p>
       <h2>Questions fréquentes</h2>
       <h3 id="papier-cuisson">Peut-on mettre du papier cuisson dans un air fryer ?</h3>
       <p>{papierAnswer} <a href="https://dev.philips.fr/c-f/XC000003625/puis-je-utiliser-du-papier-de-cuisson-aluminium-dans-mon-airfryer-philips">Consulter la liste des références Philips concernées</a>.</p>
@@ -90,7 +101,7 @@ const faqSchema = {
 </Base>
 
 <style>
-  #papier-cuisson { scroll-margin-top: 84px; }
+  #papier-cuisson, #mesurer-panier, #separateur-panier, #plaque-rechange { scroll-margin-top: 84px; }
   .accessory-figure { max-width: 440px; margin: 12px 0; }
   .accessory-figure img { width: 100%; height: auto; border-radius: 10px; }
   .accessory-figure figcaption { margin-top: 6px; color: var(--muted); font-size: .88rem; }
