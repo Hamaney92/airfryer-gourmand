@@ -1,4 +1,5 @@
 ---
+import ProductIllustration from '../../components/ProductIllustration.astro';
 import Base from '../../layouts/Base.astro';
 import { amazonSearch } from '../../lib/site';
 
@@ -7,12 +8,12 @@ const description = "Les accessoires air fryer qui changent vraiment la donne : 
 const papierAnswer = "Cela dépend de ton modèle. Philips déconseille le papier sulfurisé pour les Airfryers couverts par sa fiche d’assistance. Si la notice de ton appareil autorise le papier, pose les aliments dessus avant de démarrer et respecte les consignes sur les dimensions et la température.";
 
 const accessoires = [
-  { emoji: "📄", nom: "Papier cuisson perforé", util: "Peut faciliter le retrait des aliments fragiles sur les modèles qui l’autorisent.", note: "Consulte d’abord la notice de ton modèle. Même perforée, une feuille libre peut être soulevée par le ventilateur.", lien: "papier cuisson perforé air fryer" },
+  { visual: "paper" as const, emoji: "📄", nom: "Papier cuisson perforé", util: "Peut faciliter le retrait des aliments fragiles sur les modèles qui l’autorisent.", note: "Consulte d’abord la notice de ton modèle. Même perforée, une feuille libre peut être soulevée par le ventilateur.", lien: "papier cuisson perforé air fryer" },
   { emoji: "🧁", nom: "Moules & caissettes en silicone", util: "Pour les muffins, les œufs cocotte et les gratins individuels.", note: "Mesure le fond intérieur du panier, là où le moule sera posé. Compare la largeur, la longueur et la hauteur avec les dimensions extérieures du moule, anses comprises. Laisse de l’espace autour pour que l’air circule et vérifie la température maximale indiquée par le fabricant.", lien: "moule silicone air fryer avec anses", label: "Comparer les moules sur Amazon", image: { src: "/img/guide-moule-silicone-panier.webp", alt: "Moule rectangulaire en silicone avec deux anses posé dans un panier ouvert", caption: "Exemple de placement. Mesure ton panier et compte les anses dans la largeur du moule." } },
-  { emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un niveau dans les modèles compatibles ou surélève les aliments.", note: "Vérifie la hauteur disponible une fois la grille en place. Garde de l’espace entre les deux niveaux et contrôle la cuisson sur chacun.", lien: "grille étagée air fryer rack" },
-  { emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
+  { visual: "rack" as const, emoji: "🍢", nom: "Grille étagée / rack", util: "Ajoute un niveau dans les modèles compatibles ou surélève les aliments.", note: "Vérifie la hauteur disponible une fois la grille en place. Garde de l’espace entre les deux niveaux et contrôle la cuisson sur chacun.", lien: "grille étagée air fryer rack" },
+  { visual: "spray" as const, emoji: "💨", nom: "Spray / vaporisateur à huile", util: "Dépose un voile d'huile régulier avec très peu de matière grasse — le geste clé de l'air fryer.", note: "Bien plus économe et homogène qu'un filet d'huile versé. Prends un modèle rechargeable (tu mets ton huile).", lien: "spray huile rechargeable cuisine" },
   { emoji: "🌡️", nom: "Thermomètre à viande", util: "Pour vérifier la température au centre d’un morceau de viande ou de volaille.", note: "Pour un contrôle ponctuel, choisis un modèle à lecture instantanée affichant les degrés Celsius, avec une sonde assez longue pour atteindre le centre de tes morceaux. Mesure dans la partie la plus épaisse sans toucher l’os, puis retire la sonde avant de remettre le panier.", lien: "thermomètre cuisine lecture instantanée sonde", label: "Comparer les thermomètres sur Amazon", image: { src: "/img/guide-thermometre-sonde.webp", alt: "Sonde d’un thermomètre instantané insérée dans un morceau de poulet posé sur une assiette", caption: "Exemple d’utilisation d’une sonde instantanée pour un contrôle ponctuel." } },
-  { emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve.", lien: "éponge non abrasive nettoyage" },
+  { visual: "sponge" as const, emoji: "🧽", nom: "Brosse / éponge non abrasive", util: "Pour nettoyer le panier sans rayer le revêtement anti-adhésif.", note: "Éviter les éponges métalliques qui abîment la cuve.", lien: "éponge non abrasive nettoyage" },
 ];
 
 // Le pari malin : le COFFRET complet. Panier moyen plus élevé, et une seule commande
@@ -53,6 +54,7 @@ const faqSchema = {
       {accessoires.map((a) => (
         <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
+          {a.visual && <ProductIllustration id={a.visual} />}
           {a.image && (
             <figure class="accessory-figure">
               <img src={a.image.src} alt={a.image.alt} width="768" height="512" loading="lazy" decoding="async" />
@@ -68,6 +70,7 @@ const faqSchema = {
       <div class="card-box" style="background:linear-gradient(135deg,var(--cream),#fff);border:2px solid var(--brand);border-radius:16px;padding:20px 24px;margin:22px 0;box-shadow:var(--shadow)">
         <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🎁 Le choix malin : tout en une fois</div>
         <div style="font-weight:700;font-size:1.05rem">{coffret.nom}</div>
+        <ProductIllustration id="kit" />
         <p style="margin:6px 0;color:#5f5147">Plutôt que d'acheter chaque accessoire séparément, un <b>coffret universel</b> réunit moules, grille, papier perforé, pince et spray pour le prix de deux ou trois pièces isolées. C'est ce qu'on offrirait à quelqu'un qui vient de recevoir son air fryer. Vérifie juste que le diamètre correspond à ton panier.</p>
         <a href={amazonSearch(coffret.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir les coffrets sur Amazon →</a>
       </div>

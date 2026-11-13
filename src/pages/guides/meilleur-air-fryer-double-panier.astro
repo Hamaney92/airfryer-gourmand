@@ -1,4 +1,5 @@
 ---
+import ProductIllustration from '../../components/ProductIllustration.astro';
 import Base from '../../layouts/Base.astro';
 import { amazonSearch } from '../../lib/site';
 
@@ -6,9 +7,9 @@ const title = "Meilleur air fryer double panier 2026 : lequel choisir ?";
 const description = "Comparatif air fryer double panier (DualZone) 2026 : cuire deux plats à la fois. Ninja AF400, Moulinex Dual, Ninja Double Stack — capacités, prix indicatifs et pour qui. Sélection testée.";
 
 const modeles = [
-  { cat: "🏆 La référence", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Familles qui veulent un repas complet en une fois.", plus: "Deux zones vraiment indépendantes, fonction Sync (tout prêt en même temps), grande capacité.", moins: "Encombrant (~41 cm de large), un peu bruyant.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
-  { cat: "💶 Le meilleur rapport prix", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans exploser le budget.", plus: "Deux tiroirs de tailles différentes (pratique), marque française, écran LCD.", moins: "Tiroirs de tailles inégales, homogénéité un cran en dessous du Ninja.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
-  { cat: "📐 Le gain de place", nom: "Ninja Double Stack XL SL400EU", capa: "~9,5 L (double zone verticale)", puis: "~2400 W", prix: "~160-170 €", pour: "Petites cuisines : grande capacité, faible largeur (~28 cm).", plus: "2 zones + 2 niveaux (4 étages) sur peu de largeur.", moins: "Format haut, prix élevé.", lien: "Ninja Double Stack XL SL400EU" },
+  { visual: 'af400' as const, cat: "🏆 La référence", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 × 4,75 L)", puis: "2470 W", prix: "~160-229 €", pour: "Familles qui veulent un repas complet en une fois.", plus: "Deux zones vraiment indépendantes, fonction Sync (tout prêt en même temps), grande capacité.", moins: "Encombrant (~41 cm de large), un peu bruyant.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
+  { visual: 'moulinex' as const, cat: "💶 Le meilleur rapport prix", nom: "Moulinex Dual Easy Fry & Grill 8.3L", capa: "8,3 L (5,2 + 3,1 L)", puis: "~2450 W", prix: "~110-150 €", pour: "Le double panier sans exploser le budget.", plus: "Deux tiroirs de tailles différentes (pratique), marque française, écran LCD.", moins: "Tiroirs de tailles inégales, homogénéité un cran en dessous du Ninja.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
+  { visual: 'stack' as const, cat: "📐 Le gain de place", nom: "Ninja Double Stack XL SL400EU", capa: "~9,5 L (double zone verticale)", puis: "~2400 W", prix: "~160-170 €", pour: "Petites cuisines : grande capacité, faible largeur (~28 cm).", plus: "2 zones + 2 niveaux (4 étages) sur peu de largeur.", moins: "Format haut, prix élevé.", lien: "Ninja Double Stack XL SL400EU" },
 ];
 
 const articleSchema = {
@@ -50,6 +51,7 @@ const faqSchema = {
         <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
           <div style="font-weight:700;font-size:1.05rem">{m.nom}</div>
+          <ProductIllustration id={m.visual} />
           <p style="margin:6px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.prix}</span></p>
           <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
           <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>👎</b> {m.moins}</p>

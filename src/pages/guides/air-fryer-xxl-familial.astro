@@ -1,4 +1,5 @@
 ---
+import ProductIllustration from '../../components/ProductIllustration.astro';
 import Base from '../../layouts/Base.astro';
 import { amazonSearch } from '../../lib/site';
 
@@ -6,10 +7,10 @@ const title = "Airfryer XXL pour la famille : quelle capacité choisir ?";
 const description = "Quel air fryer familial choisir ? Comparatif 2026 des grands formats : grande cuve, deux tiroirs ou format vertical. Capacités, encombrement et modèle adapté de 4 à 8 personnes.";
 
 const modeles = [
-  { cat: "🏆 Le plus polyvalent pour 4 à 6 personnes", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 tiroirs)", puis: "2470 W", pour: "Les repas quotidiens avec un plat et un accompagnement qui ne cuisent pas à la même température.", plus: "Deux zones indépendantes et une fonction de synchronisation : frites et poulet peuvent finir ensemble.", moins: "Format large : mesure le plan de travail et l'espace pour ouvrir les tiroirs.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
-  { cat: "🍗 Le vrai XXL pour les grandes tablées", nom: "Moulinex Easy Fry Dual XXL", capa: "11 L (2 tiroirs)", puis: "2700 W", pour: "Les familles nombreuses, le batch cooking ou celles et ceux qui préfèrent faire moins de fournées.", plus: "La plus grande capacité de cette sélection, avec deux zones pour séparer plat et accompagnement.", moins: "Volume extérieur conséquent : vérifie les dimensions exactes de la référence choisie avant commande.", lien: "Moulinex Easy Fry Dual XXL 11L" },
-  { cat: "↕️ Le gain de place sur le plan de travail", nom: "Ninja Double Stack XL SL400EU", capa: "9,5 L (format vertical)", puis: "2470 W", pour: "Une famille de 4 à 6 personnes avec peu de largeur disponible en cuisine.", plus: "Les tiroirs sont superposés : la capacité familiale sans étaler l'appareil sur tout le plan de travail.", moins: "Plus haut qu'un modèle classique : vérifie la hauteur sous tes meubles hauts.", lien: "Ninja Double Stack XL SL400EU" },
-  { cat: "💶 Le double tiroir familial plus accessible", nom: "Moulinex Dual Easy Fry & Grill", capa: "8,3 L (5,2 L + 3,1 L)", puis: "2600 W", pour: "Un foyer de 3 à 5 personnes qui veut deux tiroirs sans viser le plus grand format.", plus: "Deux tiroirs, synchronisation et plaque gril : un choix cohérent pour les repas de tous les jours.", moins: "Les tiroirs n'ont pas la même taille : réserve le plus grand aux pièces principales.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
+  { visual: 'af400' as const, cat: "🏆 Le plus polyvalent pour 4 à 6 personnes", nom: "Ninja Foodi MAX Dual Zone AF400EU", capa: "9,5 L (2 tiroirs)", puis: "2470 W", pour: "Les repas quotidiens avec un plat et un accompagnement qui ne cuisent pas à la même température.", plus: "Deux zones indépendantes et une fonction de synchronisation : frites et poulet peuvent finir ensemble.", moins: "Format large : mesure le plan de travail et l'espace pour ouvrir les tiroirs.", lien: "Ninja Foodi MAX Dual Zone AF400EU" },
+  { visual: 'xxl' as const, cat: "🍗 Le vrai XXL pour les grandes tablées", nom: "Moulinex Easy Fry Dual XXL", capa: "11 L (2 tiroirs)", puis: "2700 W", pour: "Les familles nombreuses, le batch cooking ou celles et ceux qui préfèrent faire moins de fournées.", plus: "La plus grande capacité de cette sélection, avec deux zones pour séparer plat et accompagnement.", moins: "Volume extérieur conséquent : vérifie les dimensions exactes de la référence choisie avant commande.", lien: "Moulinex Easy Fry Dual XXL 11L" },
+  { visual: 'stack' as const, cat: "↕️ Le gain de place sur le plan de travail", nom: "Ninja Double Stack XL SL400EU", capa: "9,5 L (format vertical)", puis: "2470 W", pour: "Une famille de 4 à 6 personnes avec peu de largeur disponible en cuisine.", plus: "Les tiroirs sont superposés : la capacité familiale sans étaler l'appareil sur tout le plan de travail.", moins: "Plus haut qu'un modèle classique : vérifie la hauteur sous tes meubles hauts.", lien: "Ninja Double Stack XL SL400EU" },
+  { visual: 'moulinex' as const, cat: "💶 Le double tiroir familial plus accessible", nom: "Moulinex Dual Easy Fry & Grill", capa: "8,3 L (5,2 L + 3,1 L)", puis: "2600 W", pour: "Un foyer de 3 à 5 personnes qui veut deux tiroirs sans viser le plus grand format.", plus: "Deux tiroirs, synchronisation et plaque gril : un choix cohérent pour les repas de tous les jours.", moins: "Les tiroirs n'ont pas la même taille : réserve le plus grand aux pièces principales.", lien: "Moulinex Dual Easy Fry Grill 8.3L" },
 ];
 
 const articleSchema = {
@@ -64,6 +65,7 @@ const faqSchema = {
         <section class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
           <h3 style="margin:0;font-size:1.1rem">{m.nom}</h3>
+          <ProductIllustration id={m.visual} />
           <p style="margin:9px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span></p>
           <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
           <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>À vérifier :</b> {m.moins}</p>

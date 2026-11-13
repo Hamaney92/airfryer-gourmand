@@ -1,0 +1,24 @@
+---
+import { productAlt, type ProductVisual } from '../lib/product-visuals';
+interface Props {
+  id: ProductVisual;
+}
+const { id } = Astro.props;
+const existing = {
+  storage: { src: '/img/context-storage-v2.webp', width: 660, height: 440 },
+  dish: { src: '/img/context-baking-dish-in-basket.webp', width: 660, height: 440 },
+};
+const { src, width, height } = id === 'storage' || id === 'dish'
+  ? existing[id]
+  : { src: '/img/product-visuals/' + id + '.webp', width: 720, height: 480 };
+---
+<figure class="product-visual">
+  <img src={src} alt={productAlt[id]} width={width} height={height} loading="lazy" decoding="async" />
+  <figcaption>Illustration de mise en situation</figcaption>
+</figure>
+
+<style>
+  .product-visual { margin: 12px 0; max-width: 540px; }
+  .product-visual img { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .product-visual figcaption { margin-top: 5px; font-size: .82rem; color: #65564a; }
+</style>

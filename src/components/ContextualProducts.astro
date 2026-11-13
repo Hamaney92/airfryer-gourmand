@@ -1,5 +1,7 @@
 ---
+import ProductIllustration from './ProductIllustration.astro';
 import { amazonProduct, amazonSearch } from '../lib/site';
+import type { ProductVisual } from '../lib/product-visuals';
 import type { KitchenOffer } from '../lib/commerce';
 interface Props { offers: KitchenOffer[]; pageId: string; pageType?: string; }
 const { offers, pageId, pageType = 'recipe' } = Astro.props;
@@ -7,15 +9,22 @@ const illustrations: Record<string, { src: string; alt: string }> = {
   'baking-dish': { src: '/img/context-baking-dish-in-basket.webp', alt: 'Petit plat en céramique dans un panier d’air fryer ouvert, avec de l’espace autour' },
   storage: { src: '/img/context-storage-v2.webp', alt: 'Boîte en verre avec un couvercle à clips et des légumes rôtis' },
 };
+const newVisuals: Partial<Record<string, ProductVisual>> = {
+  chef: 'knife', tongs: 'tongs', thermometer: 'thermo', 'oil-spray': 'spray',
+  'cake-mould': 'mould', 'individual-moulds': 'muffin', ramekins: 'ramekin', scale: 'scale',
+  'pastry-brush': 'brush', mandoline: 'mandoline',
+};
 ---
 {offers.length > 0 && <aside id="materiel" class="context-products" aria-labelledby="context-products-title">
   <p class="eyebrow">Sélection de matériel · liens affiliés</p>
   <h2 id="context-products-title">Du matériel adapté à cette préparation</h2>
   <p class="intro">Utilise d’abord le matériel que tu possèdes. Voici les usages et les points à vérifier si tu souhaites t’équiper.</p>
   <div class="products-grid">{offers.map(offer => {
+    const visual = newVisuals[offer.id];
     const illustration = offer.product ? undefined : illustrations[offer.id];
     return <section class="product-card">
     <h3>{offer.name}</h3>
+    {visual && <ProductIllustration id={visual} />}
     {illustration && <figure class="product-illustration">
       <img src={illustration.src} alt={illustration.alt} width="660" height="440" loading="lazy" decoding="async" />
       <figcaption>{offer.id === 'baking-dish'

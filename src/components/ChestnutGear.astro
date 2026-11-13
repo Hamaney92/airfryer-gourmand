@@ -1,9 +1,10 @@
 ---
+import ProductIllustration from './ProductIllustration.astro';
 import { amazonSearch } from '../lib/site';
 const offers = [
-  { name: 'Opinel N°07 Châtaigne et Ail', label: 'Pour les fournées de châtaignes', text: 'Une lame courte de 4 cm pour inciser et éplucher les châtaignes. Sert aussi pour l’ail et le dénoyautage. À envisager si tu en prépares régulièrement ; un couteau d’office suffit pour une petite fournée.', query: 'Opinel N07 chataigne ail 002360', cta: 'Chercher le couteau à châtaignes', source: 'https://www.opinel.com/fr-fr/cuisine-nomade/jardin/cueillette/n7-chataigne-ail-et-denoyautage' },
-  { name: 'Opinel Les Essentiels Naturel', label: 'Pour équiper aussi la cuisine du quotidien', text: 'Office, cranté, couteau à légumes et éplucheur : un coffret à examiner si tu dois renouveler plusieurs ustensiles. Pour cette recette seule, acheter un coffret n’est pas nécessaire : privilégie ce que tu possèdes déjà.', query: 'Opinel coffret Les Essentiels Naturel', cta: 'Comparer les offres du coffret', source: 'https://www.opinel.com/fr-fr/couteaux-cuisine/couteaux-office/coffret-les-essentiels-naturel' },
-  { name: 'Boîte hermétique en verre', label: 'Pour garder les châtaignes épluchées', text: 'Une option si tu manques de boîtes pour les restes. Compare la capacité, l’étanchéité et la compatibilité congélateur annoncées par le fabricant. La boîte ne prolonge pas à elle seule la durée de conservation.', query: 'boite conservation verre hermetique cuisine', cta: 'Comparer les boîtes hermétiques' },
+  { visual: 'opinel' as const, name: 'Opinel N°07 Châtaigne et Ail', label: 'Pour les fournées de châtaignes', text: 'Une lame courte de 4 cm pour inciser et éplucher les châtaignes. Sert aussi pour l’ail et le dénoyautage. À envisager si tu en prépares régulièrement ; un couteau d’office suffit pour une petite fournée.', query: 'Opinel N07 chataigne ail 002360', cta: 'Chercher le couteau à châtaignes', source: 'https://www.opinel.com/fr-fr/cuisine-nomade/jardin/cueillette/n7-chataigne-ail-et-denoyautage' },
+  { visual: 'essentiels' as const, name: 'Opinel Les Essentiels Naturel', label: 'Pour équiper aussi la cuisine du quotidien', text: 'Office, cranté, couteau à légumes et éplucheur : un coffret à examiner si tu dois renouveler plusieurs ustensiles. Pour cette recette seule, acheter un coffret n’est pas nécessaire : privilégie ce que tu possèdes déjà.', query: 'Opinel coffret Les Essentiels Naturel', cta: 'Comparer les offres du coffret', source: 'https://www.opinel.com/fr-fr/couteaux-cuisine/couteaux-office/coffret-les-essentiels-naturel' },
+  { visual: 'storage' as const, name: 'Boîte hermétique en verre', label: 'Pour garder les châtaignes épluchées', text: 'Une option si tu manques de boîtes pour les restes. Compare la capacité, l’étanchéité et la compatibilité congélateur annoncées par le fabricant. La boîte ne prolonge pas à elle seule la durée de conservation.', query: 'boite conservation verre hermetique cuisine', cta: 'Comparer les boîtes hermétiques' },
 ];
 ---
 <aside id="materiel" class="chestnut-gear" aria-labelledby="chestnut-gear-title">
@@ -13,7 +14,9 @@ const offers = [
   <p class="disclosure">Liens Amazon affiliés : une commission peut nous être versée, sans surcoût pour vous. Sélection documentaire, sans test produit réalisé par notre équipe. Les boutons ouvrent une recherche Amazon : vérifiez la référence, le vendeur et le prix livré.</p>
   <div class="offers">
     {offers.map((offer) => <section class="offer">
-      <p class="label">{offer.label}</p><h3>{offer.name}</h3><p>{offer.text}</p>
+      <p class="label">{offer.label}</p><h3>{offer.name}</h3>
+      <ProductIllustration id={offer.visual} />
+      <p>{offer.text}</p>
       <a class="cta" href={amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.name} data-placement="chestnut_gear" data-page-type="recipe" data-page-id="chataigne-air-fryer">{offer.cta} sur Amazon →</a>
       {offer.source && <a class="source" href={offer.source} target="_blank" rel="noopener">Consulter la source fabricant</a>}
     </section>)}
