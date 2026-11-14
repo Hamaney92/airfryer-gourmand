@@ -20,6 +20,9 @@ export async function getStaticPaths() {
 
 const { recipe } = Astro.props;
 const { data } = recipe;
+const isChickenGearPilot = recipe.id === 'blanc-de-poulet-air-fryer';
+const gearStep = recipe.id === 'chataigne-air-fryer' ? 0 : isChickenGearPilot ? 4 : -1;
+const gearStepLabel = isChickenGearPilot ? 'Voir la sonde de cuisson (facultatif)' : 'Voir le couteau à châtaignes (facultatif)';
 const updatedDate = data.updatedDate && data.updatedDate >= data.pubDate && data.updatedDate.getTime() <= Date.now()
   ? data.updatedDate : undefined;
 const cat = catInfo(data.category);
@@ -173,7 +176,9 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <ul>{data.ingredients.map((i: string) => <li>{i}</li>)}</ul>
 
       <h2 id="etapes">Étapes</h2>
-      <ol>{data.steps.map((s: string, i: number) => <li id={`etape-${i + 1}`}>{s}</li>)}</ol>
+      <ol>{data.steps.map((s: string, i: number) => (
+        <li id={`etape-${i + 1}`}>{s}{i === gearStep && <> <a href="#accessoire-principal">{gearStepLabel}</a></>}</li>
+      ))}</ol>
       {data.tips.length > 0 && (
         <>
           <h3>Astuces</h3>
@@ -188,7 +193,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         affilié et renvoie vers cet encart visible, placé après les ingrédients et la méthode. */}
     {recipe.id === 'chataigne-air-fryer'
       ? <ChestnutGear />
-      : <ContextualProducts offers={recipeOffers(recipe.id, data.category)} pageId={recipe.id} />}
+      : <ContextualProducts offers={recipeOffers(recipe.id, data.category)} pageId={recipe.id} primaryOfferId={isChickenGearPilot ? 'thermometer' : undefined} />}
 
     <BookOffer kind={bookFor(recipe.id, data.servings)} pageId={recipe.id} />
 
@@ -255,6 +260,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .gear-box__fit{font-size:.82rem!important;color:#685c51!important}
   .gear-box__fallback{font-size:.86rem}.gear-box__fallback a{color:var(--brand-d);font-weight:750}
   .gear-box__guide{font-size:.88rem}.gear-box__guide a{color:var(--brand-d);font-weight:750}
+  @media print{a[href="#accessoire-principal"]{display:none}}
   .cooking-table-link{display:flex;gap:10px;align-items:flex-start;background:#f4f9f7;border-left:4px solid var(--brand);border-radius:10px;padding:12px 15px;margin:14px 0 20px}
   .cooking-table-link span{font-size:1.1rem;line-height:1.45}.cooking-table-link p{margin:0;color:#40564c;font-size:.93rem}.cooking-table-link a{color:var(--brand-d);font-weight:800}
   .light-recipes-link{display:flex;gap:10px;align-items:flex-start;background:#fff8ed;border-left:4px solid #f0a647;border-radius:10px;padding:12px 15px;margin:14px 0 20px}
