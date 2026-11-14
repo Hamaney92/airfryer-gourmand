@@ -54,6 +54,9 @@ const faqSchema = {
       {accessoires.map((a) => (
         <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
+          <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
+          <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
+          <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Voir sur Amazon"} →</a>
           {a.visual && <ProductIllustration id={a.visual} />}
           {a.image && (
             <figure class="accessory-figure">
@@ -61,18 +64,15 @@ const faqSchema = {
               <figcaption>{a.image.caption}</figcaption>
             </figure>
           )}
-          <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
-          <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
-          <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Voir sur Amazon"} →</a>
         </div>
       ))}
 
       <div class="card-box" style="background:linear-gradient(135deg,var(--cream),#fff);border:2px solid var(--brand);border-radius:16px;padding:20px 24px;margin:22px 0;box-shadow:var(--shadow)">
         <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🎁 Le choix malin : tout en une fois</div>
         <div style="font-weight:700;font-size:1.05rem">{coffret.nom}</div>
-        <ProductIllustration id="kit" />
         <p style="margin:6px 0;color:#5f5147">Plutôt que d'acheter chaque accessoire séparément, un <b>coffret universel</b> réunit moules, grille, papier perforé, pince et spray pour le prix de deux ou trois pièces isolées. C'est ce qu'on offrirait à quelqu'un qui vient de recevoir son air fryer. Vérifie juste que le diamètre correspond à ton panier.</p>
         <a href={amazonSearch(coffret.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir les coffrets sur Amazon →</a>
+        <ProductIllustration id="kit" />
       </div>
 
       <div class="card-box" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:24px 0">

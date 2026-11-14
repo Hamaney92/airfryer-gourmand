@@ -65,11 +65,11 @@ const faqSchema = {
         <section class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:16px 0;box-shadow:var(--shadow)">
           <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">{m.cat}</div>
           <h3 style="margin:0;font-size:1.1rem">{m.nom}</h3>
-          <ProductIllustration id={m.visual} />
           <p style="margin:9px 0"><span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.capa}</span> <span class="chip" style="background:var(--cream);color:var(--brand-d);padding:2px 9px;border-radius:20px;font-size:.8rem;font-weight:700">{m.puis}</span></p>
           <p style="margin:6px 0;color:#5f5147"><b>Pour qui :</b> {m.pour}</p>
           <p style="margin:6px 0;color:#5f5147"><b>👍</b> {m.plus}<br/><b>À vérifier :</b> {m.moins}</p>
-          <a href={amazonSearch(m.lien)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={m.nom} data-placement="xxl_guide_model" data-page-type="guide" data-page-id="air-fryer-xxl-familial" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir la référence sur Amazon →</a>
+          <a href={amazonSearch(m.lien)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={m.nom} data-placement="xxl_guide_model" data-page-type="guide" data-page-id="air-fryer-xxl-familial" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Comparer les offres sur Amazon →</a>
+          <ProductIllustration id={m.visual} />
         </section>
       ))}
 

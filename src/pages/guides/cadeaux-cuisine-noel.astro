@@ -27,10 +27,10 @@ const ideas = [
   <h2>Les 8 idées à examiner avant Noël</h2>
   <div class="seasonal-grid">{ideas.map((idea, index) => <section class="seasonal-card">
     <h3>{index + 1}. {idea.name}</h3>
-    <ProductIllustration id={idea.visual} />
     <p><strong>Pour qui ?</strong> {idea.who}</p><p>{idea.use}</p><p><strong>Avant l’achat :</strong> {idea.check}</p>
     {idea.source && <p class="seasonal-sources">Exemple documentaire : {idea.example}. <a href={idea.source} target="_blank" rel="noopener">Consulter la fiche fabricant</a>.</p>}
     <a class="seasonal-cta" href={amazonSearch(idea.query)} rel="sponsored nofollow noopener" target="_blank" data-affiliate-network="amazon" data-placement="christmas_gift_guide" data-product-id={`christmas-gift-${index + 1}`} data-product-type="kitchen" data-page-type="guide" data-page-id="cadeaux-cuisine-noel">Comparer les offres sur Amazon →</a>
+    <ProductIllustration id={idea.visual} />
   </section>)}
     <section class="seasonal-card"><h3>8. Un livre selon sa façon de cuisiner</h3><p>Pour quelqu’un qui cherche des idées plutôt qu’un ustensile de plus, feuillette un livre avant de choisir. Vérifie le format, les portions et la lisibilité ; un livre ne remplace pas la notice de l’appareil.</p><p><strong>Nos livres, présentés par leur éditeur :</strong> Air Fryer Anti-Gaspi propose 100 recettes classées selon les restes. Le second livre de notre collection propose des quantités pour une ou deux personnes. Ce sont nos propres publications, pas une sélection indépendante.</p><p>Le cadeau peut s’accompagner d’une note personnelle : « Pour tes dîners à deux » ou « Pour trouver quoi faire avec les légumes du réfrigérateur ». Inutile de promettre une économie chiffrée.</p><a class="seasonal-cta" href="/livre/" data-book-entry data-book-id="collection" data-placement="christmas_gift_guide">Feuilleter nos deux livres →</a></section>
   </div>

@@ -13,15 +13,14 @@ const offers = [
   <div class="offers">
     {offers.map((offer, index) => <section id={index === 0 ? 'accessoire-principal' : undefined} class:list={['offer', { 'primary-offer': index === 0 }]}>
       <p class="label">{offer.label}</p><h3>{offer.name}</h3>
-      {index !== 0 && <ProductIllustration id={offer.visual} />}
       <p>{offer.text}</p>
       {index === 0 && <p class="disclosure">Lien affilié : commission possible, sans surcoût. Vérifie la référence et le prix parmi les résultats.</p>}
       <a class="cta" href={amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.name} data-placement="chestnut_gear" data-page-type="recipe" data-page-id="chataigne-air-fryer">{offer.cta} sur Amazon →</a>
-      {index === 0 && <ProductIllustration id={offer.visual} />}
+      <ProductIllustration id={offer.visual} />
       {offer.source && <a class="source" href={offer.source} target="_blank" rel="noopener">Consulter la source fabricant</a>}
     </section>)}
   </div>
-  <p class="disclosure">Une commission peut nous être versée. Sélection documentaire, sans test produit réalisé par notre équipe. Les boutons ouvrent une recherche Amazon.</p>
+  <p class="disclosure">Sélection documentaire, sans test produit réalisé par notre équipe.</p>
 </aside>
 <style>
   .primary-offer{grid-column:1/-1;scroll-margin-top:110px}

@@ -20,9 +20,26 @@ export async function getStaticPaths() {
 
 const { recipe } = Astro.props;
 const { data } = recipe;
-const isChickenGearPilot = recipe.id === 'blanc-de-poulet-air-fryer';
-const gearStep = recipe.id === 'chataigne-air-fryer' ? 0 : isChickenGearPilot ? 4 : -1;
-const gearStepLabel = isChickenGearPilot ? 'Voir la sonde de cuisson (facultatif)' : 'Voir le couteau à châtaignes (facultatif)';
+const hasChestnutGear = recipe.id === 'chataigne-air-fryer';
+const offers = recipeOffers(recipe.id, data.category);
+const primaryOffer = offers[0];
+const gearStepPatterns: Partial<Record<string, RegExp>> = {
+  chef: /\b(?:coupe|coupez|découpe|découpez|taille|émince|tranche)\b/i,
+  thermometer: /\b(?:sonde|thermomètre)\b|°C\s+à cœur/i,
+  tongs: /\b(?:retourne|retournez|pince)\b/i,
+  'oil-spray': /\b(?:vaporise|pulvérise|spray)\b/i,
+  'cake-mould': /(?:^|[\s’'])moule\b/i,
+  'individual-moulds': /\bmoules?\b/i,
+  ramekins: /\bramequins?\b/i,
+  'baking-dish': /\b(?:dans|un|le)\s+(?:un\s+|petit\s+)?plat\b/i,
+  'pastry-brush': /\b(?:badigeonne|pinceau)\b/i,
+  mandoline: /\bmandoline\b/i,
+};
+const stepPattern = hasChestnutGear ? /\bincise\b/i : primaryOffer && gearStepPatterns[primaryOffer.id];
+const gearStep = stepPattern ? data.steps.findIndex((step: string) => stepPattern.test(step)) : -1;
+const gearStepLabel = hasChestnutGear
+  ? 'Voir le couteau à châtaignes (facultatif)'
+  : 'Voir l’accessoire conseillé (facultatif)';
 const updatedDate = data.updatedDate && data.updatedDate >= data.pubDate && data.updatedDate.getTime() <= Date.now()
   ? data.updatedDate : undefined;
 const cat = catInfo(data.category);
@@ -187,13 +204,13 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       )}
     </div>
 
-    <SaveRecipe titre={data.title} url={new URL(path, SITE.url).href} />
-
     {/* `#materiel` est aussi la cible des e-mails MailerLite : l'e-mail reste sans lien
         affilié et renvoie vers cet encart visible, placé après les ingrédients et la méthode. */}
-    {recipe.id === 'chataigne-air-fryer'
+    {hasChestnutGear
       ? <ChestnutGear />
-      : <ContextualProducts offers={recipeOffers(recipe.id, data.category)} pageId={recipe.id} primaryOfferId={isChickenGearPilot ? 'thermometer' : undefined} />}
+      : <ContextualProducts offers={offers} pageId={recipe.id} />}
+
+    <SaveRecipe titre={data.title} url={new URL(path, SITE.url).href} />
 
     <BookOffer kind={bookFor(recipe.id, data.servings)} pageId={recipe.id} />
 
