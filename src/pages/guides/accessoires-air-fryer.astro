@@ -25,6 +25,7 @@ const articleSchema = {
   "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
   "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
   "datePublished": "2026-08-01",
+  "dateModified": "2026-11-15",
 };
 const faqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
@@ -46,9 +47,10 @@ const faqSchema = {
       <h1>Accessoires air fryer indispensables (et les gadgets à éviter)</h1>
       <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
         <span aria-hidden="true">🍟</span>
-        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le 13 juillet 2026</span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le <time datetime="2026-11-15">15 novembre 2026</time></span>
       </div>
       <div class="quick"><b>En bref.</b> Mesure ton panier pour choisir un moule, prévois une sonde pour contrôler la cuisson à cœur et vérifie la notice avant d’utiliser du papier cuisson.</div>
+      <p><a href="#recipient-modele">Quel récipient pour mon modèle ? Voir les références et les points à vérifier.</a></p>
       <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b> — si tu achètes via un de nos liens, nous touchons une petite commission, <b>sans surcoût pour toi</b>. Le guide présente les usages de chaque type d’accessoire.</p>
 
       {accessoires.map((a) => (
@@ -68,9 +70,9 @@ const faqSchema = {
       ))}
 
       <div class="card-box" style="background:linear-gradient(135deg,var(--cream),#fff);border:2px solid var(--brand);border-radius:16px;padding:20px 24px;margin:22px 0;box-shadow:var(--shadow)">
-        <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🎁 Le choix malin : tout en une fois</div>
+        <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🎁 Un coffret à vérifier pièce par pièce</div>
         <div style="font-weight:700;font-size:1.05rem">{coffret.nom}</div>
-        <p style="margin:6px 0;color:#5f5147">Plutôt que d'acheter chaque accessoire séparément, un <b>coffret universel</b> réunit moules, grille, papier perforé, pince et spray pour le prix de deux ou trois pièces isolées. C'est ce qu'on offrirait à quelqu'un qui vient de recevoir son air fryer. Vérifie juste que le diamètre correspond à ton panier.</p>
+        <p style="margin:6px 0;color:#5f5147">Un coffret peut regrouper plusieurs accessoires. La mention « universel » ne confirme pas leur compatibilité avec ton appareil : vérifie les dimensions et les usages autorisés de chaque pièce, y compris le papier cuisson. Compare le contenu à ce dont tu as besoin avant de choisir.</p>
         <a href={amazonSearch(coffret.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir les coffrets sur Amazon →</a>
         <ProductIllustration id="kit" />
       </div>
@@ -80,6 +82,23 @@ const faqSchema = {
         <p style="color:#5f5147;margin:0">Si tu cuisines souvent des morceaux épais de viande ou de volaille, commence par un <b>thermomètre à viande</b>. Si tu prépares surtout des portions individuelles, mesure d’abord ton panier pour choisir un moule adapté.</p>
       </div>
 
+      <h2 id="recipient-modele">Quel récipient pour mon modèle d’air fryer ?</h2>
+      <p>Relève la référence complète sur l’étiquette de l’appareil. Un <strong>plat posé dans un panier</strong> doit respecter ses dimensions et sa circulation d’air. Un <strong>récipient dédié au système CRISPi</strong> fait partie de l’ensemble de cuisson : un plat en verre de taille proche ne suffit pas à le remplacer.</p>
+      <p>Voici quelques repères documentaires vérifiés le <time datetime="2026-11-15">15 novembre 2026</time>. Nous n’avons pas réalisé de test physique de ces associations. Les liens du tableau conduisent aux fiches fabricant, sans lien affilié.</p>
+      <div class="compatibility-scroll" role="region" aria-label="Tableau des récipients, défilement horizontal si nécessaire" tabindex="0">
+        <table class="compatibility-table">
+          <caption>Récipients : références confirmées et vérifications restantes</caption>
+          <thead><tr><th scope="col">Ton appareil</th><th scope="col">Récipient et source</th><th scope="col">Ce qui est vérifié</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Ninja CRISPi FN201EUBL1, FN201EUGN8, FN201EUSD2, FN202EU ou FN203EU</th><td>CleanCrisp 3,8 L<br /><a href="https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html">XSKLDPLCNTEUUK — fiche Ninja</a></td><td>Ces références sont explicitement citées sur la fiche. Pour une autre version, notamment FN101EU, la compatibilité reste à vérifier dans la notice ou auprès du fabricant.</td></tr>
+            <tr><th scope="row">Ninja CRISPi Pro AS101EUCY, AS101EUGY, AS101EULG, AS101EURS, AS101EUYL, AS101EUPU4 ou AS104EUBR</th><td>CleanCrisp 3,8 L<br /><a href="https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html">XSKLDPLCNTEUUK — liste des modèles</a></td><td>La même fiche cite ces versions Pro. Ne déduis pas la compatibilité d’un autre récipient à partir de sa seule contenance.</td></tr>
+            <tr><th scope="row">Air fryer à panier, modèle à identifier</th><td>Plat Pyrex avec poignée amovible, variantes 1,5 L et 2 L<br /><a href="https://www.pyrex.fr/products/plat-airfryer-en-verre-avec-poignee-amovible">Vérifier la variante chez Pyrex</a></td><td><strong>Compatibilité avec ton modèle à vérifier.</strong> La fiche présente des formats pour double tiroir ou tiroir unique, sans confirmer ici ton appareil précis. Compare les dimensions extérieures et la hauteur utile, puis les consignes des deux fabricants.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Tu veux cuire puis ranger les restes dans le même contenant ?</h3>
+      <p>Vérifie séparément les usages du récipient, du couvercle et de la poignée. Un couvercle fourni pour la conservation n’est pas une autorisation de le laisser pendant la cuisson. Suis les consignes de refroidissement, de manipulation et de nettoyage propres à la référence choisie.</p>
+      <p>Pour comprendre le système à récipient dédié, consulte les <a href="/guides/nouveautes-air-fryer/">fonctions des air fryers en verre</a>. Si tu cherches simplement un moule à placer dans ton panier, commence par les mesures ci-dessous.</p>
       <h2 id="mesurer-panier">Mesurer ton panier avant d’acheter un moule</h2>
       <ol>
         <li>À froid, mesure le fond à l’endroit où reposera le moule, puis la largeur à la hauteur des anses.</li>
@@ -104,7 +123,14 @@ const faqSchema = {
 </Base>
 
 <style>
-  #papier-cuisson, #mesurer-panier, #separateur-panier, #plaque-rechange { scroll-margin-top: 84px; }
+  #papier-cuisson, #mesurer-panier, #separateur-panier, #plaque-rechange, #recipient-modele { scroll-margin-top: 100px; }
+  .compatibility-scroll { max-width: 100%; overflow-x: auto; margin: 18px 0; }
+  .compatibility-scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+  .compatibility-table { width: 100%; border-collapse: collapse; font-size: .95rem; table-layout: fixed; }
+  .compatibility-table caption { text-align: left; font-weight: 700; padding-bottom: 10px; }
+  .compatibility-table th, .compatibility-table td { border: 1px solid var(--line); padding: 12px; vertical-align: top; text-align: left; overflow-wrap: anywhere; }
+  .compatibility-table thead { background: var(--cream); }
+  @media (max-width: 600px) { .compatibility-table { min-width: 620px; } }
   .accessory-figure { max-width: 440px; margin: 12px 0; }
   .accessory-figure img { width: 100%; height: auto; border-radius: 10px; }
   .accessory-figure figcaption { margin-top: 6px; color: var(--muted); font-size: .88rem; }
