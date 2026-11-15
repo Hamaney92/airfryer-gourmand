@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import { amazonProduct } from '../../lib/site';
+
+const models = [
+  {
+    name: 'Ninja Foodi FlexDrawer 10,4 L',
+    reference: 'AF500EUCP',
+    asin: 'B0CJVNGMFL',
+    benefit: 'Deux zones de même capacité. Utile si tu cuisines régulièrement deux préparations de taille comparable.',
+    check: 'Mesure la place devant l’appareil : même avec le séparateur installé, c’est le tiroir entier que tu sors.',
+    source: 'https://support.sharkninja.fr/fr/article/SC3A9rie-AF500EU-Friteuse-sans-huile-Ninja-Foodi-Flex-FAQ-fr',
+    sourceLabel: 'Documentation Ninja de la série AF500EU',
+  },
+  {
+    name: 'Moulinex Dual Easy Fry Flex 9 L',
+    reference: 'EZ9228F0',
+    asin: 'B0F6Y4SQX6',
+    benefit: 'Une zone de 5,5 L et une de 3,5 L avec le séparateur. Ce format convient mieux si le plat principal prend régulièrement plus de place que son accompagnement.',
+    check: 'Vérifie que la zone de 3,5 L permet d’étaler l’accompagnement à la hauteur et sur la surface dont tu as besoin.',
+    source: 'https://www.moulinex.fr/p/dual-easy-fry-flex-9l-air-fryer-noir/1510003156',
+    sourceLabel: 'Fiche Moulinex de la référence EZ9228F0',
+  },
+];
+---
+<Base title="Air fryer à séparateur amovible ou double panier : que choisir ?" description="Compare la cuve modulable du Ninja FlexDrawer 10,4 L et du Moulinex Dual Easy Fry Flex 9 L avec deux tiroirs séparés. Choisis selon tes plats et ton plan de travail.">
+  <div class="wrap">
+    <article class="article">
+      <p><a href="/guides/">Guides air fryer</a></p>
+      <h1>Air fryer à séparateur amovible ou double panier : lequel choisir ?</h1>
+      <p class="quick"><strong>En bref.</strong> Choisis une cuve modulable si tu alternes entre un repas en deux zones et des plats qui demandent toute la largeur. Deux tiroirs séparés sont plus pratiques si tu veux sortir et servir souvent une préparation pendant que l’autre continue de cuire.</p>
+      <h2>Prends ton repas habituel comme exemple</h2>
+      <dl class="uses">
+        <dt>Saumon et légumes</dt>
+        <dd>Pose le séparateur, puis programme chaque zone selon son contenu. Si l’appareil synchronise les fins de cuisson, la zone la plus rapide démarre plus tard. Vérifie l’épaisseur du poisson et la taille de la portion de légumes.</dd>
+        <dt>Grand plat ou préparation large</dt>
+        <dd>Retire le séparateur avant de lancer le mode grande cuve, selon la notice. Compare les dimensions du plat, anses comprises, au fond utile. Les litres indiquent le volume, mais deux cuves de même volume peuvent accueillir des plats de formes très différentes.</dd>
+        <dt>Un accompagnement que tu veux sortir en premier</dt>
+        <dd>Avec deux tiroirs séparés, tu peux retirer le panier de l’accompagnement seul. Avec une cuve modulable, le séparateur divise la zone de cuisson, et le tiroir se retire d’un seul bloc.</dd>
+      </dl>
+      <h2>Deux modèles à cuve modulable</h2>
+      <p class="disclosure">Sélection fondée sur les fiches fabricant et les références marchandes. Les liens Amazon sont affiliés. Une commission peut nous être versée, sans surcoût pour toi.</p>
+      {models.map(model => (
+        <section class="model">
+          <h3>{model.name}</h3>
+          <p><strong>Référence Amazon France :</strong> {model.reference}</p>
+          <p>{model.benefit}</p>
+          <p><strong>Avant de choisir :</strong> {model.check}</p>
+          <a class="model-button" href={amazonProduct(model.asin)} rel="sponsored nofollow noopener" target="_blank" data-affiliate-network="amazon" data-product-type="kitchen" data-product-id={model.reference} data-product-asin={model.asin} data-product-name={model.name} data-placement="flex_guide_model" data-page-type="guide">Voir le {model.reference} sur Amazon →</a>
+          <p class="source"><a href={model.source}>{model.sourceLabel}</a></p>
+        </section>
+      ))}
+      <h2>Trois mesures à prendre avant de commander</h2>
+      <ol>
+        <li>Mesure le fond utile dans la configuration qui t’intéresse, avec ou sans séparateur. Si les dimensions intérieures sont absentes de la notice, demande-les au vendeur.</li>
+        <li>Vérifie la profondeur sur le plan de travail, l’espace devant l’appareil pour ouvrir le tiroir et les dégagements indiqués dans la notice.</li>
+        <li>Vérifie quelles pièces se retirent et comment les laver. Un tiroir pleine largeur peut être encombrant dans un petit évier.</li>
+      </ol>
+      <p><a href="/guides/meilleur-air-fryer-double-panier/">Comparer les modèles à deux tiroirs séparés</a> · <a href="/guides/types-air-fryer/">Explorer les autres formats d’air fryer</a> · <a href="/recettes/saumon-air-fryer/">Voir la recette de saumon</a></p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .uses dt{font-weight:800}
+  .uses dd{margin:0 0 16px}
+  .model{border:1px solid var(--line);background:var(--card,#fff);border-radius:16px;padding:18px;margin:16px 0}
+  .model h3{margin:0 0 8px}
+  .disclosure,.source{font-size:.875rem}
+  .model-button{display:inline-flex;align-items:center;min-height:44px;border-radius:9px;padding:9px 14px;background:#173e32;color:#fff;font-weight:750;text-decoration:none}
+  .model-button:hover{background:#265b46}
+  .model-button:focus-visible{outline:3px solid #bd710c;outline-offset:3px}
+</style>
