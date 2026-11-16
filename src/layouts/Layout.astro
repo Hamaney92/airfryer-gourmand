@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ChristmasTheme from '../components/ChristmasTheme.astro';
+import Brand from '../components/Brand.astro';
 import AdSenseVerification from '../components/AdSenseVerification.astro';
 import { SITE, USAGES, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
@@ -40,7 +41,7 @@ const year = new Date().getFullYear();
     <ChristmasTheme head />
     <AdSenseVerification />
     <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/img/brand/ag-favicon.png" type="image/png" />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J24QNEE9GV" is:inline></script>
     <script is:inline>
@@ -76,7 +77,7 @@ const year = new Date().getFullYear();
     <a class="skip-link" href="#main-content">Aller au contenu</a>
     <header>
       <div class="wrap bar">
-        <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
+        <Brand />
         <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
           {USAGES.map((u) => (
             <a href={u.slug}>{u.label}</a>
@@ -107,7 +108,7 @@ const year = new Date().getFullYear();
       <div class="wrap">
         <div class="fgrid">
           <div>
-            <a href="/" class="logo" style="color:#fff">Airfryer <b style="color:var(--accent)">Gourmand</b></a>
+            <Brand inverse />
             <p style="margin-top:10px;max-width:320px;color:#c9bdb3;font-size:.9rem">{SITE.tagline}. Des instructions claires, des temps et des températures faciles à retrouver.</p>
           </div>
           <div>

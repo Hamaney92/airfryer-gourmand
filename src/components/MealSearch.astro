@@ -1,0 +1,29 @@
+---
+import SantaLoader from './SantaLoader.astro';
+interface Props { home?: boolean }
+const {home=false}=Astro.props;
+---
+<div class:list={['meal-search',{'meal-search-home':home}]}>
+  {home && <><span class="meal-eyebrow">Votre idée. Nos recettes.</span><h2>Qu’est-ce qu’on cuisine&nbsp;?</h2><p class="meal-intro">Une envie, quelques ingrédients… Retrouvez une recette pour votre air fryer.</p></>}
+  <form action="/recherche/" method="get" role="search" aria-label="Trouver une idée de repas" data-meal-form>
+    <label for="meal-query">Votre envie du moment</label>
+    <div class="meal-search-row"><input id="meal-query" name="q" type="search" required minlength="2" maxlength="300" placeholder="Du poulet, des courgettes… ou un repas du soir" autocomplete="off" aria-describedby="meal-privacy"/><button type="submit">Trouver mon idée <span aria-hidden="true">→</span></button></div>
+    {!home && <details class="meal-pantry"><summary>Cuisiner avec ce que j’ai</summary><label for="meal-pantry">Vos ingrédients disponibles (facultatif)</label><input id="meal-pantry" name="pantry" maxlength="300" placeholder="Ex. saumon, citron, persil, huile d’olive"/><p>On les comparera à chaque recette. Vérifiez ensuite les quantités et les ingrédients manquants.</p></details>}
+    <p id="meal-privacy" class="meal-privacy">Pour comprendre une demande libre, l’IA Cloudflare peut recevoir votre texte. N’indiquez pas de données personnelles.</p>
+  </form>
+  {home && <div class="meal-examples" aria-label="Exemples de recherche"><a href="/recherche/?q=repas%20du%20soir">Repas du soir</a><a href="/recherche/?q=poulet%20rapide">Poulet rapide</a><a href="/recherche/?q=repas%20vegetarien">Une envie végétarienne</a></div>}
+  <SantaLoader/>
+</div>
+<style is:global>
+  .meal-search{--meal-green:#174b38;--meal-lime:#d7e8a8;color:#183e30;max-width:850px;margin:auto}.meal-search-home{text-align:center;border:1px solid #dce1cc;border-radius:26px;background:#f1f3e7;padding:36px 40px;margin:16px auto 30px;box-shadow:0 12px 32px #174b3808}
+  .meal-eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.72rem;font-weight:700}.meal-search h2{font-family:Georgia,serif;font-size:clamp(1.9rem,4vw,2.6rem);font-weight:500;line-height:1.2;margin:10px 0}.meal-intro{margin:0 0 22px;color:#526353}
+  .meal-search form{text-align:left}.meal-search label{display:block;font-size:.9rem;font-weight:700;margin:12px 0 7px}.meal-search-row{display:flex;gap:8px}.meal-search input{width:100%;min-width:0;border:1px solid #94aa91;border-radius:12px;padding:15px 16px;background:#fffef9;color:#183e30;font:inherit;font-size:1rem}.meal-search input:focus{outline:3px solid #a9bf72;outline-offset:2px}.meal-search button{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:20px;border:0;border-radius:12px;padding:14px 20px;background:#174b38;color:white;font:inherit;font-weight:700;cursor:pointer}.meal-search button:hover{background:#103c2a}.meal-search button:disabled{opacity:.65;cursor:wait}
+  .meal-privacy{font-size:.76rem;color:#536154;margin-top:12px;line-height:1.5}.meal-examples{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}.meal-examples a{border:1px solid #c9d5b7;border-radius:24px;padding:8px 13px;font-size:.83rem;background:#fffdf5}.meal-examples a:hover{background:#d7e8a8}.meal-pantry{margin-top:18px}.meal-pantry summary{cursor:pointer;text-decoration:underline;text-underline-offset:4px}.meal-pantry p{font-size:.82rem;color:#536154;margin-top:8px}
+  @media(max-width:620px){.meal-search-home{padding:26px 18px}.meal-search-row{flex-direction:column}.meal-search button{min-height:50px}.meal-examples{gap:6px}.meal-examples a{font-size:.8rem}}
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('.meal-search-home').forEach(box=>{
+    box.querySelector('form')?.addEventListener('submit',()=>{(box.querySelector('[data-meal-loader]') as HTMLElement).hidden=false;});
+    window.addEventListener('pageshow',()=>{(box.querySelector('[data-meal-loader]') as HTMLElement).hidden=true;});
+  });
+</script>

@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MealSearch from '../../components/MealSearch.astro';
+---
+<Layout title="Votre idée de repas — Airfryer Gourmand" description="Retrouvez nos recettes à partir de vos envies et de vos ingrédients." path="/recherche/" noindex>
+  <div class="wrap meal-page">
+    <a class="meal-back" href="/">← Accueil</a>
+    <header class="meal-heading"><span class="meal-eyebrow">L’inspiration commence ici</span><h1>Une idée, et on passe à table.</h1><p>Des recettes du site, des pistes proches et vos ingrédients pour faire le choix.</p></header>
+    <MealSearch/>
+    <noscript><p>Activez JavaScript pour utiliser cette recherche, ou <a href="/recettes/">parcourez toutes nos recettes</a>.</p></noscript>
+    <section class="meal-results" aria-labelledby="results-title" aria-busy="false">
+      <h2 id="results-title" tabindex="-1">À vous de choisir</h2>
+      <p id="results-summary" role="status" aria-live="polite">Saisissez une envie pour découvrir les recettes du site.</p>
+      <p id="search-note" class="meal-search-note"></p>
+      <div id="meal-results-grid"></div>
+      <div id="meal-retry" hidden><a href="/recherche/?q=repas%20du%20soir">Voir des idées pour le soir →</a><a href="/recettes/">Parcourir toutes les recettes →</a></div>
+    </section>
+    <aside class="meal-method"><h2>Votre recette reste le point de départ</h2><p>L’IA aide à comprendre votre recherche. Les recettes, ingrédients et durées affichés proviennent du site. Les pistes proches ne répondent pas forcément à tous vos critères. Les suggestions d’assaisonnement sont des variantes à vérifier, pas de nouvelles recettes testées.</p><a href="/tableau-temps-cuisson-air-fryer/">Retrouver les repères de cuisson →</a></aside>
+  </div>
+</Layout>
+<script>
+  import '../../scripts/meal-search-client.mjs';
+</script>
+<style is:global>
+  .meal-page{max-width:1040px;padding-bottom:50px}.meal-back{display:inline-block;color:#365842;font-size:.9rem;padding:20px 0 8px}.meal-heading{text-align:center;padding:24px 0 30px;color:#174b38}.meal-heading h1{font:500 clamp(2rem,4.4vw,3.2rem)/1.12 Georgia,serif;margin:12px 0}.meal-heading p{color:#5c6a5c;max-width:560px;margin:auto}
+  .meal-results{padding:35px 0}.meal-results h2{scroll-margin-top:85px;font:500 1.8rem/1.3 Georgia,serif;color:#174b38}.meal-results>p{margin-top:10px;max-width:780px}.meal-search-note{font-size:.85rem;color:#5c6a5c}.meal-search-note:empty{display:none}#meal-results-grid{display:grid;align-items:start;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:26px}
+  .meal-card{background:#fffef9;border:1px solid #dce1cc;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.meal-card>a img{width:100%;aspect-ratio:4/3;object-fit:cover}.meal-card-body{padding:18px;display:flex;flex-direction:column;flex:1;gap:10px}.meal-card h3{font-size:1.07rem;line-height:1.4;color:#174b38}.meal-card h3 a:hover{text-decoration:underline}.meal-meta{font-size:.8rem;color:#5c6a5c}.meal-match{font-size:.78rem;background:#edf2df;color:#315138;border-radius:8px;padding:6px 8px}.meal-card details{font-size:.85rem;margin-top:auto}.meal-card summary{cursor:pointer;font-weight:700;color:#174b38;min-height:40px;padding:9px 0}.meal-card ul{padding-left:18px}.meal-card li{margin:7px 0}.meal-card h4{margin-top:12px;font-size:.86rem}.meal-card details p{margin:10px 0;color:#586253}.meal-open{display:block;color:#174b38;font-weight:700;border-top:1px solid #e1e5d7;padding-top:13px;font-size:.9rem}.meal-open:hover{text-decoration:underline}.meal-adapt{color:#174b38;font:inherit;background:#f0f3e5;border:1px solid #ccd5ba;border-radius:8px;padding:9px;cursor:pointer}
+  #meal-retry{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap}#meal-retry[hidden]{display:none}#meal-retry a,.meal-method a{color:#174b38;text-decoration:underline;text-underline-offset:4px}.meal-method{border-top:1px solid #d5ddc8;padding:24px 0;max-width:850px;margin:auto;font-size:.88rem;color:#586253}.meal-method h2{font-size:1.1rem;color:#174b38;margin-bottom:8px}.meal-method a{display:inline-block;margin-top:12px}
+  @media(max-width:850px){#meal-results-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){#meal-results-grid{grid-template-columns:1fr}.meal-heading{padding:14px 0 24px}.meal-results{padding:28px 0}.meal-card>a img{aspect-ratio:16/9}}
+</style>

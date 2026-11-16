@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ChristmasTheme from '../components/ChristmasTheme.astro';
+import Brand from '../components/Brand.astro';
 import AdSenseVerification from '../components/AdSenseVerification.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
@@ -46,14 +47,14 @@ const cats = [
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/img/brand/ag-favicon.png" type="image/png" />
   <slot name="head" />
 </head>
 <body data-page-type={pageType}>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
   <header>
     <div class="wrap bar">
-      <a href="/" class="logo">Airfryer <b>Gourmand</b></a>
+      <Brand />
       <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
         {cats.map(([label, href]) => <a href={href} data-book-entry={href === '/livre/' ? '' : undefined} data-placement={href === '/livre/' ? 'header' : undefined} data-page-type={href === '/livre/' ? pageType : undefined}>{label}</a>)}
       </nav>
@@ -76,7 +77,7 @@ const cats = [
     <div class="wrap">
       <div class="fgrid">
         <div>
-          <div class="logo" style="color:#fff;margin-bottom:10px">Airfryer <b style="color:var(--accent)">Gourmand</b></div>
+          <Brand inverse />
           <p style="color:#b6a99d;font-size:.9rem;max-width:280px">Le guide francophone pour tout réussir avec ton air fryer : recettes, temps de cuisson et guides d'achat.</p>
         </div>
         <div><h4>Recettes</h4><a href="/categorie/viandes/">Viandes</a><a href="/categorie/poissons/">Poissons</a><a href="/categorie/surgeles/">Surgelés</a><a href="/categorie/desserts/">Desserts</a></div>

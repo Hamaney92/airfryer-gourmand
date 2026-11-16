@@ -1,0 +1,25 @@
+<div class="meal-loader" data-meal-loader hidden role="status" aria-live="polite">
+  <svg viewBox="0 0 140 120" width="100" height="86" aria-hidden="true">
+    <ellipse cx="70" cy="108" rx="42" ry="5" fill="#e8e4d6"/>
+    <g class="santa-chef">
+      <path d="M31 102Q29 66 54 62H85Q109 67 108 102Z" fill="#174b38"/>
+      <path d="M56 74H86L91 102H51Z" fill="#d6e5a2"/>
+      <circle cx="70" cy="45" r="23" fill="#deb18a"/>
+      <path d="M46 43Q43 78 70 82Q97 78 94 43L81 53L70 49L60 54Z" fill="#fffaf0"/>
+      <path d="M45 27Q56 -3 80 12L100 28L79 21L90 31Z" fill="#963648"/>
+      <path d="M46 29H90" stroke="#fffaf0" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="101" cy="29" r="7" fill="#fffaf0"/>
+      <circle cx="60" cy="42" r="2" fill="#153d30"/><circle cx="80" cy="42" r="2" fill="#153d30"/>
+      <ellipse cx="70" cy="49" rx="5" ry="4" fill="#d79a7b"/>
+      <path d="M28 87Q70 108 111 87" fill="none" stroke="#b69754" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <path class="meal-steam" d="M114 72q-5-6 0-12m-12 12q-5-6 0-12" fill="none" stroke="#b69754" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <p>On cherche une bonne idée pour vous…</p>
+</div>
+<style>
+  .meal-loader[hidden]{display:none}.meal-loader{text-align:center;padding:24px;color:#174b38}.meal-loader svg{margin:auto}.meal-loader p{font-size:.95rem;margin-top:8px}
+  .santa-chef{transform-origin:70px 90px;animation:chef-sway 1.6s ease-in-out infinite}.meal-steam{animation:chef-steam 1.6s ease-in-out infinite}
+  @keyframes chef-sway{50%{transform:rotate(5deg) translateY(-2px)}}@keyframes chef-steam{50%{opacity:.3;transform:translateY(-5px)}}
+  @media(prefers-reduced-motion:reduce){.santa-chef,.meal-steam{animation:none}}
+</style>

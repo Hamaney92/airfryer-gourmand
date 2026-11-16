@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {shoppingList,formatItem} from './public/planner.mjs';
+test('four people scale chicken and combine measured oil',()=>{const rows=shoppingList(['blanc-de-poulet-air-fryer','carotte-air-fryer'],4);assert.equal(rows.find(r=>r.key==='poulet|pièce').min,4);assert.equal(rows.find(r=>r.key==='huile|c. à soupe').min,3);assert.equal(rows.find(r=>r.key==='carotte|pièce').max,5);});
+test('ranges and fractional portions preserved',()=>{const row=shoppingList(['carotte-air-fryer'],1)[0];assert.equal(row.min,1);assert.equal(row.max,1.25);assert.equal(formatItem(row),'1 à 1,25 carottes');});
+test('qualitative oil never converted to tablespoons',()=>{const rows=shoppingList(['saumon-air-fryer','carotte-air-fryer'],4);assert.equal(rows.filter(x=>x.key.startsWith('huile|')).length,2);assert.equal(rows.find(x=>x.unit==='filet à ajuster').min,null);});
+test('duplicates not counted twice; invalid selections rejected',()=>{assert.deepEqual(shoppingList(['saumon-air-fryer','saumon-air-fryer'],2),shoppingList(['saumon-air-fryer'],2));for(const n of [0,13,1.5,NaN])assert.throws(()=>shoppingList([],n));assert.throws(()=>shoppingList(['unknown'],2));assert.deepEqual(shoppingList([],2),[]);});

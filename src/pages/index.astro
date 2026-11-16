@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RecipeCard from '../components/RecipeCard.astro';
+import MealSearch from '../components/MealSearch.astro';
 import SeasonalSpotlight from '../components/SeasonalSpotlight.astro';
 import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../lib/site';
 
@@ -43,7 +44,7 @@ const jsonLd = {
   inLanguage: 'fr-FR',
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${SITE.url}/recettes/?q={search_term_string}`,
+    target: `${SITE.url}/recherche/?q={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 };
@@ -59,11 +60,7 @@ const jsonLd = {
           <a href="/tableau-temps-cuisson-air-fryer/" class="cta">Voir le tableau de cuisson →</a>
           <a href="/temps-de-cuisson/" class="cta ghost">Convertisseur four → air fryer</a>
         </div>
-        <form action="/recettes/" method="get" role="search" aria-label="Trouver une recette" style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-          <label for="home-recipe-search" style="width:100%;font-size:.9rem;font-weight:700">Qu’avez-vous envie de cuisiner ?</label>
-          <input id="home-recipe-search" name="q" type="search" placeholder="Un ingrédient : poulet, courgette…" style="min-width:0;flex:1 1 220px;padding:12px;border:1px solid #bba99b;border-radius:10px;font:inherit" />
-          <button type="submit" class="cta" style="padding:12px 16px">Rechercher</button>
-        </form>
+
         {latest.length > 0 && (
           <p class="hero-latest"><a href="#dernieres-recettes">Découvrir les dernières recettes ↓</a></p>
         )}
@@ -78,6 +75,8 @@ const jsonLd = {
         <figcaption><span>À partager</span><a href="/recettes/feta-rotie-air-fryer/">Feta rôtie à l’air fryer <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
     </section>
+
+    <MealSearch home />
 
     <SeasonalSpotlight />
 
