@@ -1,10 +1,11 @@
 import {searchRecipes,pantryCheck} from '../lib/meal-search.mjs';
+import {createMealMenu} from './meal-menu-client.mjs';
 const form=document.querySelector('[data-meal-form]');
 const query=form.elements.namedItem('q'),pantry=form.elements.namedItem('pantry');
 const loader=document.querySelector('[data-meal-loader]'),grid=document.getElementById('meal-results-grid');
 const summary=document.getElementById('results-summary'),title=document.getElementById('results-title'),note=document.getElementById('search-note');
 const retry=document.getElementById('meal-retry'),region=document.querySelector('.meal-results');
-let catalogPromise,controller,run=0;
+let catalogPromise,controller,menu,run=0;
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;};
 function list(parent,heading,items){if(!items.length)return;parent.append(node('h4',heading));const ul=node('ul');items.forEach(x=>ul.append(node('li',x)));parent.append(ul);}
 function card({recipe:r,hits},kind){
@@ -23,9 +24,9 @@ function card({recipe:r,hits},kind){
   }else{
     list(details,'La liste de la recette',r.ingredients);const b=node('button','Adapter à mes ingrédients','meal-adapt');b.type='button';b.addEventListener('click',()=>{document.querySelector('.meal-pantry').open=true;pantry.focus();});details.append(b);
   }
-  body.append(details);const open=node('a','Voir la recette →','meal-open');open.href=url;body.append(open);article.append(body);return article;
+  body.append(details);const open=node('a','Voir la recette →','meal-open');open.href=url;body.append(open,menu.button(r.id));article.append(body);return article;
 }
-async function catalog(){if(!catalogPromise)catalogPromise=fetch('/recherche/catalogue.json',{signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).catch(e=>{catalogPromise=null;throw e;});return catalogPromise;}
+async function catalog(){if(!catalogPromise)catalogPromise=fetch('/recherche/catalogue.json',{signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{menu ||= createMealMenu(data);return data;}).catch(e=>{catalogPromise=null;throw e;});return catalogPromise;}
 async function search(focus=false){
   const id=++run;controller?.abort();controller=new AbortController();const current=controller;
   const q=query.value.trim();grid.replaceChildren();note.textContent='';retry.hidden=true;
@@ -56,3 +57,5 @@ async function search(focus=false){
 function readURL(){const p=new URLSearchParams(location.search);query.value=(p.get('q')||'').slice(0,300);pantry.value=(p.get('pantry')||'').slice(0,300);if(pantry.value)document.querySelector('.meal-pantry').open=true;search();}
 form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const p=new URLSearchParams({q:query.value.trim()});if(pantry.value.trim())p.set('pantry',pantry.value.trim());history.pushState(null,'',`/recherche/?${p}`);search(true);});
 window.addEventListener('popstate',readURL);readURL();
+// Restore a menu even when opening the search page without a query.
+if(!query.value.trim())catalog().catch(()=>{});

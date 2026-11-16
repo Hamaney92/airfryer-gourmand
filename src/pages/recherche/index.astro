@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import MealSearch from '../../components/MealSearch.astro';
+import MealMenu from '../../components/MealMenu.astro';
 ---
 <Layout title="Votre idée de repas — Airfryer Gourmand" description="Retrouvez nos recettes à partir de vos envies et de vos ingrédients." path="/recherche/" noindex>
   <div class="wrap meal-page">
@@ -15,6 +16,7 @@ import MealSearch from '../../components/MealSearch.astro';
       <div id="meal-results-grid"></div>
       <div id="meal-retry" hidden><a href="/recherche/?q=repas%20du%20soir">Voir des idées pour le soir →</a><a href="/recettes/">Parcourir toutes les recettes →</a></div>
     </section>
+    <MealMenu />
     <aside class="meal-method"><h2>Votre recette reste le point de départ</h2><p>L’IA aide à comprendre votre recherche. Les recettes, ingrédients et durées affichés proviennent du site. Les pistes proches ne répondent pas forcément à tous vos critères. Les suggestions d’assaisonnement sont des variantes à vérifier, pas de nouvelles recettes testées.</p><a href="/tableau-temps-cuisson-air-fryer/">Retrouver les repères de cuisson →</a></aside>
   </div>
 </Layout>
