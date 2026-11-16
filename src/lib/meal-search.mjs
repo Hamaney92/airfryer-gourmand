@@ -36,7 +36,7 @@ export function searchRecipes(catalog, query, ai = null) {
   }).sort((a,b)=>b.score-a.score || a.recipe.minutes-b.recipe.minutes);
   const ranked = rank(intent.terms);
   const exact = ranked.filter(r=>r.complete);
-  if (exact.length) return {kind:'exact',items:exact.slice(0,12),total:exact.length,intent};
+  if (exact.length) return {kind:'exact',items:exact,total:exact.length,intent};
   if (intent.generic) {
     const mains = pool.filter(r=>vegetarian ? !['Dessert'].includes(r.category) : ['Volaille','Poisson','Plat','Viande','Œufs'].includes(r.category));
     return {kind:'ideas',items:(mains.length?mains:pool).slice(0,9).map(recipe=>({recipe,hits:[]})),intent};
