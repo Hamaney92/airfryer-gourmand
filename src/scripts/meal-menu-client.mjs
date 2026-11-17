@@ -7,6 +7,7 @@ export function createMealMenu(catalog){
   const selection=document.getElementById('menu-selection'),shopping=document.getElementById('menu-shopping');
   const peopleInput=document.getElementById('menu-people'),download=document.getElementById('menu-download');
   const count=document.getElementById('menu-count'),feedback=document.getElementById('menu-feedback'),error=document.getElementById('menu-error');
+  const searchFocus=()=>document.getElementById(document.getElementById('conversation-form')?.hidden?'conversation-review-title':'meal-query');
   let people=2,selected=new Set(),owned=new Set(),rows=[];
   try{const state=readMenuState(sessionStorage.getItem(STORAGE),catalog);if(state){people=state.people;selected=new Set(state.ids);}}catch{}
   peopleInput.value=String(people);
@@ -20,7 +21,7 @@ export function createMealMenu(catalog){
   function render(){
     box.hidden=shortcut.hidden=selected.size===0;document.getElementById('menu-badge').textContent=String(selected.size);
     selection.replaceChildren();shopping.replaceChildren();
-    for(const id of selected){const r=catalog.find(r=>r.id===id),li=node('li'),a=node('a',r.title),remove=node('button','Retirer');a.href=recipeURL(id);remove.type='button';remove.setAttribute('aria-label',`Retirer ${r.title} du menu`);remove.addEventListener('click',()=>{toggle(id);if(selected.size)document.getElementById('menu-title').focus();else (document.querySelector(`[data-menu-recipe="${id}"]`)||document.getElementById('meal-query')).focus();});li.append(a,remove);selection.append(li);}
+    for(const id of selected){const r=catalog.find(r=>r.id===id),li=node('li'),a=node('a',r.title),remove=node('button','Retirer');a.href=recipeURL(id);remove.type='button';remove.setAttribute('aria-label',`Retirer ${r.title} du menu`);remove.addEventListener('click',()=>{toggle(id);if(selected.size)document.getElementById('menu-title').focus();else (document.querySelector(`[data-menu-recipe="${id}"]`)||searchFocus()).focus();});li.append(a,remove);selection.append(li);}
     rows=buildShoppingList(catalog,[...selected],people);
     rows.forEach(row=>{
       const li=node('li'),label=node('label'),check=node('input');check.type='checkbox';check.checked=owned.has(row.key);check.setAttribute('aria-label',`Déjà disponible : ${row.kind==='source'?row.text:formatShoppingRow(row)}`);
@@ -37,8 +38,8 @@ export function createMealMenu(catalog){
     owned.clear();render();feedback.textContent=`${selected.size} recette${selected.size>1?'s':''} dans votre menu. La liste de courses est actualisée ; les cases déjà disponibles ont été réinitialisées.`;
   }
   peopleInput.addEventListener('input',()=>{if(!valid())return;people=Number(peopleInput.value);owned.clear();render();feedback.textContent='Quantités actualisées. Vérifiez de nouveau les ingrédients déjà disponibles.';});
-  document.getElementById('menu-clear').addEventListener('click',()=>{selected.clear();owned.clear();render();feedback.textContent='Le menu est vide.';document.getElementById('meal-query').focus();});
+  document.getElementById('menu-clear').addEventListener('click',()=>{selected.clear();owned.clear();render();feedback.textContent='Le menu est vide.';searchFocus().focus();});
   download.addEventListener('click',()=>{if(!valid()||!selected.size)return;const text=exportMenu(catalog,[...selected],people,owned);const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=node('a');a.href=url;a.download='mon-menu-airfryer-gourmand.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);feedback.textContent='La liste de courses a été préparée pour le téléchargement.';});
   shortcut.addEventListener('click',()=>{box.focus();});render();
-  return {button(id){const b=node('button',null,'meal-add');b.type='button';b.dataset.menuRecipe=id;setButton(b,id);b.addEventListener('click',()=>toggle(id));return b;}};
+  return {setPeople(value){if(!Number.isInteger(value)||value<1||value>12)return false;if(value===people&&peopleInput.value===String(value))return true;people=value;peopleInput.value=String(value);owned.clear();render();feedback.textContent='Quantités actualisées pour votre nombre de personnes. Vérifiez de nouveau les ingrédients déjà disponibles.';return true;},button(id){const b=node('button',null,'meal-add');b.type='button';b.dataset.menuRecipe=id;setButton(b,id);b.addEventListener('click',()=>toggle(id));return b;}};
 }

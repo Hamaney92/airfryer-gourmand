@@ -15,18 +15,21 @@ export function intentFor(query) {
   const positive = q.replace(/\b(?:sans|sauf|pas de|pas d)\s+(.+?)(?=\b(?:avec|pour|mais|en moins|en \d)\b|$)/g, (_, part) => {excluded.push(...words(part));return ' ';});
   const vegan = /\b(vegan|vegetalien)\w*\b/.test(q);
   const vegetarian = vegan || /\bvegetarien\w*\b/.test(q) || /sans (viande|poisson)/.test(q);
-  const duration = q.match(/(?:en|moins de|max(?:imum)?)\s*(\d{1,3})\s*(?:min|minutes)/);
+  const durations = [...q.matchAll(/(?:en|moins de|max(?:imum)?)\s*(\d{1,3})\s*(?:min|minutes)/g)].map(m=>Number(m[1])).filter(n=>n>0);
   const terms = words(positive).filter(w => !/^(vegetarien|vegetalien|vegan|max)$/.test(w));
-  return {blocked, excluded, vegan, vegetarian, maxMinutes:duration ? Number(duration[1]) : null, terms, generic:terms.length===0, forbidden:forbidden.test(positive)};
+  return {blocked, excluded, vegan, vegetarian, maxMinutes:durations.length ? Math.min(...durations) : null, terms, generic:terms.length===0, forbidden:forbidden.test(positive)};
 }
-export function searchRecipes(catalog, query, ai = null) {
-  const intent = intentFor(query);
+export function searchRecipes(catalog, query, ai = null, options = {}) {
+  const wanted = intentFor(query), pantry = intentFor(options.pantry||'');
+  const intent = {...wanted,blocked:wanted.blocked||pantry.blocked,forbidden:wanted.forbidden||pantry.forbidden,
+    excluded:[...new Set([...wanted.excluded,...pantry.excluded])],vegetarian:wanted.vegetarian||pantry.vegetarian,vegan:wanted.vegan||pantry.vegan,
+    terms:[...new Set([...wanted.terms,...pantry.terms])],generic:wanted.generic&&pantry.generic};
   if (intent.blocked || intent.forbidden) return {kind:'unsupported',items:[],intent};
   // Model interpretation can narrow constraints, never remove explicit local ones.
   const excluded = [...intent.excluded,...words((ai?.excluded||[]).join(' '))];
   const vegetarian = intent.vegetarian || ai?.vegetarian === true;
   const vegan = intent.vegan || ai?.vegan === true;
-  const maxMinutes = Math.min(intent.maxMinutes || Infinity, ai?.maxMinutes || Infinity);
+  const maxMinutes = Math.min(intent.maxMinutes || Infinity, pantry.maxMinutes || Infinity, options.maxMinutes || Infinity, ai?.maxMinutes || Infinity);
   const pool = catalog.filter(r => eligible(r) && r.minutes <= maxMinutes && !excluded.some(w=>includes([r.title,...r.ingredients].join(' '),w)) &&
     (!vegetarian || (!animal.test(normalize([r.title,...r.ingredients].join(' '))) && !['Viande','Volaille','Poisson','Charcuterie'].includes(r.category))) &&
     (!vegan || !/\b(oeuf\w*|lait|beurre|fromage|creme|miel|yaourt|feta|mozzarella|parmesan|chevre|emmental|camembert|brie)\b/.test(normalize(r.ingredients.join(' ')))));

@@ -9,7 +9,7 @@ const {home=false}=Astro.props;
     <label for="meal-query">Votre envie du moment</label>
     <div class="meal-search-row"><input id="meal-query" name="q" type="search" required minlength="2" maxlength="300" placeholder="Du poulet, des courgettes… ou un repas du soir" autocomplete="off" aria-describedby="meal-privacy"/><button type="submit">Trouver mon idée <span aria-hidden="true">→</span></button></div>
     {!home && <details class="meal-pantry"><summary>Cuisiner avec ce que j’ai</summary><label for="meal-pantry">Vos ingrédients disponibles (facultatif)</label><input id="meal-pantry" name="pantry" maxlength="300" placeholder="Ex. saumon, citron, persil, huile d’olive"/><p>On les comparera à chaque recette. Vérifiez ensuite les quantités et les ingrédients manquants.</p></details>}
-    <p id="meal-privacy" class="meal-privacy">Pour comprendre une demande libre, l’IA Cloudflare peut recevoir votre texte. N’indiquez pas de données personnelles.</p>
+    <p id="meal-privacy" class="meal-privacy">L’IA peut aider à comprendre votre demande. Évitez les données personnelles. <a href="/confidentialite/#recherche-ia">Confidentialité</a></p>
   </form>
   {home && <div class="meal-examples" aria-label="Exemples de recherche"><a href="/recherche/?q=repas%20du%20soir">Repas du soir</a><a href="/recherche/?q=poulet%20rapide">Poulet rapide</a><a href="/recherche/?q=repas%20vegetarien">Une envie végétarienne</a></div>}
   <SantaLoader/>
