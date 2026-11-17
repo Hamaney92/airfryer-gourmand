@@ -48,7 +48,7 @@ test('Book purchase retains affiliate and book events', () => {
 });
 
 test('Amazon searches are qualified from the destination, not product metadata', () => {
-  for (const href of ['https://www.amazon.fr/s?k=pince&tag=airfryergourm-21', 'https://amazon.fr/s/?k=moule']) {
+  for (const href of ['https://www.amazon.fr/s?k=pince&tag=airfryergourm-21', 'https://amazon.fr/s/?k=moule&tag=airfryergourm-21']) {
     const s = setup();
     s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(href, { productAsin: 'B0HHZM8TYR' }) });
     assert.equal(s.events.length, 1);
@@ -62,9 +62,9 @@ test('Amazon searches are qualified from the destination, not product metadata',
 test('Direct product routes require an ASIN-shaped path on an Amazon domain', () => {
   for (const href of [
     'https://www.amazon.fr/dp/B0HHZM8TYR/?tag=airfryergourm-21',
-    'https://amazon.fr/gp/product/B0HHZM8TYR',
-    'https://www.amazon.fr/Livre-Air-Fryer/dp/B0HHZM8TYR/ref=example',
-    'https://smile.amazon.fr/dp/B0HHZM8TYR',
+    'https://amazon.fr/gp/product/B0HHZM8TYR?tag=airfryergourm-21',
+    'https://www.amazon.fr/Livre-Air-Fryer/dp/B0HHZM8TYR/ref=example?tag=airfryergourm-21',
+    'https://smile.amazon.fr/dp/B0HHZM8TYR?tag=airfryergourm-21',
   ]) {
     const s = setup();
     s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(href) });
@@ -77,38 +77,79 @@ test('Direct product routes require an ASIN-shaped path on an Amazon domain', ()
 test('Unknown Amazon destinations are not claimed to be product pages', () => {
   for (const path of ['/dp/example', '/dp/B0HHZM8TYRX', '/s/example', '/gp/bestsellers', '/?next=/dp/B0HHZM8TYR/']) {
     const s = setup();
-    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(`https://www.amazon.fr${path}`, { productAsin: 'B0HHZM8TYR' }) });
+    const url = new URL(`https://www.amazon.fr${path}`);
+    url.searchParams.set('tag', 'airfryergourm-21');
+    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(url.href, { productAsin: 'B0HHZM8TYR' }) });
     assert.equal(s.events[0][2].link_destination, 'amazon_other', path);
   }
 });
 
-test('Lookalike domains and non-web destinations are never inferred as Amazon', () => {
+test('Unannotated lookalike domains and non-web destinations do not emit commercial events', () => {
   for (const href of [
-    'https://fauxamazon.fr/dp/B0HHZM8TYR/',
-    'https://amazon.fr.example.com/dp/B0HHZM8TYR/',
-    'https://amazon.fr@example.com/dp/B0HHZM8TYR/',
-    'https://other.example/?next=https://amazon.fr/dp/B0HHZM8TYR/',
-    'ftp://amazon.fr/dp/B0HHZM8TYR/',
+    'https://fauxamazon.fr/dp/B0HHZM8TYR/?tag=airfryergourm-21',
+    'https://amazon.fr.example.com/dp/B0HHZM8TYR/?tag=airfryergourm-21',
+    'https://amazon.fr@example.com/dp/B0HHZM8TYR/?tag=airfryergourm-21',
+    'https://other.example/?next=https://amazon.fr/dp/B0HHZM8TYR/&tag=airfryergourm-21',
+    'ftp://amazon.fr/dp/B0HHZM8TYR/?tag=airfryergourm-21',
     'https://[invalid',
   ]) {
     const s = setup();
     assert.doesNotThrow(() => s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(href) }));
-    assert.equal(s.events[0][2].link_destination, 'other', href);
-    assert.equal(s.events[0][2].affiliate_network, 'autre', href);
+    assert.equal(s.events.length, 0, href);
   }
+});
+
+test('Informative Amazon links and absent, empty or whitespace tags are ignored', () => {
+  for (const href of [
+    'https://www.amazon.fr/gp/help/customer/display.html?nodeId=201909010',
+    'https://www.amazon.fr/s?k=plat',
+    'https://www.amazon.fr/s?k=plat&tag=',
+    'https://www.amazon.fr/s?tag=%20%20',
+    'https://www.amazon.fr/s?tag=%09%0A',
+  ]) {
+    const s = setup();
+    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor(href, { productType: 'book' }) });
+    assert.equal(s.events.length, 0, href);
+  }
+});
+
+test('Explicit annotations retain other networks without an Amazon tag', () => {
+  const s = setup();
+  s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://merchant.example/product', { affiliateNetwork: 'partner', productId: 'example' }) });
+  assert.equal(s.events.length, 1);
+  assert.equal(s.events[0][1], 'affiliate_click');
+  assert.equal(s.events[0][2].affiliate_network, 'partner');
+  assert.equal(s.events[0][2].link_destination, 'other');
+});
+
+test('Rejecting an affiliate candidate does not suppress PDF and book entry branches', () => {
+  const s = setup();
+  s.click({
+    'a[download]': new s.Anchor('https://airfryergourmand.fr/tableau-temps-cuisson-air-fryer.pdf'),
+    'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://fauxamazon.fr/s?tag=test'),
+    'a[data-book-entry], a[href="/livre/"], a[href$="/livre/"]': new s.Anchor('https://airfryergourmand.fr/livre/'),
+  });
+  assert.deepEqual(s.events.map(event => event[1]), ['cooking_pdf_download', 'book_page_entry_click']);
+});
+
+test('HTTP Amazon fallback with a nonempty decoded tag is retained', () => {
+  const s = setup();
+  s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('http://www.amazon.fr/s?tag=%20airfryergourm-21%20') });
+  assert.deepEqual(s.events.map(event => event[1]), ['affiliate_click']);
+  assert.equal(s.events[0][2].affiliate_network, 'amazon');
 });
 
 test('Local and preview environments never send commercial events to production Analytics', () => {
   for (const host of ['localhost', '127.0.0.1', 'preview.pages.dev', 'airfryergourmand.fr.example.com']) {
     const s = setup(true, host);
-    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book' }) });
+    s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book', affiliateNetwork: 'amazon' }) });
     assert.equal(s.events.length, 0, host);
   }
 });
 
 test('Commercial page identifiers use the canonical pathname, never a legacy recipe slug', () => {
   const s = setup(true, 'www.airfryergourmand.fr');
-  s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book', pageId: 'legacy-slug' }) });
+  s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/dp/example', { productType: 'book', pageId: 'legacy-slug', affiliateNetwork: 'amazon' }) });
   assert.equal(s.events[0][2].page_id, '/tableau-temps-cuisson-air-fryer/');
 });
 test('Internal books CTA preserves its placement', () => {
@@ -120,6 +161,8 @@ test('Internal books CTA preserves its placement', () => {
 test('Missing Analytics never interrupts a click', () => {
   const s = setup(false);
   assert.doesNotThrow(() => s.click({ 'a[download]': new s.Anchor('https://airfryergourmand.fr/tableau-temps-cuisson-air-fryer.pdf') }));
+  assert.doesNotThrow(() => s.click({ 'a[data-affiliate-network], a[href*="amazon.fr/"]': new s.Anchor('https://www.amazon.fr/s?tag=airfryergourm-21') }));
+  assert.equal(s.events.length, 0);
 });
 test('Repeated script initialization does not duplicate listeners', () => {
   const s = setup();

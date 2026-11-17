@@ -1,7 +1,7 @@
 <!--
   Mesure les clics commerciaux sans interrompre la navigation.
-  Les liens Amazon non encore annotés sont aussi suivis avec des valeurs de repli,
-  afin que les anciens guides remontent immédiatement dans GA4.
+  Le repli des anciens guides exige une destination Amazon réelle et un tag non vide.
+  Les liens informatifs non annotés ne sont pas des clics commerciaux.
 -->
 <script is:inline>
   (() => {
@@ -69,9 +69,13 @@
           link_destination: linkDestination,
         };
 
-        send('affiliate_click', params);
-        if (affiliateLink.dataset.productType === 'book') {
-          send('book_cta_click', params);
+        const explicitlyCommercial = affiliateLink.dataset.affiliateNetwork !== undefined;
+        const taggedAmazon = amazonDestination && Boolean(destination.searchParams.get('tag')?.trim());
+        if (explicitlyCommercial || taggedAmazon) {
+          send('affiliate_click', params);
+          if (affiliateLink.dataset.productType === 'book') {
+            send('book_cta_click', params);
+          }
         }
       }
 
