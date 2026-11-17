@@ -21,14 +21,14 @@ export async function siteSearch(request,env){
   let size=0;const chunks=[];
   while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>2048){await reader.cancel();return json({error:'Demande trop longue.'},413);}chunks.push(value);}
   let body;try{const data=new Uint8Array(size);let at=0;chunks.forEach(c=>{data.set(c,at);at+=c.length;});body=JSON.parse(new TextDecoder().decode(data));}catch{return json({error:'JSON invalide.'},400);}
-  if(typeof body.query!=='string'||body.query.trim().length<2||body.query.length>300)return json({error:'Texte invalide.'},400);
+  if(!body||typeof body!=='object'||Array.isArray(body)||typeof body.query!=='string'||body.query.trim().length<2||body.query.length>300)return json({error:'Texte invalide.'},400);
   if(/allerg|intol[eé]ran|diab[eè]t|enceinte/i.test(body.query))return json({error:'Contrainte non prise en charge.'},422);
   try{if(!(await env.AI_LIMITER.limit({key:'meal-search'})).success)return json({error:'Limite atteinte. Recherche du catalogue disponible.'},429);}catch{return json({error:'Aide IA indisponible.'},503);}
   try{
     const result=await env.AI.run('@cf/meta/llama-3.2-3b-instruct',{messages:[{role:'system',content:SYSTEM},{role:'user',content:body.query}],max_tokens:220,temperature:0,response_format:{type:'json_object'}});
     let intent;try{intent=validateIntent(typeof result.response==='string'?JSON.parse(result.response):result.response);}catch{return json({error:'Interprétation non fiable.'},502);}
     const u=result.usage;
-    const usage=u&&Number.isInteger(u.prompt_tokens)&&Number.isInteger(u.completion_tokens)?{inputTokens:u.prompt_tokens,outputTokens:u.completion_tokens,neurons:typeof u.neurons==='number'?u.neurons:null}:null;
+    const usage=u&&Number.isInteger(u.prompt_tokens)&&u.prompt_tokens>=0&&Number.isInteger(u.completion_tokens)&&u.completion_tokens>=0?{inputTokens:u.prompt_tokens,outputTokens:u.completion_tokens,neurons:typeof u.neurons==='number'&&Number.isFinite(u.neurons)&&u.neurons>=0?u.neurons:null}:null;
     return json({intent,usage});
   }catch{return json({error:'Aide IA indisponible.'},503);}
 }

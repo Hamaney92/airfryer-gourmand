@@ -43,7 +43,7 @@ export default {
     while(true){const {done,value}=await reader.read(); if(done)break; bytes+=value.length;
       if(bytes>4096){await reader.cancel();return json({error:'Demande trop longue.'},413);} chunks.push(value);}
     let body; try {const b=new Uint8Array(bytes);let i=0;for(const c of chunks){b.set(c,i);i+=c.length;}body=JSON.parse(new TextDecoder().decode(b));}catch{return json({error:'JSON invalide.'},400);}
-    if(typeof body.query!=='string'||body.query.trim().length<3||body.query.length>600) return json({error:'Saisis entre 3 et 600 caractères.'},400);
+    if(!body||typeof body!=='object'||Array.isArray(body)||typeof body.query!=='string'||body.query.trim().length<3||body.query.length>600) return json({error:'Saisis entre 3 et 600 caractères.'},400);
     // Narrow pilot: explicit constraints requiring a fuller catalogue are not delegated to the model.
     if(/allerg|intol[eé]ran|enceinte|diab[eè]t|porc|lardon|bacon|jambon|alcool|\bvin\b|rhum|bi[eè]re/i.test(body.query))
       return json({status:'unsupported',message:'Ce prototype ne traite pas encore cette contrainte. Aucun appel IA effectué.',usage:null});
