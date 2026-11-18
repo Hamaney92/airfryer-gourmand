@@ -10,9 +10,17 @@ const { recipeId } = Astro.props;
 <script>
   import { SESSION_MENU_KEY } from '../lib/meal-menu-storage.mjs';
   import { readMenuState } from '../lib/meal-planner.mjs';
+  import { trackMealEvent } from '../lib/meal-analytics.mjs';
 
   const action = document.querySelector<HTMLElement>('[data-recipe-menu]');
   if (action) {
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    if (navigation?.type === 'navigate' && document.referrer) {
+      const referrer = new URL(document.referrer);
+      if (referrer.origin === location.origin && referrer.pathname === '/recherche/') {
+        trackMealEvent('meal_recipe_opened');
+      }
+    }
     const id = action.dataset.recipeMenu!;
     const button = action.querySelector('button')!;
     const link = action.querySelector('a')!;
@@ -66,6 +74,7 @@ const { recipeId } = Astro.props;
           }
           menu.ids.push(id);
           sessionStorage.setItem(SESSION_MENU_KEY, JSON.stringify(menu));
+          trackMealEvent('meal_menu_added', {menu_source: 'recipe'});
         }
         update(true);
         status.textContent = 'Cette recette figure dans votre menu.';

@@ -8,6 +8,7 @@ import { SITE, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
+import MealSearchLocation from '../components/MealSearchLocation.astro';
 import NewsletterBanner from '../components/NewsletterBanner.astro';
 import NewsletterPopup from '../components/NewsletterPopup.astro';
 import ContextualProducts from '../components/ContextualProducts.astro';
@@ -39,6 +40,7 @@ const year = new Date().getFullYear();
     <link rel="alternate" type="application/rss+xml" title="Airfryer Gourmand — Recettes" href="/feed.xml" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {path === '/recherche/' && <MealSearchLocation />}
     <ChristmasTheme head />
     <AdSenseVerification />
     <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
@@ -49,7 +51,7 @@ const year = new Date().getFullYear();
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      if (location.hostname === 'airfryergourmand.fr') {
+      if (location.hostname === 'airfryergourmand.fr' && !window.__afgMealLocationBlocked) {
         gtag('js', new Date());
         gtag('config', 'G-J24QNEE9GV');
       }

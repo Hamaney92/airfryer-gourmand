@@ -1,0 +1,22 @@
+<script is:inline>
+  (() => {
+    const url = new URL(location.href);
+    const prefix = '#afg-repas?';
+    const fragment = url.hash.startsWith(prefix) ? new URLSearchParams(url.hash.slice(prefix.length)) : null;
+    const answers = new URLSearchParams();
+
+    for (const key of ['q', 'type', 'pantry', 'people', 'time']) {
+      const value = fragment?.get(key) ?? url.searchParams.get(key);
+      if (value !== null) answers.set(key, value.slice(0, 300));
+      url.searchParams.delete(key);
+    }
+    if (fragment) url.hash = '';
+    if (!fragment && !answers.size) return;
+    try {
+      history.replaceState({ ...history.state, afgMeal: answers.toString() }, '', url);
+      window.__afgMealEntry = answers.has('q');
+    } catch {
+      window.__afgMealLocationBlocked = true;
+    }
+  })();
+</script>

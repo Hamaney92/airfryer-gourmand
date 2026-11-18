@@ -49,7 +49,17 @@ export function fromURL(search){
   for(const key of steps){if(!p.has(key)||(key==='type'&&!needsMealType(state.q)))continue;const a=answer(state,key,p.get(key));if(a.state)state=a.state;}
   return state;
 }
-export function toURL(state){const p=new URLSearchParams();for(const key of steps){const v=state[key];if(v!==undefined&&v!==null&&!(key==='q'&&!v))p.set(key,String(v));else if(key==='time'&&v===null)p.set(key,'any');}return `/recherche/?${p}`;}
+export function toSearchParams(state){
+  const params = new URLSearchParams();
+  for(const key of steps){
+    const value = state[key];
+    if(value === undefined || (key === 'q' && !value)) continue;
+    if(value !== null) params.set(key, String(value));
+    else if(key === 'time') params.set(key, 'any');
+  }
+  return params;
+}
+export function toURL(state){return `/recherche/?${toSearchParams(state)}`;}
 export function displayAnswer(state,key){return key==='type'?typeLabels[state.type]:key==='people'?`${state.people} personne${state.people>1?'s':''}`:key==='time'?(state.time===null?'Peu importe':`${state.time} min au total`):key==='pantry'?(state.pantry||'Rien de précis'):state.q;}
 export function searchOptions(state){return {pantry:state.pantry||'',maxMinutes:state.time,...(state.type?{mealType:state.type}:{})};}
 // Only the final request may reach AI; separate clauses preserve local exclusions.

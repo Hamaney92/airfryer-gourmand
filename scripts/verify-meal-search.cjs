@@ -38,7 +38,7 @@ async function edit(page,label,value){
       await page.goto(base+'/');await page.locator('.meal-search-home').scrollIntoViewIfNeeded();
       await page.screenshot({path:path.join(out,`accueil-${width}.png`)});
       await page.getByRole('searchbox',{name:'Votre envie du moment'}).fill('repas du soir');
-      await page.getByRole('button',{name:'Trouver mon idée'}).click();await page.waitForURL('**/recherche/?q=*');
+      await page.getByRole('button',{name:'Trouver mon idée'}).click();await page.waitForURL('**/recherche/');
       await page.locator('#conversation-question').filter({hasText:'frigo'}).waitFor();
       assert.match(await page.locator('#conversation-history').textContent(),/repas du soir/);
       assert.equal(await page.locator('.meal-card').count(),0);

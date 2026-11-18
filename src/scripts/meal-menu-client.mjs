@@ -1,5 +1,6 @@
 import {buildShoppingList,formatShoppingRow,exportMenu,readMenuState} from '../lib/meal-planner.mjs';
 import {MENU_STORAGE_KEY, SESSION_MENU_KEY as STORAGE, readSavedMenu, makeSavedMenu} from '../lib/meal-menu-storage.mjs';
+import {trackMealEvent} from '../lib/meal-analytics.mjs';
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;};
 const recipeURL=id=>`/recettes/${id==='poisson-pane-surgele'?'poisson-pane-surgele-air-fryer':id}/`;
 export function createMealMenu(catalog){
@@ -37,9 +38,11 @@ export function createMealMenu(catalog){
     syncButtons();updateCount();valid();save();updateShortcut();document.getElementById('menu-restore-warning').hidden=!selected.size||saved.status!=='ready';
   }
   function toggle(id){
-    if(selected.has(id))selected.delete(id);
+    const adding = !selected.has(id);
+    if(!adding)selected.delete(id);
     else{if(selected.size>=6){feedback.textContent='Le menu contient déjà 6 recettes. Retirez-en une avant d’en ajouter une autre.';return;}selected.add(id);}
     owned.clear();render();feedback.textContent=`${selected.size} recette${selected.size>1?'s':''} dans votre menu. La liste de courses est actualisée ; les cases déjà disponibles ont été réinitialisées.`;
+    if(adding) trackMealEvent('meal_menu_added', {menu_source: 'results'});
   }
   peopleInput.addEventListener('input',()=>{if(!valid())return;people=Number(peopleInput.value);owned.clear();render();feedback.textContent='Quantités actualisées. Vérifiez de nouveau les ingrédients déjà disponibles.';});
   document.getElementById('menu-clear').addEventListener('click',()=>{selected.clear();owned.clear();render();feedback.textContent='Le menu de cet onglet est vide. La sauvegarde de cet appareil est conservée.';searchFocus().focus();});

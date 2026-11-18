@@ -1,12 +1,17 @@
 import {searchRecipes,pantryCheck} from '../lib/meal-search.mjs';
-import {conversationSteps,questions,emptyConversation,nextStep,answer,complete,fromURL,toURL,displayAnswer,searchOptions,aiQuery} from '../lib/meal-conversation.mjs';
+import {conversationSteps,questions,emptyConversation,nextStep,answer,complete,fromURL,toSearchParams,displayAnswer,searchOptions,aiQuery} from '../lib/meal-conversation.mjs';
+import {trackMealEvent} from '../lib/meal-analytics.mjs';
 import {createMealMenu} from './meal-menu-client.mjs';
 const el=id=>document.getElementById(id);
 const form=el('conversation-form'),input=el('meal-query'),historyBox=el('conversation-history'),review=el('conversation-review');
 const choices=el('conversation-choices'),skip=el('conversation-skip'),early=el('conversation-early'),error=el('conversation-error');
 const loader=document.querySelector('[data-meal-loader]'),grid=el('meal-results-grid'),region=document.querySelector('.meal-results');
 const summary=el('results-summary'),title=el('results-title'),note=el('search-note'),retry=el('meal-retry'),update=el('conversation-update');
-let state=fromURL(location.search),editKey=null,wasEditing=false,catalogPromise,controller,menu,run=0,busy=false;
+const readState = () => fromURL(history.state?.afgMeal ?? location.search);
+let state=readState(),editKey=null,wasEditing=false,catalogPromise,controller,menu,run=0,busy=false;
+function writeState(method) {
+  history[method]({ ...history.state, afgMeal: toSearchParams(state).toString() }, '', location.pathname + location.search);
+}
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;};
 const quick={q:['Repas du soir','Poulet rapide','Végétarien'],type:['Un plat principal','Un encas','Peu importe'],pantry:[],people:['1','2','4','6'],time:['20 min','30 min','45 min','Peu importe']};
 const hints={q:'Une idée, un plat ou un ingrédient : dites-le avec vos mots.',pantry:'Exemple : poulet, citron, pommes de terre. Les quantités et ingrédients manquants resteront à vérifier.',people:'Par défaut, nous proposons 2 personnes. Vous pouvez écrire « on est 4 » (de 1 à 12).',time:'Nous filtrons la durée totale des recettes. Les portions ne raccourcissent pas les temps de cuisson.'};
@@ -40,12 +45,14 @@ function submit(value){
   const key=editKey||nextStep(state);if(!key)return;
   const result=answer(state,key,value);
   if(result.error){error.textContent=result.error;error.hidden=false;input.setAttribute('aria-invalid','true');input.focus();return;}
-  const edited=wasEditing;state=result.state;editKey=null;wasEditing=false;history.replaceState(null,'',toURL(state));render(true);
+  const started = !state.q && Boolean(result.state.q);
+  const edited=wasEditing;state=result.state;editKey=null;wasEditing=false;writeState('replaceState');render(true);
+  if(started) trackMealEvent('meal_search_started');
   if(!nextStep(state)&&!edited)search(true);
 }
 function finish(){
   if(!form.hidden){const key=editKey||nextStep(state),result=answer(state,key,input.value);if(result.error){error.textContent=result.error;error.hidden=false;input.setAttribute('aria-invalid','true');input.focus();return;}state=result.state;}
-  state=complete(state);editKey=null;wasEditing=false;history.pushState(null,'',toURL(state));render();search(true);
+  state=complete(state);editKey=null;wasEditing=false;writeState('pushState');render();search(true);
 }
 function list(parent,heading,items){if(!items.length)return;parent.append(node('h4',heading));const ul=node('ul');items.forEach(x=>ul.append(node('li',x)));parent.append(ul);}
 function card({recipe:r,hits,inferred},kind,snapshot){
@@ -66,7 +73,7 @@ function card({recipe:r,hits,inferred},kind,snapshot){
   body.append(details);const open=node('a','Voir la recette →','meal-open');open.href=url;body.append(open,menu.button(r.id));article.append(body);return article;
 }
 async function catalog(){if(!catalogPromise)catalogPromise=fetch('/recherche/catalogue.json',{signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{menu ||= createMealMenu(data);el('menu-catalog-retry').hidden=true;return data;}).catch(e=>{catalogPromise=null;el('menu-saved-status').textContent='Le catalogue est indisponible. Votre sauvegarde n’a pas été modifiée. Réessayez ou consultez les recettes.';el('menu-catalog-retry').hidden=false;throw e;});return catalogPromise;}
-async function search(focus=false){
+async function search(focus=false, measure=focus){
   if(busy||nextStep(state))return;
   const snapshot={...state},id=++run;controller?.abort();controller=new AbortController();const current=controller;
   grid.replaceChildren();note.textContent='';retry.hidden=true;region.hidden=false;setBusy(true);title.textContent='Je cherche dans nos recettes…';summary.textContent='';
@@ -87,6 +94,7 @@ async function search(focus=false){
     const labels={exact:['Voici les recettes trouvées',`${result.total} recette${result.total>1?'s':''} ${result.total>1?'reprennent':'reprend'} les mots demandés. Ouvrez les ingrédients pour voir ce qu’il vous manque.`],ideas:['Quelques idées pour vous','Voici une sélection du catalogue. Précisez un ingrédient pour affiner.'],related:['Voici des pistes proches de votre envie','Ces recettes partagent certains ingrédients ou mots de votre recherche. Elles ne réunissent pas forcément tout : vérifiez les ingrédients manquants.'],interpreted:['Des pistes à explorer','L’IA a rapproché votre idée de ces recettes existantes. Vérifiez les ingrédients manquants et que la recette correspond à votre envie.'],empty:['Pas encore de correspondance avec ces réponses','Modifiez vos ingrédients ou votre temps pour explorer d’autres pistes. Nous n’avons pas assoupli vos contraintes.'],unsupported:['Cette demande nécessite une vérification','Ce moteur ne traite pas les contraintes médicales ou allergiques. Il propose uniquement une sélection sans porc ni alcool. Reformulez avec un ingrédient ou consultez directement les recettes.']};
     labels.sides=['Des accompagnements pour composer votre assiette','Aucun plat principal du catalogue ne correspond à ces réponses. Ces accompagnements respectent les filtres appliqués. Vous pouvez aussi modifier le temps disponible.'];
     [title.textContent,summary.textContent]=labels[result.kind];result.items.forEach(item=>grid.append(card(item,result.kind,snapshot)));
+    if(measure) trackMealEvent('meal_search_completed', {outcome: result.kind, result_count: result.items.length});
     retry.hidden=result.items.length>0;el('meal-retry-button').hidden=false;
     note.textContent=aiUnavailable?'L’aide IA est indisponible pour le moment. Voici les correspondances locales du catalogue.':usedAI?'Recherche aidée par l’IA, résultats issus de notre catalogue.':'';
     if(focus)title.focus();
@@ -96,10 +104,12 @@ async function search(focus=false){
 form.addEventListener('submit',e=>{e.preventDefault();submit(input.value);});
 skip.addEventListener('click',()=>submit(''));early.addEventListener('click',finish);
 update.addEventListener('click',finish);el('conversation-edit').addEventListener('click',()=>edit('q'));
-el('conversation-restart').addEventListener('click',()=>{cancelResults();state=emptyConversation();editKey=null;wasEditing=false;history.pushState(null,'','/recherche/');render(true);});
+el('conversation-restart').addEventListener('click',()=>{cancelResults();state=emptyConversation();editKey=null;wasEditing=false;writeState('pushState');render(true);});
 el('meal-change-pantry').addEventListener('click',()=>edit('pantry'));el('meal-change-time').addEventListener('click',()=>edit('time'));el('meal-retry-button').addEventListener('click',()=>search(true));
-window.addEventListener('popstate',()=>{cancelResults();state=fromURL(location.search);editKey=null;wasEditing=false;render();if(!nextStep(state))search();});
-render();if(!nextStep(state))search();
+window.addEventListener('popstate',()=>{cancelResults();state=readState();editKey=null;wasEditing=false;render();if(!nextStep(state))search();});
+const entered = window.__afgMealEntry && Boolean(state.q);
+if (entered) trackMealEvent('meal_search_started');
+render();if(!nextStep(state))search(false, entered);
 // Restore an existing menu without changing its portions while questions are pending.
 el('menu-catalog-retry').addEventListener('click',()=>{el('menu-saved-status').textContent='Chargement du catalogue…';catalog().catch(()=>{});});
 catalog().catch(()=>{});

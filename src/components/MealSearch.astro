@@ -26,7 +26,14 @@ const {home=false}=Astro.props;
 </style>
 <script>
   document.querySelectorAll<HTMLElement>('.meal-search-home').forEach(box=>{
-    box.querySelector('form')?.addEventListener('submit',()=>{(box.querySelector('[data-meal-loader]') as HTMLElement).hidden=false;});
+    const form = box.querySelector('form')!;
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      (box.querySelector('[data-meal-loader]') as HTMLElement).hidden = false;
+      const query = (form.elements.namedItem('q') as HTMLInputElement).value;
+      const answers = new URLSearchParams({q: query});
+      location.assign(`/recherche/#afg-repas?${answers}`);
+    });
     window.addEventListener('pageshow',()=>{(box.querySelector('[data-meal-loader]') as HTMLElement).hidden=true;});
   });
 </script>
