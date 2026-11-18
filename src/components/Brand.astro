@@ -3,10 +3,9 @@ interface Props { inverse?: boolean }
 const {inverse=false}=Astro.props;
 ---
 <a href="/" class:list={['logo','ag-brand',{'ag-inverse':inverse}]} aria-label="Airfryer Gourmand — accueil">
-  <img src="/img/brand/afg-companion.webp" width="48" height="48" alt=""/>
-  <span>airfryer<strong>gourmand</strong></span>
+  <img src="/img/brand/afg-winged-logo.webp" width="600" height="200" alt=""/>
 </a>
 <style>
-  .ag-brand{display:inline-flex;align-items:center;gap:8px;color:#004522;font-size:1.15rem;letter-spacing:-.6px;line-height:1.02}.ag-brand img{flex-shrink:0;width:48px;height:48px;object-fit:contain;border-radius:12px}.ag-brand span{display:block}.ag-brand strong{display:block;font-weight:800}.ag-inverse{color:#f9f8ee}.ag-inverse img{background:#f9f8ee;border-radius:12px;padding:3px}
-  @media(max-width:400px){.ag-brand{font-size:1.05rem}.ag-brand img{width:42px;height:42px}}
+  .ag-brand{display:inline-flex;align-items:center;flex-shrink:0;line-height:1}.ag-brand img{display:block;flex-shrink:0;width:180px;height:60px;object-fit:contain;border-radius:8px}
+  @media(max-width:400px){.ag-brand img{width:156px;height:52px}}
 </style>
