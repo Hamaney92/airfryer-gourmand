@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
 import SaveRecipe from '../../components/SaveRecipe.astro';
+import RecipeMenuAction from '../../components/RecipeMenuAction.astro';
+import { eligible } from '../../lib/meal-search.mjs';
 import RecipePrompts from '../../components/RecipePrompts.astro';
 import BookOffer from '../../components/BookOffer.astro';
 import ChestnutGear from '../../components/ChestnutGear.astro';
@@ -157,6 +159,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     <div class="quick" id="recette" tabindex="-1">
       <b>Réponse rapide —</b> {data.quickAnswer}
     </div>
+    {eligible({id: recipe.id, ...data}) && <RecipeMenuAction recipeId={recipe.id} />}
     <nav class="recipe-shortcuts" aria-label="Accès rapide à la recette">
       <a href="#ingredients">Ingrédients</a>
       <a href="#etapes">Étapes de préparation</a>

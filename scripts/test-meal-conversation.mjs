@@ -47,3 +47,20 @@ test('pantry never overrides exclusions, vegetarian choice or the strictest tota
 test('allergic or forbidden pantry requests remain unsupported without an AI escape',()=>{
  for(const pantry of ['allergie noix','bacon','poulet au vin'])assert.equal(searchRecipes(recipes,'repas',null,{pantry}).kind,'unsupported');
 });
+
+test('vague post-sport request asks one meal type question and keeps earlier answers on reload and refinement',()=>{
+  const state=fromURL('?q=un+truc+réconfortant+après+le+sport&pantry=sans+poisson&people=4&time=30');
+  assert.equal(nextStep(state),'type');
+  assert.ok(answer(state,'type','inconnu').error);
+  const main=answer(state,'type','Un plat principal').state;
+  assert.equal(nextStep(main),null);
+  assert.deepEqual(fromURL(toURL(main).split('?')[1]),main);
+  assert.deepEqual(searchOptions(main),{mealType:'main',pantry:'sans poisson',maxMinutes:30});
+  const snack=answer(main,'type','Un encas').state;
+  assert.equal(snack.people,4);
+  assert.equal(snack.type,'snack');
+  const changed=answer(snack,'q','saumon').state;
+  assert.equal(changed.type,undefined);
+  assert.equal(changed.pantry,'sans poisson');
+  assert.equal(nextStep(changed),null);
+});

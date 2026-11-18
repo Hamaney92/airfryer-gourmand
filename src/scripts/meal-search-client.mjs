@@ -1,5 +1,5 @@
 import {searchRecipes,pantryCheck} from '../lib/meal-search.mjs';
-import {steps,questions,emptyConversation,nextStep,answer,complete,fromURL,toURL,displayAnswer,searchOptions,aiQuery} from '../lib/meal-conversation.mjs';
+import {conversationSteps,questions,emptyConversation,nextStep,answer,complete,fromURL,toURL,displayAnswer,searchOptions,aiQuery} from '../lib/meal-conversation.mjs';
 import {createMealMenu} from './meal-menu-client.mjs';
 const el=id=>document.getElementById(id);
 const form=el('conversation-form'),input=el('meal-query'),historyBox=el('conversation-history'),review=el('conversation-review');
@@ -8,13 +8,14 @@ const loader=document.querySelector('[data-meal-loader]'),grid=el('meal-results-
 const summary=el('results-summary'),title=el('results-title'),note=el('search-note'),retry=el('meal-retry'),update=el('conversation-update');
 let state=fromURL(location.search),editKey=null,wasEditing=false,catalogPromise,controller,menu,run=0,busy=false;
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;};
-const quick={q:['Repas du soir','Poulet rapide','Végétarien'],pantry:[],people:['1','2','4','6'],time:['20 min','30 min','45 min','Peu importe']};
+const quick={q:['Repas du soir','Poulet rapide','Végétarien'],type:['Un plat principal','Un encas','Peu importe'],pantry:[],people:['1','2','4','6'],time:['20 min','30 min','45 min','Peu importe']};
 const hints={q:'Une idée, un plat ou un ingrédient : dites-le avec vos mots.',pantry:'Exemple : poulet, citron, pommes de terre. Les quantités et ingrédients manquants resteront à vérifier.',people:'Par défaut, nous proposons 2 personnes. Vous pouvez écrire « on est 4 » (de 1 à 12).',time:'Nous filtrons la durée totale des recettes. Les portions ne raccourcissent pas les temps de cuisson.'};
-const placeholders={q:'Un repas du soir, du poulet…',pantry:'Poulet, citron, pommes de terre…',people:'2 personnes',time:'30 minutes, ou peu importe'};
+const placeholders={q:'Un repas du soir, du poulet…',type:'Un plat principal ou un encas',pantry:'Poulet, citron, pommes de terre…',people:'2 personnes',time:'30 minutes, ou peu importe'};
 function setBusy(value){busy=value;loader.hidden=!value;region.setAttribute('aria-busy',String(value));update.disabled=value;el('meal-retry-button').disabled=value;}
 function cancelResults(){run++;controller?.abort();setBusy(false);region.hidden=true;grid.replaceChildren();}
 function edit(key){cancelResults();editKey=key;wasEditing=true;render(true);}
 function render(focus=false){
+  const steps=conversationSteps(state);
   historyBox.replaceChildren();
   for(const key of steps){if(key==='q'&&!state.q||state[key]===null&&key!=='time'||state[key]===undefined)continue;
     const exchange=node('div',null,'conversation-exchange'),prompt=node('p',questions[key],'conversation-prompt'),response=node('div',null,'conversation-answer');
@@ -22,12 +23,12 @@ function render(focus=false){
   }
   const key=editKey||nextStep(state);form.hidden=!key;review.hidden=!!key;error.hidden=true;input.removeAttribute('aria-invalid');
   if(key){
-    el('conversation-step').textContent=wasEditing?'Modifier votre réponse':`Étape ${steps.indexOf(key)+1} sur 4`;
-    el('conversation-question').textContent=questions[key];el('conversation-help').textContent=hints[key];
-    input.value=editKey?(key==='time'?(state.time===null?'Peu importe':String(state.time??'')):String(state[key]??'')):key==='people'?'2':'';
+    el('conversation-step').textContent=wasEditing?'Modifier votre réponse':`Étape ${steps.indexOf(key)+1} sur ${steps.length}`;
+    el('conversation-question').textContent=questions[key];el('conversation-help').textContent=hints[key]||'';
+    input.value=editKey?(key==='type'?displayAnswer(state,'type'):key==='time'?(state.time===null?'Peu importe':String(state.time??'')):String(state[key]??'')):key==='people'?'2':'';
     input.placeholder=placeholders[key];input.inputMode='text';input.maxLength=['q','pantry'].includes(key)?300:60;
     choices.replaceChildren();quick[key].forEach(value=>{const b=node('button',value);b.type='button';b.addEventListener('click',()=>submit(value));choices.append(b);});
-    skip.hidden=key!=='pantry';early.hidden=key==='q';early.textContent=`Voir déjà les recettes · ${state.people??2} personnes${state.people===null?' par défaut':''}, ${state.time?'limite de '+state.time+' min':'sans limite ajoutée'}`;
+    skip.hidden=key!=='pantry';early.hidden=key==='q'||key==='type';early.textContent=`Voir déjà les recettes · ${state.people??2} personnes${state.people===null?' par défaut':''}, ${state.time?'limite de '+state.time+' min':'sans limite ajoutée'}`;
     el('conversation-send').textContent=wasEditing?'Enregistrer ma réponse →':key==='time'?'Trouver mes recettes →':'Continuer →';
     if(focus){el('conversation-announcement').textContent=questions[key];input.focus({preventScroll:true});form.scrollIntoView({block:'start'});}
   }else{
@@ -47,12 +48,12 @@ function finish(){
   state=complete(state);editKey=null;wasEditing=false;history.pushState(null,'',toURL(state));render();search(true);
 }
 function list(parent,heading,items){if(!items.length)return;parent.append(node('h4',heading));const ul=node('ul');items.forEach(x=>ul.append(node('li',x)));parent.append(ul);}
-function card({recipe:r,hits},kind,snapshot){
+function card({recipe:r,hits,inferred},kind,snapshot){
   const url=`/recettes/${r.id==='poisson-pane-surgele'?'poisson-pane-surgele-air-fryer':r.id}/`;
   const article=node('article',null,'meal-card');
   if(r.image){const link=node('a');link.href=url;link.tabIndex=-1;link.setAttribute('aria-hidden','true');const img=node('img');img.src=r.image.replace(/^\/img\//,'/img/w/').replace(/\.jpg$/,'-380.webp');img.alt='';img.width=380;img.height=285;img.loading='lazy';img.addEventListener('error',()=>{img.src=r.image;},{once:true});link.append(img);article.append(link);}
   const body=node('div',null,'meal-card-body'),h=node('h3'),a=node('a',r.title);a.href=url;h.append(a);body.append(h,node('p',`${r.minutes} min au total · recette d’origine pour ${r.servings} personne${r.servings>1?'s':''}`,'meal-meta'));
-  if(hits?.length)body.append(node('p',`${kind==='exact'?'Retrouvé':'Point commun'} : ${hits.join(', ')}`,'meal-match'));
+  if(hits?.length)body.append(node('p',`${inferred||kind==='interpreted'?'Suggestion liée à votre envie':kind==='exact'?'Retrouvé':'Point commun'} : ${hits.join(', ')}`,'meal-match'));
   const details=node('details'),s=node('summary',snapshot.pantry?'Ce que j’ai / Ce qu’il manque à vérifier':'Ingrédients & adaptations');details.append(s);
   if(snapshot.pantry){
     const p=pantryCheck(r,snapshot.pantry);list(details,'Mentionnés dans vos ingrédients',p.present);list(details,'À vérifier ou à prévoir',p.check);
@@ -75,7 +76,7 @@ async function search(focus=false){
     const options=searchOptions(snapshot);let result=searchRecipes(data,snapshot.q,null,options),usedAI=false,aiUnavailable=false;
     const text=aiQuery(snapshot);
     // One final interpretation at most. Explicit local constraints are reapplied after AI.
-    if(!['exact','ideas','unsupported'].includes(result.kind)&&text.length<=300){
+    if(!['exact','ideas','sides','unsupported'].includes(result.kind)&&text.length<=300){
       try{
         const response=await fetch('https://airfryer-assistant-pilote.youssef-hamane-00.workers.dev/api/recherche',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:text}),signal:current.signal});
         if(!response.ok)throw Error();const body=await response.json();
@@ -84,6 +85,7 @@ async function search(focus=false){
     }
     if(id!==run)return;
     const labels={exact:['Voici les recettes trouvées',`${result.total} recette${result.total>1?'s':''} ${result.total>1?'reprennent':'reprend'} les mots demandés. Ouvrez les ingrédients pour voir ce qu’il vous manque.`],ideas:['Quelques idées pour vous','Voici une sélection du catalogue. Précisez un ingrédient pour affiner.'],related:['Voici des pistes proches de votre envie','Ces recettes partagent certains ingrédients ou mots de votre recherche. Elles ne réunissent pas forcément tout : vérifiez les ingrédients manquants.'],interpreted:['Des pistes à explorer','L’IA a rapproché votre idée de ces recettes existantes. Vérifiez les ingrédients manquants et que la recette correspond à votre envie.'],empty:['Pas encore de correspondance avec ces réponses','Modifiez vos ingrédients ou votre temps pour explorer d’autres pistes. Nous n’avons pas assoupli vos contraintes.'],unsupported:['Cette demande nécessite une vérification','Ce moteur ne traite pas les contraintes médicales ou allergiques. Il propose uniquement une sélection sans porc ni alcool. Reformulez avec un ingrédient ou consultez directement les recettes.']};
+    labels.sides=['Des accompagnements pour composer votre assiette','Aucun plat principal du catalogue ne correspond à ces réponses. Ces accompagnements respectent les filtres appliqués. Vous pouvez aussi modifier le temps disponible.'];
     [title.textContent,summary.textContent]=labels[result.kind];result.items.forEach(item=>grid.append(card(item,result.kind,snapshot)));
     retry.hidden=result.items.length>0;el('meal-retry-button').hidden=false;
     note.textContent=aiUnavailable?'L’aide IA est indisponible pour le moment. Voici les correspondances locales du catalogue.':usedAI?'Recherche aidée par l’IA, résultats issus de notre catalogue.':'';

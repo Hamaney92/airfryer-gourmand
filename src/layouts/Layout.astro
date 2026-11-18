@@ -42,8 +42,8 @@ const year = new Date().getFullYear();
     <ChristmasTheme head />
     <AdSenseVerification />
     <meta name="p:domain_verify" content="4b6b768b180fee1a16cbfade5fb7549f" />
-    <link rel="icon" href="/img/brand/afg-winged-icon.png" type="image/png" sizes="64x64" />
-    <link rel="apple-touch-icon" href="/img/brand/afg-winged-touch.png" sizes="180x180" />
+    <link rel="icon" href="/img/brand/afg-sourire-icon.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/img/brand/afg-sourire-touch.png" sizes="180x180" />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J24QNEE9GV" is:inline></script>
     <script is:inline>
@@ -90,8 +90,8 @@ const year = new Date().getFullYear();
       </div>
     </header>
 
-    {!noindex && <NewsletterBanner pageType={pageType} />}
-    {!noindex && <ChristmasTheme />}
+    {!noindex && pageType !== 'homepage' && <NewsletterBanner pageType={pageType} />}
+    {!noindex && pageType !== 'homepage' && <ChristmasTheme />}
     <main id="main-content" tabindex="-1">
       <slot />
       {!noindex && pageType !== 'recipe' && isEditorialPage(path) && <div class="wrap">

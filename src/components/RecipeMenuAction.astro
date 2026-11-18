@@ -1,0 +1,87 @@
+---
+interface Props { recipeId: string }
+const { recipeId } = Astro.props;
+---
+<div class="recipe-menu-action" data-recipe-menu={recipeId} hidden>
+  <button type="button">Ajouter à mon menu</button>
+  <a href="/recherche/#my-menu" hidden>Voir mon menu et ma liste de courses →</a>
+  <span role="status"></span>
+</div>
+<script>
+  import { SESSION_MENU_KEY } from '../lib/meal-menu-storage.mjs';
+  import { readMenuState } from '../lib/meal-planner.mjs';
+
+  const action = document.querySelector<HTMLElement>('[data-recipe-menu]');
+  if (action) {
+    const id = action.dataset.recipeMenu!;
+    const button = action.querySelector('button')!;
+    const link = action.querySelector('a')!;
+    const status = action.querySelector('[role="status"]')!;
+    const update = (included: boolean) => {
+      button.textContent = included ? 'Déjà dans mon menu' : 'Ajouter à mon menu';
+      button.setAttribute('aria-disabled', String(included));
+      link.hidden = !included;
+    };
+    const sync = () => {
+      try {
+        const state = readMenuState(sessionStorage.getItem(SESSION_MENU_KEY), [{id}]);
+        update(Boolean(state?.ids.includes(id)));
+      } catch { update(false); }
+      status.textContent = '';
+    };
+    sync();
+    action.hidden = false;
+    window.addEventListener('pageshow', event => { if (event.persisted) sync(); });
+    button.addEventListener('click', async () => {
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      button.setAttribute('aria-disabled', 'true');
+      status.textContent = 'Ajout en cours…';
+      let catalog;
+      try {
+        const response = await fetch('/recherche/catalogue.json', {signal: AbortSignal.timeout(10000)});
+        if (!response.ok) throw new Error();
+        catalog = await response.json();
+        if (!catalog.some((recipe: {id: string}) => recipe.id === id)) {
+          status.textContent = 'Cette recette est indisponible dans le menu.';
+          return;
+        }
+      } catch {
+        button.setAttribute('aria-disabled', 'false');
+        status.textContent = 'Le catalogue est indisponible. Réessayez dans un instant.';
+        return;
+      }
+      try {
+        const previous = sessionStorage.getItem(SESSION_MENU_KEY);
+        const menu = previous === null ? {people: 2, ids: []} : readMenuState(previous, catalog);
+        if (!menu) {
+          status.textContent = 'Le menu de cet onglet est illisible. Ouvrez le menu pour le vérifier.';
+          link.hidden = false;
+          return;
+        }
+        if (!menu.ids.includes(id)) {
+          if (menu.ids.length >= 6) {
+            status.textContent = 'Votre menu contient déjà six recettes. Ouvrez-le pour en retirer une.';
+            link.hidden = false;
+            return;
+          }
+          menu.ids.push(id);
+          sessionStorage.setItem(SESSION_MENU_KEY, JSON.stringify(menu));
+        }
+        update(true);
+        status.textContent = 'Cette recette figure dans votre menu.';
+      } catch {
+        button.setAttribute('aria-disabled', 'false');
+        status.textContent = 'Le navigateur ne permet pas de conserver cet ajout dans votre onglet.';
+      }
+    });
+  }
+</script>
+<style>
+  .recipe-menu-action{display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap;margin:12px 0}
+  .recipe-menu-action[hidden],.recipe-menu-action [hidden]{display:none}
+  button,a{min-height:44px;display:inline-flex;align-items:center;font:inherit;font-weight:700}
+  button{background:var(--brand-d);color:white;border:0;border-radius:10px;padding:9px 16px;cursor:pointer}
+  button[aria-disabled="true"]{background:var(--cream);color:var(--brand-d);cursor:default}
+  a{color:var(--brand-d);text-decoration:underline;text-underline-offset:3px}
+  span:not(:empty){width:100%;font-size:.9rem}
+</style>

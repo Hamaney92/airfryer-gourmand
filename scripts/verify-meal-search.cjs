@@ -23,12 +23,12 @@ async function edit(page,label,value){
       const context=await browser.newContext({viewport:{width,height:900},reducedMotion:width===390?'reduce':'no-preference'});
       const page=await context.newPage();page.setDefaultTimeout(10000);
       const errors=[];page.on('pageerror',e=>errors.push(e.message));
-      let apiCalls=0,apiStatus=200,apiDelay=0,catalogDown=false,externalBlocked=0;
+      let apiCalls=0,apiStatus=200,pendingResponse=null,catalogDown=false,externalBlocked=0;
       // No inference, Analytics, ads, email or other external request can leave this context.
       await context.route('**/*',async route=>{
         const url=new URL(route.request().url());
         if(url.pathname==='/api/recherche'){
-          apiCalls++;if(apiDelay)await new Promise(resolve=>setTimeout(resolve,apiDelay));
+          apiCalls++;if(pendingResponse)await pendingResponse;
           return route.fulfill({status:apiStatus,contentType:'application/json',body:JSON.stringify(apiStatus===200?{intent:{terms:['pois chiches'],excluded:[],vegetarian:true,vegan:true,maxMinutes:null}}:{})});
         }
         if(url.origin!==origin){externalBlocked++;return route.abort();}
@@ -65,14 +65,17 @@ async function edit(page,label,value){
       assert.match(await page.locator('#conversation-early').textContent(),/2 personnes par défaut/);
       await page.locator('#conversation-early').click();await ready(page);assert.ok(await page.locator('.meal-card').count());assert.equal(apiCalls,0);
       // One delayed interpretation permits checking the real busy/loader state.
-      apiDelay=600;
+      let finishResponse;
+      pendingResponse=new Promise(resolve=>{finishResponse=resolve;});
       await page.goto(base+'/recherche/?q=croquetteslevantines&pantry=&people=2&time=any');
       await page.locator('[data-meal-loader]').waitFor({state:'visible'});
       await page.locator('[data-meal-loader]').screenshot({path:path.join(out,`loader-${width}.png`)});
       if(width===390)assert.equal(await page.locator('.companion-chef').evaluate(e=>getComputedStyle(e).animationName),'none');
+      finishResponse();
+      pendingResponse=null;
       await ready(page);assert.equal(apiCalls,1);assert.equal(await page.locator('#results-title').textContent(),'Des pistes à explorer');
       assert.ok(await page.locator('.meal-card a[href*=pois-chiches]').count());
-      apiStatus=503;apiDelay=0;
+      apiStatus=503;
       await page.goto(base+'/recherche/?q=saumon%20dragonfruit&pantry=&people=2&time=any');await ready(page);
       assert.match(await page.locator('#search-note').textContent(),/indisponible/);assert.ok(await page.locator('.meal-card').count());
       assert.match(await page.locator('#results-title').textContent(),/proches/);

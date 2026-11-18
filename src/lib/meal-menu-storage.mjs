@@ -1,4 +1,5 @@
 export const MENU_STORAGE_KEY = 'afg_menu_saved_v1';
+export const SESSION_MENU_KEY = 'afg_menu_session_v1';
 export function readSavedMenu(raw, catalog) {
   if (raw === null) return {status:'empty'};
   try {

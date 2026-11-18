@@ -1,6 +1,5 @@
 import {buildShoppingList,formatShoppingRow,exportMenu,readMenuState} from '../lib/meal-planner.mjs';
-import {MENU_STORAGE_KEY, readSavedMenu, makeSavedMenu} from '../lib/meal-menu-storage.mjs';
-const STORAGE='afg_menu_session_v1';
+import {MENU_STORAGE_KEY, SESSION_MENU_KEY as STORAGE, readSavedMenu, makeSavedMenu} from '../lib/meal-menu-storage.mjs';
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(className)e.className=className;return e;};
 const recipeURL=id=>`/recettes/${id==='poisson-pane-surgele'?'poisson-pane-surgele-air-fryer':id}/`;
 export function createMealMenu(catalog){
@@ -70,5 +69,22 @@ export function createMealMenu(catalog){
   refreshSaved();
   if(location.hash==='#menu-reprise'){savedRegion.scrollIntoView();savedRegion.focus({preventScroll:true});}
   shortcut.addEventListener('click',()=>{box.focus();});render();
+  if(location.hash==='#my-menu' && selected.size){
+    box.scrollIntoView();
+    document.getElementById('menu-title').focus({preventScroll:true});
+  }
+  window.addEventListener('pageshow',event=>{
+    if(!event.persisted)return;
+    let state;
+    try{state=readMenuState(sessionStorage.getItem(STORAGE),catalog);}catch{return;}
+    if(state && (people!==state.people || [...selected].join()!==state.ids.join())){
+      people=state.people;
+      selected=new Set(state.ids);
+      peopleInput.value=String(people);
+      owned.clear();
+      render();
+    }
+    refreshSaved();
+  });
   return {setPeople(value){if(!Number.isInteger(value)||value<1||value>12)return false;if(value===people&&peopleInput.value===String(value))return true;people=value;peopleInput.value=String(value);owned.clear();render();feedback.textContent='Quantités actualisées pour votre nombre de personnes. Vérifiez de nouveau les ingrédients déjà disponibles.';return true;},button(id){const b=node('button',null,'meal-add');b.type='button';b.dataset.menuRecipe=id;setButton(b,id);b.addEventListener('click',()=>toggle(id));return b;}};
 }

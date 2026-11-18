@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import RecipeCard from '../components/RecipeCard.astro';
 import MealSearch from '../components/MealSearch.astro';
 import SeasonalSpotlight from '../components/SeasonalSpotlight.astro';
+import ChristmasTheme from '../components/ChristmasTheme.astro';
+import NewsletterBanner from '../components/NewsletterBanner.astro';
 import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../lib/site';
 
 const recipes = await getPublishedRecipes();
@@ -52,18 +54,16 @@ const jsonLd = {
 <Layout title={title} description={description} path="/" jsonLd={jsonLd} pageType="homepage">
   <div class="wrap">
     <section class="hero">
-      <div>
-        <span class="badge">🔥 {recipes.length} recettes publiées</span>
+      <div class="hero-content">
         <h1>Réussissez tout à <span>l'air fryer</span>, du premier coup.</h1>
-        <p>Temps de cuisson, températures et astuces pratiques réunis au même endroit. Moins de devinettes, plus de résultats croustillants.</p>
-        <div>
-          <a href="/tableau-temps-cuisson-air-fryer/" class="cta">Voir le tableau de cuisson →</a>
-          <a href="/temps-de-cuisson/" class="cta ghost">Convertisseur four → air fryer</a>
-        </div>
-
-        {latest.length > 0 && (
-          <p class="hero-latest"><a href="#dernieres-recettes">Découvrir les dernières recettes ↓</a></p>
-        )}
+        <p class="hero-intro">Qu’avez-vous au frigo ? Trouvons une recette avec vos ingrédients.</p>
+        <MealSearch home>
+          <nav class="hero-shortcuts" aria-label="Raccourcis de cuisine">
+            <a href="/tableau-temps-cuisson-air-fryer/">Tableau de cuisson</a>
+            <a href="/temps-de-cuisson/">Convertisseur four → air fryer</a>
+            {latest.length > 0 && <a href="#dernieres-recettes">Dernières recettes</a>}
+          </nav>
+        </MealSearch>
       </div>
       <figure class="hero-dish">
         <a href="/recettes/feta-rotie-air-fryer/" aria-label="Découvrir la recette de feta rôtie à l’air fryer">
@@ -76,7 +76,9 @@ const jsonLd = {
       </figure>
     </section>
 
-    <MealSearch home />
+  </div>
+  <ChristmasTheme />
+  <div class="wrap">
  <section class="menu-home" aria-labelledby="menu-home-title"><div><h2 id="menu-home-title">Vos repas, déjà organisés</h2><p>Choisissez vos recettes, ajustez les portions et gardez votre menu sur cet appareil pour retrouver votre liste de courses.</p></div><a class="cta" href="/batch-cooking/">Découvrir Menus &amp; courses →</a></section>
 
     <SeasonalSpotlight />
@@ -106,6 +108,9 @@ const jsonLd = {
       </div>
     </section>
 
+  </div>
+  <NewsletterBanner pageType="homepage" />
+  <div class="wrap">
     <section aria-labelledby="dernieres-recettes">
       <div class="row">
         <h2 class="h2" id="dernieres-recettes">Dernières recettes<small>Les nouvelles recettes publiées sur le site</small></h2>
@@ -162,8 +167,10 @@ const jsonLd = {
 </Layout>
 
 <style>
-  .hero-latest{margin:14px 0 0;font-size:.95rem}
-  .hero-latest a{display:inline-block;padding:8px 0;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+  .hero-content{min-width:0}
+  .hero .hero-intro{font-size:1.03rem;line-height:1.5;margin-bottom:18px}
+  .hero-shortcuts{display:flex;flex-wrap:wrap;column-gap:18px;row-gap:0}
+  .hero-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-size:.9rem;font-weight:700;text-decoration:underline;text-underline-offset:4px}
   #dernieres-recettes{scroll-margin-top:80px}
   .tool-table-link{display:inline-block;margin-top:12px;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
   .hero-dish{min-width:0;margin:0}
@@ -180,6 +187,7 @@ const jsonLd = {
   .book-home h2{font-family:Georgia,serif;font-weight:500;font-size:1.95rem;line-height:1.2;margin-bottom:12px}
   .book-home p{color:var(--muted);margin-bottom:17px;max-width:620px}
   @media(max-width:620px){
+    .hero{padding-top:24px;gap:20px}
     .hero-dish figcaption{align-items:flex-start;flex-direction:column;gap:5px}
     .guide-home{padding:24px 20px}
     .book-home{grid-template-columns:1fr;text-align:center;padding:24px 20px}

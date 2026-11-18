@@ -35,10 +35,11 @@ faq:
   - q: "Faut-il précuire les feuilles de lasagne ?"
     a: "Avec des feuilles fraîches, non. Avec des feuilles sèches, utilisez une sauce bien liquide (elles absorbent l'eau en cuisant) ou faites-les tremper quelques minutes. Sinon, elles risquent de rester dures au centre du plat."
   - q: "Peut-on réchauffer des lasagnes au air fryer ?"
-    a: "Oui, c'est excellent : 10 à 15 minutes à 160-170 °C réchauffent une portion de lasagnes à cœur et redonnent un dessus gratiné. Couvrez d'alu au début si le dessus est déjà bien coloré, pour ne pas le dessécher."
+    a: "Pour une part déjà cuite et réfrigérée, comptez environ 8 à 12 minutes à 160 °C dans un appareil déjà chaud. Vérifiez dès 8 minutes et prolongez jusqu’à ce que le centre soit bien chaud."
   - q: "Quel plat pour des lasagnes au air fryer ?"
     a: "De petits plats ou ramequins individuels (verre, céramique, aluminium) qui rentrent dans le panier en laissant l'air circuler. Les portions individuelles cuisent plus uniformément qu'un grand plat, et présentent joliment à l'assiette."
 pubDate: 2026-09-12
+updatedDate: 2026-11-18
 ---
 
 Les lasagnes au air fryer, c'est le plat italien réconfortant en **portions individuelles gratinées** : **des pâtes fondantes, une bolognaise parfumée, une béchamel crémeuse et un dessus doré**. L'air fryer gratine à merveille — à condition de gérer la cuisson des pâtes avec une astuce simple.
@@ -53,7 +54,8 @@ Le secret : **couvrir d'alu** au début, puis **gratiner** à découvert.
 |---|---|---|
 | Couvert d'alu (cuire les pâtes) | 170 °C | 12–15 min |
 | À découvert (gratiner) | 170 °C | 5–10 min |
-| Réchauffage | 165 °C | 10–15 min |
+
+Tes lasagnes sont déjà cuites et sortent du réfrigérateur ? Retrouve les [repères pour réchauffer une part de lasagnes](/dossiers/rechauffer-restes-air-fryer/#rechauffer-lasagnes).
 
 Retrouve tous les aliments et leurs réglages sur notre [convertisseur temps de cuisson air fryer](/temps-de-cuisson/).
 
