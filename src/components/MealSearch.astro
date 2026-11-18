@@ -1,5 +1,5 @@
 ---
-import SantaLoader from './SantaLoader.astro';
+import CompanionLoader from './CompanionLoader.astro';
 interface Props { home?: boolean }
 const {home=false}=Astro.props;
 ---
@@ -12,7 +12,7 @@ const {home=false}=Astro.props;
     <p id="meal-privacy" class="meal-privacy">L’IA peut aider à comprendre votre demande. Évitez les données personnelles. <a href="/confidentialite/#recherche-ia">Confidentialité</a></p>
   </form>
   {home && <div class="meal-examples" aria-label="Exemples de recherche"><a href="/recherche/?q=repas%20du%20soir">Repas du soir</a><a href="/recherche/?q=poulet%20rapide">Poulet rapide</a><a href="/recherche/?q=repas%20vegetarien">Une envie végétarienne</a></div>}
-  <SantaLoader/>
+  <CompanionLoader/>
 </div>
 <style is:global>
   .meal-search{--meal-green:#174b38;--meal-lime:#d7e8a8;color:#183e30;max-width:850px;margin:auto}.meal-search-home{text-align:center;border:1px solid #dce1cc;border-radius:26px;background:#f1f3e7;padding:36px 40px;margin:16px auto 30px;box-shadow:0 12px 32px #174b3808}

@@ -1,0 +1,9 @@
+<div class="meal-loader" data-meal-loader hidden role="status" aria-live="polite">
+  <img class="companion-chef" src="/img/brand/afg-companion.webp" width="96" height="96" alt="" decoding="async" />
+  <p>On cherche une bonne idée pour vous…</p>
+</div>
+<style>
+  .meal-loader[hidden]{display:none}.meal-loader{text-align:center;padding:24px;color:#174b38}.companion-chef{display:block;width:96px;height:96px;object-fit:contain;border-radius:24px;margin:auto;animation:companion-sway 2.4s ease-in-out infinite;transform-origin:50% 85%}.meal-loader p{font-size:.95rem;margin-top:8px}
+  @keyframes companion-sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg) translateY(-3px)}}
+  @media(prefers-reduced-motion:reduce){.companion-chef{animation:none}}
+</style>

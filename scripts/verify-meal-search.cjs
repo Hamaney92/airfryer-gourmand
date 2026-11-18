@@ -69,7 +69,7 @@ async function edit(page,label,value){
       await page.goto(base+'/recherche/?q=croquetteslevantines&pantry=&people=2&time=any');
       await page.locator('[data-meal-loader]').waitFor({state:'visible'});
       await page.locator('[data-meal-loader]').screenshot({path:path.join(out,`loader-${width}.png`)});
-      if(width===390)assert.equal(await page.locator('.santa-chef').evaluate(e=>getComputedStyle(e).animationName),'none');
+      if(width===390)assert.equal(await page.locator('.companion-chef').evaluate(e=>getComputedStyle(e).animationName),'none');
       await ready(page);assert.equal(apiCalls,1);assert.equal(await page.locator('#results-title').textContent(),'Des pistes à explorer');
       assert.ok(await page.locator('.meal-card a[href*=pois-chiches]').count());
       apiStatus=503;apiDelay=0;
