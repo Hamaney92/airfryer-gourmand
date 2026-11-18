@@ -29,6 +29,7 @@ const ideas = [
     <h3>{index + 1}. {idea.name}</h3>
     <p><strong>Pour qui ?</strong> {idea.who}</p><p>{idea.use}</p><p><strong>Avant l’achat :</strong> {idea.check}</p>
     {idea.source && <p class="seasonal-sources">Exemple documentaire : {idea.example}. <a href={idea.source} target="_blank" rel="noopener">Consulter la fiche fabricant</a>.</p>}
+    {idea.visual === 'dish' && <p><a href="/guides/accessoires-air-fryer/#mesurer-panier">Voir comment mesurer le panier avant de choisir un moule</a>.</p>}
     <a class="seasonal-cta" href={amazonSearch(idea.query)} rel="sponsored nofollow noopener" target="_blank" data-affiliate-network="amazon" data-placement="christmas_gift_guide" data-product-id={`christmas-gift-${index + 1}`} data-product-type="kitchen" data-page-type="guide" data-page-id="cadeaux-cuisine-noel">Comparer les offres sur Amazon →</a>
     <ProductIllustration id={idea.visual} />
   </section>)}
