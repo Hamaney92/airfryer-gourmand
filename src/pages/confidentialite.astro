@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 const title = 'Politique de confidentialité — Airfryer Gourmand';
 const description = "Quelles données Airfryer Gourmand collecte, pourquoi, combien de temps, et comment exercer vos droits (RGPD).";
-const maj = '17 novembre 2026';
+const maj = '18 novembre 2026';
 ---
 <Layout title={title} description={description} path="/confidentialite/">
   <div class="wrap article">
@@ -95,6 +95,7 @@ const maj = '17 novembre 2026';
     <p>Le dialogue vous demande une envie, des ingrédients disponibles, un nombre de personnes et un temps souhaité pour rechercher dans notre catalogue. Ces réponses figurent dans l’adresse de la page pour reprendre ou modifier votre recherche : évitez d’y saisir des données personnelles ou sensibles, notamment des informations de santé.</p>
     <p>Lorsque la recherche locale nécessite une interprétation, le texte de votre envie et de vos ingrédients, accompagné de la limite de temps choisie, peut être transmis à Cloudflare Workers AI. Ce service extrait des mots et des contraintes pour rechercher nos recettes existantes. Le dialogue n’envoie pas une requête IA à chaque réponse. Les échanges techniques passent par notre hébergeur Cloudflare ; ne considérez donc pas que tout le traitement reste sur votre appareil. Vous pouvez également consulter directement <a href="/recettes/">le catalogue des recettes</a>.</p>
     <p>Le menu choisi est conservé dans le stockage de session du navigateur pour cet onglet : identifiants des recettes et nombre de personnes. Il peut être effacé avec l’action « Vider le menu ». La liste téléchargeable est créée dans votre navigateur. Ce fonctionnement ne crée pas de compte utilisateur et ne vous inscrit pas à la newsletter.</p>
+ <p>Si vous cliquez sur « Garder ce menu sur cet appareil », une seule sauvegarde est enregistrée dans le stockage local de ce navigateur : version du format, identifiants des recettes, nombre de personnes et date d’enregistrement. Aucune recherche libre, liste du frigo ou case cochée n’y est conservée. Cette sauvegarde n’est pas envoyée à l’IA et ne se synchronise pas entre appareils. Elle reste jusqu’à votre action « Supprimer la sauvegarde » ou à l’effacement des données du navigateur ; la navigation privée peut l’effacer à la fermeture. Les changements suivants ne la mettent pas à jour automatiquement. « Vider le menu » efface uniquement la sélection de l’onglet, pas cette sauvegarde volontaire.</p>
 
     <h2>2. Cookies et traceurs</h2>
     <p>Trois familles de traceurs peuvent être déposées :</p>

@@ -15,7 +15,7 @@ export const GET: APIRoute = async () => {
       .map((slug) => base + slug + '/');
 
   const staticPaths = [
-    '/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/',
+    '/', '/batch-cooking/', '/recettes/', '/temps-de-cuisson/', '/tableau-temps-cuisson-air-fryer/',
     '/rapide/', '/minceur/', '/guides/', '/livre/', '/a-propos/', '/contact/',
     '/mentions-legales/', '/confidentialite/',
     ...catSlugs.map((slug) => '/categorie/' + slug + '/'),

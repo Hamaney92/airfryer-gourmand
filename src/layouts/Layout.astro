@@ -1,9 +1,10 @@
 ---
 import '../styles/global.css';
+import { primaryNavigation } from '../lib/primary-navigation.mjs';
 import ChristmasTheme from '../components/ChristmasTheme.astro';
 import Brand from '../components/Brand.astro';
 import AdSenseVerification from '../components/AdSenseVerification.astro';
-import { SITE, USAGES, NEWSLETTER_SIGNUP_URL } from '../lib/site';
+import { SITE, NEWSLETTER_SIGNUP_URL } from '../lib/site';
 import PdfPopup from '../components/PdfPopup.astro';
 import AffiliateTracking from '../components/AffiliateTracking.astro';
 import ConversionTracking from '../components/ConversionTracking.astro';
@@ -72,21 +73,16 @@ const year = new Date().getFullYear();
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
     )}
-  </head>
+  <noscript><style is:inline>@media(max-width:1100px){header .bar{height:auto;min-height:64px;flex-wrap:wrap;padding-bottom:12px}header .mobile-menu-trigger{display:none}header .cats{display:flex;width:100%;flex-wrap:wrap;gap:4px 16px}header .cats a{display:flex;align-items:center;min-height:44px}}</style></noscript>
+</head>
   <body data-page-type={pageType}>
     <a class="skip-link" href="#main-content">Aller au contenu</a>
     <header>
       <div class="wrap bar">
         <Brand />
         <nav class="cats" id="primary-navigation" aria-label="Navigation principale">
-          {USAGES.map((u) => (
-            <a href={u.slug}>{u.label}</a>
-          ))}
-          <a href="/recettes/">Toutes les recettes</a>
-          <a href="/guides/">Guides</a>
-          <a href="/guides/innovations-air-fryer/">Innovations</a>
-          <a href="/livre/" data-book-entry data-placement="header" data-page-type={pageType}>Nos livres</a>
-        </nav>
+ {primaryNavigation.map(([label, href]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined} data-book-entry={href === '/livre/' ? '' : undefined} data-placement={href === '/livre/' ? 'header' : undefined} data-page-type={href === '/livre/' ? pageType : undefined}>{label}</a>)}
+ </nav>
         <button class="icobtn mobile-menu-trigger" type="button" aria-label="Ouvrir le menu" aria-controls="primary-navigation" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>

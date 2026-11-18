@@ -64,7 +64,7 @@ function card({recipe:r,hits},kind,snapshot){
   const adapt=node('button','Adapter à mes ingrédients','meal-adapt');adapt.type='button';adapt.addEventListener('click',()=>edit('pantry'));details.append(adapt);
   body.append(details);const open=node('a','Voir la recette →','meal-open');open.href=url;body.append(open,menu.button(r.id));article.append(body);return article;
 }
-async function catalog(){if(!catalogPromise)catalogPromise=fetch('/recherche/catalogue.json',{signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{menu ||= createMealMenu(data);return data;}).catch(e=>{catalogPromise=null;throw e;});return catalogPromise;}
+async function catalog(){if(!catalogPromise)catalogPromise=fetch('/recherche/catalogue.json',{signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{menu ||= createMealMenu(data);el('menu-catalog-retry').hidden=true;return data;}).catch(e=>{catalogPromise=null;el('menu-saved-status').textContent='Le catalogue est indisponible. Votre sauvegarde n’a pas été modifiée. Réessayez ou consultez les recettes.';el('menu-catalog-retry').hidden=false;throw e;});return catalogPromise;}
 async function search(focus=false){
   if(busy||nextStep(state))return;
   const snapshot={...state},id=++run;controller?.abort();controller=new AbortController();const current=controller;
@@ -99,4 +99,5 @@ el('meal-change-pantry').addEventListener('click',()=>edit('pantry'));el('meal-c
 window.addEventListener('popstate',()=>{cancelResults();state=fromURL(location.search);editKey=null;wasEditing=false;render();if(!nextStep(state))search();});
 render();if(!nextStep(state))search();
 // Restore an existing menu without changing its portions while questions are pending.
+el('menu-catalog-retry').addEventListener('click',()=>{el('menu-saved-status').textContent='Chargement du catalogue…';catalog().catch(()=>{});});
 catalog().catch(()=>{});

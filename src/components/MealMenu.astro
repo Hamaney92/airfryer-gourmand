@@ -1,3 +1,11 @@
+<section id="menu-reprise" class="menu-saved" aria-labelledby="menu-saved-title" tabindex="-1">
+  <h2 id="menu-saved-title">Votre menu enregistré</h2>
+  <p id="menu-saved-status" role="status">Chargement de la sauvegarde de cet appareil…</p>
+  <p id="menu-restore-warning" hidden>Reprendre ce menu remplacera la sélection de cet onglet. Les cases cochées seront remises à zéro.</p>
+  <div class="menu-saved-actions"><button id="menu-restore" class="menu-primary" type="button" hidden>Reprendre ce menu</button><button id="menu-delete-saved" class="menu-secondary" type="button" hidden>Supprimer la sauvegarde</button><button id="menu-catalog-retry" class="menu-secondary" type="button" hidden>Réessayer le chargement</button><a href="/recherche/#conversation-form">Composer un menu</a> · <a href="/recettes/">Voir les recettes</a></div>
+  <p class="menu-footnote">Une seule sauvegarde dans ce navigateur, sans compte ni synchronisation entre appareils. Effacer les données du navigateur peut la supprimer.</p>
+  <noscript><p>La reprise du menu nécessite JavaScript. Les recettes restent accessibles par le lien ci-dessus.</p><style is:inline>#menu-saved-status{display:none}</style></noscript>
+</section>
 <a id="menu-shortcut" href="#my-menu" hidden>Mon menu <span id="menu-badge">0</span> <span aria-hidden="true">→</span></a>
 <aside id="my-menu" class="meal-menu" hidden aria-labelledby="menu-title" tabindex="-1">
   <div class="menu-heading"><div><span class="meal-eyebrow">On s’organise</span><h2 id="menu-title" tabindex="-1">Mon menu & ma liste</h2></div><button id="menu-clear" type="button" class="menu-secondary">Vider le menu</button></div>
@@ -8,7 +16,8 @@
   <p class="menu-quantity-note">Les quantités simples suivent le nombre de personnes. Les lignes ambiguës gardent leurs quantités d’origine, avec une mention pour les vérifier.</p>
   <ul id="menu-shopping" class="menu-shopping"></ul>
   <div class="menu-actions"><button id="menu-download" type="button" class="menu-primary">Télécharger ma liste (.txt) ↓</button><p id="menu-count" role="status" aria-live="polite"></p></div>
-  <p class="menu-footnote">Les durées de cuisson ne se multiplient pas avec les portions. Adaptez le nombre de fournées à votre panier. Votre menu reste dans cet onglet pendant la session ; il n’est pas envoyé à l’IA.</p>
+  <div class="menu-save"><button id="menu-save" class="menu-primary" type="button">Garder ce menu sur cet appareil</button><p id="menu-save-status" role="status" aria-live="polite"></p><p>Seules les recettes et les portions seront gardées dans ce navigateur, sans compte et sans envoi à l’IA. Les cases cochées ne sont pas conservées.</p></div>
+  <p class="menu-footnote">Vider le menu ne supprime pas la sauvegarde de cet appareil. Les durées de cuisson ne se multiplient pas avec les portions. Adaptez le nombre de fournées à votre panier. Votre menu reste dans cet onglet pendant la session ; il n’est pas envoyé à l’IA.</p>
 </aside>
 <p id="menu-feedback" class="menu-feedback" role="status" aria-live="polite"></p>
 <style is:global>
@@ -16,3 +25,5 @@
   #menu-shortcut{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:12px;align-items:center;white-space:nowrap;background:#174b38;color:#fff;border:2px solid #d7e8a8;border-radius:40px;padding:12px 22px;box-shadow:0 5px 20px #174b3833;z-index:28;font-weight:700}#menu-badge{background:#d7e8a8;color:#174b38;border-radius:50%;min-width:24px;text-align:center}.meal-page:has(.meal-menu:not([hidden])){padding-bottom:110px}
   @media(max-width:540px){.meal-menu{padding:22px 16px}.menu-heading{align-items:flex-start;flex-direction:column;gap:0}.menu-heading h2{margin-bottom:12px}.menu-secondary{margin-bottom:18px}.menu-selection li{align-items:flex-start}.menu-selection button{font-size:.76rem}.menu-primary{width:100%}}
 </style>
+
+<style is:global>.menu-saved{background:#fffef9;border:1px solid #d3dcc3;border-radius:18px;padding:24px;margin:24px 0;scroll-margin-top:100px;color:#174b38}.menu-saved h2{font:500 1.6rem/1.2 Georgia,serif;margin-bottom:12px}.menu-saved-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:16px}.menu-saved-actions a{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline}.menu-saved [hidden]{display:none}.menu-save{border-top:1px solid #d3dcc3;padding-top:20px;margin-top:20px}.menu-save p{font-size:.9rem;margin-top:12px}.menu-saved :focus-visible,.menu-save :focus-visible{outline:3px solid #a06d24;outline-offset:4px}</style>
