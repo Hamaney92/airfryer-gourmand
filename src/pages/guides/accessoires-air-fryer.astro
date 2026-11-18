@@ -6,6 +6,51 @@ import { amazonSearch } from '../../lib/site';
 const title = "Accessoires air fryer indispensables : le vrai utile (2026)";
 const description = "Les accessoires air fryer qui changent vraiment la donne : papier cuisson perforé, moules silicone, grille étagée, spray à huile, thermomètre… Ce qui sert, ce qui est gadget.";
 const papierAnswer = "Cela dépend de ton modèle. Philips déconseille le papier sulfurisé pour les Airfryers couverts par sa fiche d’assistance. Si la notice de ton appareil autorise le papier, pose les aliments dessus avant de démarrer et respecte les consignes sur les dimensions et la température.";
+const compatibilityURL = 'https://airfryergourmand.fr/guides/accessoires-air-fryer/#recipient-modele';
+const compatibility = [
+  {
+    appareil: 'Ninja CRISPi',
+    modeles: 'FN201EUBL1, FN201EUGN8, FN201EUSD2, FN202EU, FN203EU',
+    accessoire: 'Récipient CleanCrisp 3,8 L avec couvercle', reference: 'XSKLDPLCNTEUUK',
+    source: 'https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html', fabricant: 'Ninja',
+    confirme: true,
+    detail: 'La fiche fabricant cite ces cinq références. Elle annonce des dimensions de produit L 29,49 × P 23,8 × H 12,7 cm : ce ne sont pas des dimensions intérieures.',
+    limite: 'FN101EU et les autres versions ne sont pas confirmés ici. Vérifie dans la notice les éléments requis et les usages du couvercle ; un plat en verre de taille proche ne remplace pas ce récipient dédié.',
+  },
+  {
+    appareil: 'Ninja CRISPi Pro',
+    modeles: 'AS101EUCY, AS101EUGY, AS101EULG, AS101EURS, AS101EUYL, AS101EUPU4, AS104EUBR',
+    accessoire: 'Récipient CleanCrisp 3,8 L avec couvercle', reference: 'XSKLDPLCNTEUUK',
+    source: 'https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html', fabricant: 'Ninja',
+    confirme: true,
+    detail: 'La même fiche cite ces sept versions Pro. Dimensions du produit : L 29,49 × P 23,8 × H 12,7 cm, sans indication de dimensions intérieures.',
+    limite: 'Ne déduis pas la compatibilité d’un autre récipient à partir de sa contenance. Consulte les consignes de l’appareil pour la plaque, le couvercle et les éléments nécessaires à la cuisson.',
+  },
+  {
+    appareil: 'Ninja, famille AF500', modeles: 'AF500 cité par le fabricant ; suffixe et version complète à vérifier',
+    accessoire: 'Moule à cake Ninja', reference: '4021J300EUK',
+    source: 'https://www.sharkninja.fr/ninja-moule-a-cake/4021J300EUK.html', fabricant: 'Ninja',
+    confirme: false,
+    detail: 'AF500 figure dans la liste du fabricant. Dimensions du produit annoncées : L 21,49 × P 11,51 × H 7,49 cm.',
+    limite: 'Compare ton code complet avec la liste fabricant et vérifie la disposition autorisée dans le tiroir. Cette mention AF500 ne confirme pas les familles AF300 ou AF400.',
+  },
+  {
+    appareil: 'Air fryer à panier', modeles: 'Modèle précis non certifié dans la fiche consultée',
+    accessoire: 'Plat Pyrex 1,5 L double tiroir, poignée amovible', reference: '300U300',
+    source: 'https://www.pyrex.fr/products/plat-airfryer-en-verre-avec-poignee-amovible', fabricant: 'Pyrex',
+    confirme: false,
+    detail: 'Dimensions extérieures de la variante 1,5 L consultée : 20 × 15 × 9 cm. Cuisson dans l’air fryer sans la poignée.',
+    limite: 'Vérifie les dimensions utiles, le dégagement et les consignes de ton appareil et du plat. Suis la notice pour la manipulation. Ces dimensions ne s’appliquent pas à la variante 2 L.',
+  },
+  {
+    appareil: 'Moulinex Easy Fry', modeles: 'Familles EY/EZ24, EY/EZ80, AL20 et AL50 citées ; référence complète à vérifier',
+    accessoire: 'Kit Easy Fry XXL : moule, plaque pizza, grille brochettes et support', reference: 'XA113010',
+    source: 'https://www.moulinex.fr/boutique-accessoires/accessoires-easy-fry-xxl-diametre-20-cm-xa113010/a/1510001801', fabricant: 'Moulinex',
+    confirme: false,
+    detail: 'Le fabricant cite les familles EY/EZ24, EY/EZ80, AL20 et AL50 et annonce un diamètre de 20 cm pour ce kit. Cela ne remplace pas la vérification de la référence complète de ton appareil.',
+    limite: 'La marque, la mention XXL ou le diamètre ne suffisent pas. Vérifie ton code auprès du fabricant, puis la hauteur et les dégagements nécessaires pour chaque pièce.',
+  },
+];
 
 const accessoires = [
   { visual: "paper" as const, emoji: "📄", nom: "Papier cuisson perforé", util: "Peut faciliter le retrait des aliments fragiles sur les modèles qui l’autorisent.", note: "Consulte d’abord la notice de ton modèle. Même perforée, une feuille libre peut être soulevée par le ventilateur.", lien: "papier cuisson perforé air fryer" },
@@ -25,7 +70,7 @@ const articleSchema = {
   "author": { "@type": "Organization", "name": "L'équipe Airfryer Gourmand", "url": "https://airfryergourmand.fr/a-propos/" },
   "publisher": { "@type": "Organization", "name": "Airfryer Gourmand", "url": "https://airfryergourmand.fr/" },
   "datePublished": "2026-08-01",
-  "dateModified": "2026-11-15",
+  "dateModified": "2026-11-18",
 };
 const faqSchema = {
   "@context": "https://schema.org", "@type": "FAQPage",
@@ -38,8 +83,8 @@ const faqSchema = {
 <Base title={title} description={description}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <div class="wrap">
-    <article class="article">
+  <div class="wrap compatibility-page">
+    <article class="article compatibility-guide">
       <div class="crumb" style="color:#9a8c7d;font-size:.9rem;margin-bottom:10px">
         <a href="/" style="color:var(--accent);text-decoration:none">Accueil</a> ›
         <a href="/guides/" style="color:var(--accent);text-decoration:none">Guides d'achat</a> › Accessoires
@@ -47,11 +92,44 @@ const faqSchema = {
       <h1>Accessoires air fryer indispensables (et les gadgets à éviter)</h1>
       <div class="byline" style="display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;margin:6px 0 16px">
         <span aria-hidden="true">🍟</span>
-        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le <time datetime="2026-11-15">15 novembre 2026</time></span>
+        <span>Par <a href="/a-propos/" style="color:var(--brand-d);font-weight:700">L'équipe Airfryer Gourmand</a> · Mis à jour le <time datetime="2026-11-18">18 novembre 2026</time></span>
       </div>
       <div class="quick"><b>En bref.</b> Mesure ton panier pour choisir un moule, prévois une sonde pour contrôler la cuisson à cœur et vérifie la notice avant d’utiliser du papier cuisson.</div>
       <p><a href="#recipient-modele">Quel récipient pour mon modèle ? Voir les références et les points à vérifier.</a></p>
       <p style="background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.9rem;color:#5f5147">⚖️ <b>Transparence :</b> cette page contient des <b>liens affiliés</b> — si tu achètes via un de nos liens, nous touchons une petite commission, <b>sans surcoût pour toi</b>. Le guide présente les usages de chaque type d’accessoire.</p>
+
+      <section id="recipient-modele" class="compatibility-resource" aria-labelledby="compatibility-title">
+        <h2 id="compatibility-title">Quel accessoire pour mon modèle d’air fryer ?</h2>
+        <p>Relève la référence complète sur l’étiquette de ton appareil, puis compare-la aux modèles cités par le fabricant. Une contenance ou une marque identique ne suffit pas.</p>
+        <p>Un <strong>plat posé dans un panier</strong> doit respecter ses dimensions et sa circulation d’air. Un <strong>récipient dédié au système CRISPi</strong> fait partie de l’ensemble de cuisson : un plat en verre de taille proche ne suffit pas à le remplacer.</p>
+        <p class="compatibility-method">Recherche documentaire du <time datetime="2026-11-18">18 novembre 2026</time>. <strong>Nous n’avons pas réalisé de test physique de ces associations.</strong> Les sources fabricant ci-dessous sont sans affiliation.</p>
+        <div class="compatibility-actions" hidden data-compatibility-actions>
+          <button type="button" data-compatibility-copy>Copier le lien du tableau</button>
+          <button type="button" data-compatibility-print>Imprimer le tableau</button>
+        </div>
+        <p class="compatibility-permalink"><a href={compatibilityURL} data-compatibility-link>Lien permanent vers ce tableau</a></p>
+        <p class="compatibility-status" role="status" aria-live="polite" data-compatibility-status></p>
+        <div class="compatibility-copy-fallback" hidden data-compatibility-fallback><label for="compatibility-manual-url">Adresse à copier manuellement</label><input id="compatibility-manual-url" type="url" readonly value={compatibilityURL} /><p>Sélectionne cette adresse puis utilise la commande Copier de ton appareil.</p></div>
+        <ul class="compatibility-list" aria-label="Références et compatibilités documentées">
+          {compatibility.map((entry) => (
+            <li class="compatibility-entry">
+              <div class="compatibility-device"><span class="compatibility-label">Appareil</span><h3>{entry.appareil}</h3><p>{entry.modeles}</p></div>
+              <div class="compatibility-accessory"><span class="compatibility-label">Accessoire et source</span><p><strong>{entry.accessoire}</strong><br />Référence : {entry.reference}</p><a class="compatibility-source" href={entry.source}>Fiche {entry.fabricant} — {entry.reference}</a><p class="compatibility-date">Consultée le <time datetime="2026-11-18">18 novembre 2026</time></p></div>
+              <div class="compatibility-check"><span class="compatibility-label">Portée et vérifications</span><p class:list={['compatibility-state', { 'is-confirmed': entry.confirme }]}>{entry.confirme ? 'Association citée par le fabricant' : 'À vérifier pour ton modèle'}</p><p>{entry.detail}</p><p><strong>À vérifier :</strong> {entry.limite}</p></div>
+            </li>
+          ))}
+        </ul>
+        <h3>Tu veux cuire puis ranger les restes dans le même contenant ?</h3>
+        <p>Vérifie séparément les usages du récipient, du couvercle et de la poignée. Un couvercle fourni pour la conservation n’est pas une autorisation de le laisser pendant la cuisson. Suis les consignes de refroidissement, de manipulation et de nettoyage propres à la référence choisie.</p>
+        <p>Pour comprendre le système à récipient dédié, consulte les <a href="/guides/nouveautes-air-fryer/">fonctions des air fryers en verre</a>. Si tu cherches simplement un moule à placer dans ton panier, commence par les <a href="#mesurer-panier">mesures à prendre avant l’achat</a>.</p>
+        <h2 id="mesurer-panier">Mesurer ton panier avant d’acheter un moule</h2>
+        <ol>
+          <li>À froid, mesure le fond à l’endroit où reposera le moule, puis la largeur à la hauteur des anses.</li>
+          <li>Compare ces mesures aux dimensions extérieures du moule. Tiens compte des coins arrondis, de la hauteur utile et du dégagement demandé par la notice.</li>
+          <li>Vérifie que tu pourras sortir le moule avec des maniques sans l’incliner. Si le fabricant de l’accessoire donne une liste de modèles compatibles, compare le code complet de l’appareil.</li>
+        </ol>
+        <p class="compatibility-print-url">Airfryer Gourmand — {compatibilityURL}</p>
+      </section>
 
       {accessoires.map((a) => (
         <div class="card-box" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)">
@@ -82,30 +160,8 @@ const faqSchema = {
         <p style="color:#5f5147;margin:0">Si tu cuisines souvent des morceaux épais de viande ou de volaille, commence par un <b>thermomètre à viande</b>. Si tu prépares surtout des portions individuelles, mesure d’abord ton panier pour choisir un moule adapté.</p>
       </div>
 
-      <h2 id="recipient-modele">Quel récipient pour mon modèle d’air fryer ?</h2>
-      <p>Relève la référence complète sur l’étiquette de l’appareil. Un <strong>plat posé dans un panier</strong> doit respecter ses dimensions et sa circulation d’air. Un <strong>récipient dédié au système CRISPi</strong> fait partie de l’ensemble de cuisson : un plat en verre de taille proche ne suffit pas à le remplacer.</p>
-      <p>Voici quelques repères documentaires vérifiés le <time datetime="2026-11-15">15 novembre 2026</time>. Nous n’avons pas réalisé de test physique de ces associations. Les liens du tableau conduisent aux fiches fabricant, sans lien affilié.</p>
-      <div class="compatibility-scroll" role="region" aria-label="Tableau des récipients, défilement horizontal si nécessaire" tabindex="0">
-        <table class="compatibility-table">
-          <caption>Récipients : références confirmées et vérifications restantes</caption>
-          <thead><tr><th scope="col">Ton appareil</th><th scope="col">Récipient et source</th><th scope="col">Ce qui est vérifié</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Ninja CRISPi FN201EUBL1, FN201EUGN8, FN201EUSD2, FN202EU ou FN203EU</th><td>CleanCrisp 3,8 L<br /><a href="https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html">XSKLDPLCNTEUUK — fiche Ninja</a></td><td>Ces références sont explicitement citées sur la fiche. Pour une autre version, notamment FN101EU, la compatibilité reste à vérifier dans la notice ou auprès du fabricant.</td></tr>
-            <tr><th scope="row">Ninja CRISPi Pro AS101EUCY, AS101EUGY, AS101EULG, AS101EURS, AS101EUYL, AS101EUPU4 ou AS104EUBR</th><td>CleanCrisp 3,8 L<br /><a href="https://www.sharkninja.fr/recipient-ninja-crispi-de-3.8l-en-verre-cleancrisp-avec-couvercle/XSKLDPLCNTEUUK.html">XSKLDPLCNTEUUK — liste des modèles</a></td><td>La même fiche cite ces versions Pro. Ne déduis pas la compatibilité d’un autre récipient à partir de sa seule contenance.</td></tr>
-            <tr><th scope="row">Air fryer à panier, modèle à identifier</th><td>Plat Pyrex avec poignée amovible, variantes 1,5 L et 2 L<br /><a href="https://www.pyrex.fr/products/plat-airfryer-en-verre-avec-poignee-amovible">Vérifier la variante chez Pyrex</a></td><td><strong>Compatibilité avec ton modèle à vérifier.</strong> La fiche présente des formats pour double tiroir ou tiroir unique, sans confirmer ici ton appareil précis. Compare les dimensions extérieures et la hauteur utile, puis les consignes des deux fabricants.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h3>Tu veux cuire puis ranger les restes dans le même contenant ?</h3>
-      <p>Vérifie séparément les usages du récipient, du couvercle et de la poignée. Un couvercle fourni pour la conservation n’est pas une autorisation de le laisser pendant la cuisson. Suis les consignes de refroidissement, de manipulation et de nettoyage propres à la référence choisie.</p>
-      <p>Pour comprendre le système à récipient dédié, consulte les <a href="/guides/nouveautes-air-fryer/">fonctions des air fryers en verre</a>. Si tu cherches simplement un moule à placer dans ton panier, commence par les mesures ci-dessous.</p>
-      <h2 id="mesurer-panier">Mesurer ton panier avant d’acheter un moule</h2>
-      <ol>
-        <li>À froid, mesure le fond à l’endroit où reposera le moule, puis la largeur à la hauteur des anses.</li>
-        <li>Compare ces mesures aux dimensions extérieures du moule. Tiens compte des coins arrondis, de la hauteur utile et du dégagement demandé par la notice.</li>
-        <li>Vérifie que tu pourras sortir le moule avec des maniques sans l’incliner. Si le fabricant de l’accessoire donne une liste de modèles compatibles, compare le code complet de l’appareil.</li>
-      </ol>
       <h2 id="separateur-panier">Séparer deux aliments dans un panier</h2>
+      <p class="historical-note">Les repères sur les séparateurs, les plaques de rechange et le papier cuisson ci-dessous conservent leur revue documentaire du <time datetime="2026-11-15">15 novembre 2026</time> ; ils n’ont pas été recontrôlés lors de l’ajout des fiches du 18 novembre.</p>
       <p>Un séparateur d’aliments organise l’espace à température commune. Pour le kit HD9950/00, Philips indique notamment les familles HD963X, HD965X, HD975X, HD976X et HD986X. Vérifie ton code dans son catalogue avant l’achat. Sur un FlexDrawer AF500EU, les deux zones disposent de réglages séparés lorsque le séparateur prévu par Ninja est en place. <a href="https://acc.philips.fr/c-e/ho/airfryer-accessories">Compatibilité Philips</a> · <a href="/guides/utiliser-air-fryer/">Régler deux cuissons</a>.</p>
       <h2 id="plaque-rechange">Retrouver la plaque croustillante de rechange</h2>
       <p>Relève le code complet inscrit sur l’appareil. Dans le catalogue du fabricant, distingue la plaque qui repose au fond du tiroir, la grille étagée et le tiroir complet. Sur un appareil à deux paniers, vérifie le côté. Moulinex distingue par exemple une <a href="https://www.moulinex.fr/boutique-accessoires/grille-large-gauche-ss-9100052688/csp/9100052688">grille gauche SS-9100052688</a> et une <a href="https://www.moulinex.fr/boutique-accessoires/grille-droite-ss-9100056098/a/9100056098">grille droite SS-9100056098</a>. Vérifie la liste de compatibilité de la pièce qui correspond à ton code.</p>
@@ -122,15 +178,71 @@ const faqSchema = {
   </div>
 </Base>
 
+<script>
+  const actions = document.querySelector<HTMLElement>('[data-compatibility-actions]');
+  const copy = document.querySelector<HTMLButtonElement>('[data-compatibility-copy]');
+  const print = document.querySelector<HTMLButtonElement>('[data-compatibility-print]');
+  const link = document.querySelector<HTMLAnchorElement>('[data-compatibility-link]');
+  const status = document.querySelector<HTMLElement>('[data-compatibility-status]');
+  const fallback = document.querySelector<HTMLElement>('[data-compatibility-fallback]');
+  if (actions && copy && print && link && status && fallback) {
+    actions.hidden = false;
+    copy.addEventListener('click', async () => {
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(link.href);
+        fallback.hidden = true;
+        status.textContent = 'Lien copié. Tu peux le partager.';
+      } catch {
+        fallback.hidden = false;
+        status.textContent = 'La copie n’a pas été autorisée. Copie manuellement l’adresse affichée ci-dessous.';
+      }
+    });
+    print.addEventListener('click', () => window.print());
+  }
+</script>
+
 <style>
   #papier-cuisson, #mesurer-panier, #separateur-panier, #plaque-rechange, #recipient-modele { scroll-margin-top: 100px; }
-  .compatibility-scroll { max-width: 100%; overflow-x: auto; margin: 18px 0; }
-  .compatibility-scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
-  .compatibility-table { width: 100%; border-collapse: collapse; font-size: .95rem; table-layout: fixed; }
-  .compatibility-table caption { text-align: left; font-weight: 700; padding-bottom: 10px; }
-  .compatibility-table th, .compatibility-table td { border: 1px solid var(--line); padding: 12px; vertical-align: top; text-align: left; overflow-wrap: anywhere; }
-  .compatibility-table thead { background: var(--cream); }
-  @media (max-width: 600px) { .compatibility-table { min-width: 620px; } }
+  .compatibility-resource { margin: 30px 0; color: #183e30; }
+  .compatibility-resource h2 { color: #174b38; }
+  .compatibility-method { padding: 14px 16px; background: #edf2df; border-radius: 12px; }
+  .compatibility-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .compatibility-actions[hidden] { display: none; }
+  .compatibility-actions button { font: inherit; font-weight: 600; min-height: 44px; padding: 10px 14px; color: #174b38; border: 1px solid #94aa91; background: #fffef9; border-radius: 10px; cursor: pointer; }
+  .compatibility-actions button:focus-visible, .compatibility-resource a:focus-visible { outline: 3px solid #7b9844; outline-offset: 3px; }
+  .compatibility-resource a { color: #174b38; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .compatibility-permalink, .compatibility-status, .historical-note { font-size: .9rem; }
+  .compatibility-status:empty { display: none; }
+  .compatibility-copy-fallback[hidden] { display: none; }
+  .compatibility-copy-fallback label { display: block; font-weight: 700; }
+  .compatibility-copy-fallback input { width: 100%; min-width: 0; box-sizing: border-box; font: inherit; font-size: 16px; padding: 12px; border: 1px solid #94aa91; border-radius: 8px; background: #fff; color: #183e30; }
+  .compatibility-list { list-style: none; padding: 0; margin: 20px 0; }
+  .compatibility-entry { display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 20px; padding: 20px; margin: 14px 0; border: 1px solid #cdd8c6; border-radius: 14px; background: #fffef9; overflow-wrap: anywhere; }
+  .compatibility-entry > div { min-width: 0; }
+  .compatibility-label { display: block; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #536154; margin-bottom: 8px; }
+  .compatibility-entry h3 { font-size: 1.08rem; margin: 0; color: #174b38; }
+  .compatibility-entry p { font-size: .94rem; line-height: 1.55; margin: 8px 0; }
+  .compatibility-entry .compatibility-date { font-size: .8rem; color: #536154; }
+  .compatibility-state { font-weight: 700; padding: 6px 9px; border-radius: 8px; background: #f4ecdc; color: #684d21; }
+  .compatibility-state.is-confirmed { color: #174b38; background: #edf2df; }
+  .compatibility-print-url { display: none; }
+  @media (max-width: 700px) { .compatibility-entry { grid-template-columns: 1fr; gap: 16px; padding: 16px; } }
+  @media print {
+    :global(body:has(#recipient-modele) > :not(main)) { display: none !important; }
+    :global(body:has(#recipient-modele) main > :not(.compatibility-page)) { display: none !important; }
+    .compatibility-guide > :not(.compatibility-resource) { display: none !important; }
+    :global(body:has(#recipient-modele)), :global(body:has(#recipient-modele) main), .compatibility-page, .compatibility-guide { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; max-width: none !important; width: auto !important; }
+    .compatibility-resource { margin: 0; color: black; font-size: 10pt; }
+    .compatibility-resource h2 { margin-top: 0; }
+    .compatibility-actions, .compatibility-status, .compatibility-permalink, .compatibility-copy-fallback { display: none !important; }
+    .compatibility-entry { display: block; break-inside: avoid; border-radius: 0; padding: 10pt; }
+    .compatibility-entry p { font-size: 9pt; }
+    .compatibility-entry > div + div { margin-top: 8pt; }
+    .compatibility-resource a { color: black; }
+    .compatibility-source::after { content: ' (' attr(href) ')'; display: block; font-size: 8pt; overflow-wrap: anywhere; }
+    .compatibility-print-url { display: block; overflow-wrap: anywhere; font-size: 9pt; }
+  }
   .accessory-figure { max-width: 440px; margin: 12px 0; }
   .accessory-figure img { width: 100%; height: auto; border-radius: 10px; }
   .accessory-figure figcaption { margin-top: 6px; color: var(--muted); font-size: .88rem; }
