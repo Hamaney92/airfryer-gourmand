@@ -67,6 +67,8 @@ La butternut se prête à tout : en **cubes rôtis** (accompagnement ou salade t
 
 ## Pour aller plus loin
 
+Pour un dîner de saison, retrouve d'autres accompagnements et une idée de repas dans nos [recettes d'automne à l'air fryer](/dossiers/recettes-air-fryer-automne/). Si tu prépares les fêtes, le [menu de Noël pour 2 à 6 personnes](/dossiers/menu-noel-air-fryer/) associe la butternut à d'autres recettes et explique comment organiser les fournées séparées.
+
 - dans une salade tiède avec de la feta et des noix ;
 - avec d'autres légumes rôtis comme la [carotte au air fryer](/recettes/carotte-air-fryer/) ;
-- pour changer, teste la [patate douce](/recettes/patate-douce-air-fryer/) ou le [potiron au air fryer].
+- pour changer, teste la [patate douce](/recettes/patate-douce-air-fryer/).

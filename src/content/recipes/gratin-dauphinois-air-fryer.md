@@ -69,4 +69,10 @@ C'est LA cause d'un gratin raté : des pommes de terre coupées trop épaisses r
 
 ## Le bon plat, le bon nappage
 
-Choisis un **plat qui rentre dans le panier** avec de l'espace autour pour qu
+Choisis un **plat qui rentre dans le panier** avec de l'espace autour pour que l'air circule. Vérifie sa compatibilité avec la notice de ton appareil avant de verser la préparation.
+
+## Avec quoi servir le gratin ?
+
+Une salade peut accompagner le gratin sans occuper le panier. Pour varier les repas, retrouve la butternut, les châtaignes et d'autres idées dans notre [sélection de recettes d'automne](/dossiers/recettes-air-fryer-automne/).
+
+Pour un repas de fête, consulte l'[organisation du menu de Noël](/dossiers/menu-noel-air-fryer/#organisation) avant de choisir plusieurs préparations chaudes. Le gratin occupe son propre plat et sa propre fournée : ne suppose pas qu'il cuira en même temps que le plat principal. Tu peux ensuite choisir un [dessert de Noël adapté au panier](/dossiers/desserts-noel-air-fryer/).

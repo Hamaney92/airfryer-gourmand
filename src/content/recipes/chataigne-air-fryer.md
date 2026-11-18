@@ -88,6 +88,8 @@ En cuisine, les « marrons chauds » sont des fruits comestibles du châtaignier
 
 Sers les châtaignes tièdes avec une [butternut rôtie à l'air fryer](/recettes/butternut-air-fryer/), des [légumes rôtis](/recettes/legumes-rotis-air-fryer/) ou un [poulet rôti](/recettes/poulet-roti-air-fryer/). Des châtaignes émiettées complètent aussi un velouté de courge. Le dossier [recettes air fryer d'automne](/dossiers/recettes-air-fryer-automne/) propose d'autres idées de saison.
 
+Pour une table de fête, tu peux aussi servir ces châtaignes en accompagnement. Consulte le [menu de Noël et son ordre des fournées](/dossiers/menu-noel-air-fryer/) pour réserver le panier à chaque préparation, puis choisis un [dessert de Noël à cuire séparément](/dossiers/desserts-noel-air-fryer/).
+
 ## Comment conserver et réutiliser les châtaignes cuites ?
 
 Épluche les châtaignes puis range-les au réfrigérateur dans une boîte propre fermée dès qu'elles ont suffisamment refroidi. Consomme-les rapidement ou congèle-les en petites portions. Pour un réchauffage à l'air fryer, surveille dès les premières minutes afin de ne pas dessécher la chair.
