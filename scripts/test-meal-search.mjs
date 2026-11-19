@@ -7,6 +7,20 @@ const catalog=[r('salmon','Saumon au citron',['2 pavés de saumon','aneth','huil
 test('natural ingredient search ranks published source, accents/plural',()=>{const s=searchRecipes(catalog,"j’ai des carottes");assert.equal(s.kind,'exact');assert.deepEqual(s.items.map(x=>x.recipe.id),['carrot']);});
 test('missing combination is related, never exact',()=>assert.equal(searchRecipes(catalog,'saumon courgette').kind,'related'));
 test('no match does not invent a recipe',()=>assert.equal(searchRecipes(catalog,'xyzabc').kind,'empty'));
+test('edible marrons chauds retrieve chestnuts without inventing a source',()=>{
+  const c=[r('chataigne','Châtaignes air fryer',['500 g de châtaignes'])];
+  for(const q of ['marrons chauds','un marron chaud','châtaignes']){
+    const result=searchRecipes(c,q);assert.equal(result.kind,'exact',q);assert.deepEqual(result.items.map(x=>x.recipe.id),['chataigne'],q);
+  }
+});
+test('horse chestnuts in the query or pantry block retrieval even with AI terms',()=>{
+  const c=[r('chataigne','Châtaignes air fryer',['500 g de châtaignes'])];
+  for(const q of ["marrons d'Inde",'marron d’Inde','marrons d’Inde chauds']){
+    for(const [query,options] of [[q,{}],['marrons chauds',{pantry:q}]]){
+      const result=searchRecipes(c,query,{terms:['chataigne']},options);assert.equal(result.kind,'unsupported');assert.equal(result.reason,'horse-chestnut');assert.deepEqual(result.items,[]);
+    }
+  }
+});
 test('all exact matches remain accessible beyond twelve results',()=>{const c=Array.from({length:17},(_,i)=>r(`carrot-${i}`,'Carottes',['carottes']));const s=searchRecipes(c,'carottes');assert.equal(s.items.length,s.total);assert.equal(s.total,17);});
 test('AI terms only retrieve an existing source',()=>{const s=searchRecipes(catalog,'falafels',{terms:['pois chiches']});assert.equal(s.kind,'interpreted');assert.equal(s.items[0].recipe.id,'chickpeas');});
 test('general dinner offers ideas; vegan and duration exclusions survive AI',()=>{assert.equal(searchRecipes(catalog,'repas du soir').kind,'ideas');const s=searchRecipes(catalog,'repas végétarien en 30 minutes',{terms:['poulet'],vegetarian:false,maxMinutes:100});assert.ok(s.items.every(x=>x.recipe.category==='Legume'&&x.recipe.minutes<=30));});

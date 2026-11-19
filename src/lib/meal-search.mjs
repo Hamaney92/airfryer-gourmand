@@ -3,7 +3,7 @@ export const normalize = (value = '') => value.toLowerCase().replace(/œ/g, 'oe'
 const forbidden = /\b(porc|cochon|lard\w*|bacon|jambon|chorizo|sauciss\w*|knacki|andouill\w*|boudin|rhum|vin|vins|biere|cidre|cognac|armagnac|liqueur|alcool|champagne|kirsch|porto)\b/;
 const stop = new Set('je j ai du de des la le les un une et ou avec dans mon ma mes ton ce cette ces pour personnes personne pers repas soir midi idee idees recette recettes air fryer airfryer cuisiner cuisine faire prepare preparer manger veux voudrais aimerais envie propose proposez trouve trouver moi nous on est au aux en a d l il elle disponible disponibles dispose frigo reste restes simple facile rapide minutes minute min maximum moins plus pas sans semaine diner dejeuner bon bonjour stp merci'.split(' '));
 const synonyms = {vegetables:'legume',vegetable:'legume',chicken:'poulet',salmon:'saumon',zucchini:'courgette',carrots:'carotte',egg:'oeuf',eggs:'oeuf',veggie:'vegetarien',vege:'vegetarien'};
-export function words(value) { return [...new Set(normalize(value).split(' ').filter(w => w.length > 2 && !stop.has(w) && !/^\d+$/.test(w)).map(w => synonyms[w] || (w.endsWith('s') ? w.slice(0,-1) : w)))]; }
+export function words(value) { return [...new Set(normalize(value).replace(/\bmarrons? chauds?\b/g, 'chataigne').split(' ').filter(w => w.length > 2 && !stop.has(w) && !/^\d+$/.test(w)).map(w => synonyms[w] || (w.endsWith('s') ? w.slice(0,-1) : w)))]; }
 export function eligible(recipe) { return !['cordon-bleu-surgele-air-fryer','pizza-surgelee-air-fryer'].includes(recipe.id) && recipe.category !== 'Charcuterie' && !forbidden.test(normalize([recipe.title,...recipe.ingredients].join(' '))); }
 const includes = (text, term) => words(text).includes(term);
 
@@ -86,6 +86,7 @@ export function searchRecipes(catalog, query, ai = null, options = {}) {
   const intent = {...wanted,blocked:wanted.blocked||pantry.blocked,forbidden:wanted.forbidden||pantry.forbidden,
     excluded:[...new Set([...wanted.excluded,...pantry.excluded])],vegetarian:wanted.vegetarian||pantry.vegetarian,vegan:wanted.vegan||pantry.vegan,
     terms:[...new Set([...wanted.terms,...pantry.terms])],generic:wanted.generic&&pantry.generic};
+  if ([query, options.pantry || ''].some(value => /\bmarrons? d inde\b/.test(normalize(value)))) return {kind:'unsupported',items:[],intent,reason:'horse-chestnut'};
   if (intent.blocked || intent.forbidden) return {kind:'unsupported',items:[],intent};
   const excluded = [...intent.excluded,...intentFor('sans '+(ai?.excluded||[]).join(' et ')).excluded];
   const diet = {vegetarian:intent.vegetarian || ai?.vegetarian === true, vegan:intent.vegan || ai?.vegan === true};
