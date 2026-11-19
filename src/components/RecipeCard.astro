@@ -32,8 +32,8 @@ const webp = data.image ? data.image.replace(/^\/img\//, '/img/w/').replace(/\.j
     <span class="rtag">{cat.label}</span>
     <h3 class="rtitle">{data.title}</h3>
     <div class="rmeta">
-      <span>🍽 {data.servings} pers.</span>
-      <span class="time">⏱ {totalTime(recipe)} min</span>
+      <span>{data.servings} pers.</span>
+      <span class="time"><span class="sr-only">Durée totale </span>{totalTime(recipe)} min</span>
     </div>
   </div>
 </a>

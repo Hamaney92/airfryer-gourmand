@@ -5,9 +5,10 @@ import MealSearch from '../components/MealSearch.astro';
 import SeasonalSpotlight from '../components/SeasonalSpotlight.astro';
 import ChristmasTheme from '../components/ChristmasTheme.astro';
 import NewsletterBanner from '../components/NewsletterBanner.astro';
-import { SITE, CATEGORIES, catInfo, getPublishedRecipes } from '../lib/site';
+import { SITE, CATEGORIES, catInfo, getPublishedRecipes, totalTime } from '../lib/site';
 
 const recipes = await getPublishedRecipes();
+const feta = recipes.find(recipe => recipe.id === 'feta-rotie-air-fryer');
 const latest = recipes.slice(0, 8);
 
 // Compte par catégorie pour les tuiles.
@@ -55,15 +56,10 @@ const jsonLd = {
   <div class="wrap">
     <section class="hero">
       <div class="hero-content">
-        <h1>Réussissez tout à <span>l'air fryer</span>, du premier coup.</h1>
-        <p class="hero-intro">Qu’avez-vous au frigo ? Trouvons une recette avec vos ingrédients.</p>
-        <MealSearch home>
-          <nav class="hero-shortcuts" aria-label="Raccourcis de cuisine">
-            <a href="/tableau-temps-cuisson-air-fryer/">Tableau de cuisson</a>
-            <a href="/temps-de-cuisson/">Convertisseur four → air fryer</a>
-            {latest.length > 0 && <a href="#dernieres-recettes">Dernières recettes</a>}
-          </nav>
-        </MealSearch>
+        <h1>Qu’est-ce qu’on cuisine <span>à l’air fryer ce soir&nbsp;?</span></h1>
+        <p class="hero-intro">Partez de ce que vous avez au frigo. Choisissez une recette, puis ajoutez-la à votre menu.</p>
+        <a class="resume-menu" href="/recherche/#menu-reprise" id="resume-menu" hidden>Reprendre mon menu enregistré →</a>
+        <MealSearch home />
       </div>
       <figure class="hero-dish">
         <a href="/recettes/feta-rotie-air-fryer/" aria-label="Découvrir la recette de feta rôtie à l’air fryer">
@@ -72,23 +68,23 @@ const jsonLd = {
             <img src="/img/feta-rotie-air-fryer.jpg" alt="Feta dorée, tomates rôties et olives dans un plat" width="760" height="760" fetchpriority="high" decoding="async" />
           </picture>
         </a>
-        <figcaption><span>À partager</span><a href="/recettes/feta-rotie-air-fryer/">Feta rôtie à l’air fryer <span aria-hidden="true">↗</span></a></figcaption>
+        <figcaption><span>À partager{feta && totalTime(feta) > 0 && ` · ${totalTime(feta)} min`}</span><a href="/recettes/feta-rotie-air-fryer/">Feta rôtie à l’air fryer <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
     </section>
 
   </div>
   <ChristmasTheme />
   <div class="wrap">
- <section class="menu-home" aria-labelledby="menu-home-title"><div><h2 id="menu-home-title">Vos repas, déjà organisés</h2><p>Choisissez vos recettes, ajustez les portions et gardez votre menu sur cet appareil pour retrouver votre liste de courses.</p></div><a class="cta" href="/batch-cooking/">Découvrir Menus &amp; courses →</a></section>
+    <nav class="kitchen-tools" aria-label="Organiser ses repas et ses cuissons">
+      <a href="/batch-cooking/" id="home-menu-link">
+        <strong id="home-menu-label">Préparer ma semaine</strong>
+        <span id="home-menu-detail">Composer un menu et sa liste de courses</span>
+      </a>
+      <a href="/tableau-temps-cuisson-air-fryer/"><strong>Vérifier une cuisson</strong><span>Temps et température par aliment</span></a>
+      <a href="/temps-de-cuisson/"><strong>Adapter une recette au four</strong><span>Convertir les degrés et les minutes pour l’air fryer</span></a>
+    </nav>
 
     <SeasonalSpotlight />
-
-    <div class="trust">
-      <span><b>Instructions</b> détaillées</span>
-      <span><b>Temps & °C</b> précis</span>
-      <span><b>Sans</b> bain d'huile</span>
-      <span><b>Maison</b> & surgelés</span>
-    </div>
 
     <section>
       <div class="row">
@@ -169,8 +165,6 @@ const jsonLd = {
 <style>
   .hero-content{min-width:0}
   .hero .hero-intro{font-size:1.03rem;line-height:1.5;margin-bottom:18px}
-  .hero-shortcuts{display:flex;flex-wrap:wrap;column-gap:18px;row-gap:0}
-  .hero-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-size:.9rem;font-weight:700;text-decoration:underline;text-underline-offset:4px}
   #dernieres-recettes{scroll-margin-top:80px}
   .tool-table-link{display:inline-block;margin-top:12px;color:var(--brand-d);font-weight:700;text-decoration:underline;text-underline-offset:4px}
   .hero-dish{min-width:0;margin:0}
@@ -195,4 +189,60 @@ const jsonLd = {
   }
 </style>
 
-<style>.menu-home{display:flex;align-items:center;gap:24px;justify-content:space-between;background:#edf1e4;border:1px solid #d3dcc3;border-radius:22px;padding:26px;margin:22px 0 36px}.menu-home h2{font:500 1.8rem/1.2 Georgia,serif;color:#174b38}.menu-home p{max-width:620px;margin:10px 0 0;line-height:1.6}.menu-home .cta{flex-shrink:0}@media(max-width:760px){.menu-home{display:block;padding:22px}.menu-home .cta{margin-top:16px}}</style>
+
+<style>
+  .resume-menu:not([hidden]) {display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:#174b38;text-decoration:underline;text-underline-offset:4px}
+  .hero {column-gap:clamp(2rem,5vw,5rem)}
+  .hero h1 {font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.045em;color:#173d31}
+  .hero h1 span {display:block;color:#934226;font-style:italic}
+  .hero-dish>a {border-radius:clamp(24px,4vw,58px) 12px 12px 12px}
+  .hero-dish img {aspect-ratio:5/4}
+  .kitchen-tools {display:grid;grid-template-columns:repeat(3,1fr);background:#153f32;color:#fffaf1;border-radius:20px;margin:12px 0 36px;padding:12px}
+  .kitchen-tools a {position:relative;padding:16px 36px 16px 18px;border-radius:12px}
+  .kitchen-tools a+a {border-left:1px solid #527265}
+  .kitchen-tools strong,.kitchen-tools span {display:block}
+  .kitchen-tools strong {font:500 1.38rem/1.22 Georgia,serif}
+  .kitchen-tools span {margin-top:6px;color:#e2eadf;font-size:.9rem;line-height:1.45}
+  .kitchen-tools a::after {content:'→';position:absolute;right:12px;top:16px;color:#e4ecad}
+  .kitchen-tools a:hover {background:#245441}
+  .kitchen-tools a:focus-visible {outline:3px solid #e4ecad;outline-offset:0}
+  @media(max-width:740px){
+    .kitchen-tools {grid-template-columns:1fr;padding:8px}
+    .kitchen-tools a+a {border-left:0;border-top:1px solid #527265}
+  }
+</style>
+<script>
+  import { MENU_STORAGE_KEY, readSavedMenu } from '../lib/meal-menu-storage.mjs';
+
+  const link = document.querySelector<HTMLAnchorElement>('#home-menu-link')!;
+  const label = document.querySelector('#home-menu-label')!;
+  const detail = document.querySelector('#home-menu-detail')!;
+  const original = {href: link.getAttribute('href')!, label: label.textContent, detail: detail.textContent};
+  const resume = document.querySelector<HTMLElement>("#resume-menu")!;
+  let revision = 0;
+  async function refreshMenu() {
+    const current = ++revision;
+    resume.hidden = true;
+    link.setAttribute('href', original.href);
+    label.textContent = original.label;
+    detail.textContent = original.detail;
+    try {
+      const raw = localStorage.getItem(MENU_STORAGE_KEY);
+      if (!raw) return;
+      const response = await fetch('/recherche/catalogue.json');
+      if (!response.ok || current !== revision) return;
+      const catalog = await response.json();
+      const saved = readSavedMenu(raw, catalog);
+      if (current !== revision || saved.status !== 'ready' || !saved.menu) return;
+      const {ids, people} = saved.menu;
+      resume.hidden = false;
+      link.href = '/recherche/#menu-reprise';
+      label.textContent = 'Retrouver mon menu';
+      detail.textContent = ids.length + (ids.length > 1 ? ' recettes' : ' recette') + ' · ' + people + (people > 1 ? ' personnes' : ' personne');
+    } catch { /* Le parcours pour composer un menu reste accessible. */ }
+  }
+  window.addEventListener('pageshow', refreshMenu);
+  window.addEventListener('storage', event => {
+    if (event.key === MENU_STORAGE_KEY || event.key === null) refreshMenu();
+  });
+</script>
