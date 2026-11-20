@@ -17,8 +17,8 @@ const newVisuals: Partial<Record<string, ProductVisual>> = {
 ---
 {offers.length > 0 && <aside id="materiel" class="context-products" aria-labelledby="context-products-title">
   <p class="eyebrow">Sélection de matériel · liens affiliés</p>
-  <h2 id="context-products-title">Du matériel adapté à cette préparation</h2>
-  <p class="intro">Utilise d’abord le matériel que tu possèdes.</p>
+  <h2 id="context-products-title">{pageType === 'recipe' ? 'Matériel pour cette recette' : 'Matériel utile pour aller plus loin'}</h2>
+  <p class="intro">Si tu es déjà équipé, utilise ton matériel. Nos liens Amazon peuvent nous rapporter une commission, sans surcoût pour toi.</p>
   <div class="products-grid">{offers.map((offer, index) => {
     const visual = newVisuals[offer.id];
     const illustration = offer.product ? undefined : illustrations[offer.id];
@@ -26,8 +26,7 @@ const newVisuals: Partial<Record<string, ProductVisual>> = {
     return <section id={isPrimary ? 'accessoire-principal' : undefined} class:list={['product-card', { 'primary-offer': isPrimary }]}>
     <h3>{offer.name}</h3>
     <p>{offer.reason}</p><p class="check"><strong>Avant de choisir :</strong> {offer.check}</p>
-    {isPrimary && <p class="disclosure">Liens affiliés : commission possible, sans surcoût.</p>}
-    <a class="product-cta" href={offer.product ? amazonProduct(offer.product.asin) : amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.product?.name ?? offer.name} data-product-asin={offer.product?.asin} data-product-id={offer.id} data-product-type="kitchen" data-placement="contextual_products" data-page-type={pageType} data-page-id={pageId}>{offer.product?.ctaLabel ?? 'Comparer les modèles sur Amazon →'}</a>
+    <a class="product-cta" href={offer.product ? amazonProduct(offer.product.asin) : amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.product?.name ?? offer.name} data-product-asin={offer.product?.asin} data-product-id={offer.id} data-product-type="kitchen" data-placement="contextual_products" data-page-type={pageType} data-page-id={pageId}>{offer.product?.ctaLabel ?? `Comparer sur Amazon · ${offer.name}`}</a>
     {visual && <ProductIllustration id={visual} />}
     {illustration && <figure class="product-illustration">
       <img src={illustration.src} alt={illustration.alt} width="660" height="440" loading="lazy" decoding="async" />
@@ -39,10 +38,10 @@ const newVisuals: Partial<Record<string, ProductVisual>> = {
     {offer.product && <a class="other-models" href={amazonSearch(offer.query)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-name={offer.name} data-product-id={offer.id} data-product-type="kitchen" data-placement="contextual_products_alternatives" data-page-type={pageType} data-page-id={pageId}>{offer.product.alternativesLabel}</a>}
   </section>;
   })}</div>
-  <p class="disclosure">Sélection documentaire, sans test produit réalisé par notre équipe. Les références nommées ouvrent leur fiche Amazon ; les comparaisons ouvrent une recherche. Vérifiez le modèle, le prix livré et le vendeur. Une commission peut nous être versée, sans surcoût pour vous.</p>
+  <p class="disclosure">Sélection documentaire, sans test produit réalisé par notre équipe. Les références nommées ouvrent leur fiche Amazon. Les liens de comparaison ouvrent une recherche. Vérifie le modèle, le prix livré et le vendeur.</p>
 </aside>}
 <style>
-  .primary-offer{grid-column:1/-1;scroll-margin-top:110px}
+  .primary-offer{scroll-margin-top:110px}.product-card:only-child{grid-column:1/-1}
   .context-products{scroll-margin-top:110px}
   .products-grid .product-card .product-cta{align-self:start;margin:0 0 12px}
   .primary-offer :global(figure){max-width:380px}

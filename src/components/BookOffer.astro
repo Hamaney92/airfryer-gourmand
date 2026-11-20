@@ -7,17 +7,17 @@ const collection = kind === 'collection';
 const name = anti ? 'Air Fryer Anti-Gaspi' : 'Air Fryer gourmand pour seniors';
 const asin = anti ? 'B0HHZM8TYR' : 'B0HCSM8ZMD';
 const href = collection ? '/livre/' : anti ? '/livres/air-fryer-anti-gaspi/#apercu-anti-gaspi' : '/livre/#apercu-petites-portions';
-const cover = anti ? '/img/books/air-fryer-anti-gaspi.png' : 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
+const cover = anti ? '/img/books/air-fryer-anti-gaspi-360.webp' : 'https://m.media-amazon.com/images/P/B0HCSM8ZMD.01._SCLZZZZZZZ_SX500_.jpg';
 ---
 <aside class="book-offer" aria-label={collection ? 'Choisir un livre selon votre cuisine' : anti ? 'Notre livre Anti-Gaspi' : 'Notre livre pour une ou deux personnes'}>
-  {collection ? <div class="collection-covers" aria-hidden="true"><img src="/img/books/air-fryer-anti-gaspi.png" alt="" width="90" height="114" loading="lazy" decoding="async" /><img src={cover} alt="" width="90" height="114" loading="lazy" decoding="async" /></div> :
+  {collection ? <div class="collection-covers" aria-hidden="true"><img src="/img/books/air-fryer-anti-gaspi-360.webp" alt="" width="90" height="114" loading="lazy" decoding="async" /><img src={cover} alt="" width="90" height="114" loading="lazy" decoding="async" /></div> :
   <img src={cover} alt={anti ? 'Couverture du livre Air Fryer Anti-Gaspi' : 'Couverture du livre Air Fryer gourmand pour seniors'} width="90" height="114" loading="lazy" decoding="async" />
   }
-  <div><span class="offer-label">Publicité · {collection ? 'nos livres' : 'notre livre'}</span><h2>{collection ? 'Quel livre correspond à votre cuisine ?' : anti ? 'Donnez une nouvelle idée à vos restes' : '100 idées pour vos repas en solo ou à deux'}</h2>
-    <p>{collection ? 'Petites portions pour une ou deux personnes, ou idées pour utiliser vos restes : comparez nos deux livres et leurs extraits avant de choisir.' : anti ? '100 recettes classées par reste disponible : pain, riz, légumes et bien plus.' : '100 recettes avec des quantités pour une et deux portions, dans une mise en page facile à lire.'}</p>
-    <div class="book-actions"><a class:list={['preview', { purchase: collection }]} href={href} data-book-entry data-book-id={kind} data-placement="recipe_contextual_offer" data-page-type={pageType} data-page-id={pageId}>{collection ? 'Choisir et feuilleter nos livres →' : 'Feuilleter ce livre →'}</a>
+  <div><span class="offer-label">Publicité · {collection ? 'nos livres' : 'notre livre'}</span><h2>{collection ? 'Nos livres pour cuisiner à l’air fryer' : name}</h2>
+    <p>{collection ? 'Vous cuisinez pour une ou deux personnes, ou vous cherchez des idées pour utiliser vos restes ? Chaque livre propose un extrait à feuilleter.' : anti ? 'Partez de ce qui vous reste. Découvrez les croûtons à l’ail et aux herbes dans l’extrait du livre.' : 'Les quantités sont indiquées pour une et deux personnes. Découvrez le flan d’avoine pomme-cannelle dans l’extrait du livre.'}</p>
+    <div class="book-actions"><a class:list={['preview', { purchase: collection }]} href={href} data-book-entry data-book-id={kind} data-placement={pageType === "recipe" ? "recipe_contextual_offer" : "editorial_contextual_offer"} data-page-type={pageType} data-page-id={pageId}>{collection ? 'Comparer les deux livres →' : 'Lire les 4 pages de l’extrait →'}</a>
     {!collection && <a class="purchase" href={amazonProduct(asin)} target="_blank" rel="sponsored nofollow noopener" data-affiliate-network="amazon" data-product-type="book" data-product-name={name} data-product-asin={asin} data-product-id={kind} data-book-id={kind} data-placement="contextual_book_purchase" data-page-type={pageType} data-page-id={pageId}>Voir le prix sur Amazon →</a>}</div>
-    <p class="book-disclosure">Livres publiés par notre équipe. Nos liens Amazon sont affiliés : une commission peut nous être versée, sans surcoût pour vous.</p>
+    {!collection && <p class="book-disclosure">Notre lien Amazon est affilié. Nous pouvons recevoir une commission, sans surcoût pour vous.</p>}
   </div>
 </aside>
 <style>

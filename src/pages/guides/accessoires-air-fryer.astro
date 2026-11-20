@@ -136,7 +136,7 @@ const faqSchema = {
           <div style="font-weight:800;font-size:1.05rem">{a.emoji} {a.nom}</div>
           <p style="margin:6px 0;color:#5f5147"><b>À quoi ça sert :</b> {a.util}</p>
           <p style="margin:6px 0;color:#5f5147"><b>Notre avis :</b> {a.note}</p>
-          <a href={amazonSearch(a.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Voir sur Amazon"} →</a>
+          <a href={amazonSearch(a.lien)} data-affiliate-network="amazon" data-product-name={a.nom} data-page-type="guide" data-placement="guide_accessory" target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:9px 18px;border-radius:10px;margin-top:6px;font-size:.9rem">{a.label ?? "Comparer sur Amazon"} →</a>
           {a.visual && <ProductIllustration id={a.visual} />}
           {a.image && (
             <figure class="accessory-figure">
@@ -151,7 +151,7 @@ const faqSchema = {
         <div style="font-weight:800;color:var(--brand-d);margin-bottom:4px">🎁 Un coffret à vérifier pièce par pièce</div>
         <div style="font-weight:700;font-size:1.05rem">{coffret.nom}</div>
         <p style="margin:6px 0;color:#5f5147">Un coffret peut regrouper plusieurs accessoires. La mention « universel » ne confirme pas leur compatibilité avec ton appareil : vérifie les dimensions et les usages autorisés de chaque pièce, y compris le papier cuisson. Compare le contenu à ce dont tu as besoin avant de choisir.</p>
-        <a href={amazonSearch(coffret.lien)} target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir les coffrets sur Amazon →</a>
+        <a href={amazonSearch(coffret.lien)} data-affiliate-network="amazon" data-product-name={coffret.nom} data-page-type="guide" data-placement="guide_accessory" target="_blank" rel="sponsored nofollow noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin-top:6px">Voir les coffrets sur Amazon →</a>
         <ProductIllustration id="kit" />
       </div>
 

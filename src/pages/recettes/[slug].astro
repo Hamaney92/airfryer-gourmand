@@ -26,12 +26,17 @@ const hasChestnutGear = recipe.id === 'chataigne-air-fryer';
 const offers = recipeOffers(recipe.id, data.category);
 const primaryOffer = offers[0];
 const gearStepPatterns: Partial<Record<string, RegExp>> = {
+  office: /(?:coupe|évide)\b/i,
+  'waffle-mould': /\bmoules?\b/i,
+  'piping-bag': /\bdouille\b/i,
   chef: /\b(?:coupe|coupez|découpe|découpez|taille|émince|tranche)\b/i,
   thermometer: /\b(?:sonde|thermomètre)\b|°C\s+à cœur/i,
   tongs: /\b(?:retourne|retournez|pince)\b/i,
   'oil-spray': /\b(?:vaporise|pulvérise|spray)\b/i,
   'cake-mould': /(?:^|[\s’'])moule\b/i,
   'individual-moulds': /\bmoules?\b/i,
+  'madeleine-mould': /\bmoules?\b/i,
+  'financier-mould': /\bmoules?\b/i,
   ramekins: /\bramequins?\b/i,
   'baking-dish': /\b(?:dans|un|le)\s+(?:un\s+|petit\s+)?plat\b/i,
   'pastry-brush': /\b(?:badigeonne|pinceau)\b/i,
@@ -41,7 +46,7 @@ const stepPattern = hasChestnutGear ? /\bincise\b/i : primaryOffer && gearStepPa
 const gearStep = stepPattern ? data.steps.findIndex((step: string) => stepPattern.test(step)) : -1;
 const gearStepLabel = hasChestnutGear
   ? 'Voir le couteau à châtaignes (facultatif)'
-  : 'Voir l’accessoire conseillé (facultatif)';
+  : `${primaryOffer.name} (facultatif)`;
 const updatedDate = data.updatedDate && data.updatedDate >= data.pubDate && data.updatedDate.getTime() <= Date.now()
   ? data.updatedDate : undefined;
 const cat = catInfo(data.category);
@@ -197,7 +202,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
       <h2 id="etapes">Étapes</h2>
       <ol>{data.steps.map((s: string, i: number) => (
-        <li id={`etape-${i + 1}`}>{s}{i === gearStep && <> <a href="#accessoire-principal">{gearStepLabel}</a></>}</li>
+        <li id={`etape-${i + 1}`}>{s}{i === gearStep && <> <a class="gear-step-link" href="#accessoire-principal">{gearStepLabel}</a></>}</li>
       ))}</ol>
       {data.tips.length > 0 && (
         <>
@@ -270,6 +275,7 @@ const jsonLd = [recipeLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .recipe-shortcuts{display:flex;gap:10px 18px;flex-wrap:wrap;margin:12px 0 22px}
   .recipe-shortcuts a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-d);font-weight:700;text-decoration:underline}
   #recette,#ingredients,#etapes,#conseils,[id^="etape-"]{scroll-margin-top:100px}
+  .gear-step-link{text-decoration:underline;text-underline-offset:.15em}
   :global(#materiel){scroll-margin-top:100px}
   .gear-box--primary{background:linear-gradient(135deg,var(--cream,#fff7ef),#fff);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:14px 0 26px;scroll-margin-top:80px;box-shadow:var(--shadow)}
   .gear-box__eyebrow{font-size:.82rem;font-weight:800;color:var(--brand-d);text-transform:uppercase;letter-spacing:.02em}

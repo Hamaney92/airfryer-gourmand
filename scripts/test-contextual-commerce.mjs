@@ -35,7 +35,13 @@ test('Equipment changes with preparation, including common category exceptions',
   const expected = {
     'oeuf-dur-air-fryer': ['tongs'],
     'oeuf-cocotte-air-fryer': ['ramekins', 'tongs'],
-    'fondant-chocolat-air-fryer': ['cake-mould', 'scale'],
+    'fondant-chocolat-air-fryer': ['ramekins', 'scale'],
+    'madeleines-air-fryer': ['madeleine-mould', 'scale'],
+    'legumes-rotis-air-fryer': ['chef', 'oil-spray'],
+    'gaufres-air-fryer': ['waffle-mould'],
+    'churros-air-fryer': ['piping-bag', 'oil-spray'],
+    'banane-air-fryer': ['office'],
+    'pomme-au-four-air-fryer': ['office'],
     'muffin-air-fryer': ['individual-moulds', 'scale'],
     'chips-air-fryer': ['mandoline', 'oil-spray'],
     'gratin-dauphinois-air-fryer': ['baking-dish', 'storage'],
@@ -72,7 +78,7 @@ test('The documented thermometer opens its verified ASIN, while an explicit sear
   const reference = sources.references.find(item => item.offerId === 'thermometer');
   for (const path of ['recettes/poulet-roti-air-fryer', 'recettes/saumon-air-fryer', 'categorie/viandes']) {
     const page = html(path);
-    const offer = [...page.matchAll(/<section\b[^>]*class="product-card"[^>]*>[\s\S]*?<\/section>/g)].map(match => match[0]).find(section => section.includes('data-product-id="thermometer"'));
+    const offer = [...page.matchAll(/<section\b[^>]*class="product-card(?:\s+[^"]*)?"[^>]*>[\s\S]*?<\/section>/g)].map(match => match[0]).find(section => section.includes('data-product-id="thermometer"'));
     assert.ok(offer, path);
     assert.ok(offer.includes(reference.manufacturerUrl), path);
     assert.ok(offer.includes(reference.name), path);
@@ -98,7 +104,7 @@ test('Every direct kitchen reference matches its documented ASIN, name, source a
   const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, value.replaceAll('&amp;', '&')]));
   for (const file of readdirSync(root, { recursive: true }).filter(file => file.endsWith('.html'))) {
     const page = readFileSync(new URL(file.replaceAll('\\', '/'), root), 'utf8');
-    for (const [card] of page.matchAll(/<section\b[^>]*class="product-card"[^>]*>[\s\S]*?<\/section>/g)) {
+    for (const [card] of page.matchAll(/<section\b[^>]*class="product-card(?:\s+[^"]*)?"[^>]*>[\s\S]*?<\/section>/g)) {
       const primary = card.match(/<a\b[^>]*data-placement="contextual_products"[^>]*>([\s\S]*?)<\/a>/);
       assert.ok(primary, file);
       const data = attributes(primary[0]);

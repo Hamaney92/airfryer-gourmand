@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import GuideProductLink from '../../components/GuideProductLink.astro';
 
 const title = 'Consommation d’un air fryer : calcule le coût par cuisson';
 const description = 'Estime la consommation de ton air fryer en kWh et en euros, ou saisis une mesure au wattmètre. Compare le coût avec le four électrique.';
@@ -44,7 +45,7 @@ const description = 'Estime la consommation de ton air fryer en kWh et en euros,
 
       <h2>Comment mesurer ta propre consommation ?</h2>
       <ol>
-        <li>Utilise un wattmètre adapté à la puissance de l’appareil et suis sa notice.</li>
+        <li>Utilise un wattmètre adapté à la puissance de l’appareil et suis sa notice. Si tu dois t’équiper, <GuideProductLink query="wattmètre prise mesure énergie kWh" name="Wattmètre de prise">recherche un wattmètre de prise sur Amazon</GuideProductLink> et vérifie sa puissance admissible avant de le brancher.</li>
         <li>Mesure les kWh depuis le début du préchauffage éventuel jusqu’à la fin de la dernière fournée. Note le poids, le nombre de portions et le résultat de cuisson.</li>
         <li>Pour comparer deux appareils, cuis la même quantité avec un résultat comparable. Divise le coût total par le nombre de portions pour obtenir le coût par portion.</li>
       </ol>

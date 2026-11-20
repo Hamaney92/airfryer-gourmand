@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import GuideProductLink from '../../components/GuideProductLink.astro';
 
 const guides = [
   {
@@ -29,6 +30,7 @@ const guides = [
         <section class="edito-note">
           <h2 class="edito-head"><a href={href}>{title}</a></h2>
           <p>{description}</p>
+          {href === '/guides/nouveautes-air-fryer/' && <p>Pour comparer des appareils proposant aussi la cuisson vapeur, <GuideProductLink query="air fryer avec fonction vapeur" name="Air fryers avec fonction vapeur">consulte les modèles avec vapeur sur Amazon</GuideProductLink>. Vérifie les modes de cuisson sur la fiche fabricant.</p>}
         </section>
       ))}
       <p><a href="/guides/types-air-fryer/">Voir les formats de panier et leurs usages</a> · <a href="/tableau-temps-cuisson-air-fryer/">Consulter le tableau de cuisson</a></p>

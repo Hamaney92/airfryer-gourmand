@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import GuideProductLink from '../../components/GuideProductLink.astro';
 
 const title = 'Gammes air fryer par marque : Ninja, Moulinex, Philips et Cosori';
 const description = 'Compare les formats et les références Ninja, Moulinex, Philips et Cosori. Panier simple, double bac, tiroir modulable, vapeur ou cuve en verre.';
@@ -58,7 +59,9 @@ const marques = [
           <h2 id={id}>{nom}</h2>
           <ul>
             {modeles.map((modele) => (
-              <li><strong>{modele.nom}.</strong> {modele.format} <a href={modele.url} aria-label={`Documentation du ${modele.nom}`}>Documentation</a>.</li>
+              <li><strong>{modele.nom}.</strong> {modele.format} <a href={modele.url} aria-label={`Documentation du ${modele.nom}`}>Documentation</a>.
+                {modele.nom === 'FlexDrawer AF500EU' && <> <GuideProductLink query="Ninja FlexDrawer AF500EU" name="Ninja FlexDrawer AF500EU">Rechercher le FlexDrawer AF500EU sur Amazon</GuideProductLink>.</>}
+              </li>
             ))}
           </ul>
         </section>

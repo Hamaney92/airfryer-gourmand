@@ -1,0 +1,22 @@
+---
+import { amazonSearch } from '../lib/site';
+
+interface Props {
+  query: string;
+  name: string;
+}
+const { query, name } = Astro.props;
+const guide = Astro.url.pathname.split('/').filter(Boolean).at(-1);
+---
+<span class="guide-product-link">
+  <a href={amazonSearch(query)} rel="sponsored nofollow noopener" target="_blank"
+    data-affiliate-network="amazon" data-product-name={name} data-product-id={`guide-${guide}`} data-product-type="kitchen"
+    data-page-type="guide" data-page-id={guide} data-placement="guide_contextual_search"
+  ><slot /></a>
+  <small> (lien affilié, commission possible)</small>
+</span>
+
+<style>
+  a { color: var(--brand-d, #234b36); text-decoration: underline; text-underline-offset: .15em; }
+  small { font-size: .82em; }
+</style>

@@ -7,6 +7,10 @@ const items: Record<string, KitchenOffer> = {
   thermo: { id: 'thermometer', name: 'Thermomètre de cuisson à sonde', reason: 'Pour contrôler la température à cœur des viandes et des volailles, au lieu de juger seulement la coloration.', check: 'Sors les aliments pour mesurer : ne laisse pas ce thermomètre à lecture instantanée dans l’appareil et n’immerge pas son boîtier.', query: 'thermometre cuisson sonde lecture instantanee', product: { asin: 'B01LXI5HYH', name: 'TempPro TP02S (anciennement ThermoPro)', source: 'https://temppro.com/products/tp02s-instant-read-meat-thermometer', checkedOn: '2026-10-26', ctaLabel: 'Voir le TP02S sur Amazon →', alternativesLabel: 'Comparer d’autres thermomètres' } },
   spray: { id: 'oil-spray', name: 'Vaporisateur d’huile rechargeable', reason: 'Pour répartir l’huile sur les frites ou les légumes sans en verser au même endroit.', check: 'Pulvérise sur les aliments hors de l’appareil, jamais sur une résistance ou une flamme. Nettoie la pompe à la main et respecte la notice.', query: 'vaporisateur huile cuisine rechargeable', product: { asin: 'B0D5H6GFVJ', name: 'FLAIROSOL OLIVIA 200 ml — vert', source: 'https://m.media-amazon.com/images/I/C1e2Zaa%2BedL.pdf', checkedOn: '2026-10-26', ctaLabel: 'Voir le spray OLIVIA sur Amazon →', alternativesLabel: 'Comparer d’autres sprays' } },
   cake: { id: 'cake-mould', name: 'Moule à gâteau compatible air fryer', reason: 'Pour contenir la pâte et donner sa forme au gâteau.', check: 'Mesure le panier et garde de l’espace pour l’air ; vérifie la température maximale du moule.', query: 'moule gateau air fryer' },
+  madeleine: { id: 'madeleine-mould', name: 'Moule à madeleines', reason: 'Les empreintes donnent aux madeleines leur forme de coquille.', check: 'Mesure le fond du panier et la plaque entière avant de choisir. Vérifie sa température maximale.', query: 'moule madeleines silicone four' },
+  financier: { id: 'financier-mould', name: 'Moule à financiers', reason: 'Pour répartir la pâte dans des empreintes individuelles peu profondes.', check: 'Compare les dimensions de la plaque avec le fond du panier et vérifie sa compatibilité four.', query: 'moule financiers silicone four' },
+  waffles: { id: 'waffle-mould', name: 'Moule à gaufres en silicone', reason: 'Les empreintes retiennent la pâte fraîche. Pour réchauffer des gaufres déjà cuites, utilise directement le panier.', check: 'Mesure le fond du panier et vérifie la température maximale autorisée pour le moule.', query: 'moule gaufres silicone four' },
+  piping: { id: 'piping-bag', name: 'Poche à douille cannelée', reason: 'Pour former les stries des churros en dressant des bandes de pâte régulières.', check: 'Choisis une poche adaptée aux pâtes épaisses et une douille cannelée qui tient fermement.', query: 'poche douille cannelee churros' },
   muffins: { id: 'individual-moulds', name: 'Moules individuels à muffins', reason: 'Pour répartir la pâte en portions et démouler chaque gâteau séparément.', check: 'Vérifie les dimensions et la température maximale ; les moules ne doivent pas bloquer tout le panier.', query: 'moules individuels muffins air fryer' },
   ramekins: { id: 'ramekins', name: 'Ramequins compatibles four', reason: 'Pour contenir les œufs cocotte, flans ou portions de dessert.', check: 'Vérifie leur compatibilité four et leur taille ; utilise une protection pour les sortir chauds.', query: 'ramequins ceramique four' },
   dish: { id: 'baking-dish', name: 'Petit plat de cuisson', reason: 'Pour contenir la sauce, les gratins et les préparations en couches.', check: 'Vérifie la compatibilité four, les dimensions et l’espace autour du plat.', query: 'petit plat cuisson air fryer' },
@@ -22,15 +26,21 @@ export function recipeOffers(slug: string, category: string): KitchenOffer[] {
   if (category === 'Surgelé' || /surgel/.test(slug)) return pick('tongs');
   if (/chips/.test(slug)) return pick('mandoline', 'spray');
   if (/oeuf-cocotte/.test(slug)) return pick('ramekins', 'tongs');
-  if (/flan|creme/.test(slug)) return pick('ramekins', 'scale');
+  if (/fondant-chocolat|moelleux-au-chocolat|crumble|creme/.test(slug)) return pick('ramekins', 'scale');
   if (/oeuf-dur|oeuf-air|omelette/.test(slug)) return slug.includes('omelette') ? pick('dish', 'tongs') : pick('tongs');
-  if (/muffin|madeleine|financier|donut/.test(slug)) return pick('muffins', 'scale');
-  if (/cake|brownie|gateau|fondant|moelleux|clafoutis|far-breton|crumble|quiche|tarte/.test(slug)) return pick('cake', 'scale');
+  if (/madeleine/.test(slug)) return pick('madeleine', 'scale');
+  if (/financier/.test(slug)) return pick('financier', 'scale');
+  if (/donut/.test(slug)) return pick('spray', 'scale');
+  if (/gaufres/.test(slug)) return pick('waffles');
+  if (/churros/.test(slug)) return pick('piping', 'spray');
+  if (/banane|pomme-au-four/.test(slug)) return pick('knife');
+  if (/muffin/.test(slug)) return pick('muffins', 'scale');
+  if (/cake|brownie|gateau|flan|clafoutis|far-breton|quiche|tarte/.test(slug)) return pick('cake', 'scale');
   if (/lasagnes|gratin|hachis|feta-rotie|camembert-roti|tomate-farcie/.test(slug)) return pick('dish', 'storage');
   if (/pain-perdu|wrap|panini|croque|quesadilla|pizza|bruschetta|rechauffer/.test(slug)) return pick('tongs', 'storage');
   if (/chausson|feuillete|bricks|samoussa|galette-des-rois|brioche/.test(slug)) return pick('brush', 'scale');
   if (/frite|potato|pomme-de-terre|pommes-de-terre|rosti/.test(slug)) return pick('spray', 'chef');
-  if (/poulet|dinde|canard|steak|roti|entrecote|brochette|boulettes|filet-mignon|gigot|bavette/.test(slug)) return pick('thermo', 'tongs');
+  if (/poulet|dinde|canard|steak|roti-de-(?:boeuf|porc)|entrecote|brochette|boulettes|filet-mignon|gigot|bavette/.test(slug)) return pick('thermo', 'tongs');
   if (category === 'Poisson') return pick('tongs', 'thermo');
   if (category === 'Legume' || category === 'Accompagnement') return pick('chef', 'spray');
   if (category === 'Volaille' || category === 'Viande' || category === 'Charcuterie') return pick('thermo', 'tongs');
@@ -52,7 +62,7 @@ export function pageOffers(path: string): KitchenOffer[] {
 
 export function bookFor(path: string, servings?: number): 'anti-gaspi' | 'petites-portions' | 'collection' {
   if (/anti-gaspi|batch-cooking|lunchbox|rechauffer|pain-perdu|hachis|wrap|croque|panini|quesadilla|legumes|chataigne/.test(path)) return 'anti-gaspi';
-  if (servings !== undefined && servings <= 2) return 'petites-portions';
+  if (/air-fryer-pour-2/.test(path) || (servings !== undefined && servings <= 2)) return 'petites-portions';
   return 'collection';
 }
 
