@@ -29,13 +29,15 @@ const { recipeId } = Astro.props;
       button.textContent = included ? 'Déjà dans mon menu' : 'Ajouter à mon menu';
       button.setAttribute('aria-disabled', String(included));
       link.hidden = !included;
+      status.textContent = included
+        ? 'Recette dans votre menu. Pour la retrouver demain, ouvrez votre menu et enregistrez-le sur cet appareil. Si vous avez déjà une sauvegarde, mettez-la à jour.'
+        : '';
     };
     const sync = () => {
       try {
         const state = readMenuState(sessionStorage.getItem(SESSION_MENU_KEY), [{id}]);
         update(Boolean(state?.ids.includes(id)));
       } catch { update(false); }
-      status.textContent = '';
     };
     sync();
     action.hidden = false;
@@ -77,7 +79,6 @@ const { recipeId } = Astro.props;
           trackMealEvent('meal_menu_added', {menu_source: 'recipe'});
         }
         update(true);
-        status.textContent = 'Cette recette figure dans votre menu.';
       } catch {
         button.setAttribute('aria-disabled', 'false');
         status.textContent = 'Le navigateur ne permet pas de conserver cet ajout dans votre onglet.';
