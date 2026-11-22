@@ -71,3 +71,7 @@ Avec un gigot d'agneau, un poulet rôti, un poisson, ou simplement une salade et
 ## Conservation
 
 Les grenailles cuites se gardent 2 jours au réfrigérateur. Réchauffe-les 4-5 minutes à 200 °C pour retrouver le croustillant — jamais au micro-ondes, qui les ramollit.
+
+## Une version pour l’apéro
+
+Tu as des grenailles déjà cuites ? Suis la méthode des [pommes de terre écrasées à l’air fryer](/dossiers/pommes-de-terre-ecrasees-air-fryer/) pour former de petites galettes aux bords dorés et servir la sauce à part.
