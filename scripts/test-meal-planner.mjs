@@ -8,5 +8,19 @@ test('drained chickpeas and quarter spoon scale exactly',()=>{const rows=buildSh
 test('no duplicates, no merging different units or preparations',()=>{const c=[{id:'x',title:'Test',servings:1,ingredients:['1 g de sucre','1 kg de sucre','2 g de sucre glace']}];assert.equal(buildShoppingList(c,['x','x'],1).length,3);assert.equal(buildShoppingList(c,['x'],1)[0].min,1);});
 test('invalid servings and unknown IDs fail',()=>{for(const n of [0,13,2.5,NaN,Infinity,'4'])assert.throws(()=>buildShoppingList(catalog,['carotte-air-fryer'],n));assert.throws(()=>buildShoppingList(catalog,['missing'],2));});
 test('unparsed quantities keep source portions and provenance in export',()=>{const rows=buildShoppingList(catalog,['carotte-air-fryer'],2);const source=rows.find(r=>r.kind==='source');assert.equal(source.base,4);assert.equal(source.text,'Sel, poivre, cumin');assert.match(formatShoppingRow(source),/origine pour 4/);assert.match(exportMenu(catalog,['carotte-air-fryer'],2),/https:\/\/airfryergourmand.fr\/recettes\/carotte-air-fryer\//);});
+test('ranges with a unit on the first bound keep the original quantity in lists and exports',()=>{
+  const ingredient="800 g à 1 kg d'ailes de poulet";
+  const chicken=[{id:'ailes-de-poulet-air-fryer',title:'Ailes de poulet',servings:3,ingredients:[ingredient]}];
+  for(const separator of ['à','a','–','-']){
+    assert.equal(parseIngredient(`80 g ${separator} 100 g de farine`),null);
+  }
+  const [row]=buildShoppingList(chicken,[chicken[0].id],6);
+  const originalLine=`${ingredient} — quantité d’origine pour 3 personnes, à vérifier`;
+  assert.equal(row.kind,'source');
+  assert.equal(formatShoppingRow(row),originalLine);
+  assert.ok(exportMenu(chicken,[chicken[0].id],6).includes(originalLine));
+  assert.deepEqual(parseIngredient('80 à 100 g de farine'),{min:80,max:100,unit:'g',label:'farine'});
+  assert.equal(parseIngredient('5 g de sel à 30 % de sodium').label,'sel à 30 % de sodium');
+});
 test('checked items are omitted from downloadable shopping list',()=>{const rows=buildShoppingList(catalog,['pois-chiches-air-fryer'],4);const s=exportMenu(catalog,['pois-chiches-air-fryer'],4,new Set([rows[0].key]));assert.ok(!s.includes('260 g'));assert.match(s,/1 c. à café/);});
 test('session recovery validates and deduplicates data; rejects broken state',()=>{assert.equal(readMenuState('broken',catalog),null);assert.equal(readMenuState('{"people":30,"ids":[]}',catalog),null);assert.deepEqual(readMenuState(JSON.stringify({people:4,ids:['carotte-air-fryer','missing','carotte-air-fryer']}),catalog),{people:4,ids:['carotte-air-fryer']});});
