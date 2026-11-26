@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+const title = 'Synchroniser deux cuissons à l’air fryer double panier';
+const description = 'Programme deux paniers pour servir le plat et son accompagnement ensemble, avec ou sans fonction de fin synchronisée.';
+---
+<Base title={title} description={description} pageType="guide">
+  <div class="wrap"><article class="article">
+    <nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> › <a href="/guides/">Guides</a> › Synchroniser deux cuissons</nav>
+    <h1>{title}</h1>
+    <p>Pour servir les deux préparations ensemble, règle chaque panier selon sa recette et synchronise leur <strong>heure de fin</strong>. Si ton appareil ne propose pas cette fonction, lance le panier le plus long, puis démarre l’autre après l’écart entre les deux durées.</p>
+    <h2>Utiliser la fin synchronisée</h2>
+    <ol>
+      <li>Vérifie dans la notice que les deux programmes peuvent fonctionner en même temps. Dispose chaque préparation dans son panier, avec les accessoires prévus par sa recette.</li>
+      <li>Règle le mode, la température et la durée de chaque côté. Sur le Ninja AF300EU, la touche SYNC coordonne la fin des deux zones. MATCH recopie les réglages d’une zone vers l’autre.</li>
+      <li>Contrôle séparément la cuisson de chaque préparation. Sors celle qui est prête si l’autre a besoin de quelques minutes supplémentaires.</li>
+    </ol>
+    <h2>Calculer le décalage à la main</h2>
+    <p>Si le plat prend 18 minutes et son accompagnement 10 minutes, laisse <strong>8 minutes</strong> entre les deux démarrages. Voici ce que donne le calcul pour un service à 19 h 30. Les durées sont un exemple de planning. Prévois séparément la préparation et le préchauffage demandé par la notice.</p>
+    <table class="rectable">
+      <caption>Exemple de planning pour servir à 19 h 30</caption>
+      <thead><tr><th scope="col">Heure</th><th scope="col">Action</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">19 h 12</th><td>Démarrer le panier réglé sur 18 minutes.</td></tr>
+        <tr><th scope="row">19 h 20</th><td>Démarrer le panier réglé sur 10 minutes.</td></tr>
+        <tr><th scope="row">Avant le service</th><td>Vérifier les deux cuissons selon les fiches recettes.</td></tr>
+      </tbody>
+    </table>
+    <h2>Que faire si une portion exige deux fournées ?</h2>
+    <p>Ajoute une ligne à ton planning pour chaque fournée et laisse le temps de recharger le panier. Pour une tablée, vérifie à froid la place utile de chaque tiroir. Si un seul accompagnement occupe les deux paniers, prépare une entrée froide ou réserve une partie du repas au four. Notre <a href="/dossiers/menu-noel-air-fryer/">menu de Noël</a> propose cette organisation.</p>
+    <p>Retrouve les réglages de départ dans notre <a href="/tableau-temps-cuisson-air-fryer/">tableau des temps de cuisson</a>. Avec une cuve modulable, vérifie les programmes disponibles <a href="/guides/air-fryer-separateur-amovible/">avec le séparateur installé</a>.</p>
+    <p>Source fabricant <a href="https://ninjakitchen.fr/INTERSHOP/web/WFS/SharkNinja-FR-Site/fr_FR/ninjafr/EUR/ViewProductAttachment-OpenFile?DirectoryPath=&amp;FileName=AF300EU_IG_QSG_MP_200814_Mv3_LR.pdf&amp;LocaleId=&amp;UnitName=SharkNinja-FR">Guide de démarrage Ninja AF300EU, section DualZone</a>.</p>
+  </article></div>
+</Base>

@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+const title = 'Quelle taille de pizza entre dans ton air fryer ?';
+const description = 'Mesure la surface utile de la plaque ou du panier et essaie un gabarit à froid avant de choisir une pizza ou un moule.';
+---
+<Base title={title} description={description} pageType="guide">
+  <div class="wrap"><article class="article">
+    <nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> › <a href="/guides/">Guides</a> › Mesurer le panier</nav>
+    <h1>{title}</h1>
+    <p>Pour savoir si une pizza rentre dans ton air fryer, mesure la <strong>surface où elle va cuire</strong>, plaque en place. Dans un panier rectangulaire, compare son diamètre à la largeur la plus courte. Vérifie la place en essayant un disque en papier sur appareil froid et éteint.</p>
+    <h2>Mesurer le panier en trois gestes</h2>
+    <ol>
+      <li>Installe la plaque dans la position prévue par la notice. Mesure la largeur et la longueur au niveau où reposera la pizza, puis vérifie que la pizza passe par l’ouverture.</li>
+      <li>Découpe un cercle en papier du diamètre indiqué sur la boîte. Si tu comptes utiliser un moule, trace ses dimensions extérieures, anses et rebords compris.</li>
+      <li>Vérifie que le gabarit repose à plat et laisse l’espace demandé par la notice autour de la préparation. Retire le papier après le test.</li>
+    </ol>
+    <h2>Deux exemples pour choisir au magasin</h2>
+    <table class="rectable">
+      <caption>Exemples de mesures sur la plaque de cuisson</caption>
+      <thead><tr><th scope="col">Surface</th><th scope="col">Pizza ronde</th><th scope="col">Décision</th></tr></thead>
+      <tbody>
+        <tr><td>19 × 24 cm</td><td>22 cm</td><td>Choisis une pizza plus petite. La largeur de 19 cm limite le diamètre.</td></tr>
+        <tr><td>22 × 24 cm</td><td>22 cm</td><td>Essaie un format inférieur. Le cercle occupe déjà toute la largeur.</td></tr>
+      </tbody>
+    </table>
+    <p>Les coins arrondis et les rebords peuvent réduire la place utile. Avec deux paniers séparés, mesure le tiroir utilisé. Sur une cuve modulable, retire le séparateur uniquement si la notice prévoit ce mode de cuisson.</p>
+    <h2>Si la pizza ne rentre pas</h2>
+    <p>Pour une <a href="/recettes/pizza-air-fryer/">pizza maison</a>, découpe la pâte en deux disques et cuis-les séparément. Pour une pizza surgelée trop grande, prends un format individuel ou utilise le four selon les indications de l’emballage. Une fois le bon format choisi, consulte la <a href="/recettes/pizza-surgelee-air-fryer/">fiche de cuisson de la pizza surgelée</a>.</p>
+    <p>Les dimensions annoncées par un fabricant valent pour le modèle cité. Panasonic indique par exemple que le NF-BC1000 accueille une pizza de 30 cm. Si tu compares plusieurs appareils, pars du diamètre de ton plat habituel et consulte le <a href="/guides/types-air-fryer/">guide des différents formats</a>.</p>
+    <p>Source fabricant <a href="https://www.experience-fresh.panasonic.eu/produits/airfryer-friteuse-sans-huile/nf-bc1000/">Fiche du Panasonic NF-BC1000</a>.</p>
+  </article></div>
+</Base>
