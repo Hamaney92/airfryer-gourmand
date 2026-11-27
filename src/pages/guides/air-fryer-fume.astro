@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Mon air fryer fume pendant la cuisson, que vérifier ?';
+const description = 'Arrête la cuisson et examine à froid le panier, les dépôts de graisse et le papier cuisson. Repère les signes qui imposent de contacter le fabricant.';
+---
+
+<Base title={title} description={description} pageType="guide">
+  <div class="wrap">
+    <article class="article">
+      <h1>{title}</h1>
+      <p><strong>En présence de flammes ou d’un dégagement important de fumée, mets-toi en sécurité et appelle les secours (18 ou 112 en France).</strong> Évacue si tu peux le faire sans danger. N’approche ni l’appareil ni la prise.</p>
+      <p>Pour un léger dégagement de fumée, arrête la cuisson et coupe l’alimentation si tu peux le faire sans danger. Attends que l’appareil ait refroidi avant de regarder dans le panier. Une fumée persistante, une odeur de plastique brûlé, des étincelles ou une prise abîmée justifient de cesser d’utiliser l’appareil et de contacter le fabricant.</p>
+
+      <h2>Que vérifier après refroidissement ?</h2>
+      <table class="rectable">
+        <thead>
+          <tr><th scope="col">Ce que tu observes</th><th scope="col">Vérification à faire</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Film gras ou résidus dans le fond</th><td>Après refroidissement, nettoie les pièces accessibles selon la notice. Laisse-les sécher avant de les remettre.</td></tr>
+          <tr><th scope="row">Papier cuisson déplacé</th><td>Retire-le et vérifie les règles du fabricant pour ton modèle. Un papier léger peut être soulevé et toucher la résistance.</td></tr>
+          <tr><th scope="row">Fumée au cours d’une cuisson grasse</th><td>Consulte les indications de la notice pour cette préparation. La graisse qui tombe dans la cuve peut produire de la fumée, selon le modèle.</td></tr>
+          <tr><th scope="row">Odeur électrique, cordon abîmé ou fumée venue du boîtier</th><td>Laisse l’appareil hors service et contacte le SAV. Évite de démonter ou de relancer l’appareil pour tester.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Fumée blanche et vapeur, comment réagir ?</h2>
+      <p>De la vapeur peut se former pendant la cuisson d’aliments humides. Philips et Electrolux signalent que des dépôts de graisse ou un aliment gras peuvent aussi produire une fumée blanche. La couleur seule ne permet pas d’identifier la cause. Si l’odeur ou le dégagement te paraît inhabituel, arrête la cuisson et vérifie l’appareil à froid.</p>
+      <p>Pour l’entretien autorisé sur les pièces amovibles, retrouve le <a href="/guides/nettoyer-air-fryer/">guide de nettoyage</a>. Si tu suspectes un défaut, relève la référence exacte du modèle pour faciliter l’échange avec le SAV.</p>
+
+      <ul>
+        <li><a href="https://tst.philips.fr/c-t/XC000012902/de-la-fum%C3%A9e-s-%C3%A9chappe-de-mon-philips-airfryer">Aide Philips sur la fumée</a></li>
+        <li><a href="https://support.electrolux.fr/support-articles/article/problemes-courants-des-friteuses-a-air-chaud-et-leurs-solutions">Aide Electrolux sur les problèmes courants</a></li>
+        <li><a href="https://www.philips.fr/c-t/XC000003625/puis-je-utiliser-du-papier-de-cuisson-aluminium-dans-mon-airfryer-philips">Papier de cuisson et résistance, Philips</a></li>
+        <li><a href="https://lannuaire.service-public.gouv.fr/centres-contact/R1206">Numéros des secours en cas d’incendie, Service Public</a></li>
+      </ul>
+    </article>
+  </div>
+</Base>
