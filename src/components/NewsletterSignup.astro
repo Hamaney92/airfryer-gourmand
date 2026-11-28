@@ -22,13 +22,16 @@ import { NEWSLETTER_FORM_ACTION } from '../lib/site';
       if (button.disabled) return;
       button.disabled = true;
       status.textContent = 'Inscription en cours…';
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 20000);
       try {
-        await requestMailerLiteSignup(form, fetch, AbortSignal.timeout(20000));
+        await requestMailerLiteSignup(form, fetch, controller.signal);
         form.reset();
         status.textContent = 'Merci ! Votre demande d’inscription a été enregistrée.';
       } catch {
         status.textContent = 'Votre inscription n’a pas pu être confirmée. Réessayez dans un instant.';
       } finally {
+        window.clearTimeout(timeout);
         button.disabled = false;
       }
     });
